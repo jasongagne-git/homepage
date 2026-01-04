@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Strategy Consultant</title>
+    <link href="/fonts/Arvo/index.css" rel="stylesheet">
+    <link href="/fonts/Inter/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #2c5aa0;
+            --color-secondary: #4a90a4;
+            --color-accent: #5b9bd5;
+            --color-light: #f8fafc;
+            --color-border: #e2e8f0;
+            --color-text: #334155;
+            --color-text-light: #64748b;
+            --color-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--color-light);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        .header {
+            background: var(--color-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .profile-info h1 {
+            font-family: 'Arvo', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-info .title {
+            font-size: 1.4rem;
+            color: var(--color-secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-light);
+            border: 2px solid var(--color-border);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-link i {
+            font-size: 1.2rem;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .bio-section h2 {
+            font-family: 'Arvo', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .bio-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Work Section */
+        .work-section {
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .work-section h2 {
+            font-family: 'Arvo', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .work-card {
+            background: var(--color-light);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .work-card h3 {
+            font-family: 'Arvo', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .work-card p {
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        .work-card .link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: var(--color-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .work-card .link:hover {
+            color: var(--color-primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-info h1 {
+                font-size: 2rem;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+
+            .bio-section, .work-section {
+                padding: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h1>Your Name</h1>
+                        <div class="title">Strategy Consultant</div>
+                    </div>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/yourusername" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Bio Section -->
+        <section class="bio-section">
+            <h2>About Me</h2>
+            <div class="bio-content">
+                <p>
+                    I am an experienced professional focused on institutional transformation and public impact innovation. 
+                    My work centers on helping organizations modernize their operations, build effective cross-sector 
+                    collaborations, and adopt technology responsibly to create scalable solutions that benefit communities 
+                    and strengthen institutional resilience.
+                </p>
+                <br>
+                <p>
+                    Through strategic consulting and framework development, I guide institutions in navigating complex 
+                    challenges and implementing sustainable change that delivers measurable public benefit.
+                </p>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section class="work-section">
+            <h2>Featured Work</h2>
+            <div class="work-grid">
+                <div class="work-card">
+                    <h3>Public-Impact Systems Framework</h3>
+                    <p>
+                        A comprehensive framework for institutional transformation featuring four interconnected pillars: 
+                        Institutional Modernization, Cross-Sector Collaboration, Responsible Technology Adoption, and 
+                        Public-Impact Innovation.
+                    </p>
+                    <a href="framework.html" class="link">
+                        <span>View Framework</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="work-card">
+                    <h3>Strategic Consulting</h3>
+                    <p>
+                        Helping organizations diagnose system bottlenecks, align stakeholder incentives, and design 
+                        modernization roadmaps that enable institutional adaptation to complexity.
+                    </p>
+                    <a href="#" class="link">
+                        <span>Learn More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="work-card">
+                    <h3>Innovation Strategy</h3>
+                    <p>
+                        Developing scalable, equitable, community-centered solutions that strengthen institutional 
+                        resilience and deliver measurable public benefit through systematic approaches.
+                    </p>
+                    <a href="#" class="link">
+                        <span>Explore Projects</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Your Name. Focused on institutional transformation and public impact innovation.</p>
+        </div>
+    </footer>
+</body>
+</html>
