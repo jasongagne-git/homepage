@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Title</title>
+    <title>My Portfolio</title>
 
     <!-- Match homepage font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -21,63 +21,59 @@
             text-align: center;
             padding: 60px 20px;
             background: #ffffff;
+            color: #111111;
         }
 
         header h1 {
             font-size: 2.4rem;
             font-weight: 700;
-            color: #007bff; /* homepage section header blue */
             margin: 0;
         }
 
-        .project-detail {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #ffffff;
-            padding: 40px;
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 20px 80px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .project-card {
+            background: #fafafa;
             border-radius: 12px;
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
             border: 1px solid #e5e5e5;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
-        .project-detail h2 {
-            margin-top: 40px;
-            font-size: 1.6rem;
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-color: #007bff;
+        }
+
+        .project-content h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
             font-weight: 600;
-            color: #007bff; /* homepage blue */
+            color: #111111;
         }
 
-        .project-detail h3 {
-            margin-top: 25px;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #007bff; /* homepage blue */
-        }
-
-        .detail-image {
-            width: 100%;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        ul {
-            margin-top: 15px;
-            line-height: 1.6;
+        .project-content p {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #444444;
         }
 
         a {
-            color: #007bff; /* homepage link blue */
-            text-decoration: none;
+            color: #007bff;
         }
 
         a:hover {
             text-decoration: underline;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            color: #007bff;
         }
     </style>
 </head>
@@ -85,13 +81,33 @@
 <body>
 
 <header>
-    <h1>Project Title Goes Here</h1>
+    <h1>My Work Portfolio</h1>
 </header>
 
-<section class="project-detail">
+<section class="portfolio-grid">
 
-    <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <a href="project1.html" class="project-card">
+        <div class="project-content">
+            <h2>Data Integration Modernization</h2>
+            <p>Redesigned a legacy workflow into a scalable, modular system.</p>
+        </div>
+    </a>
 
-    <h2>Overview</h2>
-    <p>
-        Provide a clear
+    <a href="project2.html" class="project-card">
+        <div class="project-content">
+            <h2>Open‑Source Workflow Toolkit</h2>
+            <p>Built a reusable automation toolkit for cross‑team collaboration.</p>
+        </div>
+    </a>
+
+    <a href="project3.html" class="project-card">
+        <div class="project-content">
+            <h2>Strategic Transformation Playbook</h2>
+            <p>Developed a governance and modernization strategy for enterprise adoption.</p>
+        </div>
+    </a>
+
+</section>
+
+</body>
+</html>
