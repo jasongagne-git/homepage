@@ -9,73 +9,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #111111;
-            line-height: 1.6;
-        }
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #ffffff;
+        color: #111111;
+        line-height: 1.6;
+    }
 
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: #ffffff;
-            color: #111111;
-        }
+    header {
+        text-align: center;
+        padding: 60px 20px;
+        background: #ffffff;
+    }
 
-        header h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin: 0;
-        }
+    header h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #007bff; /* matches homepage section header blue */
+        margin: 0;
+    }
 
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px 20px 80px;
-            max-width: 1200px;
-            margin: auto;
-        }
+    .project-detail {
+        max-width: 900px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        border: 1px solid #e5e5e5;
+    }
 
-        .project-card {
-            background: #fafafa;
-            border-radius: 12px;
-            padding: 30px;
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid #e5e5e5;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
+    .project-detail h2 {
+        margin-top: 40px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #007bff; /* same blue as homepage section titles */
+    }
 
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            border-color: #007bff;
-        }
+    .project-detail h3 {
+        margin-top: 25px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #007bff; /* consistent with homepage */
+    }
 
-        .project-content h2 {
-            margin-top: 0;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #111111;
-        }
+    .detail-image {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
 
-        .project-content p {
-            margin-top: 10px;
-            font-size: 1rem;
-            color: #444444;
-        }
+    ul {
+        margin-top: 15px;
+        line-height: 1.6;
+    }
 
-        a {
-            color: #007bff;
-        }
+    a {
+        color: #007bff; /* homepage link blue */
+        text-decoration: none;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+        color: #007bff;
+    }
+</style>
 </head>
 
 <body>
