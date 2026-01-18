@@ -289,6 +289,52 @@
             font-style: italic;
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .document-container {
+                max-width: 100%;
+                padding: 1rem;
+                margin: 0;
+            }
+
+            .main-title {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .purpose-title, .pillar-title {
+                font-size: 1.1rem;
+            }
+
+            .purpose-text, .pillar-text {
+                font-size: 0.9rem;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pillar-card {
+                padding: 1rem;
+            }
+
+            .takeaway-title {
+                font-size: 1rem;
+            }
+
+            .takeaway-text {
+                font-size: 0.85rem;
+            }
+        }
+
         /* Print Styles */
         @media print {
             body {
