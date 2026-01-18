@@ -75,6 +75,37 @@
             font-weight: 700;
         }
 
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            border: 3px solid var(--color-white);
+        }
+
+        .profile-fallback {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .profile-image-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
         .profile-info h1 {
             font-family: 'Arvo', serif;
             font-size: 2.6rem;
@@ -263,8 +294,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="profile-section">
-                    <div class="profile-image">
-                        <i class="fas fa-user"></i>
+                    <div class="profile-image-container">
+                        <img src="images/headshot.jpg" alt="Jason Gagne" class="profile-photo" onerror="this.style.display='none'; document.querySelector('.profile-fallback').style.display='flex';" />
+                        <div class="profile-fallback" style="display: none;">JG</div>
                     </div>
                     <div class="profile-info">
                         <h1>Jason Gagne</h1>
