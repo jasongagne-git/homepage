@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modernization Readiness Assessment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 1.5rem;
+      background: #f5f7fb;
+      color: #222;
+    }
+    h1, h2, h3 {
+      margin-top: 0;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .section {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e2e6f0;
+    }
+    .section:last-of-type {
+      border-bottom: none;
+    }
+    label {
+      font-weight: 600;
+    }
+    select, button {
+      font-size: 1rem;
+    }
+    select {
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid #cbd2e3;
+      min-width: 220px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+    }
+    th, td {
+      padding: 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid #edf0f7;
+      vertical-align: top;
+    }
+    th {
+      background: #f3f5fb;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .question-text {
+      font-size: 0.95rem;
+    }
+    .scale-cell {
+      white-space: nowrap;
+      font-size: 0.85rem;
+    }
+    .scale-cell input {
+      margin-right: 0.25rem;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    button {
+      border-radius: 999px;
+      border: none;
+      padding: 0.55rem 1.2rem;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary {
+      background: #1f6feb;
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #e2e8f5;
+      color: #1f2933;
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid #cbd2e3;
+      color: #111827;
+    }
+    .scores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .score-card {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid #e2e8f0;
+    }
+    .score-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+    }
+    .score-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .score-tagline {
+      font-size: 0.8rem;
+      color: #4b5563;
+      margin-top: 0.15rem;
+    }
+    #resultsSummary {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.85rem;
+      background: #0b1020;
+      color: #e5e7eb;
+      padding: 0.75rem;
+      border-radius: 8px;
+      margin-top: 0.75rem;
+      white-space: pre-wrap;
+    }
+    .status {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+    .status.ok {
+      color: #166534;
+    }
+    .status.error {
+      color: #b91c1c;
+    }
+    @media (max-width: 640px) {
+      body {
+        padding: 0.75rem;
+      }
+      .container {
+        padding: 1rem 1.1rem;
+      }
+      table, th, td {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Modernization Readiness Assessment</h1>
+    <p style="max-width: 640px; font-size: 0.95rem; color: #4b5563;">
+        Quickly assess your innovation strengths and weaknesses, and see some practical recommendations to help accelerate your modernization efforts.
+    </p>
+
+    <p style="max-width: 640px; font-size: 0.95rem; color: #4b5563;">  
+        Choose your sector, respond to the prompts, and we’ll generate a modernization profile across four dimensions:
+      <strong>Modernization, Collaboration, Technology, and Innovation.</strong>
+    </p>
+
+    <div class="section">
+      <h2>1. Context</h2>
+      <label for="sectorSelect">Sector or context you’re assessing</label><br />
+      <select id="sectorSelect">
+        <option value="">Select a sector…</option>
+        <option>Federal government</option>
+        <option>State or local government</option>
+        <option>Education</option>
+        <option>Healthcare</option>
+        <option>Nonprofit / philanthropy</option>
+        <option>Private sector</option>
+        <option>Cross-sector / coalition</option>
+        <option>Other / mixed</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <h2>2. Assessment</h2>
+      <p style="font-size: 0.9rem; color: #4b5563;">
+        For each statement, choose how true it feels for your current environment.
+        <em>(1 = Not at all true, 5 = Very true)</em>
+      </p>
+
+      <h3>Modernization</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;">Statement</th>
+            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="question-text">
+              We have a clear, shared modernization roadmap that people actually use to make decisions.
+            </td>
+            <td class="scale-cell"><input type="radio" name="mod_q1" value="1" />1</td>
+            <td class="scale-cell"><input type="radio" name="mod_q1" value="2" />2</td>
+            <td class="scale-cell"><input type="radio" name="mod_q1" value="3" />3</td>
+            <td class="scale-cell"><input type="radio" name="mod_q1" value="4" />4</td>
+            <td class="scale-cell"><input type="radio" name="mod_q1" value="5" />5</td>
+          </tr>
+          <tr>
+            <td class="question-text">
+              Legacy processes and systems are being actively retired or refactored, not just documented.
+            </td>
+            <td class="scale-cell"><input type="radio" name="mod_q2" value="1" />1</td>
+            <td class="scale-cell"><input type="radio" name="mod_q2" value="2" />2</td>
+            <td class="scale-cell"><input type="radio" name="mod_q2" value="3" />3</td>
+            <td class="scale-cell"><input type="radio" name="mod_q2" value="4" />4</td>
+            <td class="scale-cell"><input type="radio" name="mod_q2" value="5" />5</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Collaboration</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;">Statement</th>
+            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="question-text">
+              Teams share information and decisions transparently across functions, not just within silos.
+            </td>
+            <td class="scale-cell"><input type="radio" name="col_q1" value="1" />1</td>
+            <td class="scale-cell"><input type="radio" name="col_q1" value="2" />2</td>
+            <td class="scale-cell"><input type="radio" name="col_q1" value="3" />3</td>
+            <td class="scale-cell"><input type="radio" name="col_q1" value="4" />4</td>
+            <td class="scale-cell"><input type="radio" name="col_q1" value="5" />5</td>
+          </tr>
+          <tr>
+            <td class="question-text">
+              We have cross-functional forums where modernization, risk, and delivery are discussed together.
+            </td>
+            <td class="scale-cell"><input type="radio" name="col_q2" value="1" />1</td>
+            <td class="scale-cell"><input type="radio" name="col_q2" value="2" />2</td>
+            <td class="scale-cell"><input type="radio" name="col_q2" value="3" />3</td>
+            <td class="scale-cell"><input type="radio" name="col_q2" value="4" />4</td>
+            <td class="scale-cell"><input type="radio" name="col_q2" value="5" />5</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Technology</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;">Statement</th>
+            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="question-text">
+              Our core systems are reliable, secure, and instrumented with meaningful metrics.
+            </td>
+            <td class="scale-cell"><input type="radio" name="tech_q1" value="1" />1</td>
+            <td class="scale-cell"><input type="radio" name="tech_q1" value="2" />2</td>
+            <td class="scale-cell"><input type="radio" name="tech_q1" value="3" />3</td>
+            <td class="scale-cell"><input type="radio" name="tech_q1" value="4" />4</td>
+            <td class="scale-cell"><input type="radio" name="tech_q1" value="5" />5</td>
+          </tr>
+          <tr>
+            <td class="question-text">
+              We can safely experiment with new tools or approaches without breaking core operations.
+            </td>
+            <td class="scale-cell"><input type="radio" name="tech_q2" value="1" />1</td>
+            <td class="scale-cell"><input type="radio" name="tech_q2" value="2" />2</td>
+            <td class="scale-cell"><input type="radio" name="tech_q2" value="3" />3</td>
+            <td class="scale-cell"><input type="radio" name="tech_q2" value="4" />4</td>
+            <td class="scale-cell"><input type="radio" name="tech_q2" value="5" />5</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Innovation</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 60%;">Statement</th>
+            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="question-text">
+              People are encouraged (and resourced) to test new ideas tied to real outcomes.
+            </td>
+            <td class="scale-cell"><input type="radio" name="inn_q1" value="1" />1</td>
+            <td class="scale-cell"><input type="radio" name="inn_q1" value="2" />2</td>
+            <td class="scale-cell"><input type="radio" name="inn_q1" value="3" />3</td>
+            <td class="scale-cell"><input type="radio" name="inn_q1" value="4" />4</td>
+            <td class="scale-cell"><input type="radio" name="inn_q1" value="5" />5</td>
+          </tr>
+          <tr>
+            <td class="question-text">
+              We learn from pilots and experiments in a structured way, not just anecdotally.
+            </td>
+            <td class="scale-cell"><input type="radio" name="inn_q2" value="1" />1</td>
+            <td class="scale-cell"><input type="radio" name="inn_q2" value="2" />2</td>
+            <td class="scale-cell"><input type="radio" name="inn_q2" value="3" />3</td>
+            <td class="scale-cell"><input type="radio" name="inn_q2" value="4" />4</td>
+            <td class="scale-cell"><input type="radio" name="inn_q2" value="5" />5</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="btn-row">
+        <button class="btn-primary" id="scoreBtn">Score my responses</button>
+        <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+      </div>
+      <div id="validationMsg" class="status error" style="display:none;"></div>
+    </div>
+
+    <div class="section" id="resultsSection" style="display:none;">
+      <h2>3. Results</h2>
+      <div class="scores-grid">
+        <div class="score-card">
+          <div class="score-label">Modernization</div>
+          <div class="score-value" id="modScoreDisplay">–</div>
+          <div class="score-tagline" id="modTagline"></div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Collaboration</div>
+          <div class="score-value" id="colScoreDisplay">–</div>
+          <div class="score-tagline" id="colTagline"></div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Technology</div>
+          <div class="score-value" id="techScoreDisplay">–</div>
+          <div class="score-tagline" id="techTagline"></div>
+        </div>
+        <div class="score-card">
+          <div class="score-label">Innovation</div>
+          <div class="score-value" id="innScoreDisplay">–</div>
+          <div class="score-tagline" id="innTagline"></div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <canvas id="radarChart" height="220"></canvas>
+      </div>
+
+      <h3 style="margin-top:1.5rem;">Executive Summary</h3>
+      <p id="execSummary" style="font-size:0.95rem; color:#374151; line-height:1.45;"></p>
+
+      <h3 style="margin-top:1.5rem;">Summary (for notes, email, or slide decks)</h3>
+      <pre id="resultsSummary"></pre>
+
+      <div class="btn-row">
+        <button class="btn-secondary" id="copySummaryBtn" type="button">Copy summary</button>
+        <button class="btn-secondary" id="downloadPdfBtn" type="button">Download PDF</button>
+      </div>
+      <div id="copyStatus" class="status" style="display:none;"></div>
+    </div>
+  </div>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script>
+    // === Utility: collect responses and compute scores ===
+    function getRadioValue(name) {
+      var checked = document.querySelector('input[name="' + name + '"]:checked');
+      return checked ? Number(checked.value) : null;
+    }
+
+    function computeScores() {
+      var sector = document.getElementById("sectorSelect").value || null;
+
+      var mod_q1 = getRadioValue("mod_q1");
+      var mod_q2 = getRadioValue("mod_q2");
+      var col_q1 = getRadioValue("col_q1");
+      var col_q2 = getRadioValue("col_q2");
+      var tech_q1 = getRadioValue("tech_q1");
+      var tech_q2 = getRadioValue("tech_q2");
+      var inn_q1 = getRadioValue("inn_q1");
+      var inn_q2 = getRadioValue("inn_q2");
+
+      var missing = [];
+      if (!sector) missing.push("sector");
+      if (mod_q1 == null) missing.push("Modernization Q1");
+      if (mod_q2 == null) missing.push("Modernization Q2");
+      if (col_q1 == null) missing.push("Collaboration Q1");
+      if (col_q2 == null) missing.push("Collaboration Q2");
+      if (tech_q1 == null) missing.push("Technology Q1");
+      if (tech_q2 == null) missing.push("Technology Q2");
+      if (inn_q1 == null) missing.push("Innovation Q1");
+      if (inn_q2 == null) missing.push("Innovation Q2");
+
+      return {
+        sector: sector,
+        mod_q1: mod_q1,
+        mod_q2: mod_q2,
+        col_q1: col_q1,
+        col_q2: col_q2,
+        tech_q1: tech_q1,
+        tech_q2: tech_q2,
+        inn_q1: inn_q1,
+        inn_q2: inn_q2,
+        missing: missing
+      };
+    }
+
+    function average(values) {
+      var valid = values.filter(function(v) { return v != null; });
+      if (!valid.length) return null;
+      return valid.reduce(function(a, b) { return a + b; }, 0) / valid.length;
+    }
+
+    function scoreTagline(score) {
+      if (score == null) return "";
+      if (score >= 4.5) return "High maturity, strong foundation to build from.";
+      if (score >= 3.5) return "Solid footing with room to sharpen and scale.";
+      if (score >= 2.5) return "Mixed signals—pockets of strength, pockets of drag.";
+      if (score >= 1.5) return "Early-stage—clarity and focus will matter most.";
+      return "Very early—this is a chance to design it right from the start.";
+    }
+
+    function buildExecutiveSummary(scores) {
+      var modernizationScore = scores.modernizationScore;
+      var collaborationScore = scores.collaborationScore;
+      var techScore = scores.techScore;
+      var innovationScore = scores.innovationScore;
+
+      var dimensions = [
+        { name: "Modernization", value: modernizationScore },
+        { name: "Collaboration", value: collaborationScore },
+        { name: "Technology", value: techScore },
+        { name: "Innovation", value: innovationScore }
+      ];
+
+      var strongest = dimensions.reduce(function(a, b) {
+        return a.value > b.value ? a : b;
+      });
+      var weakest = dimensions.reduce(function(a, b) {
+        return a.value < b.value ? a : b;
+      });
+
+      var avg = (modernizationScore + collaborationScore + techScore + innovationScore) / 4;
+      var maturityPhrase = "";
+
+      if (avg >= 4.2) {
+        maturityPhrase = "a strong modernization posture with clear momentum";
+      } else if (avg >= 3.4) {
+        maturityPhrase = "a solid foundation with opportunities to sharpen alignment and execution";
+      } else if (avg >= 2.6) {
+        maturityPhrase = "a mixed maturity profile with meaningful room to strengthen consistency";
+      } else if (avg >= 1.8) {
+        maturityPhrase = "an early-stage modernization posture where clarity and prioritization will matter most";
+      } else {
+        maturityPhrase = "a very early modernization posture where establishing shared direction is the first priority";
+      }
+
+      var text = "";
+      text += "Your results suggest " + maturityPhrase + ". ";
+      text += strongest.name + " appears to be your strongest area, while " + weakest.name + " shows the greatest opportunity for improvement. ";
+      text += "A practical next step is to focus on strengthening " + weakest.name.toLowerCase() + " through clearer ownership, more consistent routines, and small, low-risk experiments that build confidence and momentum. ";
+      text += "Revisiting your modernization goals and aligning teams around a shared set of priorities will help translate these insights into meaningful progress.";
+      return text;
+    }
+
+    // === Chart state ===
+    var radarChart = null;
+
+    function renderRadarChart(scores) {
+      var ctx = document.getElementById("radarChart").getContext("2d");
+      var data = {
+        labels: ["Modernization", "Collaboration", "Technology", "Innovation"],
+        datasets: [{
+          label: "Readiness (1–5)",
+          data: [
+            scores.modernizationScore,
+            scores.collaborationScore,
+            scores.techScore,
+            scores.innovationScore
+          ],
+          backgroundColor: "rgba(31, 111, 235, 0.2)",
+          borderColor: "rgba(31, 111, 235, 1)",
+          borderWidth: 2,
+          pointBackgroundColor: "rgba(31, 111, 235, 1)",
+          pointRadius: 4
+        }]
+      };
+      var options = {
+        responsive: true,
+        scales: {
+          r: {
+            suggestedMin: 0,
+            suggestedMax: 5,
+            ticks: { stepSize: 1 }
+          }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      };
+
+      if (radarChart) {
+        radarChart.data = data;
+        radarChart.options = options;
+        radarChart.update();
+      } else {
+        radarChart = new Chart(ctx, {
+          type: "radar",
+          data: data,
+          options: options
+        });
+      }
+    }
+
+    function buildSummaryText(sector, scores) {
+      var lines = [];
+      lines.push("Sector: " + (sector || "—"));
+      lines.push("");
+      lines.push("Modernization: " + scores.modernizationScore.toFixed(1) + " / 5");
+      lines.push("Collaboration: " + scores.collaborationScore.toFixed(1) + " / 5");
+      lines.push("Technology:   " + scores.techScore.toFixed(1) + " / 5");
+      lines.push("Innovation:   " + scores.innovationScore.toFixed(1) + " / 5");
+      lines.push("");
+      lines.push("Overall pattern:");
+      lines.push("- Modernization: " + scoreTagline(scores.modernizationScore));
+      lines.push("- Collaboration: " + scoreTagline(scores.collaborationScore));
+      lines.push("- Technology:   " + scoreTagline(scores.techScore));
+      lines.push("- Innovation:   " + scoreTagline(scores.innovationScore));
+      return lines.join("\n");
+    }
+
+    // === Event wiring ===
+    document.getElementById("scoreBtn").addEventListener("click", function() {
+      var validationMsg = document.getElementById("validationMsg");
+      validationMsg.style.display = "none";
+      validationMsg.textContent = "";
+
+      var data = computeScores();
+      if (data.missing.length) {
+        validationMsg.textContent = "Please complete: " + data.missing.join(", ");
+        validationMsg.style.display = "block";
+        return;
+      }
+
+      var modernizationScore = average([data.mod_q1, data.mod_q2]);
+      var collaborationScore = average([data.col_q1, data.col_q2]);
+      var techScore = average([data.tech_q1, data.tech_q2]);
+      var innovationScore = average([data.inn_q1, data.inn_q2]);
+
+      document.getElementById("modScoreDisplay").textContent = modernizationScore.toFixed(1);
+      document.getElementById("colScoreDisplay").textContent = collaborationScore.toFixed(1);
+      document.getElementById("techScoreDisplay").textContent = techScore.toFixed(1);
+      document.getElementById("innScoreDisplay").textContent = innovationScore.toFixed(1);
+
+      document.getElementById("modTagline").textContent = scoreTagline(modernizationScore);
+      document.getElementById("colTagline").textContent = scoreTagline(collaborationScore);
+      document.getElementById("techTagline").textContent = scoreTagline(techScore);
+      document.getElementById("innTagline").textContent = scoreTagline(innovationScore);
+
+      var scores = {
+        modernizationScore: modernizationScore,
+        collaborationScore: collaborationScore,
+        techScore: techScore,
+        innovationScore: innovationScore
+      };
+      renderRadarChart(scores);
+
+      var summary = buildSummaryText(data.sector, scores);
+      document.getElementById("resultsSummary").textContent = summary;
+
+      var execSummaryText = buildExecutiveSummary(scores);
+      document.getElementById("execSummary").textContent = execSummaryText;
+
+      document.getElementById("resultsSection").style.display = "block";
+      document.getElementById("copyStatus").style.display = "none";
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", function() {
+      document.getElementById("sectorSelect").value = "";
+      var radios = document.querySelectorAll('input[type="radio"]');
+      radios.forEach(function(r) { r.checked = false; });
+      document.getElementById("resultsSection").style.display = "none";
+      document.getElementById("validationMsg").style.display = "none";
+    });
+
+    document.getElementById("copySummaryBtn").addEventListener("click", function() {
+      var summaryEl = document.getElementById("resultsSummary");
+      var copyStatus = document.getElementById("copyStatus");
+      copyStatus.style.display = "none";
+
+      if (!navigator.clipboard) {
+        copyStatus.textContent = "Clipboard not available in this browser.";
+        copyStatus.className = "status error";
+        copyStatus.style.display = "block";
+        return;
+      }
+
+      navigator.clipboard.writeText(summaryEl.textContent)
+        .then(function() {
+          copyStatus.textContent = "Summary copied to clipboard.";
+          copyStatus.className = "status ok";
+          copyStatus.style.display = "block";
+        })
+        .catch(function() {
+          copyStatus.textContent = "Could not copy to clipboard.";
+          copyStatus.className = "status error";
+          copyStatus.style.display = "block";
+        });
+    });
+
+    document.getElementById("downloadPdfBtn").addEventListener("click", function() {
+      var jsPDF = window.jspdf.jsPDF;
+      var doc = new jsPDF();
+      var summary = document.getElementById("resultsSummary").textContent || "";
+      var execSummary = document.getElementById("execSummary").textContent || "";
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(14);
+      doc.text("Modernization Readiness Snapshot", 14, 18);
+
+      doc.setFontSize(10);
+      var combined = execSummary + "\n\n" + summary;
+      var lines = doc.splitTextToSize(combined, 180);
+      doc.text(lines, 14, 30);
+
+      doc.save("modernization-readiness.pdf");
+    });
+  </script>
+</body>
+</html>
