@@ -376,6 +376,46 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <script>
+    // === Google Form Backend Submission ===
+      const GOOGLE_FORM_ACTION_URL =
+        "https://docs.google.com/forms/d/e/1FAIpQLSfKLuFC7aJKctsiTRuIN0Q7_n7BFQBE0xGSiu0AZZTz9ebTrQ/formResponse";
+
+      const FIELD_IDS = {
+        Sector: "entry.957615768",
+        mod_q1: "entry.773639386",
+        mod_q2: "entry.754516573",
+        col_q1: "entry.40725693",
+        col_q2: "entry.1162995008",
+        tech_q1: "entry.1541692200",
+        tech_q2: "entry.2106094835",
+        inn_q1: "entry.1653062323",
+        inn_q2: "entry.2033975286",
+        modernizationScore: "entry.373748106",
+        collaborationScore: "entry.784781114",
+        techScore: "entry.237796422",
+        innovationScore: "entry.1242756127",
+        rawResponsesJson: "entry.1645517615",
+        userAgent: "entry.1800629430"
+      };
+
+      async function submitToGoogleForm(payload) {
+        const formData = new FormData();
+
+        for (const [key, value] of Object.entries(payload)) {
+          const entryId = FIELD_IDS[key];
+          if (entryId) {
+            formData.append(entryId, value);
+          }
+        }
+
+        await fetch(GOOGLE_FORM_ACTION_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        });
+
+        console.log("Submitted to Google Form");
+      }
     // === Utility: collect responses and compute scores ===
     function getRadioValue(name) {
       var checked = document.querySelector('input[name="' + name + '"]:checked');
@@ -424,7 +464,7 @@
       if (!valid.length) return null;
       return valid.reduce(function(a, b) { return a + b; }, 0) / valid.length;
     }
-
+// === Utility: build report ===
     function scoreTagline(score) {
       if (score == null) return "";
       if (score >= 4.5) return "High maturity, strong foundation to build from.";
@@ -542,7 +582,6 @@
       lines.push("- Innovation:   " + scoreTagline(scores.innovationScore));
       return lines.join("\n");
     }
-
     // === Event wiring ===
     document.getElementById("scoreBtn").addEventListener("click", function() {
       var validationMsg = document.getElementById("validationMsg");
@@ -560,6 +599,28 @@
       var collaborationScore = average([data.col_q1, data.col_q2]);
       var techScore = average([data.tech_q1, data.tech_q2]);
       var innovationScore = average([data.inn_q1, data.inn_q2]);
+
+      // ---------------------------------------------
+      // SUBMIT TO GOOGLE FORM
+      // ---------------------------------------------
+      submitToGoogleForm({
+        Sector: data.sector,
+        mod_q1: data.mod_q1,
+        mod_q2: data.mod_q2,
+        col_q1: data.col_q1,
+        col_q2: data.col_q2,
+        tech_q1: data.tech_q1,
+        tech_q2: data.tech_q2,
+        inn_q1: data.inn_q1,
+        inn_q2: data.inn_q2,
+        modernizationScore: modernizationScore,
+        collaborationScore: collaborationScore,
+        techScore: techScore,
+        innovationScore: innovationScore,
+        rawResponsesJson: JSON.stringify(data),
+        userAgent: navigator.userAgent
+      });
+      // ---------------------------------------------
 
       document.getElementById("modScoreDisplay").textContent = modernizationScore.toFixed(1);
       document.getElementById("colScoreDisplay").textContent = collaborationScore.toFixed(1);
