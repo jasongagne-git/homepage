@@ -363,6 +363,7 @@
       <pre id="resultsSummary"></pre>
 
       <div class="btn-row">
+        <button class="btn-primary" id="consultationBtn" type="button" style="display:none;">Start a conversation</button>
         <button class="btn-secondary" id="copySummaryBtn" type="button">Copy summary</button>
         <button class="btn-secondary" id="downloadPdfBtn" type="button">Download PDF</button>
       </div>
@@ -647,6 +648,7 @@
       document.getElementById("execSummary").textContent = execSummaryText;
 
       document.getElementById("resultsSection").style.display = "block";
+      document.getElementById("consultationBtn").style.display = "inline-block";
       document.getElementById("copyStatus").style.display = "none";
     });
 
@@ -699,6 +701,10 @@
       doc.text(lines, 14, 30);
 
       doc.save("modernization-readiness.pdf");
+    });
+
+    document.getElementById("consultationBtn").addEventListener("click", function() {
+      window.location.href = "mailto:jagagne@gmail.com?subject=Innovation Consultation Request&body=Hi Jason,%0A%0AI completed the Innovation Readiness Assessment and would like to request a consultation.%0A%0A[Please provide any additional details here.]";
     });
   </script>
   <div style="text-align: center; margin-top: 2rem;">
