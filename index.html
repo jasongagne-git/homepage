@@ -254,6 +254,21 @@
             color: var(--color-primary);
         }
 
+        button {
+            border-radius: 999px;
+            border: none;
+            padding: 0.55rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #1f6feb;
+            color: #fff;
+        }
+
         /* Footer */
         .footer {
             background: var(--color-primary);
@@ -353,20 +368,6 @@
                         <div class="subtitle">*yes, I used AI to help create this site</div>
                     </div>
                 </div>
-                <div class="contact-links">
-                    <a href="mailto:jason@preneurial.works" class="contact-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email</span>
-                    </a>
-                    <a href="https://www.linkedin.com/groups/17212001/" target="_blank" class="contact-link">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://medium.com/@jagagne77" target="_blank" class="contact-link">
-                        <i class="fab fa-medium"></i>
-                        <span>Medium</span>
-                    </a>
-                </div>
             </div>
         </div>
     </header>
@@ -435,13 +436,16 @@
                      we create responsible outcome‑driven, scalable solutions that strengthen organizations and communities.
                 </p>
             </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn-primary" onclick="window.location.href='https://www.linkedin.com/groups/17212001/';">Start a conversation</button>
+            </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Jason Gagne. Focused on institutional transformation and public impact innovation.</p>
+            <p>&copy; 2026 Jason Gagne. Focused on institutional transformation and public impact innovation. | <a href="mailto:jason@preneurial.works" style="color: white; text-decoration: none;">Contact us</a></p>
         </div>
     </footer>
 <!-- GoatCounter Analytics -->
