@@ -2,41 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watch Momentum Sports</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Momentum Sports — Public-Impact Innovation | PreneurialWorks</title>
+    <meta name="description" content="Case study: Customer discovery and brand strategy for an MLB-player-founded sports media platform. Data-driven personas, competitive analysis, and monetization strategy.">
+    <meta property="og:title" content="Watch Momentum Sports — Public-Impact Innovation Case Study">
+    <meta property="og:description" content="How rigorous customer discovery shaped a community-focused brand strategy for a digital sports media company.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://preneurial.works/project3.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Watch Momentum Sports — Public-Impact Innovation">
+    <meta name="twitter:description" content="Customer discovery and brand strategy for an MLB-founded sports media platform. Data-driven personas and competitive positioning.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141925;
+            --bg-tertiary: #1a1d2e;
+            --color-accent: #00bcd4;
+            --color-accent-secondary: #2563eb;
+            --text-bright: #f8fafc;
+            --text-medium: #cbd5e1;
+            --text-dim: #94a3b8;
+            --text-dimmer: #64748b;
+            --border-dark: #1e293b;
+            --border-subtle: #2d3148;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .site-nav {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.9rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            text-decoration: none;
+        }
+        .nav-brand i {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+        .nav-links a.nav-defense {
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+        }
+        .nav-links a.nav-defense:hover {
+            background: var(--color-accent);
+            color: var(--bg-primary);
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-bright);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0;
         }
 
         header {
             text-align: center;
-            padding: 40px 0;
-            background: #222;
-            color: #fff;
+            padding: 40px 20px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-subtle);
         }
-.subtitle-section {
+
+        .pillar-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #6366f1;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--text-bright);
+        }
+
+        .subtitle-section {
             text-align: center;
-            padding: 10px 20px;
-            background: #f5f5f5;
-            color: #333;
-            font-size: 1.1rem;
-            font-weight: 300;
+            padding: 30px 20px;
+            background: var(--bg-primary);
+            color: var(--text-dim);
+            font-size: 1rem;
+            font-weight: 400;
             max-width: 900px;
             margin: 0 auto;
         }
+
         .project-detail {
             max-width: 900px;
             margin: 40px auto;
-            background: none;
+            background: rgba(20, 25, 37, 0.95);
             padding: 40px;
             border-radius: 12px;
-            color: white;
             position: relative;
+            border: 1px solid var(--border-subtle);
         }
 
         .project-detail::before {
@@ -48,97 +160,193 @@
             bottom: 0;
             background: url('images/baseball.jpg') no-repeat center center;
             background-size: cover;
-            opacity: 0.4;
+            opacity: 0.15;
+            z-index: 1;
+            border-radius: 12px;
+        }
+
+        .project-detail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 14, 26, 0.85);
             z-index: 1;
             border-radius: 12px;
         }
 
         .project-detail h2 {
             margin-top: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
             position: relative;
             z-index: 2;
-            color: #38589B;
+            color: var(--color-accent);
+            font-size: 1.5rem;
+        }
+
+        .project-detail h2:first-of-type {
+            margin-top: 0;
         }
 
         ul {
             margin-top: 15px;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            line-height: 1.8;
             position: relative;
             z-index: 2;
-            color: #444444;
+            color: var(--text-medium);
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 12px;
         }
 
         p {
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             position: relative;
             z-index: 2;
-            color: #444444;
+            color: var(--text-medium);
+            margin: 15px 0;
+            line-height: 1.7;
         }
 
         a {
-            color: #007bff;
+            color: var(--color-accent);
             text-decoration: none;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             position: relative;
             z-index: 2;
+            transition: color 0.2s;
         }
 
         a:hover {
+            color: var(--text-bright);
             text-decoration: underline;
         }
 
-        .download-link {
-            display: inline-block;
-            background: #007bff;
-            color: white !important;
-            padding: 12px 24px;
+        .insight-box {
+            background: var(--bg-tertiary);
+            border-left: 4px solid #6366f1;
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: background 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
         }
+        .insight-box strong {
+            color: #6366f1;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        .insight-box p { margin: 0; color: var(--text-medium); }
 
-        .download-link:hover {
-            background: #0056b3;
-            text-decoration: none;
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .col-box {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .col-box h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 8px;
+        }
+        .col-box ul { margin-top: 0; padding-left: 16px; }
+        .col-box li { font-size: 0.9rem; margin-bottom: 6px; }
+
+        .framework-note {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
+        .framework-note strong { color: var(--text-bright); }
+        .framework-note a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .two-col { grid-template-columns: 1fr; }
         }
 
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
             font-size: 0.95rem;
-            color: #38589B;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text-bright);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border-subtle);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-toggle { display: block; }
+            .site-nav { position: relative; }
+
             header {
-                padding: 30px 0;
+                padding: 30px 20px;
             }
 
             header h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
-            .project-detail h2 {
-                font-size: 1rem;
+            .subtitle-section {
+                padding: 20px 15px;
+                font-size: 0.95rem;
             }
 
             .project-detail {
-                margin: 20px auto;
+                margin: 20px 10px;
                 padding: 20px;
             }
 
             .project-detail h2 {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
             ul {
-                margin-top: 10px;
+                padding-left: 15px;
             }
         }
     </style>
@@ -146,41 +354,116 @@
 
 <body>
 
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Preneurial<i>works</i></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+        <div class="nav-links">
+            <a href="framework.html">Framework</a>
+            <a href="innovation-tool.html">Assessment</a>
+            <a href="projects.html">Case Studies</a>
+            <a href="index.html#defense" class="nav-defense">Defense &amp; Intel</a>
+        </div>
+    </div>
+</nav>
+
 <header>
+    <div class="pillar-label">Pillar 4 — Public-Impact Innovation</div>
     <h1>Watch Momentum Sports</h1>
 </header>
 
 <section class="subtitle-section">
-    <p>Innovation starts with understanding your customers - and knowing how to get to them</p>
+    <p>Innovation starts with understanding your community — and knowing how to serve them</p>
 </section>
 
 <section class="project-detail">
 
     <h2>Overview</h2>
     <p>
-        The relationship between sports players and their fans has evolved significantly with the rise of digital media.
-        This project sought to establish a strong brand identity and a customer acquisition plan to effectively engage 
-        their target audience and differentiate themselves in a very crowded market.
+        Watch Momentum is a digital sports media company founded by an MLB player to give fans behind-the-scenes access to professional athletes. The company had the content and the access — but needed a systematic approach to understanding its community, identifying who would actually pay, and positioning itself in a crowded market dominated by well-funded competitors.
     </p>
-
-    <h2>Outcomes</h2>
     <p>
-        This case study gives approaches of how to develop a strong brand identity and marketing strategy 
-        that helps to identify key customer segments and provide engagement strategies. The project highlights the importance of consistent messaging, visual identity.
+        This engagement demonstrates the <a href="framework.html">Public-Impact Innovation</a> pillar in action: designing solutions that start with deep community understanding and scale by serving real demand, not assumed demand.
     </p>
 
-    <p style="text-align: center;">
-        <a href="slides/WatchMomentum.pdf" target="_blank" class="download-link">Download the brand strategy case study</a>
+    <h2>The Approach: Customer Discovery as Innovation Foundation</h2>
+    <p>
+        Public-impact innovation fails when it builds for an imagined audience. The first step was rigorous customer discovery — understanding not just who the fans were, but how they behaved, what they valued, and what they'd actually pay for.
     </p>
+
+    <div class="insight-box">
+        <strong>Willingness to Pay vs. Engagement</strong>
+        <p>A common assumption in digital media is that passionate fans will pay for content. The research revealed a more nuanced picture: there was no strong correlation between live game attendance and willingness to pay for online content. Fans who attended 20+ games per season weren't necessarily more likely to subscribe than those who attended 1-2 games. This single finding reshaped the entire monetization strategy.</p>
+    </div>
+
+    <h2>Building Personas from Data, Not Assumptions</h2>
+    <p>
+        Survey data across willingness-to-pay, content preferences, platform usage, and engagement patterns revealed two distinct personas worth building around:
+    </p>
+
+    <div class="two-col">
+        <div class="col-box">
+            <h3>Persona A: The Story-Seeker</h3>
+            <ul>
+                <li>Willing to pay for exclusive content</li>
+                <li>Strong interest in off-the-field storytelling and player-to-player interactions</li>
+                <li>Primarily engages via phone on Twitter, active throughout the day</li>
+                <li>Also interested in adjacent content like Minor League baseball</li>
+            </ul>
+        </div>
+        <div class="col-box">
+            <h3>Persona B: The Casual Engager</h3>
+            <ul>
+                <li>Willing to pay, but less interested in serious content</li>
+                <li>No strong preference for interaction types — values variety</li>
+                <li>Primarily engages via phone on Instagram and YouTube, evenings</li>
+                <li>Also interested in Minor League content as an adjacent market</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Competitive Landscape</h2>
+    <p>
+        Understanding your community also means understanding who else is trying to serve them. The analysis identified six direct competitors — from The Players' Tribune to Barstool Sports — each with a distinct value proposition and channel strategy. The key insight: no competitor was exclusively focused on the MLB personalized content niche that Momentum occupied.
+    </p>
+
+    <div class="insight-box">
+        <strong>Network Effects and the Free-User Paradox</strong>
+        <p>Digital platforms often need to operate at a loss to achieve the network effects required for growth. The research showed that non-paying users drive growth (sharing, engagement, visibility), which in turn drives paying-user acquisition. This meant the monetization strategy couldn't simply gate content — it needed to offer tiered value, with free content fueling the network and premium content capturing revenue.</p>
+    </div>
+
+    <h2>Strategic Recommendations</h2>
+    <ul>
+        <li>Develop persona-specific value propositions: "exclusive off-the-field MLB player stories" for Persona A, "one accessible channel for personal MLB content" for Persona B</li>
+        <li>Focus content delivery on the channels where each persona already lives — Twitter for story-seekers, Instagram and YouTube for casual engagers — rather than trying to change user habits</li>
+        <li>Differentiate on content type in competitive channels rather than competing on reach, where incumbents have 10-100x the follower base</li>
+        <li>Design monetization around supplemental revenue streams (advertising, sponsorships) for non-paying users who drive network effects</li>
+        <li>Use SWOT analysis to continuously validate positioning: the founder's unique access to MLB players is a defensible advantage that no competitor can replicate</li>
+    </ul>
+
+    <h2>The Takeaway for Innovators</h2>
+    <p>
+        Customer discovery isn't just a startup exercise — it's the foundation of any public-impact innovation effort. Whether you're building a sports media platform or modernizing a government program, the methodology is the same: understand the community first, segment by real behavior (not assumptions), study the competitive landscape, and build value propositions that serve identifiable demand.
+    </p>
+
+    <div class="framework-note">
+        <strong>Pillar 4 in action:</strong> Public-Impact Innovation isn't about building the biggest product — it's about building the right one. This case shows how rigorous community research prevents the most common innovation failure: building something nobody asked for. The personas, competitive mapping, and SWOT analysis demonstrated here are reusable tools for any organization trying to scale innovation that actually serves its audience. <a href="framework.html">Learn more about the framework →</a>
+    </div>
 
 </section>
 
-<div style="text-align: center; margin-top: 2rem;">
-    <a href="projects.html" class="back-link">← Back to Portfolio</a>
+<div style="text-align: center; max-width: 900px; margin: 2rem auto 0; padding: 0 20px;">
+    <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem;">How does your organization approach public-impact innovation?</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="innovation-tool.html" style="display: inline-block; background: var(--color-accent-secondary); color: #fff; padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s;">Take the Readiness Assessment</a>
+        <a href="https://www.linkedin.com/groups/17212001/" style="display: inline-block; background: transparent; color: var(--text-dim); padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid var(--border-subtle); transition: all 0.2s;">Start a conversation</a>
+    </div>
+</div>
+<div class="footer">
+    <a href="projects.html" class="back-link">← Back to Case Studies</a>
 </div>
 
 </body>
 <!-- GoatCounter Analytics -->
-<script data-goatcounter="https://jasongagne.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://preneurial.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </html>

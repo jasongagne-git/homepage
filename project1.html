@@ -2,35 +2,142 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Clinica Tepeyac</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Clinica Tepeyac — HIPAA-Compliant IT Modernization | PreneurialWorks</title>
+    <meta name="description" content="Case study: Responsible IT modernization at a Denver FQHC. EHR migration, network infrastructure, and HIPAA compliance during a period of regulatory upheaval.">
+    <meta property="og:title" content="La Clinica Tepeyac — Responsible Tech Adoption Case Study">
+    <meta property="og:description" content="How a community health center modernized legacy IT while maintaining HIPAA compliance — a Pillar 3 demonstration of responsible technology adoption.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://preneurial.works/project1.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="La Clinica Tepeyac — Responsible Tech Adoption">
+    <meta name="twitter:description" content="HIPAA-compliant IT modernization at a Denver community health center. EHR, network, and security compliance case study.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141925;
+            --bg-tertiary: #1a1d2e;
+            --color-accent: #00bcd4;
+            --color-accent-secondary: #2563eb;
+            --color-pillar: #0891b2;
+            --text-bright: #f8fafc;
+            --text-medium: #cbd5e1;
+            --text-dim: #94a3b8;
+            --text-dimmer: #64748b;
+            --border-dark: #1e293b;
+            --border-subtle: #2d3148;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .site-nav {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.9rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            text-decoration: none;
+        }
+        .nav-brand i {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+        .nav-links a.nav-defense {
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+        }
+        .nav-links a.nav-defense:hover {
+            background: var(--color-accent);
+            color: var(--bg-primary);
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-bright);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0;
         }
 
         header {
             text-align: center;
-            padding: 40px 0;
-            background: #222;
-            color: #fff;
+            padding: 40px 20px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .pillar-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-pillar);
+            margin-bottom: 10px;
         }
 
         header h1 {
             font-size: 2rem;
+            margin: 0;
+            color: var(--text-bright);
         }
 
         .subtitle-section {
             text-align: center;
-            padding: 10px 20px;
-            background: #f5f5f5;
-            color: #333;
-            font-size: 1.1rem;
-            font-weight: 300;
+            padding: 30px 20px;
+            background: var(--bg-primary);
+            color: var(--text-dim);
+            font-size: 1rem;
+            font-weight: 400;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -38,156 +145,365 @@
         .project-detail {
             max-width: 900px;
             margin: 40px auto;
-            background: none;
+            background: rgba(20, 25, 37, 0.95);
             padding: 40px;
             border-radius: 12px;
-            color: white;
             position: relative;
-        }
-
-        .project-detail::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('images/hospital.jpg') no-repeat center center;
-            background-size: cover;
-            opacity: 0.4;
-            z-index: 1;
-            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
         }
 
         .project-detail h2 {
             margin-top: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
             position: relative;
             z-index: 2;
-            color: #38589B;
+            color: var(--color-pillar);
+            font-size: 1.5rem;
+        }
+
+        .project-detail h2:first-of-type {
+            margin-top: 0;
         }
 
         ul {
             margin-top: 15px;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            line-height: 1.8;
             position: relative;
             z-index: 2;
-            color: #444444;
+            color: var(--text-medium);
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 12px;
         }
 
         p {
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             position: relative;
             z-index: 2;
-            color: #444444;
+            color: var(--text-medium);
+            margin: 15px 0;
+            line-height: 1.7;
         }
 
         a {
-            color: #007bff;
+            color: var(--color-accent);
             text-decoration: none;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             position: relative;
             z-index: 2;
+            transition: color 0.2s;
         }
 
         a:hover {
+            color: var(--text-bright);
             text-decoration: underline;
         }
 
-        .download-link {
-            display: inline-block;
-            background: #dc3545;
-            color: white !important;
-            padding: 12px 24px;
+        .insight-box {
+            background: var(--bg-tertiary);
+            border-left: 4px solid var(--color-pillar);
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: background 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 2;
         }
+        .insight-box strong {
+            color: var(--color-pillar);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        .insight-box p { margin: 0; color: var(--text-medium); }
 
-        .download-link:hover {
-            background: #c82333;
-            text-decoration: none;
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
         }
+        .col-box {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .col-box h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 8px;
+        }
+        .col-box ul { margin-top: 0; padding-left: 16px; }
+        .col-box li { font-size: 0.9rem; margin-bottom: 6px; }
+
+        .compliance-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--color-pillar);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-pillar);
+            position: relative;
+            z-index: 2;
+            margin: 8px 4px;
+        }
+        .compliance-badge i { font-size: 0.7rem; }
+
+        .framework-note {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
+        .framework-note strong { color: var(--text-bright); }
+        .framework-note a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+
+        .hipaa-note {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+            text-align: center;
+        }
+        .hipaa-note i { color: var(--color-pillar); margin-right: 6px; }
 
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
             font-size: 0.95rem;
-            color: #38589B;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text-bright);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border-subtle);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+            .nav-toggle { display: block; }
+            .site-nav { position: relative; }
+
             header {
-                padding: 30px 0;
+                padding: 30px 20px;
             }
 
             header h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .subtitle-section {
-                padding: 8px 15px;
-                font-size: 1rem;
+                padding: 20px 15px;
+                font-size: 0.95rem;
             }
 
             .project-detail {
-                margin: 20px auto;
+                margin: 20px 10px;
                 padding: 20px;
             }
 
             .project-detail h2 {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
             ul {
-                margin-top: 10px;
+                padding-left: 15px;
             }
+
+            .two-col { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 
 <body>
 
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Preneurial<i>works</i></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+        <div class="nav-links">
+            <a href="framework.html">Framework</a>
+            <a href="innovation-tool.html">Assessment</a>
+            <a href="projects.html">Case Studies</a>
+            <a href="index.html#defense" class="nav-defense">Defense &amp; Intel</a>
+        </div>
+    </div>
+</nav>
+
 <header>
+    <div class="pillar-label">Pillar 3 — Responsible Tech Adoption</div>
     <h1>La Clinica Tepeyac</h1>
 </header>
 
 <section class="subtitle-section">
-    <p>Responsible innovation accounts for applicable laws, regulations, and compliance requirements</p>
+    <p>Modernizing IT infrastructure at a growing community health clinic — where every technology decision touches patient data, regulatory compliance, and the care delivery that an underserved community depends on.</p>
 </section>
 
 <section class="project-detail">
 
     <h2>Overview</h2>
     <p>
-        Scaling IT to meet growing demands takes a thoughtful approach. This project focused on upgrading legacy systems to improve efficiency,
-        security, and patient care delivery at La Clinica Tepeyac.
+        La Clinica Tepeyac is a Federally Qualified Health Center (FQHC) in Denver, Colorado, serving a predominantly Latino community with primary care, behavioral health, and outreach services. By the mid-2010s, the clinic was growing — more patients, more providers, more demand — and its IT infrastructure hadn't kept pace.
     </p>
-
-    <h2>Outcomes</h2>
     <p>
-        Successfully modernized IT infrastructure, enhanced data security,
-        and improved healthcare records management, leading to better patient outcomes
-        and operational efficiency.
+        Brought in as an external IT consultant, the challenge wasn't just technical. It was navigating a modernization effort where every system touched protected health information (PHI), where downtime meant patients couldn't be seen, and where compliance wasn't a checkbox — it was a legal and ethical obligation to the community the clinic served. As an outside advisor, the work required quickly understanding the clinic's workflows, earning trust from clinical staff, and delivering recommendations that a small internal team could actually implement and maintain.
     </p>
 
-    <p style="text-align: center;">
-        <a href="docs/example-doc.pdf" target="_blank" class="download-link">Case study publicly unavailable due to HIPPA compliance</a>
+    <div class="insight-box">
+        <strong><i class="fas fa-shield-alt"></i> Why Healthcare IT Modernization Is Different</strong>
+        <p>In most sectors, a bad migration means lost productivity. In healthcare, it can mean lost patient records, HIPAA violations carrying six-figure fines, or disrupted care for people who have nowhere else to go. Responsible tech adoption in this context means the technology serves the mission first — not the other way around.</p>
+    </div>
+
+    <h2>The Landscape: 2015–2017</h2>
+    <p>
+        This modernization happened during a pivotal window in healthcare IT. The federal government's Meaningful Use program was pushing EHR adoption hard, with Stage 2 requirements raising the bar on what systems had to do. ICD-10 had just gone live in October 2015, forcing a massive coding overhaul across every healthcare organization in the country. And ransomware was emerging as a targeted threat against healthcare providers — attacks against hospitals and clinics surged throughout 2016.
     </p>
+    <p>
+        For a growing FQHC, these forces converged into a single imperative: modernize the infrastructure, lock down the data, and do it without disrupting the care that patients depend on every day.
+    </p>
+
+    <h2>EHR and Patient Records</h2>
+    <p>
+        The electronic health record system is the nervous system of any clinical operation. At a growing clinic, it isn't just about storing charts — it's appointment scheduling, lab ordering, prescription management, billing, and reporting to federal and state agencies. When the patient population grows faster than the system was designed for, everything from login times to data integrity starts to degrade.
+    </p>
+    <p>
+        Modernizing the EHR environment meant evaluating the current system against both clinical workflow needs and regulatory requirements — Meaningful Use attestation, state immunization registries, quality reporting. Every change had to preserve data continuity: a patient's history, medications, and care plans couldn't have gaps, even temporarily.
+    </p>
+
+    <div class="two-col">
+        <div class="col-box">
+            <h3><i class="fas fa-check-circle" style="color: var(--color-pillar); margin-right: 6px;"></i> Key Considerations</h3>
+            <ul>
+                <li>Data migration integrity — zero tolerance for record loss</li>
+                <li>Meaningful Use Stage 2 attestation requirements</li>
+                <li>ICD-10 coding system compatibility</li>
+                <li>Clinical workflow continuity during transition</li>
+                <li>Bilingual interface needs for patient-facing systems</li>
+            </ul>
+        </div>
+        <div class="col-box">
+            <h3><i class="fas fa-exclamation-triangle" style="color: #f59e0b; margin-right: 6px;"></i> Risk Factors</h3>
+            <ul>
+                <li>Any downtime directly impacts patient care</li>
+                <li>Staff retraining time competes with clinical hours</li>
+                <li>Legacy data formats may not map cleanly to new systems</li>
+                <li>Federal reporting deadlines don't pause for migrations</li>
+                <li>Budget constraints typical of community health centers</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Network and Infrastructure</h2>
+    <p>
+        A clinic's network carries more than email and web traffic — it carries PHI across every connection. Lab results between the EHR and testing equipment. Prescription data to pharmacies. Patient check-in at the front desk. When the physical infrastructure can't support the load reliably, the clinical operation suffers.
+    </p>
+    <p>
+        Scaling the network for a growing clinic meant evaluating bandwidth, segmentation, redundancy, and physical security of the hardware — all through a HIPAA lens. A server closet that's accessible to non-technical staff is a compliance risk. A flat network where the guest Wi-Fi shares a subnet with the EHR is a compliance risk. Every infrastructure decision had a regulatory dimension.
+    </p>
+
+    <h2>Security and Compliance</h2>
+    <p>
+        HIPAA isn't a single rule — it's a framework of administrative, physical, and technical safeguards that together protect patient information. For an IT modernization at a community health clinic, this meant addressing all three simultaneously.
+    </p>
+
+    <div style="position: relative; z-index: 2; margin: 20px 0;">
+        <span class="compliance-badge"><i class="fas fa-lock"></i> Access Controls</span>
+        <span class="compliance-badge"><i class="fas fa-database"></i> Encryption at Rest</span>
+        <span class="compliance-badge"><i class="fas fa-exchange-alt"></i> Encryption in Transit</span>
+        <span class="compliance-badge"><i class="fas fa-clipboard-list"></i> Audit Logging</span>
+        <span class="compliance-badge"><i class="fas fa-user-shield"></i> Role-Based Permissions</span>
+        <span class="compliance-badge"><i class="fas fa-undo"></i> Backup &amp; Recovery</span>
+        <span class="compliance-badge"><i class="fas fa-file-contract"></i> BAA Management</span>
+        <span class="compliance-badge"><i class="fas fa-chalkboard-teacher"></i> Staff Training</span>
+    </div>
+
+    <p>
+        In 2016, when ransomware attacks against healthcare organizations were making national news, the security posture of the infrastructure wasn't theoretical — it was the difference between keeping the clinic running and having patient data held hostage. For an FQHC with limited IT budget, this meant making hard prioritization decisions: what gets hardened first, what gets scheduled for the next cycle, and what risks you document and accept in the interim.
+    </p>
+
+    <div class="insight-box">
+        <strong><i class="fas fa-lightbulb"></i> The Intrapreneur's Compliance Dilemma</strong>
+        <p>Most IT modernization playbooks assume you can move fast and iterate. In healthcare, the compliance framework constrains how fast you can move — but it also protects you. A well-documented risk assessment and remediation plan isn't just a regulatory artifact; it's the tool that lets you make the case for budget, prioritize ruthlessly, and demonstrate to leadership that modernization is a risk-reduction investment, not a cost center.</p>
+    </div>
+
+    <h2>What This Teaches About Responsible Tech Adoption</h2>
+    <p>
+        The La Clinica Tepeyac project demonstrates a set of principles that apply well beyond healthcare:
+    </p>
+    <ul>
+        <li><strong>Compliance is a design constraint, not an afterthought.</strong> When regulations are woven into the requirements from day one, they shape better architecture. Bolting compliance onto a finished system is always more expensive and more fragile.</li>
+        <li><strong>The users most affected have the least tolerance for disruption.</strong> At La Clinica, the patients are a community that depends on this clinic. In any organization, the people most impacted by a technology change are often the ones with the least power to absorb its failures.</li>
+        <li><strong>Risk documentation is an advocacy tool.</strong> A formal risk assessment doesn't just satisfy auditors — it gives an intrapreneur the language and evidence to secure executive buy-in and budget for the next phase.</li>
+        <li><strong>Small IT teams force better prioritization.</strong> Without the luxury of a large team, every decision had to balance impact against effort against risk. That discipline produces cleaner, more sustainable infrastructure than big-budget projects that try to solve everything at once.</li>
+        <li><strong>Outside consultants must build for handoff.</strong> The best IT modernization work isn't about creating dependency on the consultant — it's about leaving the organization with infrastructure they can own, operate, and evolve after the engagement ends.</li>
+    </ul>
+
+    <div class="hipaa-note">
+        <i class="fas fa-shield-alt"></i>
+        Project deliverables for this engagement are not publicly available due to HIPAA compliance requirements — which is itself a demonstration of responsible tech adoption in practice.
+    </div>
+
+    <div class="framework-note">
+        <strong><i class="fas fa-compass" style="color: var(--color-pillar); margin-right: 4px;"></i> Pillar 3 — Responsible Tech Adoption:</strong>
+        This case study illustrates the core principle of Pillar 3 in the <a href="framework.html">Innovation Impact Framework</a>: technology adoption that accounts for applicable laws, regulations, and the real-world impact on the people it serves. In healthcare, that means HIPAA. In defense, it means classification and ITAR. In every sector, it means asking "who bears the risk if this goes wrong?" before asking "how fast can we ship it?"
+    </div>
 
 </section>
 
-<div style="text-align: center; margin-top: 2rem;">
-    <a href="projects.html" class="back-link">← Back to Portfolio</a>
+<div style="text-align: center; max-width: 900px; margin: 2rem auto 0; padding: 0 20px;">
+    <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem;">How does your organization approach responsible tech adoption?</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="innovation-tool.html" style="display: inline-block; background: var(--color-accent-secondary); color: #fff; padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s;">Take the Readiness Assessment</a>
+        <a href="https://www.linkedin.com/groups/17212001/" style="display: inline-block; background: transparent; color: var(--text-dim); padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid var(--border-subtle); transition: all 0.2s;">Start a conversation</a>
+    </div>
+</div>
+<div class="footer">
+    <a href="projects.html" class="back-link">← Back to Case Studies</a>
 </div>
 
 </body>
 <!-- GoatCounter Analytics -->
-<script data-goatcounter="https://jasongagne.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://preneurial.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </html>

@@ -2,79 +2,200 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Personal Innovation Readiness Assessment</title>
+  <title>Modernization Readiness Assessment — PreneurialWorks</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Assess your organization's innovation readiness across four dimensions: Modernization, Collaboration, Technology, and Innovation. Free interactive tool with downloadable PDF results.">
+  <meta property="og:title" content="Modernization Readiness Assessment — PreneurialWorks">
+  <meta property="og:description" content="Quickly assess your innovation strengths and weaknesses. Get practical recommendations mapped to the Innovation Impact Framework's four pillars.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://preneurial.works/innovation-tool.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Modernization Readiness Assessment — PreneurialWorks">
+  <meta name="twitter:description" content="Free interactive assessment tool. Score your organization across Modernization, Collaboration, Technology, and Innovation dimensions.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 0;
-      padding: 1.5rem;
-      background: #f5f7fb;
-      color: #222;
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #141925;
+      --bg-tertiary: #1a1d2e;
+      --color-accent: #00bcd4;
+      --color-accent-secondary: #2563eb;
+      --text-bright: #f8fafc;
+      --text-medium: #cbd5e1;
+      --text-dim: #94a3b8;
+      --text-dimmer: #64748b;
+      --border-dark: #1e293b;
+      --border-subtle: #2d3148;
     }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-primary);
+      color: var(--text-dim);
+    }
+
     h1, h2, h3 {
       margin-top: 0;
+      color: var(--text-bright);
     }
+
+    .site-nav {
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0.9rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      text-decoration: none;
+    }
+
+    .nav-brand i {
+      color: var(--color-accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-accent);
+    }
+
+    .nav-links a.nav-defense {
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+    }
+
+    .nav-links a.nav-defense:hover {
+      background: var(--color-accent);
+      color: var(--bg-primary);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-bright);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
     .container {
       max-width: 960px;
       margin: 0 auto;
-      background: #fff;
+      background: var(--bg-secondary);
       padding: 1.5rem 2rem;
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
+
     .section {
       margin-bottom: 2rem;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid #e2e6f0;
+      border-bottom: 1px solid var(--border-subtle);
     }
+
     .section:last-of-type {
       border-bottom: none;
     }
+
     label {
       font-weight: 600;
+      color: var(--text-medium);
     }
+
     select, button {
       font-size: 1rem;
     }
+
     select {
       padding: 0.4rem 0.6rem;
       border-radius: 6px;
-      border: 1px solid #cbd2e3;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-tertiary);
+      color: var(--text-bright);
       min-width: 220px;
     }
+
+    select:focus {
+      outline: none;
+      border-color: var(--color-accent);
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 0.75rem;
     }
+
     th, td {
       padding: 0.5rem;
       text-align: left;
-      border-bottom: 1px solid #edf0f7;
+      border-bottom: 1px solid var(--border-subtle);
       vertical-align: top;
     }
+
     th {
-      background: #f3f5fb;
+      background: var(--bg-tertiary);
+      color: var(--text-bright);
       font-weight: 600;
       font-size: 0.9rem;
+      border-bottom: 1px solid var(--border-subtle);
     }
+
     .question-text {
       font-size: 0.95rem;
+      color: var(--text-dim);
     }
+
     .scale-cell {
       white-space: nowrap;
       font-size: 0.85rem;
     }
+
     .scale-cell input {
       margin-right: 0.25rem;
+      accent-color: var(--color-accent);
     }
+
     .btn-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
       margin-top: 1rem;
     }
+
     button {
       border-radius: 999px;
       border: none;
@@ -83,47 +204,105 @@
       font-weight: 600;
       letter-spacing: 0.02em;
     }
+
     .btn-primary {
-      background: #1f6feb;
+      background: var(--color-accent-secondary);
       color: #fff;
     }
-    .btn-secondary {
-      background: #e2e8f5;
-      color: #1f2933;
+
+    .btn-primary:hover {
+      opacity: 0.9;
     }
+
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-medium);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border-subtle);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-outline:hover {
+      color: var(--text-bright);
+      border-color: var(--text-dim);
+    }
+
     .btn-ghost {
       background: transparent;
-      border: 1px solid #cbd2e3;
-      color: #111827;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-bright);
     }
+
+    .btn-ghost:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
     .scores-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 0.75rem;
       margin-top: 1rem;
     }
+
     .score-card {
-      background: #f8fafc;
+      background: var(--bg-tertiary);
       border-radius: 10px;
       padding: 0.75rem 0.9rem;
-      border: 1px solid #e2e8f0;
+      border: 1px solid var(--border-subtle);
     }
+
     .score-label {
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #6b7280;
+      color: var(--text-dimmer);
       margin-bottom: 0.25rem;
     }
+
     .score-value {
       font-size: 1.4rem;
       font-weight: 700;
+      color: var(--color-accent);
     }
+
     .score-tagline {
       font-size: 0.8rem;
-      color: #4b5563;
+      color: var(--text-dimmer);
       margin-top: 0.15rem;
     }
+
+    .framework-context {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .framework-context strong { color: var(--text-bright); }
+    .framework-context a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+    .framework-context a:hover { color: var(--text-bright); }
+    .framework-context .opportunity-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .framework-context .opportunity-link i { font-size: 0.7rem; }
+
     #resultsSummary {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 0.85rem;
@@ -134,23 +313,75 @@
       margin-top: 0.75rem;
       white-space: pre-wrap;
     }
+
+    #execSummary {
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+
     .status {
       margin-top: 0.5rem;
       font-size: 0.85rem;
     }
+
     .status.ok {
-      color: #166534;
+      color: #4ade80;
     }
+
     .status.error {
-      color: #b91c1c;
+      color: #ef4444;
     }
+
+    .back-link {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .body-padding {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 1rem 2rem;
+        gap: 1rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .site-nav {
+        position: relative;
+      }
+    }
+
     @media (max-width: 640px) {
-      body {
+      .body-padding {
         padding: 0.75rem;
       }
+
       .container {
         padding: 1rem 1.1rem;
       }
+
       table, th, td {
         font-size: 0.85rem;
       }
@@ -158,216 +389,259 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Modernization Readiness Assessment</h1>
-    <p style="max-width: 640px; font-size: 0.95rem; color: #4b5563;">
-        Quickly assess your innovation strengths and weaknesses, and see some practical recommendations to help accelerate your modernization efforts.
-    </p>
-
-    <p style="max-width: 640px; font-size: 0.95rem; color: #4b5563;">  
-        Choose your sector, respond to the prompts, and we’ll generate a modernization profile across four dimensions:
-      <strong>Modernization, Collaboration, Technology, and Innovation.</strong>
-    </p>
-
-    <div class="section">
-      <h2>1. Context</h2>
-      <label for="sectorSelect">Sector or context you’re assessing</label><br />
-      <select id="sectorSelect">
-        <option value="">Select a sector…</option>
-        <option>Federal government</option>
-        <option>State or local government</option>
-        <option>Education</option>
-        <option>Healthcare</option>
-        <option>Nonprofit / philanthropy</option>
-        <option>Private sector</option>
-        <option>Cross-sector / coalition</option>
-        <option>Other / mixed</option>
-      </select>
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">Preneurial<i>works</i></a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="nav-links">
+        <a href="framework.html">Framework</a>
+        <a href="innovation-tool.html">Assessment</a>
+        <a href="projects.html">Case Studies</a>
+        <a href="index.html#defense" class="nav-defense">Defense &amp; Intel</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="section">
-      <h2>2. Assessment</h2>
-      <p style="font-size: 0.9rem; color: #4b5563;">
-        For each statement, choose how true it feels for your current environment.
-        <em>(1 = Not at all true, 5 = Very true)</em>
+  <div class="body-padding">
+    <div class="container">
+      <h1>Modernization Readiness Assessment</h1>
+      <p style="max-width: 640px; font-size: 0.95rem; color: var(--text-dim);">
+          Quickly assess your innovation strengths and weaknesses, and see some practical recommendations to help accelerate your modernization efforts.
       </p>
 
-      <h3>Modernization</h3>
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 60%;">Statement</th>
-            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="question-text">
-              We have a clear, shared modernization roadmap that people actually use to make decisions.
-            </td>
-            <td class="scale-cell"><input type="radio" name="mod_q1" value="1" />1</td>
-            <td class="scale-cell"><input type="radio" name="mod_q1" value="2" />2</td>
-            <td class="scale-cell"><input type="radio" name="mod_q1" value="3" />3</td>
-            <td class="scale-cell"><input type="radio" name="mod_q1" value="4" />4</td>
-            <td class="scale-cell"><input type="radio" name="mod_q1" value="5" />5</td>
-          </tr>
-          <tr>
-            <td class="question-text">
-              Legacy processes and systems are being actively retired or refactored, not just documented.
-            </td>
-            <td class="scale-cell"><input type="radio" name="mod_q2" value="1" />1</td>
-            <td class="scale-cell"><input type="radio" name="mod_q2" value="2" />2</td>
-            <td class="scale-cell"><input type="radio" name="mod_q2" value="3" />3</td>
-            <td class="scale-cell"><input type="radio" name="mod_q2" value="4" />4</td>
-            <td class="scale-cell"><input type="radio" name="mod_q2" value="5" />5</td>
-          </tr>
-        </tbody>
-      </table>
+      <p style="max-width: 640px; font-size: 0.95rem; color: var(--text-dim);">
+          Choose your sector, respond to the prompts, and we'll generate a modernization profile across four dimensions:
+        <strong>Modernization, Collaboration, Technology, and Innovation.</strong>
+      </p>
 
-      <h3>Collaboration</h3>
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 60%;">Statement</th>
-            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="question-text">
-              Teams share information and decisions transparently across functions, not just within silos.
-            </td>
-            <td class="scale-cell"><input type="radio" name="col_q1" value="1" />1</td>
-            <td class="scale-cell"><input type="radio" name="col_q1" value="2" />2</td>
-            <td class="scale-cell"><input type="radio" name="col_q1" value="3" />3</td>
-            <td class="scale-cell"><input type="radio" name="col_q1" value="4" />4</td>
-            <td class="scale-cell"><input type="radio" name="col_q1" value="5" />5</td>
-          </tr>
-          <tr>
-            <td class="question-text">
-              We have cross-functional forums where modernization, risk, and delivery are discussed together.
-            </td>
-            <td class="scale-cell"><input type="radio" name="col_q2" value="1" />1</td>
-            <td class="scale-cell"><input type="radio" name="col_q2" value="2" />2</td>
-            <td class="scale-cell"><input type="radio" name="col_q2" value="3" />3</td>
-            <td class="scale-cell"><input type="radio" name="col_q2" value="4" />4</td>
-            <td class="scale-cell"><input type="radio" name="col_q2" value="5" />5</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Technology</h3>
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 60%;">Statement</th>
-            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="question-text">
-              Our core systems are reliable, secure, and instrumented with meaningful metrics.
-            </td>
-            <td class="scale-cell"><input type="radio" name="tech_q1" value="1" />1</td>
-            <td class="scale-cell"><input type="radio" name="tech_q1" value="2" />2</td>
-            <td class="scale-cell"><input type="radio" name="tech_q1" value="3" />3</td>
-            <td class="scale-cell"><input type="radio" name="tech_q1" value="4" />4</td>
-            <td class="scale-cell"><input type="radio" name="tech_q1" value="5" />5</td>
-          </tr>
-          <tr>
-            <td class="question-text">
-              We can safely experiment with new tools or approaches without breaking core operations.
-            </td>
-            <td class="scale-cell"><input type="radio" name="tech_q2" value="1" />1</td>
-            <td class="scale-cell"><input type="radio" name="tech_q2" value="2" />2</td>
-            <td class="scale-cell"><input type="radio" name="tech_q2" value="3" />3</td>
-            <td class="scale-cell"><input type="radio" name="tech_q2" value="4" />4</td>
-            <td class="scale-cell"><input type="radio" name="tech_q2" value="5" />5</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h3>Innovation</h3>
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 60%;">Statement</th>
-            <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="question-text">
-              People are encouraged (and resourced) to test new ideas tied to real outcomes.
-            </td>
-            <td class="scale-cell"><input type="radio" name="inn_q1" value="1" />1</td>
-            <td class="scale-cell"><input type="radio" name="inn_q1" value="2" />2</td>
-            <td class="scale-cell"><input type="radio" name="inn_q1" value="3" />3</td>
-            <td class="scale-cell"><input type="radio" name="inn_q1" value="4" />4</td>
-            <td class="scale-cell"><input type="radio" name="inn_q1" value="5" />5</td>
-          </tr>
-          <tr>
-            <td class="question-text">
-              We learn from pilots and experiments in a structured way, not just anecdotally.
-            </td>
-            <td class="scale-cell"><input type="radio" name="inn_q2" value="1" />1</td>
-            <td class="scale-cell"><input type="radio" name="inn_q2" value="2" />2</td>
-            <td class="scale-cell"><input type="radio" name="inn_q2" value="3" />3</td>
-            <td class="scale-cell"><input type="radio" name="inn_q2" value="4" />4</td>
-            <td class="scale-cell"><input type="radio" name="inn_q2" value="5" />5</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="btn-row">
-        <button class="btn-primary" id="scoreBtn">Score my responses</button>
-        <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+      <div class="section">
+        <h2>1. Context</h2>
+        <label for="sectorSelect">Sector or context you're assessing</label><br />
+        <select id="sectorSelect">
+          <option value="">Select a sector…</option>
+          <option>Federal government</option>
+          <option>State or local government</option>
+          <option>Education</option>
+          <option>Healthcare</option>
+          <option>Nonprofit / philanthropy</option>
+          <option>Private sector</option>
+          <option>Cross-sector / coalition</option>
+          <option>Other / mixed</option>
+        </select>
       </div>
-      <div id="validationMsg" class="status error" style="display:none;"></div>
+
+      <div class="section">
+        <h2>2. Assessment</h2>
+        <p style="font-size: 0.9rem; color: var(--text-dim);">
+          For each statement, choose how true it feels for your current environment.
+          <em>(1 = Not at all true, 5 = Very true)</em>
+        </p>
+
+        <h3>Modernization</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 60%;">Statement</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="question-text">
+                We have a clear, shared modernization roadmap that people actually use to make decisions.
+              </td>
+              <td class="scale-cell"><input type="radio" name="mod_q1" value="1" />1</td>
+              <td class="scale-cell"><input type="radio" name="mod_q1" value="2" />2</td>
+              <td class="scale-cell"><input type="radio" name="mod_q1" value="3" />3</td>
+              <td class="scale-cell"><input type="radio" name="mod_q1" value="4" />4</td>
+              <td class="scale-cell"><input type="radio" name="mod_q1" value="5" />5</td>
+            </tr>
+            <tr>
+              <td class="question-text">
+                Legacy processes and systems are being actively retired or refactored, not just documented.
+              </td>
+              <td class="scale-cell"><input type="radio" name="mod_q2" value="1" />1</td>
+              <td class="scale-cell"><input type="radio" name="mod_q2" value="2" />2</td>
+              <td class="scale-cell"><input type="radio" name="mod_q2" value="3" />3</td>
+              <td class="scale-cell"><input type="radio" name="mod_q2" value="4" />4</td>
+              <td class="scale-cell"><input type="radio" name="mod_q2" value="5" />5</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Collaboration</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 60%;">Statement</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="question-text">
+                Teams share information and decisions transparently across functions, not just within silos.
+              </td>
+              <td class="scale-cell"><input type="radio" name="col_q1" value="1" />1</td>
+              <td class="scale-cell"><input type="radio" name="col_q1" value="2" />2</td>
+              <td class="scale-cell"><input type="radio" name="col_q1" value="3" />3</td>
+              <td class="scale-cell"><input type="radio" name="col_q1" value="4" />4</td>
+              <td class="scale-cell"><input type="radio" name="col_q1" value="5" />5</td>
+            </tr>
+            <tr>
+              <td class="question-text">
+                We have cross-functional forums where modernization, risk, and delivery are discussed together.
+              </td>
+              <td class="scale-cell"><input type="radio" name="col_q2" value="1" />1</td>
+              <td class="scale-cell"><input type="radio" name="col_q2" value="2" />2</td>
+              <td class="scale-cell"><input type="radio" name="col_q2" value="3" />3</td>
+              <td class="scale-cell"><input type="radio" name="col_q2" value="4" />4</td>
+              <td class="scale-cell"><input type="radio" name="col_q2" value="5" />5</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Technology</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 60%;">Statement</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="question-text">
+                Our core systems are reliable, secure, and instrumented with meaningful metrics.
+              </td>
+              <td class="scale-cell"><input type="radio" name="tech_q1" value="1" />1</td>
+              <td class="scale-cell"><input type="radio" name="tech_q1" value="2" />2</td>
+              <td class="scale-cell"><input type="radio" name="tech_q1" value="3" />3</td>
+              <td class="scale-cell"><input type="radio" name="tech_q1" value="4" />4</td>
+              <td class="scale-cell"><input type="radio" name="tech_q1" value="5" />5</td>
+            </tr>
+            <tr>
+              <td class="question-text">
+                We can safely experiment with new tools or approaches without breaking core operations.
+              </td>
+              <td class="scale-cell"><input type="radio" name="tech_q2" value="1" />1</td>
+              <td class="scale-cell"><input type="radio" name="tech_q2" value="2" />2</td>
+              <td class="scale-cell"><input type="radio" name="tech_q2" value="3" />3</td>
+              <td class="scale-cell"><input type="radio" name="tech_q2" value="4" />4</td>
+              <td class="scale-cell"><input type="radio" name="tech_q2" value="5" />5</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Innovation</h3>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 60%;">Statement</th>
+              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="question-text">
+                People are encouraged (and resourced) to test new ideas tied to real outcomes.
+              </td>
+              <td class="scale-cell"><input type="radio" name="inn_q1" value="1" />1</td>
+              <td class="scale-cell"><input type="radio" name="inn_q1" value="2" />2</td>
+              <td class="scale-cell"><input type="radio" name="inn_q1" value="3" />3</td>
+              <td class="scale-cell"><input type="radio" name="inn_q1" value="4" />4</td>
+              <td class="scale-cell"><input type="radio" name="inn_q1" value="5" />5</td>
+            </tr>
+            <tr>
+              <td class="question-text">
+                We learn from pilots and experiments in a structured way, not just anecdotally.
+              </td>
+              <td class="scale-cell"><input type="radio" name="inn_q2" value="1" />1</td>
+              <td class="scale-cell"><input type="radio" name="inn_q2" value="2" />2</td>
+              <td class="scale-cell"><input type="radio" name="inn_q2" value="3" />3</td>
+              <td class="scale-cell"><input type="radio" name="inn_q2" value="4" />4</td>
+              <td class="scale-cell"><input type="radio" name="inn_q2" value="5" />5</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="btn-row">
+          <button class="btn-primary" id="scoreBtn">Score my responses</button>
+          <button class="btn-ghost" id="resetBtn" type="button">Reset</button>
+        </div>
+        <div id="validationMsg" class="status error" style="display:none;"></div>
+      </div>
+
+      <div class="section" id="resultsSection" style="display:none;">
+        <h2>3. Results</h2>
+        <div class="scores-grid">
+          <div class="score-card">
+            <div class="score-label">Modernization</div>
+            <div class="score-value" id="modScoreDisplay">–</div>
+            <div class="score-tagline" id="modTagline"></div>
+          </div>
+          <div class="score-card">
+            <div class="score-label">Collaboration</div>
+            <div class="score-value" id="colScoreDisplay">–</div>
+            <div class="score-tagline" id="colTagline"></div>
+          </div>
+          <div class="score-card">
+            <div class="score-label">Technology</div>
+            <div class="score-value" id="techScoreDisplay">–</div>
+            <div class="score-tagline" id="techTagline"></div>
+          </div>
+          <div class="score-card">
+            <div class="score-label">Innovation</div>
+            <div class="score-value" id="innScoreDisplay">–</div>
+            <div class="score-tagline" id="innTagline"></div>
+          </div>
+        </div>
+
+        <div class="framework-context" id="frameworkContext">
+          <strong>Your scores map to the four pillars of the <a href="framework.html">Innovation Impact Framework</a>.</strong>
+          Each pillar — Modernization, Collaboration, Technology Adoption, and Public-Impact Innovation — represents
+          a dimension where intrapreneurial thinking can drive institutional change.
+          <div class="opportunity-link" id="opportunityLink"></div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <canvas id="radarChart" height="220"></canvas>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Executive Summary</h3>
+        <p id="execSummary" style="font-size:0.95rem; line-height:1.45;"></p>
+
+        <h3 style="margin-top:1.5rem;">Summary (for notes, email, or slide decks)</h3>
+        <pre id="resultsSummary"></pre>
+
+        <div class="btn-row">
+          <button class="btn-primary" id="downloadPdfBtn" type="button">Download PDF</button>
+          <button class="btn-secondary" id="copySummaryBtn" type="button">Copy summary</button>
+          <button class="btn-outline" id="consultationBtn" type="button">Start a conversation</button>
+        </div>
+        <div id="copyStatus" class="status" style="display:none;"></div>
+      </div>
     </div>
 
-    <div class="section" id="resultsSection" style="display:none;">
-      <h2>3. Results</h2>
-      <div class="scores-grid">
-        <div class="score-card">
-          <div class="score-label">Modernization</div>
-          <div class="score-value" id="modScoreDisplay">–</div>
-          <div class="score-tagline" id="modTagline"></div>
-        </div>
-        <div class="score-card">
-          <div class="score-label">Collaboration</div>
-          <div class="score-value" id="colScoreDisplay">–</div>
-          <div class="score-tagline" id="colTagline"></div>
-        </div>
-        <div class="score-card">
-          <div class="score-label">Technology</div>
-          <div class="score-value" id="techScoreDisplay">–</div>
-          <div class="score-tagline" id="techTagline"></div>
-        </div>
-        <div class="score-card">
-          <div class="score-label">Innovation</div>
-          <div class="score-value" id="innScoreDisplay">–</div>
-          <div class="score-tagline" id="innTagline"></div>
-        </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+  </div>
+
+  <!-- Email Capture Modal -->
+  <div id="emailModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1000;">
+    <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7);" onclick="document.getElementById('emailModal').style.display='none'"></div>
+    <div style="position:relative; max-width:440px; margin:15vh auto; background:#141925; border:1px solid #2d3148; border-radius:12px; padding:2rem; z-index:1001;">
+      <button onclick="document.getElementById('emailModal').style.display='none'" style="position:absolute; top:0.8rem; right:1rem; background:none; border:none; color:#94a3b8; font-size:1.3rem; cursor:pointer;">&times;</button>
+      <h3 style="color:#f8fafc; margin-bottom:0.5rem; font-size:1.2rem;">Get Your Full Report</h3>
+      <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:1.2rem;">Enter your email to download and receive innovation insights.</p>
+      <input type="email" id="emailInput" placeholder="your@email.com" style="width:100%; padding:0.6rem 0.9rem; background:#1a1d2e; border:1px solid #2d3148; border-radius:8px; color:#f8fafc; font-size:0.95rem; margin-bottom:1rem; outline:none; box-sizing:border-box;" onfocus="this.style.borderColor='#00bcd4'" onblur="this.style.borderColor='#2d3148'" />
+      <div style="display:flex; gap:0.75rem;">
+        <button class="btn-primary" onclick="submitEmailAndDownload()" style="flex:1;">Send &amp; Download</button>
+        <button class="btn-ghost" onclick="skipAndDownload()" style="flex:1;">Just download</button>
       </div>
-
-      <div style="margin-top:1.5rem;">
-        <canvas id="radarChart" height="220"></canvas>
-      </div>
-
-      <h3 style="margin-top:1.5rem;">Executive Summary</h3>
-      <p id="execSummary" style="font-size:0.95rem; color:#374151; line-height:1.45;"></p>
-
-      <h3 style="margin-top:1.5rem;">Summary (for notes, email, or slide decks)</h3>
-      <pre id="resultsSummary"></pre>
-
-      <div class="btn-row">
-        <button class="btn-primary" id="consultationBtn" type="button" style="display:none;">Start a conversation</button>
-        <button class="btn-secondary" id="copySummaryBtn" type="button">Copy summary</button>
-        <button class="btn-secondary" id="downloadPdfBtn" type="button">Download PDF</button>
-      </div>
-      <div id="copyStatus" class="status" style="display:none;"></div>
     </div>
   </div>
 
@@ -396,8 +670,10 @@
         techScore: "entry.237796422",
         innovationScore: "entry.1242756127",
         rawResponsesJson: "entry.1645517615",
-        userAgent: "entry.1800629430"
+        userAgent: "entry.1800629430",
+        emailAddress: "entry.1198490570"
       };
+
 
       async function submitToGoogleForm(payload) {
         const formData = new FormData();
@@ -533,10 +809,10 @@
             scores.techScore,
             scores.innovationScore
           ],
-          backgroundColor: "rgba(31, 111, 235, 0.2)",
-          borderColor: "rgba(31, 111, 235, 1)",
+          backgroundColor: "rgba(0, 188, 212, 0.15)",
+          borderColor: "rgba(0, 188, 212, 1)",
           borderWidth: 2,
-          pointBackgroundColor: "rgba(31, 111, 235, 1)",
+          pointBackgroundColor: "rgba(0, 188, 212, 1)",
           pointRadius: 4
         }]
       };
@@ -546,7 +822,10 @@
           r: {
             suggestedMin: 0,
             suggestedMax: 5,
-            ticks: { stepSize: 1 }
+            ticks: { stepSize: 1, color: '#94a3b8', backdropColor: 'transparent' },
+            grid: { color: 'rgba(45, 49, 72, 0.6)' },
+            angleLines: { color: 'rgba(45, 49, 72, 0.6)' },
+            pointLabels: { color: '#cbd5e1' }
           }
         },
         plugins: {
@@ -583,6 +862,37 @@
       lines.push("- Innovation:   " + scoreTagline(scores.innovationScore));
       return lines.join("\n");
     }
+
+    function submitEmailAndDownload() {
+      var email = document.getElementById('emailInput').value;
+      if (email) {
+        // Submit email as a standalone capture to Google Form
+        submitToGoogleForm({ emailAddress: email });
+      }
+      document.getElementById('emailModal').style.display = 'none';
+      triggerPdfDownload();
+    }
+
+    function skipAndDownload() {
+      document.getElementById('emailModal').style.display = 'none';
+      triggerPdfDownload();
+    }
+
+    function triggerPdfDownload() {
+      var jsPDF = window.jspdf.jsPDF;
+      var doc = new jsPDF();
+      var summary = document.getElementById("resultsSummary").textContent || "";
+      var execSummary = document.getElementById("execSummary").textContent || "";
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(14);
+      doc.text("Modernization Readiness Snapshot", 14, 18);
+      doc.setFontSize(10);
+      var combined = execSummary + "\n\n" + summary;
+      var lines = doc.splitTextToSize(combined, 180);
+      doc.text(lines, 14, 30);
+      doc.save("modernization-readiness.pdf");
+    }
+
     // === Event wiring ===
     document.getElementById("scoreBtn").addEventListener("click", function() {
       var validationMsg = document.getElementById("validationMsg");
@@ -602,7 +912,7 @@
       var innovationScore = average([data.inn_q1, data.inn_q2]);
 
       // ---------------------------------------------
-      // SUBMIT TO GOOGLE FORM
+      // SUBMIT RESULTS TO GOOGLE FORM IMMEDIATELY
       // ---------------------------------------------
       submitToGoogleForm({
         Sector: data.sector,
@@ -647,8 +957,18 @@
       var execSummaryText = buildExecutiveSummary(scores);
       document.getElementById("execSummary").textContent = execSummaryText;
 
+      // Populate framework opportunity link based on lowest score
+      var pillarMap = [
+        { score: modernizationScore, name: "Institutional Modernization", url: "project-defense.html", pillar: "Pillar 1" },
+        { score: collaborationScore, name: "Cross-Sector Collaboration", url: "project2.html", pillar: "Pillar 2" },
+        { score: techScore, name: "Responsible Tech Adoption", url: "project1.html", pillar: "Pillar 3" },
+        { score: innovationScore, name: "Public-Impact Innovation", url: "project3.html", pillar: "Pillar 4" }
+      ];
+      var lowest = pillarMap.reduce(function(min, p) { return p.score < min.score ? p : min; }, pillarMap[0]);
+      var oppEl = document.getElementById("opportunityLink");
+      oppEl.innerHTML = '<i class="fas fa-arrow-right"></i> Your deepest opportunity is in <a href="' + lowest.url + '">' + lowest.name + '</a> — see how others have tackled it.';
+
       document.getElementById("resultsSection").style.display = "block";
-      document.getElementById("consultationBtn").style.display = "inline-block";
       document.getElementById("copyStatus").style.display = "none";
     });
 
@@ -686,29 +1006,15 @@
     });
 
     document.getElementById("downloadPdfBtn").addEventListener("click", function() {
-      var jsPDF = window.jspdf.jsPDF;
-      var doc = new jsPDF();
-      var summary = document.getElementById("resultsSummary").textContent || "";
-      var execSummary = document.getElementById("execSummary").textContent || "";
-
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(14);
-      doc.text("Modernization Readiness Snapshot", 14, 18);
-
-      doc.setFontSize(10);
-      var combined = execSummary + "\n\n" + summary;
-      var lines = doc.splitTextToSize(combined, 180);
-      doc.text(lines, 14, 30);
-
-      doc.save("modernization-readiness.pdf");
+      document.getElementById('emailModal').style.display = 'block';
     });
 
     document.getElementById("consultationBtn").addEventListener("click", function() {
       window.location.href = "https://www.linkedin.com/groups/17212001/";
     });
   </script>
-  <div style="text-align: center; margin-top: 2rem;">
-    <a href="index.html" style="color: #2c5aa0; text-decoration: none; font-weight: 600;">← Back to Home</a>
-  </div>
+
+  <!-- GoatCounter Analytics -->
+  <script data-goatcounter="https://preneurial.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

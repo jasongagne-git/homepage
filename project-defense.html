@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Travel KK — Cross-Sector Collaboration | PreneurialWorks</title>
-    <meta name="description" content="Case study: Market research and content strategy aligning tourism, government, and hospitality stakeholders for a Japanese travel platform entering the North American market.">
-    <meta property="og:title" content="Japan Travel KK — Cross-Sector Collaboration Case Study">
-    <meta property="og:description" content="How rapid market research bridged tourism, hospitality, and digital media sectors to shape a cross-market growth strategy.">
+    <title>Modernizing Intelligence Workflows — Defense Innovation | PreneurialWorks</title>
+    <meta name="description" content="Case study: Transforming open-source intelligence operations using intrapreneurial methods. AI-powered briefing pipeline, signal detection, and the Defense Signal Brief.">
+    <meta property="og:title" content="Modernizing Intelligence Workflows — PreneurialWorks">
+    <meta property="og:description" content="How intrapreneurial methods transformed OSINT collection, analysis, and delivery inside a defense organization. Introducing the Defense Signal Brief.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://preneurial.works/project2.html">
+    <meta property="og:url" content="https://preneurial.works/project-defense.html">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Japan Travel KK — Cross-Sector Collaboration">
-    <meta name="twitter:description" content="Market research and stakeholder alignment across tourism, hospitality, and digital media sectors.">
+    <meta name="twitter:title" content="Modernizing Intelligence Workflows — Defense Innovation">
+    <meta name="twitter:description" content="AI-powered intelligence briefing pipeline. Intrapreneurial methods for OSINT modernization and the Defense Signal Brief.">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -120,7 +120,7 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #2563eb;
+            color: #00bcd4;
             margin-bottom: 10px;
         }
 
@@ -151,32 +151,6 @@
             border: 1px solid var(--border-subtle);
         }
 
-        .project-detail::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('images/japan.jpeg') no-repeat center center;
-            background-size: cover;
-            opacity: 0.15;
-            z-index: 1;
-            border-radius: 12px;
-        }
-
-        .project-detail::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 14, 26, 0.85);
-            z-index: 1;
-            border-radius: 12px;
-        }
-
         .project-detail h2 {
             margin-top: 30px;
             margin-bottom: 15px;
@@ -188,6 +162,27 @@
 
         .project-detail h2:first-of-type {
             margin-top: 0;
+        }
+
+        .signal-item {
+            background: var(--bg-tertiary);
+            border-left: 4px solid var(--color-accent);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .signal-item strong {
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .signal-item p {
+            margin: 0;
+            color: var(--text-medium);
         }
 
         ul {
@@ -224,64 +219,35 @@
             text-decoration: underline;
         }
 
-        .insight-box {
-            background: var(--bg-tertiary);
-            border-left: 4px solid #2563eb;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 6px;
-            position: relative;
-            z-index: 2;
+        .cta-link {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--bg-primary) !important;
+            padding: 12px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
         }
-        .insight-box strong {
-            color: #2563eb;
-            display: block;
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-        }
-        .insight-box p { margin: 0; color: var(--text-medium); }
 
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 20px 0;
-            position: relative;
-            z-index: 2;
+        .cta-link:hover {
+            background: var(--color-accent-secondary);
+            color: white !important;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            text-decoration: none;
         }
-        .col-box {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            padding: 16px;
-        }
-        .col-box h3 {
+
+        .disclaimer {
+            font-style: italic;
             font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-bright);
-            margin-bottom: 8px;
-        }
-        .col-box ul { margin-top: 0; padding-left: 16px; }
-        .col-box li { font-size: 0.9rem; margin-bottom: 6px; }
-
-        .framework-note {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-subtle);
-            border-left: 3px solid var(--color-accent);
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin: 24px 0;
-            font-size: 0.85rem;
-            color: var(--text-dim);
+            color: var(--text-dimmer);
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
             position: relative;
             z-index: 2;
-            line-height: 1.6;
-        }
-        .framework-note strong { color: var(--text-bright); }
-        .framework-note a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
-
-        @media (max-width: 768px) {
-            .two-col { grid-template-columns: 1fr; }
         }
 
         .back-link {
@@ -345,6 +311,11 @@
                 font-size: 1.2rem;
             }
 
+            .signal-item {
+                padding: 15px;
+                margin: 15px 0;
+            }
+
             ul {
                 padding-left: 15px;
             }
@@ -368,90 +339,94 @@
 </nav>
 
 <header>
-    <div class="pillar-label">Pillar 2 — Cross-Sector Collaboration</div>
-    <h1>Japan Travel KK</h1>
+    <div class="pillar-label">Pillar 1 — Institutional Modernization</div>
+    <h1>Modernizing Intelligence Workflows</h1>
 </header>
 
 <section class="subtitle-section">
-    <p>Innovation starts with aligning stakeholders across boundaries</p>
+    <p>Intrapreneurial approaches to transforming open-source intelligence operations</p>
 </section>
 
 <section class="project-detail">
 
     <h2>Overview</h2>
     <p>
-        Japan Travel KK is a full-service travel agency and content platform specializing in authentic Japanese travel experiences. Ahead of a major international event, the company needed to understand its North American market position and identify how to convert its deep local expertise into a growth strategy that aligned tourism stakeholders, digital content, and customer acquisition.
-    </p>
-    <p>
-        The engagement required bridging multiple sectors — travel, hospitality, digital media, and government-backed tourism initiatives — making it a natural application of the <a href="framework.html">Cross-Sector Collaboration</a> pillar.
+        A large defense organization faced a persistent challenge: decision-makers needed timely, synthesized intelligence from open sources, but existing workflows depended on manual aggregation, siloed information channels, and slow dissemination cycles. Analysts spent the majority of their time collecting and formatting rather than analyzing and advising.
     </p>
 
-    <h2>The Approach: Market Research as Collaboration Infrastructure</h2>
-    <p>
-        Before aligning stakeholders, you need to understand who they are and what they want. We deployed a rapid market research methodology designed for speed and signal clarity:
-    </p>
+    <h2>The Intrapreneurial Approach</h2>
+    <p>Using the PreneurialWorks methodology, the team identified three key institutional signals:</p>
 
-    <div class="insight-box">
-        <strong>Rapid Survey Deployment</strong>
-        <p>An online survey distributed across social media (Facebook, Instagram, LinkedIn) and professional networks generated 110 respondents in under 24 hours — a mix of demographic, behavioral, and interest-based questions designed to surface actionable segments rather than generic data.</p>
+    <div class="signal-item">
+        <strong>Policy Friction</strong>
+        <p>Existing authorities allowed experimentation with AI-assisted tools, but institutional inertia preserved legacy workflows</p>
     </div>
 
-    <h2>What the Data Revealed</h2>
+    <div class="signal-item">
+        <strong>Budget-Strategy Mismatch</strong>
+        <p>Modernization funding was allocated but execution remained tied to manual processes</p>
+    </div>
+
+    <div class="signal-item">
+        <strong>Reform Momentum</strong>
+        <p>Leadership directives prioritized faster decision cycles and responsible AI adoption</p>
+    </div>
+
+    <h2>Solution</h2>
     <p>
-        The survey produced several findings that directly shaped the collaboration strategy:
+        The team developed an AI-powered intelligence briefing pipeline that automated collection, filtering, deduplication, and analysis of open-source intelligence. The system scores articles across both topic relevance and intrapreneurial signal detection — surfacing not just what happened, but where institutional openings exist for action.
     </p>
+    <p>
+        The methodology was proven internally, then generalized and productized as the Defense Signal Brief — a daily innovation intelligence brief now serving defense and government intrapreneurs.
+    </p>
+
+    <h2>Outcomes</h2>
     <ul>
-        <li>The majority of respondents visited Japan for vacation, but work-related travel correlated strongly with higher income brackets — a segment with different stakeholder needs</li>
-        <li>When respondents thought about Japan, "rich culture" dominated across all demographics, but 25-35 year-olds also associated Japan with anime and gaming — signaling an underserved content angle</li>
-        <li>Cost was the primary barrier across all groups, but its influence decreased as income rose. Distance and time served as secondary barriers</li>
-        <li>The most diversified activity preferences emerged from the $80K-$150K income group, suggesting this segment would respond best to a multi-stakeholder content strategy</li>
+        <li>Reduced analyst collection burden by shifting manual aggregation to automated pipelines</li>
+        <li>Broadened source coverage across 17+ curated feeds and validated news sources</li>
+        <li>Delivered daily actionable intelligence in under 500 words, designed for 90-second consumption</li>
+        <li>Demonstrated responsible AI adoption: transparent sourcing, citation-first design, human-guided analysis</li>
     </ul>
 
-    <h2>Website and Content Assessment</h2>
+    <h2>How the Defense Signal Brief Surfaces Intrapreneurial Signals</h2>
     <p>
-        Alongside the market research, we conducted a content and UX audit of the company's web presence. The assessment identified a core tension: the platform had exceptional content depth but poor content discoverability.
+        Every day, the Defense Signal Brief scans 17+ curated sources — from Defense News and Breaking Defense to RAND, CSIS, and Brookings — and uses AI to classify developments across four signal types. Each signal represents a different kind of opening for intrapreneurs working inside large institutions.
     </p>
 
-    <div class="two-col">
-        <div class="col-box">
-            <h3>Strengths Identified</h3>
-            <ul>
-                <li>Detailed, well-written content with authentic local expertise</li>
-                <li>Unique positioning as both a travel agency and content platform</li>
-                <li>Strong photography and mobile-responsive design</li>
-            </ul>
-        </div>
-        <div class="col-box">
-            <h3>Barriers to Collaboration</h3>
-            <ul>
-                <li>Travel agency services not immediately apparent to users</li>
-                <li>Content buried behind search-dependent navigation</li>
-                <li>Lack of cross-linking between related content areas</li>
-            </ul>
-        </div>
+    <div class="signal-item">
+        <strong>Policy Friction</strong>
+        <p>Bureaucratic barriers creating demand for workarounds and reform. When the system constrains progress, it reveals where intrapreneurs can push for change.</p>
     </div>
 
-    <h2>Recommendations</h2>
+    <div class="signal-item">
+        <strong>Budget-Strategy Mismatch</strong>
+        <p>Gaps between stated priorities and actual funding. These misalignments expose where organizations say they want to innovate but haven't yet committed resources.</p>
+    </div>
+
+    <div class="signal-item">
+        <strong>Innovation Org Activity</strong>
+        <p>Openings created by DIU, AFWERX, CDAO, and similar pathways. These organizations exist to lower barriers — the Defense Signal Brief tracks when they create new entry points.</p>
+    </div>
+
+    <div class="signal-item">
+        <strong>Reform Momentum</strong>
+        <p>New authorities, policy changes, or transformation efforts that create windows of opportunity. When leadership signals change, intrapreneurs can act.</p>
+    </div>
+
     <p>
-        The recommendations bridged market research findings with content strategy — aligning the platform's internal strengths with external stakeholder needs:
+        The result: a sub-500-word briefing designed for 90-second consumption by program managers, innovation cell leads, and acquisition professionals — delivered daily.
     </p>
-    <ul>
-        <li>Restructure the homepage to drive traffic by top cities (level 1) and then by experience type — sightseeing, culture, food, accommodations (level 2) — rather than relying on search</li>
-        <li>Make the full-service travel agency visible on every page, positioning it as the action layer on top of content</li>
-        <li>Cross-link content aggressively to keep users engaged across topics and reduce drop-off</li>
-        <li>Include USD pricing alongside tours and experiences to reduce friction for the North American segment</li>
-        <li>Build event-specific landing pages leveraging existing content with targeted new material</li>
-        <li>Sponsor social media travel enthusiasts to expand reach into identified persona segments</li>
-    </ul>
 
-    <div class="framework-note">
-        <strong>Pillar 2 in action:</strong> This case demonstrates that cross-sector collaboration isn't just about partnerships — it starts with research that reveals where sectors overlap. By understanding how travelers, content consumers, and agency customers intersect, the strategy aligned stakeholders who didn't initially see themselves as connected. <a href="framework.html">Learn more about the framework →</a>
-    </div>
+    <p style="text-align: center; margin-top: 30px;">
+        <a href="mailto:jason@preneurial.works?subject=Defense%20Signal%20Brief%20Subscription" class="cta-link">Subscribe to the Defense Signal Brief</a>
+    </p>
+
+    <p class="disclaimer">Content is anonymized. No specific agency, program, or classified information is referenced.</p>
 
 </section>
 
 <div style="text-align: center; max-width: 900px; margin: 2rem auto 0; padding: 0 20px;">
-    <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem;">How ready is your organization for cross-sector collaboration?</p>
+    <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem;">How ready is your organization for institutional modernization?</p>
     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a href="innovation-tool.html" style="display: inline-block; background: var(--color-accent-secondary); color: #fff; padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s;">Take the Readiness Assessment</a>
         <a href="https://www.linkedin.com/groups/17212001/" style="display: inline-block; background: transparent; color: var(--text-dim); padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid var(--border-subtle); transition: all 0.2s;">Start a conversation</a>

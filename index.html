@@ -3,51 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preneurialworks - Innovation Tradecraft</title>
-    <link href="/fonts/Arvo/index.css" rel="stylesheet">
-    <link href="/fonts/Inter/index.css" rel="stylesheet">
+    <title>PreneurialWorks — Modernize with Intent, Innovate with Insight</title>
+    <meta name="description" content="PreneurialWorks helps organizations modernize how they work, collaborate across sectors, and adopt technology responsibly. Take the free Innovation Readiness Assessment.">
+    <meta property="og:title" content="PreneurialWorks — Modernize with Intent, Innovate with Insight">
+    <meta property="og:description" content="Applying entrepreneurial principles to institutional innovation. Explore the Innovation Impact Framework, case studies, and free Readiness Assessment.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://preneurial.works/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PreneurialWorks — Innovation Tradecraft">
+    <meta name="twitter:description" content="Modernize with intent. Innovate with insight. Free Innovation Readiness Assessment and framework for institutional transformation.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --color-primary: #2c5aa0;
-            --color-secondary: #4a90a4;
-            --color-accent: #5b9bd5;
-            --color-light: #f8fafc;
-            --color-border: #e2e8f0;
-            --color-text: #334155;
-            --color-text-light: #64748b;
-            --color-white: #ffffff;
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141925;
+            --bg-tertiary: #1a1d2e;
+            --color-accent: #00bcd4;
+            --color-accent-secondary: #2563eb;
+            --text-bright: #f8fafc;
+            --text-medium: #cbd5e1;
+            --text-dim: #94a3b8;
+            --text-dimmer: #64748b;
+            --border-dark: #1e293b;
+            --border-subtle: #2d3148;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--color-light);
-            color: var(--color-text);
+            background: var(--bg-primary);
+            color: var(--text-medium);
             line-height: 1.6;
             font-size: 1rem;
-            font-weight: 400;
         }
 
-        .container {
+        /* === Navigation === */
+        .site-nav {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.9rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            text-decoration: none;
+        }
+        .nav-brand i { color: var(--color-accent); }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            letter-spacing: 0.01em;
+        }
+        .nav-links a:hover { color: var(--color-accent); }
+        .nav-links a.nav-defense {
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            letter-spacing: 0.03em;
+        }
+        .nav-links a.nav-defense:hover {
+            background: var(--color-accent);
+            color: var(--bg-primary);
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-bright);
+            font-size: 1.4rem;
+            cursor: pointer;
         }
 
-        /* Header Section */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* === Header === */
         .header {
-            background: var(--color-white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 2rem 0;
+            background: var(--bg-secondary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            padding: 2.5rem 0;
             margin-bottom: 3rem;
         }
-
         .header-content {
             display: flex;
             align-items: center;
@@ -55,40 +114,29 @@
             flex-wrap: wrap;
             gap: 2rem;
         }
-
         .profile-section {
             display: flex;
             align-items: center;
             gap: 2rem;
         }
-
-        .profile-image {
+        .profile-image-container {
+            position: relative;
             width: 120px;
             height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-            font-weight: 700;
         }
-
         .profile-photo {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
             display: block;
-            border: 3px solid var(--color-white);
+            border: 3px solid var(--border-subtle);
         }
-
         .profile-fallback {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -99,161 +147,131 @@
             top: 0;
             left: 0;
         }
-
-        .profile-image-container {
-            position: relative;
-            width: 120px;
-            height: 120px;
-        }
-
         .profile-info h1 {
-            font-family: 'Arvo', serif;
+            font-family: 'Inter', sans-serif;
             font-size: 2.6rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--text-bright);
             margin-bottom: 0.5rem;
-            text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
         }
-
+        .profile-info h1 i { color: var(--color-accent); font-style: italic; }
         .profile-info .title {
-            font-size: 1.4rem;
-            color: var(--color-secondary);
+            font-size: 1.3rem;
+            color: var(--color-accent);
             font-weight: 500;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .profile-info .subtitle {
+            font-size: 0.85rem;
+            color: var(--text-dimmer);
         }
 
-        .contact-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--color-light);
-            border: 2px solid var(--color-border);
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--color-text);
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .contact-link:hover {
-            background: var(--color-primary);
-            color: white;
-            border-color: var(--color-primary);
-            transform: translateY(-2px);
-        }
-
-        .contact-link i {
-            font-size: 1.2rem;
-        }
-
-        /* Bio Section */
-        .bio-section {
-            background: var(--color-white);
+        /* === Sections === */
+        .work-section, .bio-section, .defense-section {
+            background: var(--bg-secondary);
             padding: 3rem;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             margin-bottom: 3rem;
         }
-
-        .bio-section h2 {
-            font-family: 'Arvo', serif;
+        .work-section h2, .bio-section h2, .defense-section h2 {
+            font-family: 'Inter', sans-serif;
             font-size: 2.2rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--text-bright);
             margin-bottom: 1.5rem;
             text-align: center;
         }
-
-        .bio-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--color-text);
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        /* Work Section */
-        .work-section {
-            background: var(--color-white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
-        }
-
-        .work-section h2 {
-            font-family: 'Arvo', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
         .section-intro {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: var(--color-text);
+            color: var(--text-dim);
             max-width: 800px;
             margin: 0 auto 2rem;
             text-align: center;
         }
 
+        /* === Work Cards === */
         .work-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .work-card {
-            background: var(--color-light);
+            background: var(--bg-tertiary);
             padding: 2rem;
             border-radius: 8px;
-            border-left: 4px solid var(--color-secondary);
-            transition: transform 0.3s ease;
+            border-left: 4px solid var(--color-accent);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .work-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 188, 212, 0.08);
         }
-
         .work-card h3 {
-            font-family: 'Arvo', serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.4rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--text-bright);
             margin-bottom: 1rem;
         }
-
-        .work-card p {
-            color: var(--color-text-light);
-            line-height: 1.6;
-        }
-
+        .work-card p { color: var(--text-dim); line-height: 1.6; }
         .work-card .link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             margin-top: 1rem;
-            color: var(--color-secondary);
+            color: var(--color-accent);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
+        .work-card .link:hover { color: var(--text-bright); }
 
-        .work-card .link:hover {
-            color: var(--color-primary);
+        /* === Defense Section === */
+        .defense-section {
+            border-left: 4px solid var(--color-accent-secondary);
+        }
+        .defense-section h2 { text-align: left; }
+        .defense-badge {
+            display: inline-block;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .defense-badge .badge-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            letter-spacing: -0.3px;
+        }
+        .defense-badge .badge-sub {
+            font-size: 0.75rem;
+            color: var(--text-dimmer);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .defense-badge .badge-powered {
+            font-size: 0.65rem;
+            color: var(--text-dimmer);
+            margin-top: 4px;
+        }
+        .defense-badge .badge-powered em { font-style: italic; }
+
+        /* === Bio === */
+        .bio-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
 
+        /* === Buttons === */
         button {
             border-radius: 999px;
             border: none;
@@ -262,97 +280,79 @@
             font-weight: 600;
             letter-spacing: 0.02em;
             font-size: 1rem;
+            transition: all 0.2s;
         }
+        .btn-primary { background: var(--color-accent-secondary); color: #fff; }
+        .btn-primary:hover { background: #3b7cf5; transform: translateY(-1px); }
+        .btn-outline { background: transparent; color: var(--text-dim); border: 1px solid var(--border-subtle); }
+        .btn-outline:hover { color: var(--text-bright); border-color: var(--text-dim); }
+        .btn-accent { background: var(--color-accent); color: var(--bg-primary); }
+        .btn-accent:hover { background: #00d4ef; }
 
-        .btn-primary {
-            background: #1f6feb;
-            color: #fff;
-        }
-
-        /* Footer */
+        /* === Footer === */
         .footer {
-            background: var(--color-primary);
-            color: white;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-dim);
             padding: 2rem 0;
             text-align: center;
             margin-top: 3rem;
         }
+        .footer p { font-size: 0.9rem; }
+        .footer a { color: var(--color-accent); text-decoration: none; }
+        .footer a:hover { color: var(--text-bright); }
 
-        .footer p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Responsive Design */
+        /* === Responsive === */
         @media (max-width: 768px) {
-            .header-content {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
                 flex-direction: column;
-                text-align: center;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border-subtle);
+                padding: 1rem 2rem;
+                gap: 1rem;
             }
+            .nav-toggle { display: block; }
+            .site-nav { position: relative; }
+            .header-content { flex-direction: column; text-align: center; }
+            .profile-section { flex-direction: column; text-align: center; }
+            .profile-image-container, .profile-photo, .profile-fallback { width: 100px; height: 100px; }
+            .profile-info h1 { font-size: 2rem; }
+            .profile-info .title { font-size: 1.1rem; }
+            .work-section, .bio-section, .defense-section { padding: 1.5rem; margin-bottom: 2rem; }
+            .work-section h2, .bio-section h2, .defense-section h2 { font-size: 1.8rem; }
+            .bio-content { font-size: 1rem; }
+            .work-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .work-card { padding: 1.5rem; }
+            .work-card h3 { font-size: 1.2rem; }
+            .container { padding: 0 1rem; }
+            .header { padding: 1.5rem 0; }
 
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-image, .profile-photo, .profile-fallback, .profile-image-container {
-                width: 100px;
-                height: 100px;
-            }
-
-            .profile-info h1 {
-                font-size: 2rem;
-            }
-
-            .profile-info .title {
-                font-size: 1.2rem;
-            }
-
-            .contact-links {
-                justify-content: center;
-            }
-
-            .bio-section, .work-section {
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-            }
-
-            .bio-section h2, .work-section h2 {
-                font-size: 1.8rem;
-            }
-
-            .bio-content {
-                font-size: 1rem;
-            }
-
-            .work-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .work-card {
-                padding: 1.5rem;
-            }
-
-            .work-card h3 {
-                font-size: 1.2rem;
-            }
-
-            .container {
-                padding: 0 1rem;
-            }
-
-            .header {
-                padding: 1.5rem 0;
-            }
-
-            .footer {
-                padding: 1.5rem 0;
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">Preneurial<i>works</i></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="framework.html">Framework</a>
+                <a href="innovation-tool.html">Assessment</a>
+                <a href="projects.html">Case Studies</a>
+                <a href="#defense" class="nav-defense">Defense &amp; Intel</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Header Section -->
     <header class="header">
         <div class="container">
@@ -365,7 +365,7 @@
                     <div class="profile-info">
                         <h1>Preneurial<i>works</i></h1>
                         <div class="title">Modernize with Intent, Innovate with Insight</div>
-                        <div class="subtitle">*yes, I used AI to help create this site</div>
+                        <div class="subtitle">Applying entrepreneurial principles to institutional innovation</div>
                     </div>
                 </div>
             </div>
@@ -378,15 +378,15 @@
         <section class="work-section">
             <h2>Innovation in Action</h2>
             <p class="section-intro">
-                <i>Responsible innovation - connecting big-picture strategy with practical solutions</i>
+                <em>Responsible innovation — connecting big-picture strategy with practical solutions</em>
             </p>
             <div class="work-grid">
                 <div class="work-card">
                     <h3>Innovation Framework</h3>
                     <p>
-                        A comprehensive framework that you can use for your own transformation needs. 
-                        Featuring four interconnected pillars: Institutional Modernization, 
-                        Cross-Sector Collaboration, Responsible Technology Adoption, and 
+                        A comprehensive framework for your own transformation needs.
+                        Four interconnected pillars: Institutional Modernization,
+                        Cross-Sector Collaboration, Responsible Technology Adoption, and
                         Public-Impact Innovation.
                     </p>
                     <a href="framework.html" class="link">
@@ -394,50 +394,71 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-
                 <div class="work-card">
-                    <h3>Risk Tool</h3>
+                    <h3>Readiness Assessment</h3>
                     <p>
-                        Quickly assess your innovation strengths and weaknesses, 
-                        and see some practical recommendations to help accelerate 
-                        your modernization efforts.
+                        Quickly assess your innovation strengths and weaknesses,
+                        and see practical recommendations to accelerate
+                        your modernization efforts. Results map directly to the four framework pillars.
                     </p>
                     <a href="innovation-tool.html" class="link">
-                        <span>Try the Risk Tool</span>
+                        <span>Take the Assessment</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-
-
                 <div class="work-card">
                     <h3>Case Studies</h3>
                     <p>
-                        Helping organizations diagnose system bottlenecks, align stakeholder incentives, and design 
-                        responsible and equitable modernization roadmaps that enable institutions to adapt to their dynamic landscapes.
+                        Real examples organized by framework pillar — from defense modernization
+                        to healthcare compliance to cross-sector collaboration.
                     </p>
                     <a href="projects.html" class="link">
-                        <span>Case Studies</span>
+                        <span>View Case Studies</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+            </div>
+        </section>
 
+        <!-- Defense & Intel Section -->
+        <section class="defense-section" id="defense">
+            <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-secondary); margin-bottom: 0.5rem;">Featured Vertical</p>
+            <h2>Defense Innovation &amp; Intelligence</h2>
+            <p style="color: var(--text-medium); line-height: 1.8; max-width: 800px;">
+                The <a href="framework.html" style="color: var(--color-accent); text-decoration: none; font-weight: 500;">Innovation Impact Framework</a>
+                was built to work across sectors — but some of its deepest applications are inside the defense and intelligence community,
+                where bureaucratic complexity and mission urgency create unique conditions for intrapreneurship.
+            </p>
+            <div class="defense-badge">
+                <div class="badge-title">DEFENSE SIGNAL BRIEF</div>
+                <div class="badge-sub">Daily Innovation Intelligence for Defense Intrapreneurs</div>
+                <div class="badge-powered">powered by Preneurial<em>Works</em></div>
+            </div>
+            <p style="color: var(--text-dim); margin-top: 1.5rem; line-height: 1.7; max-width: 800px;">
+                The Defense Signal Brief is a daily AI-powered briefing that surfaces actionable innovation opportunities
+                across four intrapreneurial signal types — from policy friction to reform momentum.
+            </p>
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="project-defense.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Read the full case study <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i></a>
+                <button class="btn-accent" onclick="window.location.href='mailto:jason@preneurial.works?subject=Defense%20Signal%20Brief%20Subscription';">Subscribe to the Defense Signal Brief</button>
             </div>
         </section>
 
         <!-- Bio Section -->
         <section class="bio-section">
-            <h2>About Preneurial<i>works</i></h2>
+            <h2>About Preneurial<i style="color: var(--color-accent);">works</i></h2>
             <div class="bio-content">
                 <p>
-                     Preneurial<i>works</i> helps organizations modernize how they work, 
-                     collaborate more effectively across sectors, 
-                     and use technology in ways that are practical and responsible. 
-                     By applying entrepreneurial principles and methods to institutional innovation, 
-                     we create responsible outcome‑driven, scalable solutions that strengthen organizations and communities.
+                     Preneurial<em style="color: var(--color-accent);">works</em> helps organizations modernize how they work,
+                     collaborate more effectively across sectors,
+                     and use technology in ways that are practical and responsible.
+                     By applying entrepreneurial principles and methods to institutional innovation,
+                     we create responsible outcome-driven, scalable solutions that strengthen organizations and communities.
                 </p>
             </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <button class="btn-primary" onclick="window.location.href='https://www.linkedin.com/groups/17212001/';">Start a conversation</button>
+            <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn-primary" onclick="window.location.href='innovation-tool.html';">Take the Readiness Assessment</button>
+                <button class="btn-outline" onclick="window.location.href='https://www.linkedin.com/groups/17212001/';">Start a conversation</button>
             </div>
         </section>
     </main>
@@ -445,11 +466,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Jason Gagne. Focused on institutional transformation and public impact innovation. | <a href="mailto:jason@preneurial.works" style="color: white; text-decoration: none;">Contact us</a></p>
+            <p>&copy; 2026 Jason Gagne. Focused on institutional transformation and public impact innovation. | <a href="mailto:jason@preneurial.works">Contact us</a></p>
         </div>
     </footer>
-<!-- GoatCounter Analytics -->
-    <script data-goatcounter="https://jasongagne.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+
+    <script data-goatcounter="https://preneurial.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

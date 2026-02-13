@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public-Impact Systems Framework</title>
-    <link href="/fonts/Oswald/index.css" rel="stylesheet">
-    <link href="/fonts/Work Sans/index.css" rel="stylesheet">
+    <title>Innovation Impact Framework — PreneurialWorks</title>
+    <meta name="description" content="The Innovation Impact Framework: a structured approach to institutional transformation across four pillars — Modernization, Collaboration, Responsible Tech Adoption, and Public-Impact Innovation.">
+    <meta property="og:title" content="Innovation Impact Framework — PreneurialWorks">
+    <meta property="og:description" content="Four interconnected pillars for driving institutional change. From modernization to public-impact innovation, a repeatable methodology for complex organizations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://preneurial.works/framework.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Innovation Impact Framework — PreneurialWorks">
+    <meta name="twitter:description" content="A structured approach to institutional transformation across four pillars. Built for intrapreneurs driving change inside complex organizations.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -15,21 +22,94 @@
         }
 
         :root {
-            --color-primary: #2c5aa0;
-            --color-secondary: #4a90a4;
-            --color-accent: #5b9bd5;
-            --color-light: #f8fafc;
-            --color-border: #e2e8f0;
-            --color-text: #334155;
-            --color-text-light: #64748b;
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141925;
+            --bg-tertiary: #1a1d2e;
+            --color-accent: #00bcd4;
+            --color-accent-secondary: #2563eb;
+            --text-bright: #f8fafc;
+            --text-medium: #cbd5e1;
+            --text-dim: #94a3b8;
+            --text-dimmer: #64748b;
+            --border-dark: #1e293b;
+            --border-subtle: #2d3148;
         }
 
         body {
-            font-family: 'Work Sans', sans-serif;
-            background: white;
-            color: var(--color-text);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-medium);
             line-height: 1.6;
             font-size: 14px;
+        }
+
+        .site-nav {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.9rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            text-decoration: none;
+        }
+
+        .nav-brand i {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a.nav-defense {
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+        }
+
+        .nav-links a.nav-defense:hover {
+            background: var(--color-accent);
+            color: var(--bg-primary);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-bright);
+            font-size: 1.4rem;
+            cursor: pointer;
         }
 
         .document-container {
@@ -37,8 +117,8 @@
             min-height: 11in;
             margin: 0 auto;
             padding: 0.75in;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: var(--bg-secondary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         /* Header Section */
@@ -46,44 +126,45 @@
             text-align: center;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 3px solid var(--color-primary);
+            border-bottom: 3px solid var(--color-accent);
         }
 
         .main-title {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 2.2rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--text-bright);
             margin-bottom: 0.5rem;
             letter-spacing: 0.5px;
         }
 
         .subtitle {
             font-size: 1.1rem;
-            color: var(--color-secondary);
+            color: var(--text-dim);
             font-weight: 500;
         }
 
         /* Purpose Section */
         .purpose-section {
-            background: var(--color-light);
+            background: var(--bg-tertiary);
             padding: 1rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
-            border-left: 4px solid var(--color-primary);
+            border-left: 4px solid var(--color-accent);
         }
 
         .purpose-title {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--color-accent);
             margin-bottom: 0.5rem;
         }
 
         .purpose-text {
             font-size: 0.95rem;
             line-height: 1.5;
+            color: var(--text-medium);
         }
 
         /* Four Pillars Grid */
@@ -92,10 +173,10 @@
         }
 
         .section-title {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.4rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--text-bright);
             margin-bottom: 1rem;
             text-align: center;
             text-transform: uppercase;
@@ -110,24 +191,42 @@
         }
 
         .pillar-card {
-            background: white;
-            border: 2px solid var(--color-border);
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border-subtle);
             border-radius: 8px;
             padding: 1rem;
             position: relative;
         }
 
-        .pillar-card:nth-child(1) { border-top: 4px solid #e74c3c; }
-        .pillar-card:nth-child(2) { border-top: 4px solid #f39c12; }
-        .pillar-card:nth-child(3) { border-top: 4px solid #27ae60; }
-        .pillar-card:nth-child(4) { border-top: 4px solid #8e44ad; }
+        .pillar-card:nth-child(1) { border-top: 4px solid #00bcd4; }
+        .pillar-card:nth-child(2) { border-top: 4px solid #2563eb; }
+        .pillar-card:nth-child(3) { border-top: 4px solid #0891b2; }
+        .pillar-card:nth-child(4) { border-top: 4px solid #6366f1; }
+
+        .in-practice {
+            margin-top: 0.75rem;
+            padding-top: 0.6rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.78rem;
+            color: var(--text-dimmer);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .in-practice i { font-size: 0.65rem; }
+        .in-practice a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+        .in-practice a:hover { color: var(--text-bright); }
+        .pillar-card:nth-child(1) .in-practice a { color: #00bcd4; }
+        .pillar-card:nth-child(2) .in-practice a { color: #2563eb; }
+        .pillar-card:nth-child(3) .in-practice a { color: #0891b2; }
+        .pillar-card:nth-child(4) .in-practice a { color: #6366f1; }
 
         .pillar-number {
             position: absolute;
             top: -10px;
             left: 1rem;
-            background: var(--color-primary);
-            color: white;
+            background: var(--color-accent);
+            color: var(--bg-primary);
             width: 24px;
             height: 24px;
             border-radius: 50%;
@@ -139,10 +238,10 @@
         }
 
         .pillar-title {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--text-bright);
             margin-bottom: 0.5rem;
             margin-top: 0.5rem;
         }
@@ -156,11 +255,12 @@
             margin-bottom: 0.3rem;
             padding-left: 1rem;
             position: relative;
+            color: var(--text-medium);
         }
 
         .pillar-list li:before {
             content: "•";
-            color: var(--color-secondary);
+            color: var(--color-accent);
             font-weight: bold;
             position: absolute;
             left: 0;
@@ -168,17 +268,18 @@
 
         /* System Flow */
         .flow-section {
-            background: var(--color-light);
+            background: var(--bg-primary);
             padding: 1rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
+            border: 1px solid var(--border-subtle);
         }
 
         .flow-title {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--color-accent);
             margin-bottom: 0.75rem;
         }
 
@@ -187,18 +288,20 @@
             font-size: 0.8rem;
             margin-bottom: 0.75rem;
             font-family: monospace;
-            background: white;
+            background: var(--bg-tertiary);
             padding: 0.75rem;
             border-radius: 4px;
-            border: 1px solid var(--color-border);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-medium);
         }
 
         .operating-logic {
             font-size: 0.85rem;
+            color: var(--text-medium);
         }
 
         .operating-logic strong {
-            color: var(--color-primary);
+            color: var(--color-accent);
         }
 
         /* Two Column Sections */
@@ -210,17 +313,17 @@
         }
 
         .column-section {
-            background: white;
-            border: 1px solid var(--color-border);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
             border-radius: 6px;
             padding: 0.75rem;
         }
 
         .column-title {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--text-bright);
             margin-bottom: 0.5rem;
         }
 
@@ -230,13 +333,13 @@
 
         .scenario-name {
             font-weight: 600;
-            color: var(--color-secondary);
+            color: var(--color-accent);
             font-size: 0.9rem;
         }
 
         .scenario-desc {
             font-size: 0.8rem;
-            color: var(--color-text-light);
+            color: var(--text-dim);
             margin-top: 0.2rem;
         }
 
@@ -249,11 +352,12 @@
             margin-bottom: 0.3rem;
             padding-left: 1rem;
             position: relative;
+            color: var(--text-medium);
         }
 
         .signals-list li:before {
             content: "✓";
-            color: #27ae60;
+            color: #00bcd4;
             font-weight: bold;
             position: absolute;
             left: 0;
@@ -261,7 +365,7 @@
 
         .failure-list li:before {
             content: "✗";
-            color: #e74c3c;
+            color: #ef4444;
             font-weight: bold;
             position: absolute;
             left: 0;
@@ -269,7 +373,7 @@
 
         /* Takeaway Section */
         .takeaway-section {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
             color: white;
             padding: 1rem;
             border-radius: 8px;
@@ -277,7 +381,7 @@
         }
 
         .takeaway-title {
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
@@ -291,6 +395,31 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border-subtle);
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .site-nav {
+                position: relative;
+            }
+
             .document-container {
                 max-width: 100%;
                 padding: 1rem;
@@ -346,16 +475,25 @@
         }
 
         .btn-primary {
-            background: #1f6feb;
+            background: var(--color-accent-secondary);
             color: #fff;
+            transition: all 0.2s;
         }
+        .btn-primary:hover { background: #3b7cf5; transform: translateY(-1px); }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dim);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.2s;
+        }
+        .btn-outline:hover { color: var(--text-bright); border-color: var(--text-dim); }
 
         /* Print Styles */
         @media print {
             body {
                 background: white;
             }
-            
+
             .document-container {
                 box-shadow: none;
                 margin: 0;
@@ -365,6 +503,21 @@
     </style>
 </head>
 <body>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">Preneurial<i>works</i></a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="framework.html">Framework</a>
+                <a href="innovation-tool.html">Assessment</a>
+                <a href="projects.html">Case Studies</a>
+                <a href="index.html#defense" class="nav-defense">Defense &amp; Intel</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="document-container">
         <!-- Header -->
         <div class="header">
@@ -376,8 +529,8 @@
         <div class="purpose-section">
             <h2 class="purpose-title">Purpose</h2>
             <p class="purpose-text">
-                Institutions today face complexity that no single sector can solve alone. 
-                My Innovation Impact Framework provides a structured way to modernize with a focus on 
+                Institutions today face complexity that no single sector can solve alone.
+                My Innovation Impact Framework provides a structured way to modernize with a focus on
                 coalitions, adopting technology responsibly, and delivering scalable and sustainable benefit.
             </p>
         </div>
@@ -394,6 +547,10 @@
                         <li>Identify stakeholders and redesign workflows</li>
                         <li>Build pipelines and operational pathways</li>
                     </ul>
+                    <div class="in-practice">
+                        <i class="fas fa-arrow-right"></i>
+                        <span>In practice: <a href="project-defense.html">Modernizing Intelligence Workflows</a></span>
+                    </div>
                 </div>
 
                 <div class="pillar-card">
@@ -404,6 +561,10 @@
                         <li>Create and foster a shared language</li>
                         <li>Reduce partnership and collaboration frictions through outreach efforts</li>
                     </ul>
+                    <div class="in-practice">
+                        <i class="fas fa-arrow-right"></i>
+                        <span>In practice: <a href="project2.html">Japan Travel KK</a></span>
+                    </div>
                 </div>
 
                 <div class="pillar-card">
@@ -414,6 +575,10 @@
                         <li>Ensure ethical and lawful use</li>
                         <li>Establish or strengthen governance</li>
                     </ul>
+                    <div class="in-practice">
+                        <i class="fas fa-arrow-right"></i>
+                        <span>In practice: <a href="project1.html">La Clinica Tepeyac</a></span>
+                    </div>
                 </div>
 
                 <div class="pillar-card">
@@ -424,6 +589,10 @@
                         <li>Solutions should strengthen communities</li>
                         <li>Deliver and monitor measurable outcomes</li>
                     </ul>
+                    <div class="in-practice">
+                        <i class="fas fa-arrow-right"></i>
+                        <span>In practice: <a href="project3.html">Watch Momentum Sports</a></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -434,7 +603,7 @@
             <div class="flow-diagram">
 [Modernization] → [Collaboration] → [Tech Adoption] → [Public-Impact Innovation]<br>
         ↑                                                        ↓<br>
-        └────────────── Continuous Learning & Feedback ─────────┘
+        └────────────── Continuous Learning &amp; Feedback ─────────┘
             </div>
             <div class="operating-logic">
                 <strong>Operating Logic:</strong><br>
@@ -482,16 +651,16 @@
                 When institutions modernize based on community-oriented outcomes, collaborate across sectors, adopt technology responsibly, and focus on public impact, they create the conditions for scalable, sustainable societal change.
             </p>
         </div>
-        <div style="text-align: center; margin-top: 1rem;">
-            <button class="btn-primary" onclick="window.location.href='https://www.linkedin.com/groups/17212001/';">Start a conversation</button>
+        <div style="text-align: center; margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn-primary" onclick="window.location.href='innovation-tool.html';">Take the Readiness Assessment</button>
+            <button class="btn-outline" onclick="window.location.href='https://www.linkedin.com/groups/17212001/';">Start a conversation</button>
         </div>
         <div style="text-align: center; margin-top: 1rem;">
-            <a href="index.html" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">← Back to Home</a>
+            <a href="index.html" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">← Back to Home</a>
         </div>
     </div>
 </body>
 <!-- GoatCounter Analytics -->
- <script data-goatcounter="https://jasongagne.goatcounter.com/count"
+ <script data-goatcounter="https://preneurial.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 </html>
-
