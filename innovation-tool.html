@@ -310,17 +310,6 @@
     }
     .framework-context .opportunity-link i { font-size: 0.7rem; }
 
-    #resultsSummary {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.85rem;
-      background: #0b1020;
-      color: #e5e7eb;
-      padding: 0.75rem;
-      border-radius: 8px;
-      margin-top: 0.75rem;
-      white-space: pre-wrap;
-    }
-
     #execSummary {
       color: var(--text-dim);
       line-height: 1.45;
@@ -446,7 +435,7 @@
           <em>(1 = Not at all true, 5 = Very true)</em>
         </p>
 
-        <h3>Modernization</h3>
+        <h3>Institutional Modernization</h3>
         <table>
           <thead>
             <tr>
@@ -478,7 +467,7 @@
           </tbody>
         </table>
 
-        <h3>Collaboration</h3>
+        <h3>Cross-Sector Collaboration</h3>
         <table>
           <thead>
             <tr>
@@ -499,7 +488,7 @@
             </tr>
             <tr>
               <td class="question-text">
-                We have cross-functional forums where modernization, risk, and delivery are discussed together.
+                We actively collaborate with external partners — other agencies, sectors, or institutions — toward shared outcomes.
               </td>
               <td class="scale-cell"><input type="radio" name="col_q2" value="1" />1</td>
               <td class="scale-cell"><input type="radio" name="col_q2" value="2" />2</td>
@@ -510,7 +499,7 @@
           </tbody>
         </table>
 
-        <h3>Technology</h3>
+        <h3>Responsible Tech Adoption</h3>
         <table>
           <thead>
             <tr>
@@ -521,7 +510,7 @@
           <tbody>
             <tr>
               <td class="question-text">
-                Our core systems are reliable, secure, and instrumented with meaningful metrics.
+                New technology adoption is guided by clear governance, including ethical review and compliance accountability.
               </td>
               <td class="scale-cell"><input type="radio" name="tech_q1" value="1" />1</td>
               <td class="scale-cell"><input type="radio" name="tech_q1" value="2" />2</td>
@@ -542,7 +531,7 @@
           </tbody>
         </table>
 
-        <h3>Innovation</h3>
+        <h3>Public-Impact Innovation</h3>
         <table>
           <thead>
             <tr>
@@ -563,7 +552,7 @@
             </tr>
             <tr>
               <td class="question-text">
-                We learn from pilots and experiments in a structured way, not just anecdotally.
+                Our innovations are designed to produce measurable benefits beyond our organization — for communities, partners, or the public.
               </td>
               <td class="scale-cell"><input type="radio" name="inn_q2" value="1" />1</td>
               <td class="scale-cell"><input type="radio" name="inn_q2" value="2" />2</td>
@@ -585,22 +574,22 @@
         <h2>3. Results</h2>
         <div class="scores-grid">
           <div class="score-card">
-            <div class="score-label">Modernization</div>
+            <div class="score-label">Institutional Modernization</div>
             <div class="score-value" id="modScoreDisplay">–</div>
             <div class="score-tagline" id="modTagline"></div>
           </div>
           <div class="score-card">
-            <div class="score-label">Collaboration</div>
+            <div class="score-label">Cross-Sector Collaboration</div>
             <div class="score-value" id="colScoreDisplay">–</div>
             <div class="score-tagline" id="colTagline"></div>
           </div>
           <div class="score-card">
-            <div class="score-label">Technology</div>
+            <div class="score-label">Responsible Tech Adoption</div>
             <div class="score-value" id="techScoreDisplay">–</div>
             <div class="score-tagline" id="techTagline"></div>
           </div>
           <div class="score-card">
-            <div class="score-label">Innovation</div>
+            <div class="score-label">Public-Impact Innovation</div>
             <div class="score-value" id="innScoreDisplay">–</div>
             <div class="score-tagline" id="innTagline"></div>
           </div>
@@ -608,7 +597,7 @@
 
         <div class="framework-context" id="frameworkContext">
           <strong>Your scores map to the four pillars of the <a href="framework.html">Innovation Impact Framework</a>.</strong>
-          Each pillar — Modernization, Collaboration, Technology Adoption, and Public-Impact Innovation — represents
+          Each pillar — Institutional Modernization, Cross-Sector Collaboration, Responsible Tech Adoption, and Public-Impact Innovation — represents
           a dimension where intrapreneurial thinking can drive institutional change.
           <div class="opportunity-link" id="opportunityLink"></div>
         </div>
@@ -626,15 +615,10 @@
         </p>
         <div id="pillarRecommendations" style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;"></div>
 
-        <h3 style="margin-top:1.5rem;">Summary (for notes, email, or slide decks)</h3>
-        <pre id="resultsSummary"></pre>
-
-        <div class="btn-row">
+        <div class="btn-row" style="margin-top:1.5rem;">
           <button class="btn-primary" id="downloadPdfBtn" type="button">Download PDF</button>
-          <button class="btn-secondary" id="copySummaryBtn" type="button">Copy summary</button>
           <button class="btn-outline" id="consultationBtn" type="button">Start a conversation</button>
         </div>
-        <div id="copyStatus" class="status" style="display:none;"></div>
       </div>
     </div>
 
@@ -854,10 +838,10 @@
       var innovationScore = scores.innovationScore;
 
       var dimensions = [
-        { name: "Modernization", value: modernizationScore },
-        { name: "Collaboration", value: collaborationScore },
-        { name: "Technology", value: techScore },
-        { name: "Innovation", value: innovationScore }
+        { name: "Institutional Modernization", value: modernizationScore },
+        { name: "Cross-Sector Collaboration", value: collaborationScore },
+        { name: "Responsible Tech Adoption", value: techScore },
+        { name: "Public-Impact Innovation", value: innovationScore }
       ];
 
       var strongest = dimensions.reduce(function(a, b) {
@@ -896,7 +880,7 @@
     function renderRadarChart(scores) {
       var ctx = document.getElementById("radarChart").getContext("2d");
       var data = {
-        labels: ["Modernization", "Collaboration", "Technology", "Innovation"],
+        labels: ["Modernization", "Collaboration", "Tech Adoption", "Innovation"],
         datasets: [{
           label: "Readiness (1–5)",
           data: [
@@ -940,23 +924,6 @@
           options: options
         });
       }
-    }
-
-    function buildSummaryText(sector, scores) {
-      var lines = [];
-      lines.push("Sector: " + (sector || "—"));
-      lines.push("");
-      lines.push("Modernization: " + scores.modernizationScore.toFixed(1) + " / 5");
-      lines.push("Collaboration: " + scores.collaborationScore.toFixed(1) + " / 5");
-      lines.push("Technology:   " + scores.techScore.toFixed(1) + " / 5");
-      lines.push("Innovation:   " + scores.innovationScore.toFixed(1) + " / 5");
-      lines.push("");
-      lines.push("Overall pattern:");
-      lines.push("- Modernization: " + scoreTagline(scores.modernizationScore));
-      lines.push("- Collaboration: " + scoreTagline(scores.collaborationScore));
-      lines.push("- Technology:   " + scoreTagline(scores.techScore));
-      lines.push("- Innovation:   " + scoreTagline(scores.innovationScore));
-      return lines.join("\n");
     }
 
     function submitEmailAndDownload() {
@@ -1044,10 +1011,10 @@
       // ── Score Cards (4 across) ──
       y += 5;
       var scoreData = [
-        { label: 'MODERNIZATION', id: 'modScoreDisplay', tagId: 'modTagline', color: [0, 188, 212] },
-        { label: 'COLLABORATION', id: 'colScoreDisplay', tagId: 'colTagline', color: [37, 99, 235] },
-        { label: 'TECHNOLOGY', id: 'techScoreDisplay', tagId: 'techTagline', color: [110, 231, 183] },
-        { label: 'INNOVATION', id: 'innScoreDisplay', tagId: 'innTagline', color: [196, 181, 253] }
+        { label: 'INSTITUTIONAL MODERNIZATION', id: 'modScoreDisplay', tagId: 'modTagline', color: [0, 188, 212] },
+        { label: 'CROSS-SECTOR COLLABORATION', id: 'colScoreDisplay', tagId: 'colTagline', color: [37, 99, 235] },
+        { label: 'RESPONSIBLE TECH ADOPTION', id: 'techScoreDisplay', tagId: 'techTagline', color: [110, 231, 183] },
+        { label: 'PUBLIC-IMPACT INNOVATION', id: 'innScoreDisplay', tagId: 'innTagline', color: [196, 181, 253] }
       ];
       var cardW = (cw - 9) / 4;
       var cardH = 36;
@@ -1373,9 +1340,6 @@
       };
       renderRadarChart(scores);
 
-      var summary = buildSummaryText(data.sector, scores);
-      document.getElementById("resultsSummary").textContent = summary;
-
       var execSummaryText = buildExecutiveSummary(scores);
       document.getElementById("execSummary").textContent = execSummaryText;
 
@@ -1393,7 +1357,6 @@
       renderPillarRecommendations(scores);
 
       document.getElementById("resultsSection").style.display = "block";
-      document.getElementById("copyStatus").style.display = "none";
     });
 
     document.getElementById("resetBtn").addEventListener("click", function() {
@@ -1402,31 +1365,6 @@
       radios.forEach(function(r) { r.checked = false; });
       document.getElementById("resultsSection").style.display = "none";
       document.getElementById("validationMsg").style.display = "none";
-    });
-
-    document.getElementById("copySummaryBtn").addEventListener("click", function() {
-      var summaryEl = document.getElementById("resultsSummary");
-      var copyStatus = document.getElementById("copyStatus");
-      copyStatus.style.display = "none";
-
-      if (!navigator.clipboard) {
-        copyStatus.textContent = "Clipboard not available in this browser.";
-        copyStatus.className = "status error";
-        copyStatus.style.display = "block";
-        return;
-      }
-
-      navigator.clipboard.writeText(summaryEl.textContent)
-        .then(function() {
-          copyStatus.textContent = "Summary copied to clipboard.";
-          copyStatus.className = "status ok";
-          copyStatus.style.display = "block";
-        })
-        .catch(function() {
-          copyStatus.textContent = "Could not copy to clipboard.";
-          copyStatus.className = "status error";
-          copyStatus.style.display = "block";
-        });
     });
 
     document.getElementById("downloadPdfBtn").addEventListener("click", function() {
