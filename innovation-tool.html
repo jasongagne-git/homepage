@@ -620,6 +620,12 @@
         <h3 style="margin-top:1.5rem;">Executive Summary</h3>
         <p id="execSummary" style="font-size:0.95rem; line-height:1.45;"></p>
 
+        <h3 style="margin-top:1.5rem;">Framework Recommendations</h3>
+        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:0.75rem;">
+          Based on your scores, here's what the <a href="framework.html" style="color:var(--color-accent); text-decoration:none; font-weight:600;">Innovation Impact Framework</a> recommends focusing on in each pillar.
+        </p>
+        <div id="pillarRecommendations" style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;"></div>
+
         <h3 style="margin-top:1.5rem;">Summary (for notes, email, or slide decks)</h3>
         <pre id="resultsSummary"></pre>
 
@@ -661,6 +667,86 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <script>
+    // === Framework Pillar Data ===
+    var PILLAR_DATA = {
+      modernization: {
+        title: 'Institutional Modernization',
+        color: '#00bcd4',
+        actions: [
+          'Diagnose bottlenecks, inefficiencies, and identify milestones',
+          'Identify stakeholders and redesign workflows',
+          'Build pipelines and operational pathways'
+        ],
+        caseStudy: { label: 'Modernizing Intelligence Workflows', url: 'project-defense.html' }
+      },
+      collaboration: {
+        title: 'Cross-Sector Collaboration',
+        color: '#2563eb',
+        actions: [
+          'Align outcomes across education, government, industry, and civic institutions',
+          'Create and foster a shared language',
+          'Reduce partnership and collaboration frictions through outreach efforts'
+        ],
+        caseStudy: { label: 'Japan Travel KK', url: 'project2.html' }
+      },
+      technology: {
+        title: 'Responsible Tech Adoption',
+        color: '#6ee7b7',
+        actions: [
+          'Enable an adaptive culture to reinforce institutional resilience',
+          'Ensure ethical and lawful use',
+          'Establish or strengthen governance'
+        ],
+        caseStudy: { label: 'La Clinica Tepeyac', url: 'project1.html' }
+      },
+      innovation: {
+        title: 'Public-Impact Innovation',
+        color: '#c4b5fd',
+        actions: [
+          'Design scalable solutions translating emerging innovations into institutional reality',
+          'Solutions should strengthen communities',
+          'Deliver and monitor measurable outcomes'
+        ],
+        caseStudy: { label: 'Watch Momentum Sports', url: 'project3.html' }
+      }
+    };
+
+    function renderPillarRecommendations(scores) {
+      var container = document.getElementById('pillarRecommendations');
+      var pillars = [
+        { key: 'modernization', score: scores.modernizationScore },
+        { key: 'collaboration', score: scores.collaborationScore },
+        { key: 'technology', score: scores.techScore },
+        { key: 'innovation', score: scores.innovationScore }
+      ];
+
+      var lowest = pillars.reduce(function(min, p) { return p.score < min.score ? p : min; }, pillars[0]);
+
+      container.innerHTML = pillars.map(function(p) {
+        var d = PILLAR_DATA[p.key];
+        var isLowest = p.key === lowest.key;
+        var borderColor = isLowest ? d.color : 'var(--border-subtle)';
+        var highlight = isLowest ? '<span style="display:inline-block;font-size:0.7rem;font-weight:700;color:' + d.color + ';background:' + d.color + '20;padding:0.15rem 0.5rem;border-radius:999px;margin-left:0.5rem;">FOCUS AREA</span>' : '';
+
+        return '<div style="background:var(--bg-tertiary);border:1px solid ' + borderColor + ';border-top:3px solid ' + d.color + ';border-radius:8px;padding:0.75rem 0.9rem;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">' +
+            '<span style="font-size:0.85rem;font-weight:700;color:var(--text-bright);">' + d.title + '</span>' +
+            '<span style="font-size:0.85rem;font-weight:700;color:' + d.color + ';">' + p.score.toFixed(1) + '</span>' +
+          '</div>' +
+          highlight +
+          '<ul style="list-style:none;padding:0;margin:0.5rem 0 0;">' +
+            d.actions.map(function(a) {
+              return '<li style="font-size:0.8rem;color:var(--text-dim);padding-left:0.9rem;position:relative;margin-bottom:0.25rem;">' +
+                '<span style="position:absolute;left:0;color:' + d.color + ';font-weight:bold;">•</span>' + a + '</li>';
+            }).join('') +
+          '</ul>' +
+          '<div style="margin-top:0.5rem;padding-top:0.4rem;border-top:1px solid var(--border-subtle);font-size:0.75rem;color:var(--text-dimmer);">' +
+            '<i class="fas fa-arrow-right" style="font-size:0.6rem;margin-right:0.3rem;"></i>In practice: <a href="' + d.caseStudy.url + '" style="color:' + d.color + ';text-decoration:none;font-weight:600;">' + d.caseStudy.label + '</a>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
     // === Google Form Backend Submission ===
       const GOOGLE_FORM_ACTION_URL =
         "https://docs.google.com/forms/d/e/1FAIpQLSfKLuFC7aJKctsiTRuIN0Q7_n7BFQBE0xGSiu0AZZTz9ebTrQ/formResponse";
@@ -890,16 +976,342 @@
 
     function triggerPdfDownload() {
       var jsPDF = window.jspdf.jsPDF;
-      var doc = new jsPDF();
-      var summary = document.getElementById("resultsSummary").textContent || "";
-      var execSummary = document.getElementById("execSummary").textContent || "";
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(14);
-      doc.text("Modernization Readiness Snapshot", 14, 18);
+      var doc = new jsPDF({ unit: 'mm', format: 'letter' });
+      var pw = 215.9, ph = 279.4, margin = 16;
+      var cw = pw - 2 * margin; // content width
+
+      // Brand colors [R, G, B]
+      var bgDark = [10, 14, 26];
+      var bgCard = [20, 25, 37];
+      var bgTert = [26, 29, 46];
+      var accent = [0, 188, 212];
+      var txtBright = [248, 250, 252];
+      var txtMed = [203, 213, 225];
+      var txtDim = [148, 163, 184];
+      var border = [45, 49, 72];
+
+      // Full page dark background
+      doc.setFillColor.apply(doc, bgDark);
+      doc.rect(0, 0, pw, ph, 'F');
+
+      // Header band
+      doc.setFillColor.apply(doc, bgCard);
+      doc.rect(0, 0, pw, 26, 'F');
+      doc.setFillColor.apply(doc, accent);
+      doc.rect(0, 26, pw, 0.8, 'F');
+
+      // Brand name
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(17);
+      doc.setTextColor.apply(doc, txtBright);
+      doc.text('Preneurial', margin, 15);
+      var pW = doc.getTextWidth('Preneurial');
+      doc.setTextColor.apply(doc, accent);
+      doc.text('works', margin + pW, 15);
+
+      // Date
+      doc.setTextColor.apply(doc, txtDim);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      var today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      doc.text(today, pw - margin, 15, { align: 'right' });
+
+      // URL
+      doc.setFontSize(7);
+      doc.text('preneurial.works', pw - margin, 20, { align: 'right' });
+
+      // Title
+      var y = 36;
+      doc.setTextColor.apply(doc, txtBright);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(16);
+      doc.text('Modernization Readiness Assessment', margin, y);
+
+      // Sector
+      y += 7;
+      var sector = document.getElementById("sectorSelect").value || "Not specified";
+      doc.setTextColor.apply(doc, txtDim);
+      doc.setFont('helvetica', 'normal');
       doc.setFontSize(10);
-      var combined = execSummary + "\n\n" + summary;
-      var lines = doc.splitTextToSize(combined, 180);
-      doc.text(lines, 14, 30);
+      doc.text('Sector: ' + sector, margin, y);
+
+      // Thin divider
+      y += 5;
+      doc.setDrawColor.apply(doc, border);
+      doc.setLineWidth(0.3);
+      doc.line(margin, y, pw - margin, y);
+
+      // ── Score Cards (4 across) ──
+      y += 5;
+      var scoreData = [
+        { label: 'MODERNIZATION', id: 'modScoreDisplay', tagId: 'modTagline', color: [0, 188, 212] },
+        { label: 'COLLABORATION', id: 'colScoreDisplay', tagId: 'colTagline', color: [37, 99, 235] },
+        { label: 'TECHNOLOGY', id: 'techScoreDisplay', tagId: 'techTagline', color: [110, 231, 183] },
+        { label: 'INNOVATION', id: 'innScoreDisplay', tagId: 'innTagline', color: [196, 181, 253] }
+      ];
+      var cardW = (cw - 9) / 4;
+      var cardH = 36;
+
+      scoreData.forEach(function(s, i) {
+        var x = margin + i * (cardW + 3);
+        // Card bg
+        doc.setFillColor.apply(doc, bgTert);
+        doc.roundedRect(x, y, cardW, cardH, 2, 2, 'F');
+        // Top accent line
+        doc.setFillColor.apply(doc, s.color);
+        doc.rect(x, y, cardW, 1.2, 'F');
+        // Border
+        doc.setDrawColor.apply(doc, border);
+        doc.setLineWidth(0.2);
+        doc.roundedRect(x, y, cardW, cardH, 2, 2, 'S');
+        // Label
+        doc.setTextColor.apply(doc, txtDim);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(6.5);
+        doc.text(s.label, x + 4, y + 7);
+        // Score value
+        doc.setTextColor.apply(doc, s.color);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        var scoreVal = document.getElementById(s.id).textContent;
+        doc.text(scoreVal, x + 4, y + 16);
+        // /5 suffix
+        doc.setTextColor.apply(doc, txtDim);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        var svW = doc.getTextWidth(scoreVal);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(16);
+        var realSvW = doc.getTextWidth(scoreVal);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        doc.text('/ 5', x + 4 + realSvW + 1.5, y + 16);
+        // Tagline
+        var tagline = document.getElementById(s.tagId).textContent;
+        doc.setTextColor.apply(doc, txtDim);
+        doc.setFontSize(5.5);
+        var tLines = doc.splitTextToSize(tagline, cardW - 8);
+        doc.text(tLines.slice(0, 3), x + 4, y + 22);
+      });
+
+      y += cardH + 6;
+
+      // ── Deepest Opportunity Callout ──
+      // Build clean text for PDF (no link context)
+      var allScores = scoreData.map(function(s) {
+        return { label: s.label, score: parseFloat(document.getElementById(s.id).textContent) };
+      });
+      var lowest = allScores.reduce(function(min, s) { return s.score < min.score ? s : min; }, allScores[0]);
+      var lowestName = lowest.label.charAt(0) + lowest.label.slice(1).toLowerCase();
+      var oppText = 'Your deepest opportunity is in ' + lowestName + ' (' + lowest.score.toFixed(1) + ' / 5). Focusing here will yield the highest return on modernization effort.';
+      doc.setFillColor.apply(doc, bgTert);
+      doc.roundedRect(margin, y, cw, 12, 2, 2, 'F');
+      doc.setFillColor.apply(doc, accent);
+      doc.rect(margin, y, 2, 12, 'F');
+      doc.setTextColor.apply(doc, txtMed);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8.5);
+      var oppLines = doc.splitTextToSize(oppText, cw - 12);
+      doc.text(oppLines, margin + 7, y + 5.5);
+
+      y += 18;
+
+      // ── Radar Chart + Pattern Assessment side by side ──
+      var chartCanvas = document.getElementById("radarChart");
+      var chartImg = chartCanvas.toDataURL("image/png");
+      var chartW = 82;
+      var chartH = 82;
+      doc.addImage(chartImg, 'PNG', margin, y, chartW, chartH);
+
+      // Pattern assessment column
+      var patX = margin + chartW + 8;
+      var patW = cw - chartW - 8;
+      var patY = y + 2;
+
+      doc.setTextColor.apply(doc, txtBright);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.text('Pattern Assessment', patX, patY);
+      patY += 3;
+      doc.setDrawColor.apply(doc, accent);
+      doc.setLineWidth(0.4);
+      doc.line(patX, patY, patX + 30, patY);
+      patY += 5;
+
+      scoreData.forEach(function(s) {
+        var scoreVal = document.getElementById(s.id).textContent;
+        var tagline = document.getElementById(s.tagId).textContent;
+
+        doc.setTextColor.apply(doc, s.color);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        var label = s.label.charAt(0) + s.label.slice(1).toLowerCase();
+        doc.text(label + ':  ' + scoreVal + ' / 5', patX, patY);
+        patY += 4;
+
+        doc.setTextColor.apply(doc, txtDim);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7.5);
+        var tLines = doc.splitTextToSize(tagline, patW);
+        doc.text(tLines, patX, patY);
+        patY += tLines.length * 3.5 + 5;
+      });
+
+      y += Math.max(chartH + 4, patY - y + 2);
+
+      // ── Executive Summary ──
+      doc.setDrawColor.apply(doc, border);
+      doc.setLineWidth(0.3);
+      doc.line(margin, y, pw - margin, y);
+      y += 6;
+
+      doc.setTextColor.apply(doc, txtBright);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.text('Executive Summary', margin, y);
+      y += 6;
+
+      var execText = document.getElementById("execSummary").textContent || "";
+      doc.setTextColor.apply(doc, txtMed);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(9);
+      var execLines = doc.splitTextToSize(execText, cw);
+      doc.text(execLines, margin, y);
+      y += execLines.length * 4.5 + 6;
+
+      // ── Framework Recommendations (page 2 if needed) ──
+      var pillarKeys = ['modernization', 'collaboration', 'technology', 'innovation'];
+      var pillarScores = {
+        modernization: parseFloat(document.getElementById('modScoreDisplay').textContent),
+        collaboration: parseFloat(document.getElementById('colScoreDisplay').textContent),
+        technology: parseFloat(document.getElementById('techScoreDisplay').textContent),
+        innovation: parseFloat(document.getElementById('innScoreDisplay').textContent)
+      };
+      var lowestKey = pillarKeys.reduce(function(min, k) {
+        return pillarScores[k] < pillarScores[min] ? k : min;
+      }, pillarKeys[0]);
+
+      // Check if we need a new page (need ~120mm for the 4 pillar cards)
+      if (y > ph - 130) {
+        // Add footer to current page
+        doc.setFillColor.apply(doc, accent);
+        doc.rect(0, ph - 10, pw, 0.4, 'F');
+        doc.setTextColor.apply(doc, txtDim);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(6.5);
+        doc.text('PreneurialWorks  |  Modernization Readiness Assessment', margin, ph - 5);
+        doc.text('preneurial.works  |  Page 1 of 2', pw - margin, ph - 5, { align: 'right' });
+
+        // New page with dark background
+        doc.addPage();
+        doc.setFillColor.apply(doc, bgDark);
+        doc.rect(0, 0, pw, ph, 'F');
+        y = 20;
+      }
+
+      // Section header
+      doc.setDrawColor.apply(doc, border);
+      doc.setLineWidth(0.3);
+      doc.line(margin, y, pw - margin, y);
+      y += 6;
+
+      doc.setTextColor.apply(doc, txtBright);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(11);
+      doc.text('Framework Recommendations', margin, y);
+      y += 4;
+      doc.setTextColor.apply(doc, txtDim);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      doc.text('Based on your scores, focus areas from the Innovation Impact Framework.', margin, y);
+      y += 7;
+
+      // Draw 4 pillar cards in 2x2 grid
+      var pCardW = (cw - 6) / 2;
+      var pCardH = 42;
+      var pillarColors = {
+        modernization: [0, 188, 212],
+        collaboration: [37, 99, 235],
+        technology: [110, 231, 183],
+        innovation: [196, 181, 253]
+      };
+
+      pillarKeys.forEach(function(key, i) {
+        var d = PILLAR_DATA[key];
+        var col = i % 2;
+        var row = Math.floor(i / 2);
+        var px = margin + col * (pCardW + 6);
+        var py = y + row * (pCardH + 5);
+        var pColor = pillarColors[key];
+        var isLowest = key === lowestKey;
+
+        // Card background
+        doc.setFillColor.apply(doc, bgTert);
+        doc.roundedRect(px, py, pCardW, pCardH, 2, 2, 'F');
+        // Top accent
+        doc.setFillColor.apply(doc, pColor);
+        doc.rect(px, py, pCardW, 1.2, 'F');
+        // Border - highlighted if focus area
+        if (isLowest) {
+          doc.setDrawColor.apply(doc, pColor);
+          doc.setLineWidth(0.5);
+        } else {
+          doc.setDrawColor.apply(doc, border);
+          doc.setLineWidth(0.2);
+        }
+        doc.roundedRect(px, py, pCardW, pCardH, 2, 2, 'S');
+
+        // Title + score
+        doc.setTextColor.apply(doc, txtBright);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.text(d.title, px + 4, py + 7);
+        doc.setTextColor.apply(doc, pColor);
+        doc.setFontSize(8.5);
+        var scoreStr = pillarScores[key].toFixed(1) + ' / 5';
+        doc.text(scoreStr, px + pCardW - 4, py + 7, { align: 'right' });
+
+        // Focus area badge
+        if (isLowest) {
+          doc.setFillColor.apply(doc, pColor);
+          doc.roundedRect(px + 4, py + 9.5, 18, 4, 1, 1, 'F');
+          doc.setTextColor.apply(doc, bgDark);
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(5);
+          doc.text('FOCUS AREA', px + 5, py + 12.5);
+        }
+
+        // Action items
+        var actionY = isLowest ? py + 17 : py + 13;
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7);
+        d.actions.forEach(function(action) {
+          doc.setTextColor.apply(doc, pColor);
+          doc.text('\u2022', px + 5, actionY);
+          doc.setTextColor.apply(doc, txtDim);
+          var aLines = doc.splitTextToSize(action, pCardW - 14);
+          doc.text(aLines, px + 9, actionY);
+          actionY += aLines.length * 3.2 + 1.5;
+        });
+
+        // Case study reference
+        doc.setTextColor.apply(doc, txtDim);
+        doc.setFontSize(6);
+        doc.text('Case study: ' + d.caseStudy.label, px + 4, py + pCardH - 3);
+      });
+
+      y += 2 * (pCardH + 5) + 4;
+
+      // ── Footer ──
+      var footerPage = doc.internal.getNumberOfPages() > 1 ? '  |  Page ' + doc.internal.getNumberOfPages() + ' of ' + doc.internal.getNumberOfPages() : '';
+      doc.setFillColor.apply(doc, accent);
+      doc.rect(0, ph - 10, pw, 0.4, 'F');
+      doc.setTextColor.apply(doc, txtDim);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6.5);
+      doc.text('PreneurialWorks  |  Modernization Readiness Assessment', margin, ph - 5);
+      doc.text('preneurial.works' + footerPage, pw - margin, ph - 5, { align: 'right' });
+
       doc.save("modernization-readiness.pdf");
     }
 
@@ -977,6 +1389,8 @@
       var lowest = pillarMap.reduce(function(min, p) { return p.score < min.score ? p : min; }, pillarMap[0]);
       var oppEl = document.getElementById("opportunityLink");
       oppEl.innerHTML = '<i class="fas fa-arrow-right"></i> Your deepest opportunity is in <a href="' + lowest.url + '">' + lowest.name + '</a> — see how others have tackled it.';
+
+      renderPillarRecommendations(scores);
 
       document.getElementById("resultsSection").style.display = "block";
       document.getElementById("copyStatus").style.display = "none";
