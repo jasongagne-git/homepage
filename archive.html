@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defense Signal Brief — Archive | PreneurialWorks</title>
+<link rel="canonical" href="https://preneurial.works/archive.html">
+<meta name="description" content="Archive of past Defense Signal Brief editions — weekly AI-powered innovation intelligence for defense intrapreneurs.">
+<meta property="og:title" content="Defense Signal Brief — Archive">
+<meta property="og:description" content="Browse past editions of the weekly Defense Signal Brief.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://preneurial.works/archive.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Defense Signal Brief — Archive">
+<meta name="twitter:description" content="Browse past editions of the weekly Defense Signal Brief.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #141925;
+    --bg-tertiary: #1a1d2e;
+    --color-accent: #00bcd4;
+    --color-accent-secondary: #2563eb;
+    --text-bright: #f8fafc;
+    --text-medium: #cbd5e1;
+    --text-dim: #94a3b8;
+    --text-dimmer: #64748b;
+    --border-dark: #1e293b;
+    --border-subtle: #2d3148;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-medium);
+    line-height: 1.6;
+    font-size: 14px;
+}
+.site-nav {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.9rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    text-decoration: none;
+}
+.nav-brand i { color: var(--color-accent); }
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+}
+.nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--color-accent); }
+.nav-links a.nav-defense {
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+}
+.nav-links a.nav-defense:hover {
+    background: var(--color-accent);
+    color: var(--bg-primary);
+}
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-bright);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 1rem 2rem;
+        gap: 1rem;
+    }
+    .nav-toggle { display: block; }
+    .site-nav { position: relative; }
+}
+
+.archive-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+.archive-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.archive-header .brand {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.archive-header .tagline {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+.archive-header h1 {
+    font-size: 1.8rem;
+    color: var(--text-bright);
+    font-weight: 700;
+    margin-top: 1.25rem;
+    letter-spacing: -0.3px;
+}
+.archive-header p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.archive-card {
+    display: block;
+    text-decoration: none;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s, transform 0.15s;
+}
+.archive-card:hover {
+    border-color: var(--color-accent-secondary);
+    transform: translateY(-1px);
+}
+.card-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+.card-summary {
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--text-dimmer);
+}
+.card-meta .read-more {
+    color: var(--color-accent-secondary);
+    font-weight: 600;
+}
+
+.archive-cta {
+    margin-top: 2rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+}
+.archive-cta p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+.archive-cta a.btn {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--color-accent-secondary);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.archive-cta a.btn:hover { background: #3b7cf5; }
+
+@media (max-width: 768px) {
+    .archive-container { padding: 1rem; }
+    .archive-header h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Preneurial<i>works</i></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="framework.html">Framework</a>
+            <a href="innovation-tool.html">Assessment</a>
+            <a href="projects.html">Case Studies</a>
+            <a href="archive.html">Archive</a>
+            <a href="index.html#defense" class="nav-defense">Defense &amp; Intel</a>
+        </div>
+    </div>
+</nav>
+
+<div class="archive-container">
+    <div class="archive-header">
+        <div class="brand">Defense Signal Brief</div>
+        <div class="tagline">Weekly Innovation Intelligence for Defense Intrapreneurs</div>
+        <h1>Briefing Archive</h1>
+        <p>Past editions of the weekly intelligence digest.</p>
+    </div>
+
+    <div class="archive-list">
+
+        <a href="briefings/2026-02-13.html" class="archive-card">
+            <div class="card-date">February 13, 2026</div>
+            <div class="card-summary">The Defense Innovation Unit is running a counter-drone sensor demonstration in spring 2026 with accelerated timelines driven by &quot;the urgency of the threat&quot; to US infra...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-11.html" class="archive-card">
+            <div class="card-date">February 11, 2026</div>
+            <div class="card-summary">The Navy and DIU are running parallel strike drone solicitations with deliberately low entry barriers — any warship launch capability and 1,000-pound munitions in 600nm radius. ...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-08.html" class="archive-card">
+            <div class="card-date">February 08, 2026</div>
+            <div class="card-summary">House Armed Services Committee Chair Mike Rogers is charting a course to $1.5 trillion in defense spending, requiring a $600 billion reconciliation increase—while the administra...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-08.html" class="archive-card">
+            <div class="card-date">February 08, 2026</div>
+            <div class="card-summary">Golden Dome&#x27;s acquisition reform push creates immediate leverage for intrapreneurs. DoD&#x27;s deputy director openly stated AI and autonomy will &quot;change how we deploy...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-08.html" class="archive-card">
+            <div class="card-date">February 08, 2026</div>
+            <div class="card-summary">The Golden Dome affordability crisis is creating an immediate opening for intrapreneurs to pitch AI-enabled, lower-cost missile defense alternatives. DoD deputy director Marcia ...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-08.html" class="archive-card">
+            <div class="card-date">February 08, 2026</div>
+            <div class="card-summary">The Marine Corps just validated that individual warfighters can design NDAA-compliant 3D-printed drones — Sgt. Henry David Volpe designed the first one. This creates immediate o...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-08.html" class="archive-card">
+            <div class="card-date">February 08, 2026</div>
+            <div class="card-summary">Bottom-up innovation pathways are opening through hands-on prototyping authorities and decentralized experimentation. A Marine sergeant designed the Corps&#x27; first NDAA-compl...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-07.html" class="archive-card">
+            <div class="card-date">February 07, 2026</div>
+            <div class="card-summary">House Armed Services Committee Chair Mike Rogers is charting a path to a $1.5 trillion defense budget, with analysts calling for $600 billion in reconciliation funding to reach ...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-07.html" class="archive-card">
+            <div class="card-date">February 07, 2026</div>
+            <div class="card-summary">House Armed Services Committee Chairman Mike Rogers is charting a path to a $1.5 trillion defense budget, requiring a $600 billion increase through reconciliation. This comes as...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-07.html" class="archive-card">
+            <div class="card-date">February 07, 2026</div>
+            <div class="card-summary">House Armed Services Chair Mike Rogers is charting a path to reach a $1.5 trillion defense budget, with analysts calling for a $600 billion increase through reconciliation to hi...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+        <a href="briefings/2026-02-07.html" class="archive-card">
+            <div class="card-date">February 07, 2026</div>
+            <div class="card-summary">House Armed Services Committee Chair Mike Rogers is charting a path to a $1.5 trillion defense budget, with analysts at AEI advocating for a $600 billion increase through budget...</div>
+            <div class="card-meta">
+                <span>60 sources cited</span>
+                <span class="read-more">Read briefing &rarr;</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="archive-cta">
+        <p>Get the Defense Signal Brief delivered to your inbox every Sunday.</p>
+        <a href="subscribe.html" class="btn">Subscribe — free weekly briefing</a>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+    <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem;">
+        <a href="mailto:jason@preneurial.works" style="color: var(--text-dim); text-decoration: none;">Contact</a> | <a href="https://www.linkedin.com/in/jagagne/" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </p>
+    <p style="color: var(--text-dimmer); font-size: 0.75rem;">&copy; 2026 Jason Gagne. Focused on institutional transformation and public impact innovation.</p>
+</div>
+<script data-goatcounter="https://preneurialworks.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
