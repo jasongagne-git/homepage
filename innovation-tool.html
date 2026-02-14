@@ -617,6 +617,7 @@
 
         <div class="btn-row" style="margin-top:1.5rem;">
           <button class="btn-primary" id="downloadPdfBtn" type="button">Download PDF</button>
+          <button class="btn-outline" id="shareResultsBtn" type="button"><i class="fab fa-linkedin" style="margin-right:0.3rem;"></i> Share results</button>
           <button class="btn-outline" id="consultationBtn" type="button">Start a conversation</button>
         </div>
       </div>
@@ -1369,6 +1370,26 @@
 
     document.getElementById("downloadPdfBtn").addEventListener("click", function() {
       document.getElementById('emailModal').style.display = 'block';
+    });
+
+    document.getElementById("shareResultsBtn").addEventListener("click", function() {
+      var mod = parseFloat(document.getElementById("modScoreDisplay").textContent);
+      var col = parseFloat(document.getElementById("colScoreDisplay").textContent);
+      var tech = parseFloat(document.getElementById("techScoreDisplay").textContent);
+      var inn = parseFloat(document.getElementById("innScoreDisplay").textContent);
+      var pillars = [
+        { name: "Institutional Modernization", score: mod },
+        { name: "Cross-Sector Collaboration", score: col },
+        { name: "Responsible Tech Adoption", score: tech },
+        { name: "Public-Impact Innovation", score: inn }
+      ];
+      var strongest = pillars.reduce(function(a, b) { return a.score > b.score ? a : b; });
+      var shareText = "I just took the Modernization Readiness Assessment from PreneurialWorks — my strongest area is "
+        + strongest.name + " (" + strongest.score.toFixed(1) + "/5).\n\n"
+        + "It maps your organization across four innovation framework pillars. Worth a look if you're driving institutional change.\n\n"
+        + "https://preneurial.works/innovation-tool.html";
+      var linkedInUrl = "https://www.linkedin.com/feed/?shareActive=true&text=" + encodeURIComponent(shareText);
+      window.open(linkedInUrl, "_blank");
     });
 
     document.getElementById("consultationBtn").addEventListener("click", function() {

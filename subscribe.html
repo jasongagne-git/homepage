@@ -372,19 +372,34 @@
         </section>
 
         <section class="subscribe-section">
-            <h2>Subscribe</h2>
-            <p>Free. Weekly. No spam. Unsubscribe anytime.</p>
-            <div class="subscribe-form" id="subscribe-form">
-                <input type="email" id="email-input" placeholder="you@example.com" required>
-                <button onclick="handleSubscribe()">Subscribe</button>
+            <div id="subscribe-state">
+                <h2>Subscribe</h2>
+                <p>Free. Weekly. No spam. Unsubscribe anytime.</p>
+                <div class="subscribe-form" id="subscribe-form">
+                    <input type="email" id="email-input" placeholder="you@example.com" required>
+                    <button onclick="handleSubscribe()">Subscribe</button>
+                </div>
+                <p class="subscribe-note">Your email is only used to deliver the Defense Signal Brief. We don't share it.</p>
             </div>
-            <p class="subscribe-note">Your email is only used to deliver the Defense Signal Brief. We don't share it.</p>
+            <div id="post-subscribe" style="display:none; text-align:center;">
+                <div style="font-size:1.8rem; margin-bottom:0.5rem;">✓</div>
+                <h2 style="font-size:1.3rem; color:var(--text-bright); margin-bottom:0.5rem;">You're almost in</h2>
+                <p style="color:var(--text-dim); font-size:0.95rem; margin-bottom:1.5rem;">Send the email that just opened and you'll be on the list. Your first briefing arrives Sunday at 7:00 AM ET.</p>
+                <div style="border-top:1px solid var(--border-subtle); padding-top:1.25rem;">
+                    <p style="color:var(--text-dimmer); font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:0.75rem;">While you wait</p>
+                    <div style="display:flex; flex-direction:column; gap:0.75rem; align-items:center;">
+                        <a href="framework.html" style="color:var(--color-accent); text-decoration:none; font-weight:600; font-size:0.95rem;">Explore the Innovation Impact Framework <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
+                        <a href="innovation-tool.html" style="color:var(--color-accent); text-decoration:none; font-weight:600; font-size:0.95rem;">Take the Modernization Readiness Assessment <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
+                        <a href="project-defense.html" style="color:var(--color-accent); text-decoration:none; font-weight:600; font-size:0.95rem;">Read the Defense Case Study <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="details">
             <h2>What you get</h2>
             <ul class="detail-list">
-                <li><i class="fas fa-bolt"></i> Executive summary of the day's most important defense innovation signals</li>
+                <li><i class="fas fa-bolt"></i> Executive summary of the week's most important defense innovation signals</li>
                 <li><i class="fas fa-tags"></i> Each item tagged by signal type so you can scan for what matters to your role</li>
                 <li><i class="fas fa-link"></i> Source links to every article cited — verify anything with one click</li>
                 <li><i class="fas fa-clock"></i> Delivered every Sunday by 7:00 AM ET so you're briefed before the week starts</li>
@@ -409,6 +424,9 @@
         var subject = encodeURIComponent('Defense Signal Brief — Subscribe');
         var body = encodeURIComponent('Please add me to the Defense Signal Brief weekly distribution.\n\nEmail: ' + email);
         window.location.href = 'mailto:jason@preneurial.works?subject=' + subject + '&body=' + body;
+        // Show post-subscribe engagement content
+        document.getElementById('subscribe-state').style.display = 'none';
+        document.getElementById('post-subscribe').style.display = 'block';
     }
     document.getElementById('email-input').addEventListener('keydown', function(e) {
         if (e.key === 'Enter') handleSubscribe();
