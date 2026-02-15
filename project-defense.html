@@ -230,21 +230,32 @@
             display: inline-block;
             background: var(--color-accent);
             color: var(--bg-primary) !important;
-            padding: 12px 24px;
+            padding: 0.55rem 1.2rem;
             border-radius: 999px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+            transition: all 0.2s;
         }
-
         .cta-link:hover {
-            background: var(--color-accent-secondary);
-            color: white !important;
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            background: #00d4ef;
             text-decoration: none;
         }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--color-accent-secondary);
+            color: #fff;
+            padding: 0.55rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover { background: #3b7cf5; }
+        .cta-text-link { color: var(--color-accent); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+        .cta-text-link:hover { text-decoration: underline; }
 
         .disclaimer {
             font-style: italic;
@@ -435,9 +446,9 @@
 
 <div style="text-align: center; max-width: 900px; margin: 2rem auto 0; padding: 0 20px;">
     <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem;">How ready is your organization for institutional modernization?</p>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="innovation-tool.html" style="display: inline-block; background: var(--color-accent-secondary); color: #fff; padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s;">Take the Readiness Assessment</a>
-        <a href="https://www.linkedin.com/groups/17212001/" style="display: inline-block; background: transparent; color: var(--text-dim); padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid var(--border-subtle); transition: all 0.2s;">Start a conversation</a>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+        <a href="innovation-tool.html" class="btn-primary">Take the Readiness Assessment</a>
+        <a href="https://www.linkedin.com/groups/17212001/" class="cta-text-link" target="_blank" rel="noopener">Start a conversation</a>
     </div>
 </div>
 <div class="footer">

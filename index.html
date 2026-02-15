@@ -295,6 +295,8 @@
         .btn-outline:hover { color: var(--text-bright); border-color: var(--text-dim); }
         .btn-accent { background: var(--color-accent); color: var(--bg-primary); }
         .btn-accent:hover { background: #00d4ef; }
+        .cta-text-link { color: var(--color-accent); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+        .cta-text-link:hover { text-decoration: underline; }
 
         /* === Footer === */
         .footer {
@@ -382,6 +384,24 @@
 
     <!-- Main Content -->
     <main class="container">
+        <!-- About Section -->
+        <section class="bio-section">
+            <h2>About Preneurial<i style="color: var(--color-accent);">works</i></h2>
+            <div class="bio-content">
+                <p>
+                     Preneurial<em style="color: var(--color-accent);">works</em> helps organizations modernize how they work,
+                     collaborate more effectively across sectors,
+                     and use technology in ways that are practical and responsible.
+                     By applying entrepreneurial principles and methods to institutional innovation,
+                     we create responsible outcome-driven, scalable solutions that strengthen organizations and communities.
+                </p>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                <button class="btn-primary" onclick="window.location.href='innovation-tool.html';">Take the Readiness Assessment</button>
+                <a href="https://www.linkedin.com/groups/17212001/" class="cta-text-link" target="_blank" rel="noopener">Start a conversation</a>
+            </div>
+        </section>
+
         <!-- Work Section -->
         <section class="work-section">
             <h2>Innovation in Action</h2>
@@ -452,23 +472,6 @@
             </div>
         </section>
 
-        <!-- Bio Section -->
-        <section class="bio-section">
-            <h2>About Preneurial<i style="color: var(--color-accent);">works</i></h2>
-            <div class="bio-content">
-                <p>
-                     Preneurial<em style="color: var(--color-accent);">works</em> helps organizations modernize how they work,
-                     collaborate more effectively across sectors,
-                     and use technology in ways that are practical and responsible.
-                     By applying entrepreneurial principles and methods to institutional innovation,
-                     we create responsible outcome-driven, scalable solutions that strengthen organizations and communities.
-                </p>
-            </div>
-            <div style="text-align: center; margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <button class="btn-primary" onclick="window.location.href='innovation-tool.html';">Take the Readiness Assessment</button>
-                <button class="btn-outline" onclick="window.location.href='https://www.linkedin.com/groups/17212001/';">Start a conversation</button>
-            </div>
-        </section>
     </main>
 
     <!-- Footer -->

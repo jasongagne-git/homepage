@@ -252,6 +252,8 @@
       border-color: var(--color-accent);
       color: var(--color-accent);
     }
+    .cta-text-link { color: var(--color-accent); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+    .cta-text-link:hover { text-decoration: underline; }
 
     .scores-grid {
       display: grid;
@@ -619,7 +621,9 @@
         <div class="btn-row" style="margin-top:1.5rem;">
           <button class="btn-primary" id="downloadPdfBtn" type="button">Download PDF</button>
           <button class="btn-outline" id="shareResultsBtn" type="button"><i class="fab fa-linkedin" style="margin-right:0.3rem;"></i> Share results</button>
-          <button class="btn-outline" id="consultationBtn" type="button">Start a conversation</button>
+        </div>
+        <div style="text-align:center; margin-top:0.5rem;">
+          <a href="https://www.linkedin.com/groups/17212001/" class="cta-text-link" id="consultationBtn" target="_blank" rel="noopener">Start a conversation</a>
         </div>
       </div>
     </div>
@@ -1393,9 +1397,6 @@
       window.open(linkedInUrl, "_blank");
     });
 
-    document.getElementById("consultationBtn").addEventListener("click", function() {
-      window.location.href = "https://www.linkedin.com/groups/17212001/";
-    });
   </script>
 
   <!-- GoatCounter Analytics -->

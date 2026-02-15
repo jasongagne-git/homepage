@@ -307,6 +307,20 @@
         .back-link:hover {
             color: var(--text-bright);
         }
+        .btn-primary {
+            display: inline-block;
+            background: var(--color-accent-secondary);
+            color: #fff;
+            padding: 0.55rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover { background: #3b7cf5; }
+        .cta-text-link { color: var(--color-accent); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+        .cta-text-link:hover { text-decoration: underline; }
 
         .footer {
             text-align: center;
@@ -502,9 +516,9 @@
 
 <div style="text-align: center; max-width: 900px; margin: 2rem auto 0; padding: 0 20px;">
     <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 1rem;">How does your organization approach responsible tech adoption?</p>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="innovation-tool.html" style="display: inline-block; background: var(--color-accent-secondary); color: #fff; padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s;">Take the Readiness Assessment</a>
-        <a href="https://www.linkedin.com/groups/17212001/" style="display: inline-block; background: transparent; color: var(--text-dim); padding: 0.55rem 1.2rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 1px solid var(--border-subtle); transition: all 0.2s;">Start a conversation</a>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+        <a href="innovation-tool.html" class="btn-primary">Take the Readiness Assessment</a>
+        <a href="https://www.linkedin.com/groups/17212001/" class="cta-text-link" target="_blank" rel="noopener">Start a conversation</a>
     </div>
 </div>
 <div class="footer">
