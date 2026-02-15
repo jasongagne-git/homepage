@@ -235,22 +235,17 @@
         .col-box ul { margin-top: 0; padding-left: 16px; }
         .col-box li { font-size: 0.9rem; margin-bottom: 6px; }
 
-        .compliance-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--color-pillar);
-            border-radius: 999px;
-            padding: 8px 16px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--color-pillar);
+        .safeguard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
             position: relative;
             z-index: 2;
-            margin: 8px 4px;
         }
-        .compliance-badge i { font-size: 0.7rem; }
+        .safeguard-grid .col-box:last-child {
+            grid-column: 1 / -1;
+        }
 
         .framework-note {
             background: var(--bg-tertiary);
@@ -363,6 +358,8 @@
             }
 
             .two-col { grid-template-columns: 1fr; }
+            .safeguard-grid { grid-template-columns: 1fr; }
+            .safeguard-grid .col-box:last-child { grid-column: auto; }
         }
     </style>
 </head>
@@ -458,15 +455,31 @@
         HIPAA isn't a single rule — it's a framework of administrative, physical, and technical safeguards that together protect patient information. For an IT modernization at a community health clinic, this meant addressing all three simultaneously.
     </p>
 
-    <div style="position: relative; z-index: 2; margin: 20px 0;">
-        <span class="compliance-badge"><i class="fas fa-lock"></i> Access Controls</span>
-        <span class="compliance-badge"><i class="fas fa-database"></i> Encryption at Rest</span>
-        <span class="compliance-badge"><i class="fas fa-exchange-alt"></i> Encryption in Transit</span>
-        <span class="compliance-badge"><i class="fas fa-clipboard-list"></i> Audit Logging</span>
-        <span class="compliance-badge"><i class="fas fa-user-shield"></i> Role-Based Permissions</span>
-        <span class="compliance-badge"><i class="fas fa-undo"></i> Backup &amp; Recovery</span>
-        <span class="compliance-badge"><i class="fas fa-file-contract"></i> BAA Management</span>
-        <span class="compliance-badge"><i class="fas fa-chalkboard-teacher"></i> Staff Training</span>
+    <div class="safeguard-grid">
+        <div class="col-box">
+            <h3><i class="fas fa-microchip" style="color: var(--color-pillar); margin-right: 6px;"></i> Technical Safeguards</h3>
+            <ul>
+                <li>Access controls limiting PHI to authorized users and roles</li>
+                <li>Encryption at rest for stored patient data</li>
+                <li>Encryption in transit for all data moving across the network</li>
+                <li>Audit logging to track who accessed what and when</li>
+            </ul>
+        </div>
+        <div class="col-box">
+            <h3><i class="fas fa-users-cog" style="color: var(--color-pillar); margin-right: 6px;"></i> Administrative Safeguards</h3>
+            <ul>
+                <li>Role-based permissions aligned to clinical and admin functions</li>
+                <li>Business Associate Agreement management for third-party vendors</li>
+                <li>Staff training on security practices and PHI handling</li>
+            </ul>
+        </div>
+        <div class="col-box">
+            <h3><i class="fas fa-server" style="color: var(--color-pillar); margin-right: 6px;"></i> Physical Safeguards</h3>
+            <ul>
+                <li>Backup and recovery systems for continuity of care</li>
+                <li>Hardware security and restricted access to server infrastructure</li>
+            </ul>
+        </div>
     </div>
 
     <p>
