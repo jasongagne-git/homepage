@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Defense Signal Brief — Archive | PreneurialWorks</title>
+<title>Briefing Archive | PreneurialWorks</title>
 <link rel="canonical" href="https://preneurial.works/archive.html">
-<meta name="description" content="Archive of past Defense Signal Brief editions — weekly AI-powered innovation intelligence for defense intrapreneurs.">
-<meta property="og:title" content="Defense Signal Brief — Archive">
-<meta property="og:description" content="Browse past editions of the weekly Defense Signal Brief.">
+<meta name="description" content="Archive of weekly intelligence briefings from PreneurialWorks — AI-powered signals for intrapreneurs across defense, policy, and institutional innovation.">
+<meta property="og:title" content="Briefing Archive — PreneurialWorks">
+<meta property="og:description" content="Browse past editions of weekly innovation intelligence briefings.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://preneurial.works/archive.html">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Defense Signal Brief — Archive">
-<meta name="twitter:description" content="Browse past editions of the weekly Defense Signal Brief.">
+<meta name="twitter:title" content="Briefing Archive — PreneurialWorks">
+<meta name="twitter:description" content="Browse past editions of weekly innovation intelligence briefings.">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
@@ -204,6 +204,35 @@ body {
 }
 .archive-cta a.btn:hover { background: #3b7cf5; }
 
+.vertical-section {
+    margin-bottom: 2.5rem;
+}
+.vertical-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+.vertical-heading h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    white-space: nowrap;
+}
+.vertical-heading .heading-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+}
+.vertical-heading .heading-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-dimmer);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
 @media (max-width: 768px) {
     .archive-container { padding: 1rem; }
     .archive-header h1 { font-size: 1.4rem; }
@@ -228,27 +257,33 @@ body {
 
 <div class="archive-container">
     <div class="archive-header">
-        <div class="brand">Defense Signal Brief</div>
-        <div class="tagline">Weekly Innovation Intelligence for Defense Intrapreneurs</div>
         <h1>Briefing Archive</h1>
-        <p>Past editions of the weekly intelligence digest.</p>
+        <p>Past editions of weekly innovation intelligence briefings.</p>
     </div>
 
-    <div class="archive-list">
+    <!-- Defense Signal Brief -->
+    <div class="vertical-section" id="defense">
+        <div class="vertical-heading">
+            <h2>Defense Signal Brief</h2>
+            <div class="heading-line"></div>
+            <span class="heading-tag">Weekly</span>
+        </div>
 
-        <a href="briefings/2026-02-07.html" class="archive-card">
-            <div class="card-date">February 07, 2026</div>
-            <div class="card-summary">House Armed Services Committee Chair Mike Rogers is charting a path to a $1.5 trillion defense budget, with analysts at AEI advocating for a $600 billion increase through budget...</div>
-            <div class="card-meta">
-                <span>60 sources cited</span>
-                <span class="read-more">Read briefing &rarr;</span>
-            </div>
-        </a>
-    </div>
+        <div class="archive-list">
+            <a href="briefings/2026-02-07.html" class="archive-card">
+                <div class="card-date">February 07, 2026</div>
+                <div class="card-summary">House Armed Services Committee Chair Mike Rogers is charting a path to a $1.5 trillion defense budget, with analysts at AEI advocating for a $600 billion increase through budget...</div>
+                <div class="card-meta">
+                    <span>60 sources cited</span>
+                    <span class="read-more">Read briefing &rarr;</span>
+                </div>
+            </a>
+        </div>
 
-    <div class="archive-cta">
-        <p>Get the Defense Signal Brief delivered to your inbox every Sunday.</p>
-        <a href="subscribe.html" class="btn">Subscribe — free weekly briefing</a>
+        <div class="archive-cta">
+            <p>Get the Defense Signal Brief delivered to your inbox every week.</p>
+            <a href="subscribe.html" class="btn">Subscribe — free weekly briefing</a>
+        </div>
     </div>
 </div>
 
