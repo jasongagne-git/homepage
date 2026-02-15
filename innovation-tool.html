@@ -1070,16 +1070,11 @@
         var scoreVal = document.getElementById(s.id).textContent;
         doc.text(scoreVal, x + 4, y + 16);
         // /5 suffix
+        var scoreWidth = doc.getTextWidth(scoreVal);
         doc.setTextColor.apply(doc, txtDim);
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(8);
-        var svW = doc.getTextWidth(scoreVal);
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(16);
-        var realSvW = doc.getTextWidth(scoreVal);
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(8);
-        doc.text('/ 5', x + 4 + realSvW + 1.5, y + 16);
+        doc.text('/ 5', x + 4 + scoreWidth + 1.5, y + 16);
         // Tagline
         var tagline = document.getElementById(s.tagId).textContent;
         doc.setTextColor.apply(doc, txtDim);
