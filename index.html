@@ -240,33 +240,6 @@
             border-left: 4px solid var(--color-accent-secondary);
         }
         .defense-section h2 { text-align: left; }
-        .defense-badge {
-            display: inline-block;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            padding: 1.2rem 1.5rem;
-            margin-top: 1.5rem;
-        }
-        .defense-badge .badge-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-bright);
-            letter-spacing: -0.3px;
-        }
-        .defense-badge .badge-sub {
-            font-size: 0.75rem;
-            color: var(--text-dimmer);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-        .defense-badge .badge-powered {
-            font-size: 0.65rem;
-            color: var(--text-dimmer);
-            margin-top: 4px;
-        }
-        .defense-badge .badge-powered em { font-style: italic; }
 
         /* === Bio === */
         .bio-content {
@@ -450,25 +423,16 @@
 
         <!-- Defense & Intel Section -->
         <section class="defense-section" id="defense">
-            <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-secondary); margin-bottom: 0.5rem;">Featured Vertical</p>
-            <h2>Defense Innovation &amp; Intelligence</h2>
-            <p style="color: var(--text-medium); line-height: 1.8; max-width: 800px;">
-                The <a href="framework.html" style="color: var(--color-accent); text-decoration: none; font-weight: 500;">Innovation Impact Framework</a>
-                was built to work across sectors — but some of its deepest applications are inside the defense and intelligence community,
-                where bureaucratic complexity and mission urgency create unique conditions for intrapreneurship.
-            </p>
-            <div class="defense-badge">
-                <div class="badge-title">DEFENSE SIGNAL BRIEF</div>
-                <div class="badge-sub">Weekly Innovation Intelligence for Defense Intrapreneurs</div>
-                <div class="badge-powered">powered by Preneurial<em>Works</em></div>
-            </div>
-            <p style="color: var(--text-dim); margin-top: 1.5rem; line-height: 1.7; max-width: 800px;">
-                The Defense Signal Brief is a weekly AI-powered briefing that surfaces actionable innovation opportunities
-                across four intrapreneurial signal types — from policy friction to reform momentum.
-            </p>
-            <div style="margin-top: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;">
-                <a href="subscribe.html" class="btn-accent" style="text-decoration:none; display:inline-block; border-radius:999px; padding:0.55rem 1.2rem; font-weight:600; font-size:1rem; letter-spacing:0.02em; cursor:pointer;">Subscribe to the Defense Signal Brief</a>
-                <a href="project-defense.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Read the full case study <i class="fas fa-arrow-right" style="font-size: 0.8rem;"></i></a>
+            <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 280px;">
+                    <p style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-secondary); margin-bottom: 0.4rem;">Featured Vertical</p>
+                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.4rem;">Defense Signal Brief</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">Weekly AI-powered intelligence for defense intrapreneurs — surfacing signals across policy friction, budget mismatches, and reform momentum.</p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; flex-shrink: 0;">
+                    <a href="subscribe.html" class="btn-accent" style="text-decoration:none; display:inline-block; border-radius:999px; padding:0.55rem 1.2rem; font-weight:600; font-size:1rem; letter-spacing:0.02em;">Subscribe — free weekly briefing</a>
+                    <a href="project-defense.html" class="cta-text-link">Read the case study <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
+                </div>
             </div>
         </section>
 
