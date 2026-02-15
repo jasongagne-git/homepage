@@ -168,36 +168,35 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 0.75rem;
+      table-layout: fixed;
     }
 
-    th, td {
+    td {
       padding: 0.5rem;
       text-align: left;
       border-bottom: 1px solid var(--border-subtle);
       vertical-align: top;
     }
 
-    th {
-      background: var(--bg-tertiary);
-      color: var(--text-bright);
-      font-weight: 600;
-      font-size: 0.9rem;
-      border-bottom: 1px solid var(--border-subtle);
+    td.question-text {
+      width: 60%;
+    }
+
+    td.scale-cell {
+      width: 8%;
+      text-align: center;
+      white-space: nowrap;
+      font-size: 0.85rem;
+    }
+
+    td.scale-cell input {
+      margin-right: 0.25rem;
+      accent-color: var(--color-accent);
     }
 
     .question-text {
       font-size: 0.95rem;
       color: var(--text-dim);
-    }
-
-    .scale-cell {
-      white-space: nowrap;
-      font-size: 0.85rem;
-    }
-
-    .scale-cell input {
-      margin-right: 0.25rem;
-      accent-color: var(--color-accent);
     }
 
     .btn-row {
@@ -486,12 +485,6 @@
 
         <h3>Institutional Modernization</h3>
         <table>
-          <thead>
-            <tr>
-              <th style="width: 60%;">Statement</th>
-              <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
               <td class="question-text">
