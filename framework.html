@@ -108,36 +108,28 @@
             cursor: pointer;
         }
 
-        .document-container {
-            max-width: 8.5in;
-            min-height: 11in;
-            margin: 0 auto;
-            padding: 0.75in;
-            background: var(--bg-secondary);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Header Section */
-        .header {
+        .page-header {
             text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--color-accent);
+            padding: 60px 20px 30px;
+            border-bottom: 1px solid var(--border-subtle);
         }
-
-        .main-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 2.2rem;
+        .page-header h1 {
+            font-size: 2.4rem;
             font-weight: 700;
+            margin: 0 0 10px 0;
             color: var(--text-bright);
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
+        }
+        .page-header p {
+            font-size: 1rem;
+            color: var(--text-dim);
+            max-width: 640px;
+            margin: 0 auto;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            font-weight: 500;
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
 
         /* Purpose Section */
@@ -221,7 +213,6 @@
             position: absolute;
             top: -10px;
             left: 1rem;
-            background: var(--color-accent);
             color: var(--bg-primary);
             width: 24px;
             height: 24px;
@@ -232,6 +223,10 @@
             font-weight: 700;
             font-size: 0.8rem;
         }
+        .pillar-card:nth-child(1) .pillar-number { background: #00bcd4; }
+        .pillar-card:nth-child(2) .pillar-number { background: #2563eb; }
+        .pillar-card:nth-child(3) .pillar-number { background: #0891b2; }
+        .pillar-card:nth-child(4) .pillar-number { background: #6366f1; }
 
         .pillar-title {
             font-family: 'Inter', sans-serif;
@@ -256,11 +251,14 @@
 
         .pillar-list li:before {
             content: "•";
-            color: var(--color-accent);
             font-weight: bold;
             position: absolute;
             left: 0;
         }
+        .pillar-card:nth-child(1) .pillar-list li:before { color: #00bcd4; }
+        .pillar-card:nth-child(2) .pillar-list li:before { color: #2563eb; }
+        .pillar-card:nth-child(3) .pillar-list li:before { color: #0891b2; }
+        .pillar-card:nth-child(4) .pillar-list li:before { color: #6366f1; }
 
         /* System Flow */
         .flow-section {
@@ -279,16 +277,40 @@
             margin-bottom: 0.75rem;
         }
 
-        .flow-diagram {
-            text-align: center;
-            font-size: 0.8rem;
+        .flow-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
             margin-bottom: 0.75rem;
-            font-family: monospace;
+            flex-wrap: wrap;
+        }
+        .flow-step {
             background: var(--bg-tertiary);
-            padding: 0.75rem;
-            border-radius: 4px;
             border: 1px solid var(--border-subtle);
-            color: var(--text-medium);
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            text-align: center;
+            white-space: nowrap;
+        }
+        .flow-step:nth-child(1) { border-top: 2px solid #00bcd4; }
+        .flow-step:nth-child(3) { border-top: 2px solid #2563eb; }
+        .flow-step:nth-child(5) { border-top: 2px solid #0891b2; }
+        .flow-step:nth-child(7) { border-top: 2px solid #6366f1; }
+        .flow-arrow {
+            color: var(--text-dimmer);
+            font-size: 0.9rem;
+            padding: 0 0.4rem;
+        }
+        .flow-feedback {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-dimmer);
+            margin-top: 0.5rem;
+            letter-spacing: 0.5px;
         }
 
         .operating-logic {
@@ -369,24 +391,25 @@
 
         /* Takeaway Section */
         .takeaway-section {
-            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-            color: white;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--color-accent);
             padding: 1rem;
             border-radius: 8px;
-            text-align: center;
         }
 
         .takeaway-title {
             font-family: 'Inter', sans-serif;
             font-size: 1.1rem;
             font-weight: 700;
+            color: var(--color-accent);
             margin-bottom: 0.5rem;
         }
 
         .takeaway-text {
             font-size: 0.9rem;
             line-height: 1.5;
-            font-style: italic;
+            color: var(--text-medium);
         }
 
         /* Responsive Design */
@@ -416,18 +439,14 @@
                 position: relative;
             }
 
-            .document-container {
-                max-width: 100%;
-                padding: 1rem;
-                margin: 0;
+            .page-header {
+                padding: 40px 15px 20px;
             }
-
-            .main-title {
-                font-size: 1.8rem;
+            .page-header h1 {
+                font-size: 2rem;
             }
-
-            .subtitle {
-                font-size: 1rem;
+            .content-container {
+                padding: 1.5rem 1rem;
             }
 
             .section-title {
@@ -491,10 +510,7 @@
             body {
                 background: white;
             }
-
-            .document-container {
-                box-shadow: none;
-                margin: 0;
+            .content-container {
                 padding: 0.5in;
             }
         }
@@ -516,12 +532,12 @@
         </div>
     </nav>
 
-    <div class="document-container">
-        <!-- Header -->
-        <div class="header">
-            <h1 class="main-title">Innovation Impact Framework</h1>
-            <p class="subtitle">A Structured Approach to Institutional Transformation</p>
-        </div>
+    <div class="page-header">
+        <h1>Innovation Impact Framework</h1>
+        <p>A structured approach to institutional transformation across four interconnected pillars.</p>
+    </div>
+
+    <div class="content-container">
 
         <!-- Purpose -->
         <div class="purpose-section">
@@ -598,11 +614,16 @@
         <!-- System Flow -->
         <div class="flow-section">
             <h3 class="flow-title">Framework Flow</h3>
-            <div class="flow-diagram">
-[Modernization] → [Collaboration] → [Tech Adoption] → [Public-Impact Innovation]<br>
-        ↑                                                        ↓<br>
-        └────────────── Continuous Learning &amp; Feedback ─────────┘
+            <div class="flow-steps">
+                <div class="flow-step">Modernization</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-step">Collaboration</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-step">Tech Adoption</div>
+                <span class="flow-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="flow-step">Public-Impact Innovation</div>
             </div>
+            <div class="flow-feedback">↻ Continuous Learning &amp; Feedback</div>
             <div class="operating-logic">
                 <strong>Operating Logic:</strong><br>
                 • Modernization creates the structural capacity for change<br>
@@ -649,15 +670,6 @@
                 When institutions modernize based on community-oriented outcomes, collaborate across sectors, adopt technology responsibly, and focus on public impact, they create the conditions for scalable, sustainable societal change.
             </p>
         </div>
-        <!-- Framework in Action callout -->
-        <div style="background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1rem 1.25rem; margin-top: 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 240px;">
-                <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dimmer); font-weight: 600; margin-bottom: 0.3rem;">See the framework in action</div>
-                <div style="font-size: 0.9rem; color: var(--text-medium); line-height: 1.5;">The <strong style="color: var(--text-bright);">Defense Signal Brief</strong> applies this framework weekly — surfacing intrapreneurial signals across policy friction, budget mismatches, and reform momentum.</div>
-            </div>
-            <a href="subscribe.html" style="text-decoration:none; display:inline-block; background: var(--color-accent-secondary); color:#fff; border-radius:999px; padding:0.55rem 1.2rem; font-weight:600; font-size:1rem; letter-spacing:0.02em; white-space:nowrap; transition: all 0.2s;">Subscribe — free weekly briefing</a>
-        </div>
-
         <div style="text-align: center; margin-top: 1.5rem;">
             <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.75rem;">See where your organization stands across these four pillars.</p>
             <button class="btn-primary" onclick="window.location.href='innovation-tool.html';">Take the Readiness Assessment</button>
