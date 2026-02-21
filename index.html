@@ -189,7 +189,7 @@
         /* === Work Cards === */
         .work-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
         .work-card {
@@ -297,7 +297,7 @@
             .work-section, .bio-section, .defense-section { padding: 1.5rem; margin-bottom: 2rem; }
             .work-section h2, .bio-section h2, .defense-section h2 { font-size: 1.8rem; }
             .bio-content { font-size: 1rem; }
-            .work-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .work-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
             .work-card { padding: 1.5rem; }
             .work-card h3 { font-size: 1.2rem; }
             .container { padding: 0 1rem; }
@@ -363,11 +363,11 @@
             </div>
         </section>
 
-        <!-- Work Section -->
+        <!-- The Framework -->
         <section class="work-section">
-            <h2>Innovation in Action</h2>
+            <h2>The Framework</h2>
             <p class="section-intro">
-                <em>Responsible innovation — connecting big-picture strategy with practical solutions</em>
+                <em>Tools for understanding and measuring innovation readiness</em>
             </p>
             <div class="work-grid">
                 <div class="work-card">
@@ -395,6 +395,16 @@
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+            </div>
+        </section>
+
+        <!-- In Practice -->
+        <section class="work-section">
+            <h2>In Practice</h2>
+            <p class="section-intro">
+                <em>The framework applied — real-world case studies and original research</em>
+            </p>
+            <div class="work-grid">
                 <div class="work-card">
                     <h3>Case Studies</h3>
                     <p>
@@ -403,6 +413,18 @@
                     </p>
                     <a href="projects.html" class="link">
                         <span>View Case Studies</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="work-card">
+                    <h3>Original Research</h3>
+                    <p>
+                        Data-driven analysis through the framework lens — testing whether governance
+                        frameworks are behaviorally sufficient for AI safety across 40 countries
+                        and 1,362 documented incidents.
+                    </p>
+                    <a href="research.html" class="link">
+                        <span>View Research</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
