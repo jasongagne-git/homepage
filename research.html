@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Original Research | PreneurialWorks</title>
+<link rel="canonical" href="https://preneurial.works/research.html">
+<meta name="description" content="Data-driven research through the Innovation Impact Framework — examining where institutional structure, technology adoption, and reform momentum collide.">
+<meta property="og:title" content="Original Research — PreneurialWorks">
+<meta property="og:description" content="Data-driven research through the Innovation Impact Framework — examining where institutional structure, technology adoption, and reform momentum collide.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://preneurial.works/research.html">
+<meta property="og:image" content="https://preneurial.works/images/og-card.png?v=2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Original Research — PreneurialWorks">
+<meta name="twitter:description" content="Data-driven research examining where institutional structure, technology adoption, and reform momentum collide.">
+<meta name="twitter:image" content="https://preneurial.works/images/og-card.png?v=2">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+    --bg-primary: #0a0e1a;
+    --bg-secondary: #141925;
+    --bg-tertiary: #1a1d2e;
+    --color-accent: #00bcd4;
+    --color-accent-secondary: #2563eb;
+    --text-bright: #f8fafc;
+    --text-medium: #cbd5e1;
+    --text-dim: #94a3b8;
+    --text-dimmer: #64748b;
+    --border-dark: #1e293b;
+    --border-subtle: #2d3148;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-medium);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* ── NAV ── */
+.site-nav {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.9rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    text-decoration: none;
+}
+.nav-brand i { color: var(--color-accent); }
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+}
+.nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--color-accent); }
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-bright);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+/* ── HERO ── */
+.research-hero {
+    text-align: center;
+    padding: 4rem 2rem 3rem;
+    max-width: 780px;
+    margin: 0 auto;
+}
+.research-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.75rem;
+}
+.research-hero .subtitle {
+    font-size: 1rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ── VERTICAL SECTIONS ── */
+.research-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+}
+.vertical-section {
+    margin-bottom: 2.5rem;
+}
+.vertical-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+.vertical-heading h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    white-space: nowrap;
+}
+.heading-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+}
+.heading-tag {
+    font-size: 0.7rem;
+    color: var(--text-dimmer);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+/* ── RESEARCH CARD ── */
+.research-card {
+    display: block;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+.research-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 188, 212, 0.08);
+    border-color: rgba(0, 188, 212, 0.3);
+}
+.card-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.card-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    border: 1px solid;
+    font-weight: 500;
+}
+.card-tag.rta {
+    background: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: #f59e0b;
+}
+.card-tag.pii {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #10b981;
+}
+.research-card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+.research-card .card-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+.card-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    color: var(--text-dimmer);
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+}
+.card-meta strong { color: var(--text-dim); font-weight: 600; }
+.card-arrow {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: var(--text-dimmer);
+    font-size: 1rem;
+    transition: color 0.2s, transform 0.2s;
+}
+.research-card:hover .card-arrow {
+    color: var(--color-accent);
+    transform: translateX(3px);
+}
+
+/* ── FOOTER ── */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-dim);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+.footer p { font-size: 0.9rem; }
+.footer a { color: var(--color-accent); text-decoration: none; }
+.footer a:hover { color: var(--text-bright); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 1rem 2rem;
+        gap: 1rem;
+    }
+    .nav-toggle { display: block; }
+    .site-nav { position: relative; }
+    .research-hero h1 { font-size: 1.8rem; }
+    .research-card { padding: 1.5rem; }
+    .card-meta { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">Preneurial<i>works</i></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="framework.html">Framework</a>
+            <a href="innovation-tool.html">Assessment</a>
+            <a href="projects.html">Case Studies</a>
+            <a href="research.html">Research</a>
+            <a href="archive.html">Newsletter</a>
+        </div>
+    </div>
+</nav>
+
+<div class="research-hero">
+    <h1>Original Research</h1>
+    <p class="subtitle">Data-driven analysis through the Innovation Impact Framework — examining where institutional structure, technology adoption, and reform momentum collide.</p>
+</div>
+
+<div class="research-container">
+
+    <div class="vertical-section">
+        <div class="vertical-heading">
+            <h2>AI Governance</h2>
+            <div class="heading-line"></div>
+            <span class="heading-tag">Research Notes</span>
+        </div>
+
+        <a href="research/behavioral-sufficiency.html" class="research-card">
+            <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+            <div class="card-tags">
+                <span class="card-tag rta">Responsible Technology Adoption</span>
+                <span class="card-tag pii">Public-Impact Innovation</span>
+            </div>
+            <h3>The Behavioral Sufficiency Problem</h3>
+            <p class="card-subtitle">We govern AI systems the way we govern humans — through frameworks, regulations, and standards. But governance alone has never been sufficient to determine behavior. Why do we assume it will be sufficient for AI?</p>
+            <div class="card-meta">
+                <span>n = <strong>1,362</strong> AI incidents</span>
+                <span><strong>463</strong> public safety incidents</span>
+                <span><strong>40</strong> countries analyzed</span>
+                <span>February 2026</span>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="research-container">
+        <p>&copy; 2026 Jason Gagne. Focused on institutional transformation and public impact innovation. | <a href="mailto:jason@preneurial.works">Contact</a> | <a href="https://www.linkedin.com/in/jagagne/" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
+    </div>
+</footer>
+
+<script data-goatcounter="https://preneurialworks.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
