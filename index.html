@@ -534,7 +534,10 @@
             .then(function(items) {
                 var container = document.getElementById('signal-cards');
                 if (!items || !items.length) {
-                    container.innerHTML = '<div class="signals-empty">New signals coming soon.</div>';
+                    container.innerHTML = '<div class="signals-empty">'
+                        + 'Our intelligence pipelines are actively tracking signals across policy, technology, and market dynamics. '
+                        + 'Briefings will appear here as they publish to the archive.'
+                        + '</div>';
                     return;
                 }
                 // Show the 3 most recent
@@ -551,7 +554,10 @@
             })
             .catch(function() {
                 var container = document.getElementById('signal-cards');
-                if (container) container.innerHTML = '<div class="signals-empty">New signals coming soon.</div>';
+                if (container) container.innerHTML = '<div class="signals-empty">'
+                    + 'Our intelligence pipelines are actively tracking signals across policy, technology, and market dynamics. '
+                    + 'Briefings will appear here as they publish to the archive.'
+                    + '</div>';
             });
     })();
     </script>
