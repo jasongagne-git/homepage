@@ -223,11 +223,81 @@
         }
         .work-card .link:hover { color: var(--text-bright); }
 
-        /* === Defense Section === */
+        /* === Defense Section (legacy, unused) === */
         .defense-section {
             border-left: 4px solid var(--color-accent-secondary);
         }
         .defense-section h2 { text-align: left; }
+
+        /* === Signals Section === */
+        .signals-section {
+            background: var(--bg-secondary);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            margin-bottom: 3rem;
+        }
+        .signals-section h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .signals-intro {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-align: center;
+        }
+        .signal-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .signal-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            transition: border-color 0.2s, transform 0.15s;
+        }
+        .signal-card:hover {
+            border-color: var(--color-accent-secondary);
+            transform: translateY(-2px);
+        }
+        .signal-card .card-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.4rem;
+        }
+        .signal-card .card-headline {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+        .signal-card .card-snippet {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .signals-empty {
+            text-align: center;
+            color: var(--text-dimmer);
+            font-size: 0.9rem;
+            padding: 2rem 0;
+        }
 
         /* === Bio === */
         .bio-content {
@@ -319,7 +389,7 @@
                 <a href="innovation-tool.html">Assessment</a>
                 <a href="projects.html">Case Studies</a>
                 <a href="research.html">Research</a>
-            <a href="archive.html">Newsletter</a>
+            <a href="archive.html">Intelligence</a>
             </div>
         </div>
     </nav>
@@ -431,17 +501,20 @@
             </div>
         </section>
 
-        <!-- Defense & Intel Section -->
-        <section class="defense-section" id="defense">
-            <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 280px;">
-                    <p style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-secondary); margin-bottom: 0.4rem;">Featured Vertical</p>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-bright); margin-bottom: 0.4rem;">Defense Signal Brief</h3>
-                    <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">Weekly AI-powered intelligence for defense intrapreneurs — surfacing signals across policy friction, budget mismatches, and reform momentum.</p>
-                </div>
-                <div style="flex-shrink: 0;">
-                    <a href="subscribe.html" class="btn-accent" style="text-decoration:none; display:inline-block; border-radius:999px; padding:0.55rem 1.2rem; font-weight:600; font-size:1rem; letter-spacing:0.02em;">Subscribe — free weekly briefing</a>
-                </div>
+        <!-- What We're Seeing -->
+        <section class="signals-section" id="signals">
+            <h2>What We're Seeing</h2>
+            <p class="signals-intro">
+                <em>Recent signals from our intelligence pipeline — policy shifts, market gaps, and emerging opportunities surfaced weekly</em>
+            </p>
+            <div class="signal-cards" id="signal-cards">
+                <div class="signals-empty">Loading recent signals&hellip;</div>
+            </div>
+            <div style="text-align: center;">
+                <a href="archive.html" class="link" style="color: var(--color-accent); text-decoration: none; font-weight: 500;">
+                    <span>Browse the full archive</span>
+                    <i class="fas fa-arrow-right" style="margin-left: 0.4rem;"></i>
+                </a>
             </div>
         </section>
 
@@ -454,6 +527,34 @@
         </div>
     </footer>
 
+    <script>
+    (function() {
+        fetch('data/snippets.json')
+            .then(function(r) { return r.json(); })
+            .then(function(items) {
+                var container = document.getElementById('signal-cards');
+                if (!items || !items.length) {
+                    container.innerHTML = '<div class="signals-empty">New signals coming soon.</div>';
+                    return;
+                }
+                // Show the 3 most recent
+                var recent = items.slice(0, 3);
+                container.innerHTML = recent.map(function(item) {
+                    var d = new Date(item.date + 'T12:00:00');
+                    var dateStr = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                    return '<a class="signal-card" href="' + item.url + '">'
+                        + '<div class="card-date">' + dateStr + '</div>'
+                        + '<div class="card-headline">' + item.headline + '</div>'
+                        + '<div class="card-snippet">' + item.snippet + '</div>'
+                        + '</a>';
+                }).join('');
+            })
+            .catch(function() {
+                var container = document.getElementById('signal-cards');
+                if (container) container.innerHTML = '<div class="signals-empty">New signals coming soon.</div>';
+            });
+    })();
+    </script>
     <script data-goatcounter="https://preneurialworks.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
