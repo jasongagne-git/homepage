@@ -361,6 +361,24 @@ let matchIndex = null;
 let landscapeData = null;
 let selectedPersona = '';
 
+// Hardcoded fallback when taxonomy.json is unavailable
+const FALLBACK_DOMAINS = [
+  { id: 'artificial_intelligence', label: 'Artificial Intelligence & ML', keywords: ['artificial intelligence','machine learning','deep learning','neural network','generative AI','large language model'], sectors: ['*'] },
+  { id: 'cybersecurity', label: 'Cybersecurity & Zero Trust', keywords: ['cybersecurity','zero trust','threat detection','endpoint security','CMMC'], sectors: ['*'] },
+  { id: 'cloud_infrastructure', label: 'Cloud & IT Infrastructure', keywords: ['cloud computing','cloud migration','hybrid cloud','containerization','kubernetes','edge computing'], sectors: ['*'] },
+  { id: 'data_analytics', label: 'Data Analytics & Business Intelligence', keywords: ['data analytics','business intelligence','data visualization','data warehouse','big data'], sectors: ['*'] },
+  { id: 'software_modernization', label: 'Software Modernization & DevSecOps', keywords: ['software modernization','DevSecOps','microservices','agile development','digital transformation'], sectors: ['*'] },
+  { id: 'networking_comms', label: 'Networking & Communications', keywords: ['networking','5G','software defined networking','satellite communications','telecommunications'], sectors: ['*'] },
+  { id: 'identity_access', label: 'Identity & Access Management', keywords: ['identity management','access management','multi-factor authentication','biometrics','ICAM'], sectors: ['*'] },
+  { id: 'robotic_process', label: 'Automation & Robotic Process', keywords: ['robotic process automation','RPA','intelligent automation','workflow automation','hyperautomation'], sectors: ['*'] },
+  { id: 'autonomous_systems', label: 'Autonomous Systems & Robotics', keywords: ['autonomous systems','robotics','drone','UAS','UAV','counter-UAS'], sectors: ['defense','federal_civilian'] },
+  { id: 'space_systems', label: 'Space & Satellite Systems', keywords: ['space systems','satellite','SATCOM','space force','remote sensing'], sectors: ['defense'] },
+  { id: 'electronic_warfare', label: 'Electronic Warfare & Sensing', keywords: ['electronic warfare','radar','SIGINT','sensor fusion','electromagnetic spectrum'], sectors: ['defense'] },
+  { id: 'logistics_supply_chain', label: 'Logistics & Supply Chain', keywords: ['logistics','supply chain','inventory management','fleet management','predictive maintenance'], sectors: ['defense','federal_civilian','healthcare'] },
+  { id: 'health_biotech', label: 'Health IT & Biotechnology', keywords: ['health IT','electronic health records','telehealth','biotechnology','genomics'], sectors: ['healthcare','federal_civilian'] },
+  { id: 'civic_digital', label: 'Digital Services & Citizen Experience', keywords: ['digital services','citizen experience','e-government','civic technology','GovTech'], sectors: ['federal_civilian','state_local','education'] },
+];
+
 // ── Load data files ──
 async function loadData() {
   try {
@@ -405,24 +423,16 @@ function populateForm() {
   sectorSelect.innerHTML = '<option value="">Select a sector...</option>' +
     sectors.map(function(s) { return '<option value="' + s.id + '">' + s.label + '</option>'; }).join('');
 
-  // Technology domains
+  // Technology domains (with sector filtering attributes)
   const techGrid = document.getElementById('techDomainsGrid');
-  const domains = taxonomy?.technology_domains || [];
-  if (domains.length > 0) {
-    techGrid.innerHTML = domains.map(function(d) {
-      return '<label><input type="checkbox" value="' + d.id + '"> <span>' + d.label + '</span></label>';
-    }).join('');
-  } else {
-    techGrid.innerHTML =
-      '<label><input type="checkbox" value="artificial_intelligence"> <span>Artificial Intelligence</span></label>' +
-      '<label><input type="checkbox" value="cybersecurity"> <span>Cybersecurity</span></label>' +
-      '<label><input type="checkbox" value="cloud_computing"> <span>Cloud Computing</span></label>' +
-      '<label><input type="checkbox" value="autonomous_systems"> <span>Autonomous Systems</span></label>' +
-      '<label><input type="checkbox" value="data_analytics"> <span>Data Analytics</span></label>' +
-      '<label><input type="checkbox" value="space_systems"> <span>Space Systems</span></label>' +
-      '<label><input type="checkbox" value="electronic_warfare"> <span>Electronic Warfare</span></label>' +
-      '<label><input type="checkbox" value="logistics_supply_chain"> <span>Logistics &amp; Supply Chain</span></label>';
-  }
+  const domains = taxonomy?.technology_domains || FALLBACK_DOMAINS;
+  techGrid.innerHTML = domains.map(function(d) {
+    var sectorAttr = (d.sectors || ['*']).join(',');
+    return '<label data-sectors="' + sectorAttr + '"><input type="checkbox" value="' + d.id + '"> <span>' + d.label + '</span></label>';
+  }).join('');
+
+  // Wire sector select to filter tech domains
+  document.getElementById('sectorSelect').addEventListener('change', filterTechDomains);
 
   // Contracting posture
   const contractGroup = document.getElementById('contractingGroup');
@@ -468,11 +478,25 @@ function selectPersona(id) {
   if (el) el.classList.add('selected');
 }
 
+function filterTechDomains() {
+  var sector = document.getElementById('sectorSelect').value;
+  document.querySelectorAll('#techDomainsGrid label[data-sectors]').forEach(function(lbl) {
+    var sectors = lbl.getAttribute('data-sectors').split(',');
+    var visible = !sector || sectors.indexOf('*') !== -1 || sectors.indexOf(sector) !== -1 || sector === 'other';
+    lbl.style.display = visible ? '' : 'none';
+    if (!visible) {
+      var cb = lbl.querySelector('input[type="checkbox"]');
+      if (cb) cb.checked = false;
+    }
+  });
+}
+
 function nextStep(step) {
   if (currentStep === 1) {
     if (!selectedPersona) { alert('Please select a persona.'); return; }
     if (!document.getElementById('sectorSelect').value) { alert('Please select a sector.'); return; }
   }
+  if (step === 2) filterTechDomains();
   goToStep(step);
 }
 
@@ -567,12 +591,30 @@ async function submitProfile() {
 }
 
 // ── Client-side matching ──
+function expandDomainKeywords(domainId) {
+  // Look up keyword list from taxonomy data or fallback
+  var domains = taxonomy?.technology_domains || FALLBACK_DOMAINS;
+  for (var i = 0; i < domains.length; i++) {
+    if (domains[i].id === domainId && domains[i].keywords) {
+      var words = new Set();
+      domains[i].keywords.forEach(function(phrase) {
+        phrase.toLowerCase().split(/\W+/).forEach(function(w) { if (w.length > 2) words.add(w); });
+      });
+      return words;
+    }
+  }
+  // Fallback: tokenize the ID string (backward compat)
+  var fallback = new Set();
+  domainId.split('_').forEach(function(w) { if (w.length > 2) fallback.add(w.toLowerCase()); });
+  return fallback;
+}
+
 function runClientMatching(profile) {
   if (!matchIndex) return [];
 
   var profileKeywords = new Set();
   profile.technology_domains.forEach(function(d) {
-    d.split('_').forEach(function(w) { if (w.length > 2) profileKeywords.add(w.toLowerCase()); });
+    expandDomainKeywords(d).forEach(function(w) { profileKeywords.add(w); });
   });
   if (profile.sector) {
     profile.sector.split('_').forEach(function(w) { if (w.length > 2) profileKeywords.add(w.toLowerCase()); });

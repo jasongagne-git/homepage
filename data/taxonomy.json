@@ -44,48 +44,307 @@
   ],
   "technology_domains": [
     {
-      "id": "drone_swarms",
-      "label": "drone swarms"
+      "id": "artificial_intelligence",
+      "label": "Artificial Intelligence & ML",
+      "keywords": [
+        "artificial intelligence",
+        "machine learning",
+        "deep learning",
+        "neural network",
+        "natural language processing",
+        "computer vision",
+        "generative AI",
+        "large language model",
+        "predictive analytics",
+        "reinforcement learning",
+        "transformer",
+        "MLOps",
+        "AI governance"
+      ],
+      "sectors": [
+        "*"
+      ]
     },
     {
-      "id": "bumblebee_v2",
-      "label": "Bumblebee V2"
+      "id": "cybersecurity",
+      "label": "Cybersecurity & Zero Trust",
+      "keywords": [
+        "cybersecurity",
+        "zero trust",
+        "threat detection",
+        "endpoint security",
+        "intrusion detection",
+        "SIEM",
+        "vulnerability management",
+        "penetration testing",
+        "security operations",
+        "cyber defense",
+        "ransomware",
+        "incident response",
+        "CMMC"
+      ],
+      "sectors": [
+        "*"
+      ]
     },
     {
-      "id": "gps",
-      "label": "GPS"
+      "id": "cloud_infrastructure",
+      "label": "Cloud & IT Infrastructure",
+      "keywords": [
+        "cloud computing",
+        "cloud migration",
+        "hybrid cloud",
+        "multi-cloud",
+        "infrastructure as code",
+        "containerization",
+        "kubernetes",
+        "docker",
+        "serverless",
+        "edge computing",
+        "data center",
+        "cloud native"
+      ],
+      "sectors": [
+        "*"
+      ]
     },
     {
-      "id": "claude",
-      "label": "Claude"
+      "id": "data_analytics",
+      "label": "Data Analytics & Business Intelligence",
+      "keywords": [
+        "data analytics",
+        "business intelligence",
+        "data visualization",
+        "data warehouse",
+        "data lake",
+        "ETL",
+        "real-time analytics",
+        "dashboards",
+        "reporting",
+        "data governance",
+        "big data",
+        "data engineering",
+        "decision intelligence"
+      ],
+      "sectors": [
+        "*"
+      ]
     },
     {
-      "id": "autodrive",
-      "label": "AutoDrive"
+      "id": "software_modernization",
+      "label": "Software Modernization & DevSecOps",
+      "keywords": [
+        "software modernization",
+        "legacy modernization",
+        "DevSecOps",
+        "continuous integration",
+        "continuous delivery",
+        "agile development",
+        "microservices",
+        "API management",
+        "platform engineering",
+        "software factory",
+        "low code",
+        "digital transformation"
+      ],
+      "sectors": [
+        "*"
+      ]
     },
     {
-      "id": "mrna",
-      "label": "mRNA"
+      "id": "networking_comms",
+      "label": "Networking & Communications",
+      "keywords": [
+        "networking",
+        "5G",
+        "software defined networking",
+        "SD-WAN",
+        "unified communications",
+        "satellite communications",
+        "mesh network",
+        "tactical communications",
+        "broadband",
+        "network modernization",
+        "telecommunications",
+        "wireless"
+      ],
+      "sectors": [
+        "*"
+      ]
     },
     {
-      "id": "grok",
-      "label": "Grok"
+      "id": "identity_access",
+      "label": "Identity & Access Management",
+      "keywords": [
+        "identity management",
+        "access management",
+        "multi-factor authentication",
+        "single sign-on",
+        "identity governance",
+        "privileged access",
+        "biometrics",
+        "digital identity",
+        "credentialing",
+        "PKI",
+        "identity verification",
+        "ICAM"
+      ],
+      "sectors": [
+        "*"
+      ]
     },
     {
-      "id": "fpv_bumblebee_v2",
-      "label": "FPV Bumblebee V2"
+      "id": "robotic_process",
+      "label": "Automation & Robotic Process",
+      "keywords": [
+        "robotic process automation",
+        "RPA",
+        "intelligent automation",
+        "workflow automation",
+        "process mining",
+        "hyperautomation",
+        "business process management",
+        "digital workers",
+        "task automation",
+        "automation platform",
+        "orchestration"
+      ],
+      "sectors": [
+        "*"
+      ]
     },
     {
-      "id": "skyshot_1600",
-      "label": "SkyShot 1600"
+      "id": "autonomous_systems",
+      "label": "Autonomous Systems & Robotics",
+      "keywords": [
+        "autonomous systems",
+        "robotics",
+        "unmanned aerial",
+        "unmanned ground",
+        "drone",
+        "UAS",
+        "UAV",
+        "counter-UAS",
+        "autonomous vehicle",
+        "swarm",
+        "human-machine teaming",
+        "remote operation"
+      ],
+      "sectors": [
+        "defense",
+        "federal_civilian"
+      ]
     },
     {
-      "id": "icam",
-      "label": "ICAM"
+      "id": "space_systems",
+      "label": "Space & Satellite Systems",
+      "keywords": [
+        "space systems",
+        "satellite",
+        "space domain awareness",
+        "launch vehicle",
+        "orbital",
+        "SATCOM",
+        "GPS",
+        "space force",
+        "remote sensing",
+        "geospatial intelligence",
+        "LEO",
+        "space resilience"
+      ],
+      "sectors": [
+        "defense"
+      ]
     },
     {
-      "id": "ironcurtain",
-      "label": "IronCurtain"
+      "id": "electronic_warfare",
+      "label": "Electronic Warfare & Sensing",
+      "keywords": [
+        "electronic warfare",
+        "EW",
+        "radar",
+        "SIGINT",
+        "signals intelligence",
+        "electromagnetic spectrum",
+        "sensor fusion",
+        "ISTAR",
+        "electronic countermeasures",
+        "spectrum management",
+        "ELINT",
+        "EWOS"
+      ],
+      "sectors": [
+        "defense"
+      ]
+    },
+    {
+      "id": "logistics_supply_chain",
+      "label": "Logistics & Supply Chain",
+      "keywords": [
+        "logistics",
+        "supply chain",
+        "inventory management",
+        "fleet management",
+        "predictive maintenance",
+        "asset tracking",
+        "warehouse management",
+        "distribution",
+        "procurement",
+        "sustainment",
+        "RFID",
+        "supply chain resilience"
+      ],
+      "sectors": [
+        "defense",
+        "federal_civilian",
+        "healthcare"
+      ]
+    },
+    {
+      "id": "health_biotech",
+      "label": "Health IT & Biotechnology",
+      "keywords": [
+        "health IT",
+        "electronic health records",
+        "EHR",
+        "telehealth",
+        "biotechnology",
+        "genomics",
+        "clinical decision support",
+        "health informatics",
+        "medical devices",
+        "FDA",
+        "HIPAA",
+        "precision medicine",
+        "biodefense"
+      ],
+      "sectors": [
+        "healthcare",
+        "federal_civilian"
+      ]
+    },
+    {
+      "id": "civic_digital",
+      "label": "Digital Services & Citizen Experience",
+      "keywords": [
+        "digital services",
+        "citizen experience",
+        "e-government",
+        "civic technology",
+        "open data",
+        "public engagement",
+        "digital equity",
+        "accessibility",
+        "service delivery",
+        "government portal",
+        "constituent services",
+        "GovTech"
+      ],
+      "sectors": [
+        "federal_civilian",
+        "state_local",
+        "education"
+      ]
     }
   ],
   "contracting_postures": [
@@ -220,6 +479,28 @@
     {
       "name": "U.S. Space Force",
       "mentions": 30
+    }
+  ],
+  "emerging_technologies": [
+    {
+      "name": "Bumblebee V2",
+      "mentions": 8,
+      "description": ""
+    },
+    {
+      "name": "Claude",
+      "mentions": 5,
+      "description": ""
+    },
+    {
+      "name": "AutoDrive",
+      "mentions": 4,
+      "description": ""
+    },
+    {
+      "name": "mRNA",
+      "mentions": 3,
+      "description": ""
     }
   ]
 }
