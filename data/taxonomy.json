@@ -1,0 +1,225 @@
+{
+  "personas": [
+    {
+      "id": "institutional_innovator",
+      "label": "Institutional Innovator",
+      "description": "Leaders inside large organizations driving innovation and modernization from within."
+    },
+    {
+      "id": "industry_partner",
+      "label": "Industry Partner",
+      "description": "Established contractors, integrators, and service providers partnering on complex programs."
+    },
+    {
+      "id": "market_entrant",
+      "label": "Market Entrant",
+      "description": "Technology companies and startups bringing new capabilities to emerging markets."
+    }
+  ],
+  "sectors": [
+    {
+      "id": "defense",
+      "label": "Defense"
+    },
+    {
+      "id": "federal_civilian",
+      "label": "Federal Civilian"
+    },
+    {
+      "id": "state_local",
+      "label": "State & Local"
+    },
+    {
+      "id": "education",
+      "label": "Education"
+    },
+    {
+      "id": "healthcare",
+      "label": "Healthcare"
+    },
+    {
+      "id": "other",
+      "label": "Other / Cross-sector"
+    }
+  ],
+  "technology_domains": [
+    {
+      "id": "drone_swarms",
+      "label": "drone swarms"
+    },
+    {
+      "id": "bumblebee_v2",
+      "label": "Bumblebee V2"
+    },
+    {
+      "id": "gps",
+      "label": "GPS"
+    },
+    {
+      "id": "claude",
+      "label": "Claude"
+    },
+    {
+      "id": "autodrive",
+      "label": "AutoDrive"
+    },
+    {
+      "id": "mrna",
+      "label": "mRNA"
+    },
+    {
+      "id": "grok",
+      "label": "Grok"
+    },
+    {
+      "id": "fpv_bumblebee_v2",
+      "label": "FPV Bumblebee V2"
+    },
+    {
+      "id": "skyshot_1600",
+      "label": "SkyShot 1600"
+    },
+    {
+      "id": "icam",
+      "label": "ICAM"
+    },
+    {
+      "id": "ironcurtain",
+      "label": "IronCurtain"
+    }
+  ],
+  "contracting_postures": [
+    {
+      "id": "prime",
+      "label": "Prime contractor"
+    },
+    {
+      "id": "sub",
+      "label": "Subcontractor"
+    },
+    {
+      "id": "seeking_first",
+      "label": "Seeking first contract"
+    },
+    {
+      "id": "no_contracts",
+      "label": "Not currently contracting"
+    }
+  ],
+  "organization_scales": [
+    {
+      "id": "large",
+      "label": "Large (1000+ employees)"
+    },
+    {
+      "id": "mid",
+      "label": "Mid-market (100-999)"
+    },
+    {
+      "id": "small",
+      "label": "Small (10-99)"
+    },
+    {
+      "id": "startup",
+      "label": "Startup (<10)"
+    }
+  ],
+  "innovation_stages": [
+    {
+      "id": "exploring",
+      "label": "Exploring opportunities"
+    },
+    {
+      "id": "piloting",
+      "label": "Piloting solutions"
+    },
+    {
+      "id": "scaling",
+      "label": "Scaling proven models"
+    }
+  ],
+  "active_programs": [
+    {
+      "name": "F-35",
+      "mentions": 18
+    },
+    {
+      "name": "CCA",
+      "mentions": 11
+    },
+    {
+      "name": "B-21",
+      "mentions": 10
+    },
+    {
+      "name": "TSA PreCheck",
+      "mentions": 8
+    },
+    {
+      "name": "Pathway for Innovation and Technology",
+      "mentions": 8
+    },
+    {
+      "name": "High Mobility Artillery Rocket Systems",
+      "mentions": 7
+    },
+    {
+      "name": "Altius",
+      "mentions": 7
+    },
+    {
+      "name": "MV-22",
+      "mentions": 6
+    },
+    {
+      "name": "USAi",
+      "mentions": 6
+    },
+    {
+      "name": "Blue UAS Select",
+      "mentions": 6
+    }
+  ],
+  "active_agencies": [
+    {
+      "name": "Department of Defense",
+      "mentions": 307
+    },
+    {
+      "name": "Central Intelligence Agency",
+      "mentions": 257
+    },
+    {
+      "name": "U.S. Army",
+      "mentions": 176
+    },
+    {
+      "name": "Department of Homeland Security",
+      "mentions": 176
+    },
+    {
+      "name": "U.S. Navy",
+      "mentions": 84
+    },
+    {
+      "name": "U.S. Air Force",
+      "mentions": 76
+    },
+    {
+      "name": "Office of Management and Budget",
+      "mentions": 69
+    },
+    {
+      "name": "Government Accountability Office",
+      "mentions": 41
+    },
+    {
+      "name": "U.S. Marine Corps",
+      "mentions": 40
+    },
+    {
+      "name": "U.S. Space Force",
+      "mentions": 30
+    }
+  ]
+}

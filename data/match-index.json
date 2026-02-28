@@ -1,0 +1,683 @@
+{
+  "signals": [
+    {
+      "signal_id": "6cb8659dc1f15816",
+      "title": "Gap Widens Between Defense Innovation Theater and Acquisition Reality",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-28T12:16:50.169404"
+    },
+    {
+      "signal_id": "c504e8c1f497c5ad",
+      "title": "Space Force Secures Funding to Accelerate Satellite Tracking Systems",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-28T12:16:50.168358"
+    },
+    {
+      "signal_id": "9b988c30840166ae",
+      "title": "Army Launches Soldier-Led Drone Marketplace Alongside $186M Switchblade Order",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-28T12:16:50.166794"
+    },
+    {
+      "signal_id": "1f409ceb3ffe4bcc",
+      "title": "Bipartisan Push for Data Center Permitting Reform Addresses AI Infrastructure Bottlenecks",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-28T12:16:50.165510"
+    },
+    {
+      "signal_id": "67a98aec02e84ea4",
+      "title": "Pentagon Lacks Acquisition Pathways for Rapid Commercial AI Replacement",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-28T12:16:50.164535"
+    },
+    {
+      "signal_id": "cd301d40b5151c6e",
+      "title": "AFRL Scaling Dual-Use Pilot Creates Clear Onramps for Program Managers",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-28T12:16:50.163481"
+    },
+    {
+      "signal_id": "37cb70fc5a79c448",
+      "title": "AFRL Expands Dual-Use Technology Pilot into National Innovation Framework",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-28T12:16:50.161667"
+    },
+    {
+      "signal_id": "d8d3fcea8365e47d",
+      "title": "Production-First Systems Bypass Traditional Acquisition Channels",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-25T18:01:44.589955"
+    },
+    {
+      "signal_id": "d7b6a630ef34bf3f",
+      "title": "Drone Integration Analysis Opens Combined-Arms Experimentation Funding",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-25T18:01:44.589655"
+    },
+    {
+      "signal_id": "eac6402260277fda",
+      "title": "Ukraine's DELTA System Gamifies Combat with Equipment Rewards",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-25T18:01:44.589318"
+    },
+    {
+      "signal_id": "d314e938089ea5eb",
+      "title": "Pentagon Lacks Cost-Per-Effect Framework for Investment Decisions",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-25T18:01:44.588974"
+    },
+    {
+      "signal_id": "46e96dfac386edbf",
+      "title": "Space Force Entry Processes Structurally Broken for Commercial Companies",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-02-25T18:01:44.588221"
+    },
+    {
+      "signal_id": "bbc5c07a49769f46",
+      "title": "2026 NDAA Includes Major Acquisition Reforms with Pahlka Advising",
+      "status": "brief_generated",
+      "brief_id": "b522f35e93ebeae9",
+      "last_updated": "2026-02-25T18:04:38.945776"
+    },
+    {
+      "signal_id": "a6439733d9b8bd06",
+      "title": "SkyFoundry Act Creates Government-Run Drone Production Facility",
+      "status": "brief_generated",
+      "brief_id": "9f2d7529bd58bd98",
+      "last_updated": "2026-02-25T18:01:44.586801"
+    }
+  ],
+  "topic_threads": [
+    {
+      "id": "6090d81db50da058",
+      "title": "U.S. Space Force / National Reconnaissance Office",
+      "keywords": [
+        "front",
+        "door",
+        "problem",
+        "national",
+        "security",
+        "space"
+      ],
+      "importance": 1.0
+    },
+    {
+      "id": "c6cd43a5aa41ba2e",
+      "title": "Washington Institute for Near East Policy / Middle East Institute",
+      "keywords": [
+        "arrived",
+        "iranian",
+        "moment",
+        "happens",
+        "next"
+      ],
+      "importance": 0.68
+    },
+    {
+      "id": "b1fa1776c27ff1e0",
+      "title": "High Mobility Artillery Rocket Systems / Altius",
+      "keywords": [
+        "ensure",
+        "billion",
+        "potential",
+        "arms",
+        "sales",
+        "actually",
+        "help",
+        "taiwa"
+      ],
+      "importance": 0.6
+    },
+    {
+      "id": "d2c05cb927d3e8b9",
+      "title": "Trump / Pete Hegseth",
+      "keywords": [
+        "trump",
+        "hegseth",
+        "anthropic",
+        "warren",
+        "accuses",
+        "trying",
+        "extort",
+        "removing"
+      ],
+      "importance": 0.3
+    },
+    {
+      "id": "9101e9cb8fc9a8e1",
+      "title": "National Security Agency / Ron Wyden",
+      "keywords": [
+        "wyden",
+        "block",
+        "confirmation",
+        "nsa",
+        "director",
+        "citing",
+        "lack",
+        "experience"
+      ],
+      "importance": 0.3
+    },
+    {
+      "id": "ef2b6b6359e2ed34",
+      "title": "Microsoft / Arc Institute",
+      "keywords": [
+        "biodefense",
+        "blind",
+        "spot",
+        "washington",
+        "confuses",
+        "pandemics",
+        "bioweapons"
+      ],
+      "importance": 0.28
+    },
+    {
+      "id": "e9c61512b5b81a9f",
+      "title": "National Defense Authorization Act / SkyFoundry Act",
+      "keywords": [
+        "skyfoundry",
+        "future",
+        "american",
+        "drone",
+        "production",
+        "scale"
+      ],
+      "importance": 0.27
+    },
+    {
+      "id": "0f762053618a6a6b",
+      "title": "National Guard / Supreme Court",
+      "keywords": [
+        "command",
+        "responsibility",
+        "home",
+        "governors",
+        "guard",
+        "domestic",
+        "readiness"
+      ],
+      "importance": 0.27
+    }
+  ],
+  "entities_by_type": {
+    "company": [
+      {
+        "name": "Congress",
+        "mentions": 91,
+        "description": ""
+      },
+      {
+        "name": "War on the Rocks",
+        "mentions": 58,
+        "description": ""
+      },
+      {
+        "name": "Defense Intelligence Agency",
+        "mentions": 54,
+        "description": ""
+      },
+      {
+        "name": "White House",
+        "mentions": 47,
+        "description": ""
+      },
+      {
+        "name": "Anthropic",
+        "mentions": 47,
+        "description": ""
+      },
+      {
+        "name": "C4ISRNET",
+        "mentions": 43,
+        "description": ""
+      },
+      {
+        "name": "Hill",
+        "mentions": 33,
+        "description": ""
+      },
+      {
+        "name": "Defense One",
+        "mentions": 30,
+        "description": ""
+      },
+      {
+        "name": "CNAS",
+        "mentions": 24,
+        "description": ""
+      },
+      {
+        "name": "Center for a New American Security",
+        "mentions": 23,
+        "description": ""
+      },
+      {
+        "name": "Nextgov/FCW",
+        "mentions": 23,
+        "description": ""
+      },
+      {
+        "name": "Politico Defense",
+        "mentions": 22,
+        "description": ""
+      },
+      {
+        "name": "Microsoft",
+        "mentions": 20,
+        "description": ""
+      },
+      {
+        "name": "Boeing",
+        "mentions": 19,
+        "description": ""
+      },
+      {
+        "name": "Shield AI",
+        "mentions": 19,
+        "description": ""
+      },
+      {
+        "name": "ST Engineering",
+        "mentions": 18,
+        "description": ""
+      },
+      {
+        "name": "Lockheed Martin",
+        "mentions": 18,
+        "description": ""
+      },
+      {
+        "name": "Reuters Aerospace & Defense",
+        "mentions": 18,
+        "description": ""
+      },
+      {
+        "name": "GovExec",
+        "mentions": 15,
+        "description": ""
+      },
+      {
+        "name": "Brookings Defense & Security",
+        "mentions": 15,
+        "description": ""
+      }
+    ],
+    "agency": [
+      {
+        "name": "Department of Defense",
+        "mentions": 307,
+        "description": ""
+      },
+      {
+        "name": "Central Intelligence Agency",
+        "mentions": 257,
+        "description": ""
+      },
+      {
+        "name": "U.S. Army",
+        "mentions": 176,
+        "description": ""
+      },
+      {
+        "name": "Department of Homeland Security",
+        "mentions": 176,
+        "description": ""
+      },
+      {
+        "name": "U.S. Navy",
+        "mentions": 84,
+        "description": ""
+      },
+      {
+        "name": "U.S. Air Force",
+        "mentions": 76,
+        "description": ""
+      },
+      {
+        "name": "Office of Management and Budget",
+        "mentions": 69,
+        "description": ""
+      },
+      {
+        "name": "Government Accountability Office",
+        "mentions": 41,
+        "description": ""
+      },
+      {
+        "name": "U.S. Marine Corps",
+        "mentions": 40,
+        "description": ""
+      },
+      {
+        "name": "U.S. Space Force",
+        "mentions": 30,
+        "description": ""
+      },
+      {
+        "name": "Defense Innovation Unit",
+        "mentions": 28,
+        "description": ""
+      },
+      {
+        "name": "CSIS",
+        "mentions": 27,
+        "description": ""
+      },
+      {
+        "name": "General Services Administration",
+        "mentions": 22,
+        "description": ""
+      },
+      {
+        "name": "Defense Information Systems Agency",
+        "mentions": 20,
+        "description": ""
+      },
+      {
+        "name": "NATO",
+        "mentions": 18,
+        "description": ""
+      },
+      {
+        "name": "Department of Veterans Affairs",
+        "mentions": 15,
+        "description": ""
+      },
+      {
+        "name": "National Security Agency",
+        "mentions": 15,
+        "description": ""
+      },
+      {
+        "name": "Transportation Security Administration",
+        "mentions": 13,
+        "description": ""
+      },
+      {
+        "name": "Cybersecurity and Infrastructure Security Agency",
+        "mentions": 13,
+        "description": ""
+      },
+      {
+        "name": "Defense Department",
+        "mentions": 12,
+        "description": ""
+      }
+    ],
+    "program": [
+      {
+        "name": "F-35",
+        "mentions": 18,
+        "description": ""
+      },
+      {
+        "name": "CCA",
+        "mentions": 11,
+        "description": ""
+      },
+      {
+        "name": "B-21",
+        "mentions": 10,
+        "description": ""
+      },
+      {
+        "name": "TSA PreCheck",
+        "mentions": 8,
+        "description": ""
+      },
+      {
+        "name": "Pathway for Innovation and Technology",
+        "mentions": 8,
+        "description": ""
+      },
+      {
+        "name": "High Mobility Artillery Rocket Systems",
+        "mentions": 7,
+        "description": ""
+      },
+      {
+        "name": "Altius",
+        "mentions": 7,
+        "description": ""
+      },
+      {
+        "name": "MV-22",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "USAi",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "Blue UAS Select",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "Best Drone Warfighter Competition",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "Global Entry",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "DELTA",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Brave1 Market",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Mk 70 Vertical Launching System",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Watchkeeper",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Autonomous Decontamination System",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Flight School Next",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Ivy Sting 4",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "F-47",
+        "mentions": 5,
+        "description": ""
+      }
+    ],
+    "budget_line": [],
+    "policy": [
+      {
+        "name": "Munich Security Conference",
+        "mentions": 18,
+        "description": ""
+      },
+      {
+        "name": "National Defense Authorization Act",
+        "mentions": 12,
+        "description": ""
+      },
+      {
+        "name": "Federal Acquisition Regulation",
+        "mentions": 11,
+        "description": ""
+      },
+      {
+        "name": "SkyFoundry Act",
+        "mentions": 7,
+        "description": ""
+      },
+      {
+        "name": "China Military Power Report",
+        "mentions": 7,
+        "description": ""
+      },
+      {
+        "name": "NDAA",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "National Defense Strategy",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "National Defense Authorizing Act",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "New START",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "Pardon Integrity Act",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "Foreign Intelligence Surveillance Act",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Trump",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Friedrich Merz",
+        "mentions": 4,
+        "description": ""
+      },
+      {
+        "name": "2025 National Security Strategy",
+        "mentions": 4,
+        "description": ""
+      },
+      {
+        "name": "New Strategic Arms Reduction Treaty",
+        "mentions": 4,
+        "description": ""
+      },
+      {
+        "name": "FISA",
+        "mentions": 3,
+        "description": ""
+      },
+      {
+        "name": "Section 702 of FISA",
+        "mentions": 2,
+        "description": ""
+      },
+      {
+        "name": "Defense Protection Act",
+        "mentions": 2,
+        "description": ""
+      },
+      {
+        "name": "Satellite Cybersecurity Act",
+        "mentions": 2,
+        "description": ""
+      },
+      {
+        "name": "Working Families Tax Cuts",
+        "mentions": 2,
+        "description": ""
+      }
+    ],
+    "technology": [
+      {
+        "name": "drone swarms",
+        "mentions": 13,
+        "description": ""
+      },
+      {
+        "name": "Bumblebee V2",
+        "mentions": 8,
+        "description": ""
+      },
+      {
+        "name": "GPS",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "Claude",
+        "mentions": 5,
+        "description": ""
+      },
+      {
+        "name": "AutoDrive",
+        "mentions": 4,
+        "description": ""
+      },
+      {
+        "name": "mRNA",
+        "mentions": 3,
+        "description": ""
+      },
+      {
+        "name": "Grok",
+        "mentions": 2,
+        "description": ""
+      },
+      {
+        "name": "FPV Bumblebee V2",
+        "mentions": 2,
+        "description": ""
+      },
+      {
+        "name": "SkyShot 1600",
+        "mentions": 2,
+        "description": ""
+      },
+      {
+        "name": "ICAM",
+        "mentions": 2,
+        "description": ""
+      },
+      {
+        "name": "IronCurtain",
+        "mentions": 2,
+        "description": ""
+      }
+    ]
+  }
+}
