@@ -111,31 +111,46 @@ body {
     text-align: center;
     margin-bottom: 2.5rem;
 }
-.archive-header .brand {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-bright);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-.archive-header .tagline {
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 4px;
-}
 .archive-header h1 {
     font-size: 1.8rem;
     color: var(--text-bright);
     font-weight: 700;
-    margin-top: 1.25rem;
+    margin-top: 0;
     letter-spacing: -0.3px;
 }
 .archive-header p {
     color: var(--text-dim);
     font-size: 0.95rem;
     margin-top: 0.5rem;
+}
+
+.vertical-section {
+    margin-bottom: 2.5rem;
+}
+.vertical-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+.vertical-heading h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    white-space: nowrap;
+}
+.vertical-heading .heading-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-subtle);
+}
+.vertical-heading .heading-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-dimmer);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .archive-card {
@@ -204,35 +219,6 @@ body {
 }
 .archive-cta a.btn:hover { background: #3b7cf5; }
 
-.vertical-section {
-    margin-bottom: 2.5rem;
-}
-.vertical-heading {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-.vertical-heading h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-bright);
-    white-space: nowrap;
-}
-.vertical-heading .heading-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border-subtle);
-}
-.vertical-heading .heading-tag {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--text-dimmer);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
 @media (max-width: 768px) {
     .archive-container { padding: 1rem; }
     .archive-header h1 { font-size: 1.4rem; }
@@ -278,7 +264,15 @@ body {
         </div>
 
         <div class="archive-list">
-            <!-- Briefings appear here automatically after 4-week embargo -->
+
+            <a href="briefings/2026-02-07.html" class="archive-card">
+                <div class="card-date">February 07, 2026</div>
+                <div class="card-summary">House Armed Services Committee Chair Mike Rogers is charting a path to a $1.5 trillion defense budget, with analysts at AEI advocating for a $600 billion increase through budget...</div>
+                <div class="card-meta">
+                    <span>60 sources cited</span>
+                    <span class="read-more">Read briefing &rarr;</span>
+                </div>
+            </a>
         </div>
     </div>
 </div>
