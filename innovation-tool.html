@@ -654,7 +654,7 @@ function runClientMatching(profile) {
     var overlap = Array.from(profileKeywords).filter(function(w) { return threadWords.has(w); });
     if (overlap.length >= 2) {
       var score = Math.min(1, (overlap.length / Math.max(profileKeywords.size, 1)) * t.importance);
-      results.push({ type: 'topic_thread', id: t.id, title: t.title, score: score });
+      results.push({ type: 'topic_thread', id: t.id, title: t.title, score: score, keywords: t.keywords });
     }
   });
 
@@ -675,20 +675,24 @@ function runClientMatching(profile) {
 
   results = results.filter(function(r) {
     if (r.type !== 'topic_thread') return true;
-    // Check keyword overlap with brief signal titles
-    var threadWords = r.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 3; });
+    // Combine thread title words + keywords for matching
+    var threadWords = r.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 2; });
+    if (r.keywords) {
+      r.keywords.forEach(function(k) { threadWords.push(k.toLowerCase()); });
+    }
+
+    // Check if a brief signal already covers this thread — deduplicate
     var matchingBriefs = {};
     threadWords.forEach(function(w) {
       (briefByTitle[w] || []).forEach(function(b) { matchingBriefs[b.id] = (matchingBriefs[b.id] || 0) + 1; });
     });
-    // If 2+ title words overlap with a brief signal, it's a duplicate — drop
     var dominated = Object.keys(matchingBriefs).some(function(id) { return matchingBriefs[id] >= 2; });
     if (dominated) return false;
 
     // Try to find a related brief from match-index (even if the signal didn't match)
     (matchIndex.signals || []).forEach(function(s) {
       if (s.brief_id && !r.brief_id) {
-        var sigWords = s.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 3; });
+        var sigWords = s.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 2; });
         var overlap = threadWords.filter(function(w) { return sigWords.indexOf(w) >= 0; });
         if (overlap.length >= 2) {
           r.brief_id = s.brief_id;
