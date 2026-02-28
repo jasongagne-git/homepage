@@ -102,8 +102,11 @@
       padding: 1rem; margin-bottom: 0.75rem; }
     .match-card h4 { color: var(--text-bright); margin: 0 0 0.3rem; font-size: 1rem; }
     .match-card .match-meta { font-size: 0.8rem; color: var(--text-dimmer); margin-bottom: 0.4rem; }
-    .match-card .match-score { display: inline-block; background: var(--color-accent-secondary); color: var(--text-bright);
+    .match-card .match-score { display: inline-block; color: var(--text-bright);
       padding: 0.15rem 0.5rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600; }
+    .match-score.strong { background: #10b981; }
+    .match-score.moderate { background: var(--color-accent-secondary); }
+    .match-score.related { background: #64748b; }
     .match-card a { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
     .match-card a:hover { text-decoration: underline; }
 
@@ -673,8 +676,10 @@ function showResults(matches, profile) {
         if (m.type === 'brief' && m.brief_id) {
           link = '<a href="briefings/' + m.brief_id + '.html">Read opportunity brief &rarr;</a>';
         }
+        var tier = m.score >= 0.15 ? 'strong' : m.score >= 0.08 ? 'moderate' : 'related';
+        var tierLabel = tier === 'strong' ? 'Strong match' : tier === 'moderate' ? 'Moderate match' : 'Related';
         return '<div class="match-card"><h4>' + m.title + '</h4>' +
-          '<div class="match-meta"><span class="match-score">' + Math.round(m.score * 100) + '% match</span>' +
+          '<div class="match-meta"><span class="match-score ' + tier + '">' + tierLabel + '</span>' +
           ' &nbsp; ' + m.type.replace('_', ' ') + '</div>' + link + '</div>';
       }).join('');
   } else {
