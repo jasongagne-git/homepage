@@ -364,6 +364,7 @@ let currentStep = 1;
 let taxonomy = null;
 let matchIndex = null;
 let landscapeData = null;
+let snippetsData = null;
 let selectedPersona = '';
 
 // Hardcoded fallback when taxonomy.json is unavailable
@@ -387,14 +388,16 @@ const FALLBACK_DOMAINS = [
 // ── Load data files ──
 async function loadData() {
   try {
-    const [taxRes, matchRes, landRes] = await Promise.all([
+    const [taxRes, matchRes, landRes, snipRes] = await Promise.all([
       fetch('data/taxonomy.json'),
       fetch('data/match-index.json'),
       fetch('data/landscape.json'),
+      fetch('data/snippets.json'),
     ]);
     if (taxRes.ok) taxonomy = await taxRes.json();
     if (matchRes.ok) matchIndex = await matchRes.json();
     if (landRes.ok) landscapeData = await landRes.json();
+    if (snipRes.ok) snippetsData = await snipRes.json();
   } catch (e) {
     console.warn('Could not load data files:', e);
   }
@@ -721,20 +724,60 @@ function showResults(matches, profile) {
 
   var container = document.getElementById('matchResults');
 
-  if (matches.length > 0) {
-    container.innerHTML = '<p style="color:var(--text-dim); margin-bottom:1rem;">' +
-      'Found <strong>' + matches.length + '</strong> matches based on your profile.</p>' +
-      matches.map(function(m) {
+  // Build newsletter matches by sector
+  var newsletterMatches = [];
+  if (snippetsData && profile.sector) {
+    var sectorMap = { defense: 'defense', federal_civilian: 'federal', state_local: 'state',
+      healthcare: 'healthcare', education: 'education' };
+    var sectorKey = sectorMap[profile.sector] || profile.sector;
+    snippetsData.forEach(function(s) {
+      if (s.vertical && s.vertical.toLowerCase().indexOf(sectorKey) >= 0) {
+        newsletterMatches.push(s);
+      }
+    });
+    // For "other" sector, show all newsletters
+    if (profile.sector === 'other') newsletterMatches = snippetsData.slice();
+  }
+
+  var hasContent = matches.length > 0 || newsletterMatches.length > 0;
+
+  if (hasContent) {
+    var html = '';
+
+    // Opportunity brief & signal matches
+    if (matches.length > 0) {
+      html += '<p style="color:var(--text-dim); margin-bottom:1rem;">' +
+        'Found <strong>' + matches.length + '</strong> signal match' +
+        (matches.length === 1 ? '' : 'es') + ' based on your profile.</p>';
+      html += matches.map(function(m) {
         var link = '';
+        var typeLabel = m.type.replace('_', ' ');
         if (m.type === 'brief' && m.brief_id) {
           link = '<a href="briefings/' + m.brief_id + '.html">Read opportunity brief &rarr;</a>';
+          typeLabel = 'opportunity brief';
         }
         var tier = m.score >= 0.15 ? 'strong' : m.score >= 0.08 ? 'moderate' : 'related';
         var tierLabel = tier === 'strong' ? 'Strong match' : tier === 'moderate' ? 'Moderate match' : 'Related';
         return '<div class="match-card"><h4>' + m.title + '</h4>' +
           '<div class="match-meta"><span class="match-score ' + tier + '">' + tierLabel + '</span>' +
-          ' &nbsp; ' + m.type.replace('_', ' ') + '</div>' + link + '</div>';
+          ' &nbsp; ' + typeLabel + '</div>' + link + '</div>';
       }).join('');
+    }
+
+    // Newsletter briefings
+    if (newsletterMatches.length > 0) {
+      html += '<div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border-subtle);">' +
+        '<p style="color:var(--text-dim); margin-bottom:1rem;">' +
+        '<strong>Past intelligence briefings</strong> matching your sector:</p>';
+      html += newsletterMatches.map(function(n) {
+        var dateStr = n.date || '';
+        return '<div class="match-card"><h4>' + (n.headline || 'Weekly Briefing') + '</h4>' +
+          '<div class="match-meta">weekly briefing &nbsp; ' + dateStr + '</div>' +
+          '<a href="' + n.url + '">Read past briefing &rarr;</a></div>';
+      }).join('') + '</div>';
+    }
+
+    container.innerHTML = html;
   } else {
     container.innerHTML = '<p style="color:var(--text-dim);">' +
       'No direct matches yet &#8212; but your profile is now active. ' +
