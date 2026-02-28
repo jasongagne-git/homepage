@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Modernization Readiness Assessment — PreneurialWorks</title>
+  <title>Opportunity Profiler — PreneurialWorks</title>
   <link rel="canonical" href="https://preneurial.works/innovation-tool.html">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Assess your organization's innovation readiness across four dimensions: Modernization, Collaboration, Technology, and Innovation. Free interactive tool with downloadable PDF results.">
-  <meta property="og:title" content="Modernization Readiness Assessment — PreneurialWorks">
-  <meta property="og:description" content="Quickly assess your innovation strengths and weaknesses. Get practical recommendations mapped to the Innovation Impact Framework's four pillars.">
+  <meta name="description" content="Build your opportunity profile and get matched against live defense and government intelligence signals. Free tool with personalized results.">
+  <meta property="og:title" content="Opportunity Profiler — PreneurialWorks">
+  <meta property="og:description" content="Match your capabilities against real-time defense and government intelligence. Get personalized opportunity matches and weekly signal alerts.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://preneurial.works/innovation-tool.html">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Modernization Readiness Assessment — PreneurialWorks">
-  <meta name="twitter:description" content="Free interactive assessment tool. Score your organization across Modernization, Collaboration, Technology, and Innovation dimensions.">
+  <meta name="twitter:title" content="Opportunity Profiler — PreneurialWorks">
+  <meta name="twitter:description" content="Free opportunity matching tool. Build your profile and get matched against live intelligence signals.">
   <meta property="og:image" content="https://preneurial.works/images/og-card.png?v=2">
   <meta name="twitter:image" content="https://preneurial.works/images/og-card.png?v=2">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -23,296 +23,120 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="site.css">
   <style>
-    body {
-      color: var(--text-dim);
-    }
+    body { color: var(--text-dim); }
+    h1, h2, h3 { margin-top: 0; color: var(--text-bright); }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+    .page-header { text-align: center; padding: 60px 20px 30px; border-bottom: 1px solid var(--border-subtle); }
+    .page-header h1 { font-size: 2.4rem; font-weight: 700; margin: 0 0 10px 0; color: var(--text-bright); }
+    .page-header p { font-size: 1rem; color: var(--text-dim); max-width: 640px; margin: 0 auto; }
+    .body-padding { padding: 1.5rem; }
 
-    h1, h2, h3 {
-      margin-top: 0;
-      color: var(--text-bright);
-    }
+    /* Step indicator */
+    .step-indicator { display: flex; justify-content: center; gap: 0.5rem; margin: 2rem 0 1.5rem; }
+    .step-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-subtle); transition: background 0.3s; }
+    .step-dot.active { background: var(--color-accent); }
+    .step-dot.done { background: var(--color-accent-secondary); }
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    /* Steps */
+    .step { display: none; animation: fadeIn 0.3s ease; }
+    .step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    .page-header {
-      text-align: center;
-      padding: 60px 20px 30px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-    .page-header h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin: 0 0 10px 0;
-      color: var(--text-bright);
-    }
-    .page-header p {
-      font-size: 1rem;
-      color: var(--text-dim);
-      max-width: 640px;
-      margin: 0 auto;
-    }
+    /* Persona cards */
+    .persona-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin: 1rem 0; }
+    .persona-card { background: var(--bg-tertiary); border: 2px solid var(--border-subtle); border-radius: var(--radius-md);
+      padding: 1.2rem; cursor: pointer; transition: all 0.2s; }
+    .persona-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .persona-card.selected { border-color: var(--color-accent); background: rgba(0, 188, 212, 0.08); }
+    .persona-card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+    .persona-card p { font-size: 0.85rem; color: var(--text-dim); margin: 0; }
 
-    .section {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-subtle);
-    }
+    /* Form elements */
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-weight: 600; color: var(--text-medium); margin-bottom: 0.4rem; font-size: 0.9rem; }
+    select { padding: 0.5rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-subtle);
+             background: var(--bg-tertiary); color: var(--text-bright); min-width: 220px; font-size: 1rem; width: 100%; }
+    select:focus { outline: none; border-color: var(--color-accent); }
+    input[type="email"], input[type="text"] { width: 100%; padding: 0.6rem 0.9rem; background: var(--bg-tertiary);
+      border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+      color: var(--text-bright); font-size: 0.95rem; outline: none; box-sizing: border-box; }
+    input:focus { border-color: var(--color-accent); }
 
-    .section:last-of-type {
-      border-bottom: none;
-    }
+    /* Checkbox grid for tech domains */
+    .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem; }
+    .checkbox-grid label { display: flex; align-items: center; gap: 0.5rem; font-weight: 400; font-size: 0.9rem;
+      color: var(--text-dim); cursor: pointer; padding: 0.4rem 0.6rem; border-radius: 6px;
+      background: var(--bg-tertiary); border: 1px solid var(--border-subtle); transition: all 0.2s; }
+    .checkbox-grid label:hover { border-color: var(--color-accent); }
+    .checkbox-grid input:checked + span { color: var(--text-bright); }
+    .checkbox-grid input { accent-color: var(--color-accent); }
 
-    label {
-      font-weight: 600;
-      color: var(--text-medium);
-    }
+    /* Radio groups */
+    .radio-group { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.4rem; }
+    .radio-group label { display: flex; align-items: center; gap: 0.5rem; font-weight: 400; font-size: 0.9rem;
+      color: var(--text-dim); cursor: pointer; }
+    .radio-group input { accent-color: var(--color-accent); }
 
-    select, button {
-      font-size: 1rem;
-    }
+    /* Readiness sliders */
+    .readiness-item { margin-bottom: 1rem; }
+    .readiness-item .question { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 0.4rem; }
+    .readiness-item .scale-row { display: flex; gap: 0.5rem; }
+    .readiness-item .scale-row label { display: flex; align-items: center; gap: 0.2rem; font-size: 0.85rem;
+      color: var(--text-dim); cursor: pointer; }
+    .readiness-item .scale-row input { accent-color: var(--color-accent); }
 
-    select {
-      padding: 0.4rem 0.6rem;
-      border-radius: 6px;
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-tertiary);
-      color: var(--text-bright);
-      min-width: 220px;
-    }
+    /* Consent checkboxes */
+    .consent-group { margin: 1rem 0; }
+    .consent-group label { display: flex; align-items: flex-start; gap: 0.6rem; font-weight: 400;
+      font-size: 0.85rem; color: var(--text-dim); cursor: pointer; margin-bottom: 0.6rem; line-height: 1.4; }
+    .consent-group input { margin-top: 0.15rem; accent-color: var(--color-accent); flex-shrink: 0; }
 
-    select:focus {
-      outline: none;
-      border-color: var(--color-accent);
-    }
+    /* Navigation buttons */
+    .step-nav { display: flex; justify-content: space-between; margin-top: 1.5rem; padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle); }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.75rem;
-      table-layout: fixed;
-    }
+    /* Results */
+    .results-section { display: none; }
+    .results-section.active { display: block; }
+    .match-card { background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+      padding: 1rem; margin-bottom: 0.75rem; }
+    .match-card h4 { color: var(--text-bright); margin: 0 0 0.3rem; font-size: 1rem; }
+    .match-card .match-meta { font-size: 0.8rem; color: var(--text-dimmer); margin-bottom: 0.4rem; }
+    .match-card .match-score { display: inline-block; background: var(--color-accent-secondary); color: var(--text-bright);
+      padding: 0.15rem 0.5rem; border-radius: var(--radius-pill); font-size: 0.75rem; font-weight: 600; }
+    .match-card a { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+    .match-card a:hover { text-decoration: underline; }
 
-    td {
-      padding: 0.5rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border-subtle);
-      vertical-align: top;
-    }
+    .landscape-section { background: var(--bg-tertiary); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); padding: 1.2rem; margin: 1rem 0; }
+    .landscape-section h3 { font-size: 1rem; margin-bottom: 0.6rem; }
+    .entity-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .entity-chip { background: var(--bg-primary); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill); padding: 0.25rem 0.7rem; font-size: 0.8rem; color: var(--text-dim); }
+    .thread-item { padding: 0.5rem 0; border-bottom: 1px solid var(--border-subtle); }
+    .thread-item:last-child { border-bottom: none; }
+    .thread-title { font-weight: 600; color: var(--text-medium); font-size: 0.9rem; }
+    .thread-keywords { font-size: 0.8rem; color: var(--text-dimmer); }
 
-    td.question-text {
-      width: 60%;
-    }
+    .cta-box { background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(0, 188, 212, 0.1));
+      border: 1px solid var(--color-accent-secondary); border-radius: var(--radius-md);
+      padding: 1.5rem; text-align: center; margin: 1.5rem 0; }
+    .cta-box h3 { margin-bottom: 0.5rem; }
+    .cta-box p { font-size: 0.9rem; margin-bottom: 1rem; }
 
-    td.scale-cell {
-      width: 8%;
-      text-align: center;
-      white-space: nowrap;
-      font-size: 0.85rem;
-    }
+    .status { margin-top: 0.5rem; font-size: 0.85rem; }
+    .status.ok { color: #4ade80; }
+    .status.error { color: #ef4444; }
 
-    td.scale-cell input {
-      margin-right: 0.25rem;
-      accent-color: var(--color-accent);
-    }
-
-    .question-text {
-      font-size: 0.95rem;
-      color: var(--text-dim);
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text-dim);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .btn-outline:hover {
-      color: var(--text-bright);
-      border-color: var(--text-dim);
-    }
-    .cta-text-link { color: var(--color-accent); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
-    .cta-text-link:hover { text-decoration: underline; }
-
-    .scores-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    .score-card {
-      background: var(--bg-tertiary);
-      border-radius: 10px;
-      padding: 0.75rem 0.9rem;
-      border: 1px solid var(--border-subtle);
-    }
-
-    .score-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-dimmer);
-      margin-bottom: 0.25rem;
-    }
-
-    .score-value {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--color-accent);
-    }
-
-    .score-tagline {
-      font-size: 0.8rem;
-      color: var(--text-dimmer);
-      margin-top: 0.15rem;
-    }
-
-    .framework-context {
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-subtle);
-      border-left: 3px solid var(--color-accent);
-      border-radius: var(--radius-sm);
-      padding: 0.9rem 1.1rem;
-      margin-top: 1.2rem;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.5;
-    }
-    .framework-context strong { color: var(--text-bright); }
-    .framework-context a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
-    .framework-context a:hover { color: var(--text-bright); }
-    .framework-context .opportunity-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
-    }
-    .framework-context .opportunity-link i { font-size: 0.7rem; }
-
-    #execSummary {
-      color: var(--text-dim);
-      line-height: 1.45;
-    }
-
-    .status {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-    }
-
-    .status.ok {
-      color: #4ade80;
-    }
-
-    .status.error {
-      color: #ef4444;
-    }
-
-    .back-link {
-      color: var(--color-accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .back-link:hover {
-      text-decoration: underline;
-    }
-
-    .body-padding {
-      padding: 1.5rem;
-    }
-
-    /* Email capture modal */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 1000;
-      display: none;
-    }
-    .modal-backdrop {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.7);
-    }
-    .modal-content {
-      position: relative;
-      max-width: 440px;
-      margin: 15vh auto;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      z-index: 1001;
-    }
-    .modal-close {
-      position: absolute;
-      top: 0.8rem; right: 1rem;
-      background: none;
-      border: none;
-      color: var(--text-dim);
-      font-size: 1.3rem;
-      cursor: pointer;
-      padding: 0;
-    }
-    .modal-content h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-    .modal-content p {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-      margin-bottom: 1.2rem;
-    }
-    .modal-input {
-      width: 100%;
-      padding: 0.6rem 0.9rem;
-      background: var(--bg-tertiary);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      color: var(--text-bright);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      outline: none;
-      box-sizing: border-box;
-    }
-    .modal-input:focus {
-      border-color: var(--color-accent);
-    }
-    .modal-actions {
-      display: flex;
-      gap: 0.75rem;
-    }
-    .modal-actions button {
-      flex: 1;
-    }
+    .back-link { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+    .back-link:hover { text-decoration: underline; }
 
     @media (max-width: 640px) {
-      .page-header {
-        padding: 40px 15px 20px;
-      }
-      .page-header h1 {
-        font-size: 2rem;
-      }
-      .body-padding {
-        padding: 0.75rem;
-      }
-      .container {
-        padding: 0 1rem;
-      }
-      table, th, td {
-        font-size: 0.85rem;
-      }
+      .page-header { padding: 40px 15px 20px; }
+      .page-header h1 { font-size: 2rem; }
+      .body-padding { padding: 0.75rem; }
+      .container { padding: 0 1rem; }
+      .checkbox-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -325,978 +149,528 @@
       </button>
       <div class="nav-links">
         <a href="framework.html">Framework</a>
-        <a href="innovation-tool.html">Assessment</a>
+        <a href="innovation-tool.html">Opportunities</a>
         <a href="projects.html">Case Studies</a>
         <a href="research.html">Research</a>
-            <a href="archive.html">Intelligence</a>
+        <a href="archive.html">Intelligence</a>
       </div>
     </div>
   </nav>
 
   <div class="page-header">
-    <h1>Modernization Readiness Assessment</h1>
-    <p>Assess your organization's innovation strengths and weaknesses across four dimensions — and get practical recommendations mapped to the Innovation Impact Framework.</p>
+    <h1>Opportunity Profiler</h1>
+    <p>Build your profile in 60 seconds and get matched against live defense and government intelligence signals.</p>
   </div>
 
   <div class="body-padding">
     <div class="container">
 
-      <div class="section">
-        <h2>Select Your Sector</h2>
-        <label for="sectorSelect">Sector or context you're assessing</label><br />
-        <select id="sectorSelect">
-          <option value="">Select a sector…</option>
-          <option>Federal government</option>
-          <option>State or local government</option>
-          <option>Education</option>
-          <option>Healthcare</option>
-          <option>Nonprofit / philanthropy</option>
-          <option>Private sector</option>
-          <option>Cross-sector / coalition</option>
-          <option>Other / mixed</option>
-        </select>
+      <!-- Step indicator -->
+      <div class="step-indicator">
+        <div class="step-dot active" data-step="1"></div>
+        <div class="step-dot" data-step="2"></div>
+        <div class="step-dot" data-step="3"></div>
+        <div class="step-dot" data-step="4"></div>
       </div>
 
-      <div class="section">
-        <h2>Rate Each Statement</h2>
-        <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1.5rem;">
-          For each statement, choose how true it feels for your current environment.
-          <em>(1 = Not at all true, 5 = Very true)</em>
+      <!-- STEP 1: Who You Are -->
+      <div class="step active" id="step1">
+        <h2>Who You Are</h2>
+
+        <div class="form-group">
+          <label>Select your persona</label>
+          <div class="persona-grid" id="personaGrid"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="sectorSelect">Your sector</label>
+          <select id="sectorSelect">
+            <option value="">Select a sector...</option>
+          </select>
+        </div>
+
+        <div class="step-nav">
+          <div></div>
+          <button class="btn-primary" onclick="nextStep(2)">Next <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Your Capabilities -->
+      <div class="step" id="step2">
+        <h2>Your Capabilities</h2>
+
+        <div class="form-group">
+          <label>Technology domains (select all that apply)</label>
+          <div class="checkbox-grid" id="techDomainsGrid"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Contracting posture</label>
+          <div class="radio-group" id="contractingGroup"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Organization scale</label>
+          <div class="radio-group" id="scaleGroup"></div>
+        </div>
+
+        <div class="form-group">
+          <label>Innovation stage</label>
+          <div class="radio-group" id="stageGroup"></div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-outline" onclick="prevStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="btn-primary" onclick="nextStep(3)">Next <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Your Readiness -->
+      <div class="step" id="step3">
+        <h2>Your Readiness</h2>
+        <p style="font-size: 0.9rem; color: var(--text-dimmer); margin-bottom: 1rem;">
+          Rate each statement from 1 (not at all true) to 5 (very true).
         </p>
 
-        <h3>Institutional Modernization</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td class="question-text">
-                We have a clear, shared modernization roadmap that people actually use to make decisions.
-              </td>
-              <td class="scale-cell"><input type="radio" name="mod_q1" value="1" />1</td>
-              <td class="scale-cell"><input type="radio" name="mod_q1" value="2" />2</td>
-              <td class="scale-cell"><input type="radio" name="mod_q1" value="3" />3</td>
-              <td class="scale-cell"><input type="radio" name="mod_q1" value="4" />4</td>
-              <td class="scale-cell"><input type="radio" name="mod_q1" value="5" />5</td>
-            </tr>
-            <tr>
-              <td class="question-text">
-                Legacy processes and systems are being actively retired or refactored, not just documented.
-              </td>
-              <td class="scale-cell"><input type="radio" name="mod_q2" value="1" />1</td>
-              <td class="scale-cell"><input type="radio" name="mod_q2" value="2" />2</td>
-              <td class="scale-cell"><input type="radio" name="mod_q2" value="3" />3</td>
-              <td class="scale-cell"><input type="radio" name="mod_q2" value="4" />4</td>
-              <td class="scale-cell"><input type="radio" name="mod_q2" value="5" />5</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Cross-Sector Collaboration</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td class="question-text">
-                Teams share information and decisions transparently across functions, not just within silos.
-              </td>
-              <td class="scale-cell"><input type="radio" name="col_q1" value="1" />1</td>
-              <td class="scale-cell"><input type="radio" name="col_q1" value="2" />2</td>
-              <td class="scale-cell"><input type="radio" name="col_q1" value="3" />3</td>
-              <td class="scale-cell"><input type="radio" name="col_q1" value="4" />4</td>
-              <td class="scale-cell"><input type="radio" name="col_q1" value="5" />5</td>
-            </tr>
-            <tr>
-              <td class="question-text">
-                We actively collaborate with external partners — other agencies, sectors, or institutions — toward shared outcomes.
-              </td>
-              <td class="scale-cell"><input type="radio" name="col_q2" value="1" />1</td>
-              <td class="scale-cell"><input type="radio" name="col_q2" value="2" />2</td>
-              <td class="scale-cell"><input type="radio" name="col_q2" value="3" />3</td>
-              <td class="scale-cell"><input type="radio" name="col_q2" value="4" />4</td>
-              <td class="scale-cell"><input type="radio" name="col_q2" value="5" />5</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Responsible Tech Adoption</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td class="question-text">
-                New technology adoption is guided by clear governance, including ethical review and compliance accountability.
-              </td>
-              <td class="scale-cell"><input type="radio" name="tech_q1" value="1" />1</td>
-              <td class="scale-cell"><input type="radio" name="tech_q1" value="2" />2</td>
-              <td class="scale-cell"><input type="radio" name="tech_q1" value="3" />3</td>
-              <td class="scale-cell"><input type="radio" name="tech_q1" value="4" />4</td>
-              <td class="scale-cell"><input type="radio" name="tech_q1" value="5" />5</td>
-            </tr>
-            <tr>
-              <td class="question-text">
-                We can safely experiment with new tools or approaches without breaking core operations.
-              </td>
-              <td class="scale-cell"><input type="radio" name="tech_q2" value="1" />1</td>
-              <td class="scale-cell"><input type="radio" name="tech_q2" value="2" />2</td>
-              <td class="scale-cell"><input type="radio" name="tech_q2" value="3" />3</td>
-              <td class="scale-cell"><input type="radio" name="tech_q2" value="4" />4</td>
-              <td class="scale-cell"><input type="radio" name="tech_q2" value="5" />5</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Public-Impact Innovation</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td class="question-text">
-                People are encouraged (and resourced) to test new ideas tied to real outcomes.
-              </td>
-              <td class="scale-cell"><input type="radio" name="inn_q1" value="1" />1</td>
-              <td class="scale-cell"><input type="radio" name="inn_q1" value="2" />2</td>
-              <td class="scale-cell"><input type="radio" name="inn_q1" value="3" />3</td>
-              <td class="scale-cell"><input type="radio" name="inn_q1" value="4" />4</td>
-              <td class="scale-cell"><input type="radio" name="inn_q1" value="5" />5</td>
-            </tr>
-            <tr>
-              <td class="question-text">
-                Our innovations are designed to produce measurable benefits beyond our organization — for communities, partners, or the public.
-              </td>
-              <td class="scale-cell"><input type="radio" name="inn_q2" value="1" />1</td>
-              <td class="scale-cell"><input type="radio" name="inn_q2" value="2" />2</td>
-              <td class="scale-cell"><input type="radio" name="inn_q2" value="3" />3</td>
-              <td class="scale-cell"><input type="radio" name="inn_q2" value="4" />4</td>
-              <td class="scale-cell"><input type="radio" name="inn_q2" value="5" />5</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="btn-row">
-          <button class="btn-primary" id="scoreBtn">Score my responses</button>
-          <button class="btn-outline" id="resetBtn" type="button">Reset</button>
+        <div class="readiness-item">
+          <div class="question">We have a clear modernization roadmap that is actively being executed.</div>
+          <div class="scale-row" data-key="modernization">
+            <label><input type="radio" name="r_mod" value="1"> <span>1</span></label>
+            <label><input type="radio" name="r_mod" value="2"> <span>2</span></label>
+            <label><input type="radio" name="r_mod" value="3"> <span>3</span></label>
+            <label><input type="radio" name="r_mod" value="4"> <span>4</span></label>
+            <label><input type="radio" name="r_mod" value="5"> <span>5</span></label>
+          </div>
         </div>
-        <div id="validationMsg" class="status error" style="display:none;"></div>
+
+        <div class="readiness-item">
+          <div class="question">We actively collaborate with external partners on innovation initiatives.</div>
+          <div class="scale-row" data-key="collaboration">
+            <label><input type="radio" name="r_col" value="1"> <span>1</span></label>
+            <label><input type="radio" name="r_col" value="2"> <span>2</span></label>
+            <label><input type="radio" name="r_col" value="3"> <span>3</span></label>
+            <label><input type="radio" name="r_col" value="4"> <span>4</span></label>
+            <label><input type="radio" name="r_col" value="5"> <span>5</span></label>
+          </div>
+        </div>
+
+        <div class="readiness-item">
+          <div class="question">New technology adoption is guided by clear governance and we can safely experiment.</div>
+          <div class="scale-row" data-key="technology">
+            <label><input type="radio" name="r_tech" value="1"> <span>1</span></label>
+            <label><input type="radio" name="r_tech" value="2"> <span>2</span></label>
+            <label><input type="radio" name="r_tech" value="3"> <span>3</span></label>
+            <label><input type="radio" name="r_tech" value="4"> <span>4</span></label>
+            <label><input type="radio" name="r_tech" value="5"> <span>5</span></label>
+          </div>
+        </div>
+
+        <div class="readiness-item">
+          <div class="question">Our innovations are designed to produce measurable public benefit.</div>
+          <div class="scale-row" data-key="innovation">
+            <label><input type="radio" name="r_inn" value="1"> <span>1</span></label>
+            <label><input type="radio" name="r_inn" value="2"> <span>2</span></label>
+            <label><input type="radio" name="r_inn" value="3"> <span>3</span></label>
+            <label><input type="radio" name="r_inn" value="4"> <span>4</span></label>
+            <label><input type="radio" name="r_inn" value="5"> <span>5</span></label>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-outline" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="btn-primary" onclick="nextStep(4)">Next <i class="fas fa-arrow-right"></i></button>
+        </div>
       </div>
 
-      <div class="section" id="resultsSection" style="display:none;">
-        <h2>Your Results</h2>
-        <div class="scores-grid">
-          <div class="score-card">
-            <div class="score-label">Institutional Modernization</div>
-            <div class="score-value" id="modScoreDisplay">–</div>
-            <div class="score-tagline" id="modTagline"></div>
-          </div>
-          <div class="score-card">
-            <div class="score-label">Cross-Sector Collaboration</div>
-            <div class="score-value" id="colScoreDisplay">–</div>
-            <div class="score-tagline" id="colTagline"></div>
-          </div>
-          <div class="score-card">
-            <div class="score-label">Responsible Tech Adoption</div>
-            <div class="score-value" id="techScoreDisplay">–</div>
-            <div class="score-tagline" id="techTagline"></div>
-          </div>
-          <div class="score-card">
-            <div class="score-label">Public-Impact Innovation</div>
-            <div class="score-value" id="innScoreDisplay">–</div>
-            <div class="score-tagline" id="innTagline"></div>
-          </div>
+      <!-- STEP 4: Get Your Results -->
+      <div class="step" id="step4">
+        <h2>Get Your Results</h2>
+
+        <div class="form-group">
+          <label for="emailInput">Email (required)</label>
+          <input type="email" id="emailInput" placeholder="you@organization.com" />
         </div>
 
-        <div class="framework-context" id="frameworkContext">
-          <strong>Your scores map to the four pillars of the <a href="framework.html">Innovation Impact Framework</a>.</strong>
-          Each pillar — Institutional Modernization, Cross-Sector Collaboration, Responsible Tech Adoption, and Public-Impact Innovation — represents
-          a dimension where intrapreneurial thinking can drive institutional change.
-          <div class="opportunity-link" id="opportunityLink"></div>
+        <div class="form-group">
+          <label for="nameInput">Name (optional)</label>
+          <input type="text" id="nameInput" placeholder="Your name" />
         </div>
 
-        <div style="margin-top:1.5rem;">
-          <canvas id="radarChart" height="220"></canvas>
+        <div class="consent-group">
+          <label>
+            <input type="checkbox" id="consentNewsletter" checked>
+            <span>Subscribe to the weekly Defense Signal Brief intelligence newsletter</span>
+          </label>
+          <label>
+            <input type="checkbox" id="consentNotifications">
+            <span>Notify me when new opportunities match my profile</span>
+          </label>
         </div>
 
-        <h3 style="margin-top:1.5rem;">Executive Summary</h3>
-        <p id="execSummary" style="font-size:0.95rem; line-height:1.45;"></p>
+        <div id="submitError" class="status error" style="display:none;"></div>
 
-        <h3 style="margin-top:1.5rem;">Framework Recommendations</h3>
-        <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:0.75rem;">
-          Based on your scores, here's what the <a href="framework.html" style="color:var(--color-accent); text-decoration:none; font-weight:600;">Innovation Impact Framework</a> recommends focusing on in each pillar.
-        </p>
-        <div id="pillarRecommendations" style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;"></div>
-
-        <div class="btn-row" style="margin-top:1.5rem;">
-          <button class="btn-primary" id="downloadPdfBtn" type="button">Download PDF</button>
-          <button class="btn-outline" id="shareResultsBtn" type="button"><i class="fab fa-linkedin" style="margin-right:0.3rem;"></i> Share results</button>
-        </div>
-        <div style="text-align:center; margin-top:0.5rem;">
-          <a href="https://www.linkedin.com/groups/17212001/" class="cta-text-link" id="consultationBtn" target="_blank" rel="noopener">Start a conversation <i class="fas fa-arrow-right" style="font-size:0.75rem;"></i></a>
+        <div class="step-nav">
+          <button class="btn-outline" onclick="prevStep(3)"><i class="fas fa-arrow-left"></i> Back</button>
+          <button class="btn-primary" id="submitBtn" onclick="submitProfile()">
+            <i class="fas fa-search"></i> Find My Matches
+          </button>
         </div>
       </div>
+
+      <!-- RESULTS -->
+      <div class="results-section" id="resultsSection">
+        <h2>Your Opportunity Matches</h2>
+        <div id="matchResults"></div>
+
+        <div id="landscapeSection" style="display:none;">
+          <div class="landscape-section">
+            <h3>Intelligence Landscape</h3>
+            <p style="font-size:0.85rem; color:var(--text-dimmer); margin-bottom:0.8rem;">
+              Here's what's trending in the defense and government space right now.
+            </p>
+            <div id="landscapeEntities"></div>
+            <div id="landscapeThreads" style="margin-top:1rem;"></div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h3>Your profile is active</h3>
+          <p>We'll match your profile against new intelligence every week and send you personalized opportunities.</p>
+          <a href="archive.html" class="btn-primary" style="display:inline-block; padding:0.6rem 1.5rem; text-decoration:none;">
+            Browse Intelligence Archive
+          </a>
+        </div>
+      </div>
+
     </div>
 
-    <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
-      <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem;">
-        <a href="mailto:jason@preneurial.works" style="color: var(--text-dim); text-decoration: none;">Contact</a> | <a href="https://www.linkedin.com/in/jagagne/" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      </p>
-      <a href="index.html" class="back-link">← Back to Home</a>
+    <div style="text-align: center; margin-top: 2rem; padding-bottom: 2rem;">
+      <a href="mailto:jason@preneurial.works" style="color: var(--color-accent); text-decoration: none; font-size: 0.85rem;">Contact</a>
+      &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/jagagne/" style="color: var(--color-accent); text-decoration: none; font-size: 0.85rem;">LinkedIn</a>
+      <br><br>
+      <a href="index.html" class="back-link" style="font-size: 0.85rem;">&larr; Back to Home</a>
     </div>
   </div>
 
-  <!-- Email Capture Modal -->
-  <div id="emailModal" class="modal-overlay">
-    <div class="modal-backdrop" onclick="document.getElementById('emailModal').style.display='none'"></div>
-    <div class="modal-content">
-      <button class="modal-close" onclick="document.getElementById('emailModal').style.display='none'">&times;</button>
-      <h3>Get Your Full Report</h3>
-      <p>Enter your email to download and receive innovation insights.</p>
-      <input type="email" id="emailInput" class="modal-input" placeholder="your@email.com" />
-      <div class="modal-actions">
-        <button class="btn-primary" onclick="submitEmailAndDownload()">Send &amp; Download</button>
-        <button class="btn-outline" onclick="skipAndDownload()">Just download</button>
-      </div>
-    </div>
-  </div>
+<script>
+// ── State ──
+let currentStep = 1;
+let taxonomy = null;
+let matchIndex = null;
+let landscapeData = null;
+let selectedPersona = '';
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <!-- jsPDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+// ── Load data files ──
+async function loadData() {
+  try {
+    const [taxRes, matchRes, landRes] = await Promise.all([
+      fetch('data/taxonomy.json'),
+      fetch('data/match-index.json'),
+      fetch('data/landscape.json'),
+    ]);
+    if (taxRes.ok) taxonomy = await taxRes.json();
+    if (matchRes.ok) matchIndex = await matchRes.json();
+    if (landRes.ok) landscapeData = await landRes.json();
+  } catch (e) {
+    console.warn('Could not load data files:', e);
+  }
+  populateForm();
+}
 
-  <script>
-    // === Framework Pillar Data ===
-    var PILLAR_DATA = {
-      modernization: {
-        title: 'Institutional Modernization',
-        color: '#00bcd4',
-        actions: [
-          'Diagnose bottlenecks, inefficiencies, and identify milestones',
-          'Identify stakeholders and redesign workflows',
-          'Build pipelines and operational pathways'
-        ],
-        caseStudy: { label: 'Modernizing Intelligence Workflows', url: 'project-defense.html' }
-      },
-      collaboration: {
-        title: 'Cross-Sector Collaboration',
-        color: '#2563eb',
-        actions: [
-          'Align outcomes across education, government, industry, and civic institutions',
-          'Create and foster a shared language',
-          'Reduce partnership and collaboration frictions through outreach efforts'
-        ],
-        caseStudy: { label: 'Japan Travel KK', url: 'project2.html' }
-      },
-      technology: {
-        title: 'Responsible Tech Adoption',
-        color: '#6ee7b7',
-        actions: [
-          'Enable an adaptive culture to reinforce institutional resilience',
-          'Ensure ethical and lawful use',
-          'Establish or strengthen governance'
-        ],
-        caseStudy: { label: 'La Clinica Tepeyac', url: 'project1.html' }
-      },
-      innovation: {
-        title: 'Public-Impact Innovation',
-        color: '#c4b5fd',
-        actions: [
-          'Design scalable solutions translating emerging innovations into institutional reality',
-          'Solutions should strengthen communities',
-          'Deliver and monitor measurable outcomes'
-        ],
-        caseStudy: { label: 'Watch Momentum Sports', url: 'project3.html' }
-      }
-    };
+function populateForm() {
+  // Personas
+  const grid = document.getElementById('personaGrid');
+  const personas = taxonomy?.personas || [
+    { id: 'institutional_innovator', label: 'Institutional Innovator', description: 'Leaders inside large organizations driving innovation and modernization from within.' },
+    { id: 'industry_partner', label: 'Industry Partner', description: 'Established contractors, integrators, and service providers partnering on complex programs.' },
+    { id: 'market_entrant', label: 'Market Entrant', description: 'Technology companies and startups bringing new capabilities to emerging markets.' },
+  ];
+  grid.innerHTML = personas.map(function(p) {
+    return '<div class="persona-card" data-persona="' + p.id + '" onclick="selectPersona(\'' + p.id + '\')">' +
+      '<h3>' + p.label + '</h3>' +
+      '<p>' + p.description + '</p></div>';
+  }).join('');
 
-    function renderPillarRecommendations(scores) {
-      var container = document.getElementById('pillarRecommendations');
-      var pillars = [
-        { key: 'modernization', score: scores.modernizationScore },
-        { key: 'collaboration', score: scores.collaborationScore },
-        { key: 'technology', score: scores.techScore },
-        { key: 'innovation', score: scores.innovationScore }
-      ];
+  // Sectors
+  const sectorSelect = document.getElementById('sectorSelect');
+  const sectors = taxonomy?.sectors || [
+    { id: 'defense', label: 'Defense' },
+    { id: 'federal_civilian', label: 'Federal Civilian' },
+    { id: 'state_local', label: 'State & Local' },
+    { id: 'education', label: 'Education' },
+    { id: 'healthcare', label: 'Healthcare' },
+    { id: 'other', label: 'Other / Cross-sector' },
+  ];
+  sectorSelect.innerHTML = '<option value="">Select a sector...</option>' +
+    sectors.map(function(s) { return '<option value="' + s.id + '">' + s.label + '</option>'; }).join('');
 
-      var lowest = pillars.reduce(function(min, p) { return p.score < min.score ? p : min; }, pillars[0]);
+  // Technology domains
+  const techGrid = document.getElementById('techDomainsGrid');
+  const domains = taxonomy?.technology_domains || [];
+  if (domains.length > 0) {
+    techGrid.innerHTML = domains.map(function(d) {
+      return '<label><input type="checkbox" value="' + d.id + '"> <span>' + d.label + '</span></label>';
+    }).join('');
+  } else {
+    techGrid.innerHTML =
+      '<label><input type="checkbox" value="artificial_intelligence"> <span>Artificial Intelligence</span></label>' +
+      '<label><input type="checkbox" value="cybersecurity"> <span>Cybersecurity</span></label>' +
+      '<label><input type="checkbox" value="cloud_computing"> <span>Cloud Computing</span></label>' +
+      '<label><input type="checkbox" value="autonomous_systems"> <span>Autonomous Systems</span></label>' +
+      '<label><input type="checkbox" value="data_analytics"> <span>Data Analytics</span></label>' +
+      '<label><input type="checkbox" value="space_systems"> <span>Space Systems</span></label>' +
+      '<label><input type="checkbox" value="electronic_warfare"> <span>Electronic Warfare</span></label>' +
+      '<label><input type="checkbox" value="logistics_supply_chain"> <span>Logistics &amp; Supply Chain</span></label>';
+  }
 
-      container.innerHTML = pillars.map(function(p) {
-        var d = PILLAR_DATA[p.key];
-        var isLowest = p.key === lowest.key;
-        var borderColor = isLowest ? d.color : 'var(--border-subtle)';
-        var highlight = isLowest ? '<span style="display:inline-block;font-size:0.7rem;font-weight:700;color:' + d.color + ';background:' + d.color + '20;padding:0.15rem 0.5rem;border-radius:999px;margin-left:0.5rem;">FOCUS AREA</span>' : '';
+  // Contracting posture
+  const contractGroup = document.getElementById('contractingGroup');
+  const postures = taxonomy?.contracting_postures || [
+    { id: 'prime', label: 'Prime contractor' },
+    { id: 'sub', label: 'Subcontractor' },
+    { id: 'seeking_first', label: 'Seeking first contract' },
+    { id: 'no_contracts', label: 'Not currently contracting' },
+  ];
+  contractGroup.innerHTML = postures.map(function(p) {
+    return '<label><input type="radio" name="contracting" value="' + p.id + '"> ' + p.label + '</label>';
+  }).join('');
 
-        return '<div style="background:var(--bg-tertiary);border:1px solid ' + borderColor + ';border-top:3px solid ' + d.color + ';border-radius:8px;padding:0.75rem 0.9rem;">' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">' +
-            '<span style="font-size:0.85rem;font-weight:700;color:var(--text-bright);">' + d.title + '</span>' +
-            '<span style="font-size:0.85rem;font-weight:700;color:' + d.color + ';">' + p.score.toFixed(1) + '</span>' +
-          '</div>' +
-          highlight +
-          '<ul style="list-style:none;padding:0;margin:0.5rem 0 0;">' +
-            d.actions.map(function(a) {
-              return '<li style="font-size:0.8rem;color:var(--text-dim);padding-left:0.9rem;position:relative;margin-bottom:0.25rem;">' +
-                '<span style="position:absolute;left:0;color:' + d.color + ';font-weight:bold;">•</span>' + a + '</li>';
-            }).join('') +
-          '</ul>' +
-          '<div style="margin-top:0.5rem;padding-top:0.4rem;border-top:1px solid var(--border-subtle);font-size:0.75rem;color:var(--text-dimmer);">' +
-            '<i class="fas fa-arrow-right" style="font-size:0.6rem;margin-right:0.3rem;"></i>In practice: <a href="' + d.caseStudy.url + '" style="color:' + d.color + ';text-decoration:none;font-weight:600;">' + d.caseStudy.label + '</a>' +
-          '</div>' +
-        '</div>';
+  // Organization scale
+  const scaleGroup = document.getElementById('scaleGroup');
+  const scales = taxonomy?.organization_scales || [
+    { id: 'large', label: 'Large (1000+ employees)' },
+    { id: 'mid', label: 'Mid-market (100-999)' },
+    { id: 'small', label: 'Small (10-99)' },
+    { id: 'startup', label: 'Startup (<10)' },
+  ];
+  scaleGroup.innerHTML = scales.map(function(s) {
+    return '<label><input type="radio" name="scale" value="' + s.id + '"> ' + s.label + '</label>';
+  }).join('');
+
+  // Innovation stage
+  const stageGroup = document.getElementById('stageGroup');
+  const stages = taxonomy?.innovation_stages || [
+    { id: 'exploring', label: 'Exploring opportunities' },
+    { id: 'piloting', label: 'Piloting solutions' },
+    { id: 'scaling', label: 'Scaling proven models' },
+  ];
+  stageGroup.innerHTML = stages.map(function(s) {
+    return '<label><input type="radio" name="stage" value="' + s.id + '"> ' + s.label + '</label>';
+  }).join('');
+}
+
+// ── Navigation ──
+function selectPersona(id) {
+  selectedPersona = id;
+  document.querySelectorAll('.persona-card').forEach(function(c) { c.classList.remove('selected'); });
+  var el = document.querySelector('[data-persona="' + id + '"]');
+  if (el) el.classList.add('selected');
+}
+
+function nextStep(step) {
+  if (currentStep === 1) {
+    if (!selectedPersona) { alert('Please select a persona.'); return; }
+    if (!document.getElementById('sectorSelect').value) { alert('Please select a sector.'); return; }
+  }
+  goToStep(step);
+}
+
+function prevStep(step) { goToStep(step); }
+
+function goToStep(step) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step' + step).classList.add('active');
+
+  document.querySelectorAll('.step-dot').forEach(function(d) {
+    var ds = parseInt(d.dataset.step);
+    d.classList.remove('active', 'done');
+    if (ds === step) d.classList.add('active');
+    else if (ds < step) d.classList.add('done');
+  });
+
+  currentStep = step;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Collect profile data ──
+function collectProfile() {
+  var techDomains = [];
+  document.querySelectorAll('#techDomainsGrid input:checked').forEach(function(cb) {
+    techDomains.push(cb.value);
+  });
+
+  var readinessScores = {};
+  document.querySelectorAll('.scale-row').forEach(function(row) {
+    var key = row.dataset.key;
+    var checked = row.querySelector('input:checked');
+    if (checked) readinessScores[key] = parseInt(checked.value);
+  });
+
+  var contracting = document.querySelector('input[name="contracting"]:checked');
+  var scale = document.querySelector('input[name="scale"]:checked');
+  var stage = document.querySelector('input[name="stage"]:checked');
+
+  return {
+    email: document.getElementById('emailInput').value.trim(),
+    name: document.getElementById('nameInput').value.trim(),
+    persona: selectedPersona,
+    sector: document.getElementById('sectorSelect').value,
+    technology_domains: techDomains,
+    contracting_posture: contracting ? contracting.value : '',
+    organization_scale: scale ? scale.value : '',
+    innovation_stage: stage ? stage.value : '',
+    readiness_scores: readinessScores,
+    consent_newsletter: document.getElementById('consentNewsletter').checked,
+    consent_notifications: document.getElementById('consentNotifications').checked,
+  };
+}
+
+// ── Submit ──
+async function submitProfile() {
+  var profile = collectProfile();
+  var errorDiv = document.getElementById('submitError');
+  errorDiv.style.display = 'none';
+
+  if (!profile.email || profile.email.indexOf('@') === -1) {
+    errorDiv.textContent = 'Please enter a valid email address.';
+    errorDiv.style.display = 'block';
+    return;
+  }
+  if (!profile.consent_newsletter) {
+    errorDiv.textContent = 'Newsletter subscription is required to receive your results.';
+    errorDiv.style.display = 'block';
+    return;
+  }
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Matching...';
+
+  // POST to Cloudflare Worker (non-blocking)
+  try {
+    await fetch('https://api.preneurial.works/api/profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(profile),
+    });
+  } catch (e) {
+    console.warn('Profile submission error (non-blocking):', e);
+  }
+
+  // Client-side matching against match-index.json
+  var matches = runClientMatching(profile);
+  showResults(matches, profile);
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-search"></i> Find My Matches';
+}
+
+// ── Client-side matching ──
+function runClientMatching(profile) {
+  if (!matchIndex) return [];
+
+  var profileKeywords = new Set();
+  profile.technology_domains.forEach(function(d) {
+    d.split('_').forEach(function(w) { if (w.length > 2) profileKeywords.add(w.toLowerCase()); });
+  });
+  if (profile.sector) {
+    profile.sector.split('_').forEach(function(w) { if (w.length > 2) profileKeywords.add(w.toLowerCase()); });
+  }
+
+  var results = [];
+
+  // Match against signals
+  (matchIndex.signals || []).forEach(function(s) {
+    var titleWords = new Set(s.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 2; }));
+    var overlap = Array.from(profileKeywords).filter(function(w) { return titleWords.has(w); });
+    if (overlap.length > 0) {
+      var score = Math.min(1, overlap.length / Math.max(profileKeywords.size, 1));
+      var boost = s.status === 'brief_generated' ? 1.3 : 1.0;
+      results.push({
+        type: s.status === 'brief_generated' ? 'brief' : 'signal',
+        id: s.signal_id,
+        title: s.title,
+        score: Math.min(1, score * boost),
+        brief_id: s.brief_id,
+      });
+    }
+  });
+
+  // Match against topic threads
+  (matchIndex.topic_threads || []).forEach(function(t) {
+    var threadWords = new Set(
+      t.keywords.map(function(k) { return k.toLowerCase(); }).concat(
+        t.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 2; })
+      )
+    );
+    var overlap = Array.from(profileKeywords).filter(function(w) { return threadWords.has(w); });
+    if (overlap.length > 0) {
+      var score = Math.min(1, (overlap.length / Math.max(profileKeywords.size, 1)) * t.importance);
+      results.push({ type: 'topic_thread', id: t.id, title: t.title, score: score });
+    }
+  });
+
+  results.sort(function(a, b) { return b.score - a.score; });
+  return results.slice(0, 10);
+}
+
+// ── Show results ──
+function showResults(matches, profile) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.querySelector('.step-indicator').style.display = 'none';
+  document.getElementById('resultsSection').classList.add('active');
+
+  var container = document.getElementById('matchResults');
+
+  if (matches.length > 0) {
+    container.innerHTML = '<p style="color:var(--text-dim); margin-bottom:1rem;">' +
+      'Found <strong>' + matches.length + '</strong> matches based on your profile.</p>' +
+      matches.map(function(m) {
+        var link = '';
+        if (m.type === 'brief' && m.brief_id) {
+          link = '<a href="briefings/' + m.brief_id + '.html">Read opportunity brief &rarr;</a>';
+        }
+        return '<div class="match-card"><h4>' + m.title + '</h4>' +
+          '<div class="match-meta"><span class="match-score">' + Math.round(m.score * 100) + '% match</span>' +
+          ' &nbsp; ' + m.type.replace('_', ' ') + '</div>' + link + '</div>';
       }).join('');
-    }
-
-    // === Google Form Backend Submission ===
-      const GOOGLE_FORM_ACTION_URL =
-        "https://docs.google.com/forms/d/e/1FAIpQLSfKLuFC7aJKctsiTRuIN0Q7_n7BFQBE0xGSiu0AZZTz9ebTrQ/formResponse";
-
-      const FIELD_IDS = {
-        Sector: "entry.957615768",
-        mod_q1: "entry.773639386",
-        mod_q2: "entry.754516573",
-        col_q1: "entry.40725693",
-        col_q2: "entry.1162995008",
-        tech_q1: "entry.1541692200",
-        tech_q2: "entry.2106094835",
-        inn_q1: "entry.1653062323",
-        inn_q2: "entry.2033975286",
-        modernizationScore: "entry.373748106",
-        collaborationScore: "entry.784781114",
-        techScore: "entry.237796422",
-        innovationScore: "entry.1242756127",
-        rawResponsesJson: "entry.1645517615",
-        userAgent: "entry.1800629430",
-        emailAddress: "entry.1198490570"
-      };
-
-
-      async function submitToGoogleForm(payload) {
-        const formData = new FormData();
-
-        for (const [key, value] of Object.entries(payload)) {
-          const entryId = FIELD_IDS[key];
-          if (entryId) {
-            formData.append(entryId, value);
-          }
-        }
-
-        await fetch(GOOGLE_FORM_ACTION_URL, {
-          method: "POST",
-          mode: "no-cors",
-          body: formData
-        });
-
-        console.log("Submitted to Google Form");
-      }
-    // === Utility: collect responses and compute scores ===
-    function getRadioValue(name) {
-      var checked = document.querySelector('input[name="' + name + '"]:checked');
-      return checked ? Number(checked.value) : null;
-    }
-
-    function computeScores() {
-      var sector = document.getElementById("sectorSelect").value || null;
-
-      var mod_q1 = getRadioValue("mod_q1");
-      var mod_q2 = getRadioValue("mod_q2");
-      var col_q1 = getRadioValue("col_q1");
-      var col_q2 = getRadioValue("col_q2");
-      var tech_q1 = getRadioValue("tech_q1");
-      var tech_q2 = getRadioValue("tech_q2");
-      var inn_q1 = getRadioValue("inn_q1");
-      var inn_q2 = getRadioValue("inn_q2");
-
-      var missing = [];
-      if (!sector) missing.push("sector");
-      if (mod_q1 == null) missing.push("Modernization Q1");
-      if (mod_q2 == null) missing.push("Modernization Q2");
-      if (col_q1 == null) missing.push("Collaboration Q1");
-      if (col_q2 == null) missing.push("Collaboration Q2");
-      if (tech_q1 == null) missing.push("Technology Q1");
-      if (tech_q2 == null) missing.push("Technology Q2");
-      if (inn_q1 == null) missing.push("Innovation Q1");
-      if (inn_q2 == null) missing.push("Innovation Q2");
-
-      return {
-        sector: sector,
-        mod_q1: mod_q1,
-        mod_q2: mod_q2,
-        col_q1: col_q1,
-        col_q2: col_q2,
-        tech_q1: tech_q1,
-        tech_q2: tech_q2,
-        inn_q1: inn_q1,
-        inn_q2: inn_q2,
-        missing: missing
-      };
-    }
-
-    function average(values) {
-      var valid = values.filter(function(v) { return v != null; });
-      if (!valid.length) return null;
-      return valid.reduce(function(a, b) { return a + b; }, 0) / valid.length;
-    }
-// === Utility: build report ===
-    function scoreTagline(score) {
-      if (score == null) return "";
-      if (score >= 4.5) return "High maturity, strong foundation to build from.";
-      if (score >= 3.5) return "Solid footing with room to sharpen and scale.";
-      if (score >= 2.5) return "Mixed signals—pockets of strength, pockets of drag.";
-      if (score >= 1.5) return "Early-stage—clarity and focus will matter most.";
-      return "Very early—this is a chance to design it right from the start.";
-    }
-
-    function buildExecutiveSummary(scores) {
-      var modernizationScore = scores.modernizationScore;
-      var collaborationScore = scores.collaborationScore;
-      var techScore = scores.techScore;
-      var innovationScore = scores.innovationScore;
-
-      var dimensions = [
-        { name: "Institutional Modernization", value: modernizationScore },
-        { name: "Cross-Sector Collaboration", value: collaborationScore },
-        { name: "Responsible Tech Adoption", value: techScore },
-        { name: "Public-Impact Innovation", value: innovationScore }
-      ];
-
-      var strongest = dimensions.reduce(function(a, b) {
-        return a.value > b.value ? a : b;
-      });
-      var weakest = dimensions.reduce(function(a, b) {
-        return a.value < b.value ? a : b;
-      });
-
-      var avg = (modernizationScore + collaborationScore + techScore + innovationScore) / 4;
-      var maturityPhrase = "";
-
-      if (avg >= 4.2) {
-        maturityPhrase = "a strong modernization posture with clear momentum";
-      } else if (avg >= 3.4) {
-        maturityPhrase = "a solid foundation with opportunities to sharpen alignment and execution";
-      } else if (avg >= 2.6) {
-        maturityPhrase = "a mixed maturity profile with meaningful room to strengthen consistency";
-      } else if (avg >= 1.8) {
-        maturityPhrase = "an early-stage modernization posture where clarity and prioritization will matter most";
-      } else {
-        maturityPhrase = "a very early modernization posture where establishing shared direction is the first priority";
-      }
-
-      var text = "";
-      text += "Your results suggest " + maturityPhrase + ". ";
-      text += strongest.name + " appears to be your strongest area, while " + weakest.name + " shows the greatest opportunity for improvement. ";
-      text += "A practical next step is to focus on strengthening " + weakest.name.toLowerCase() + " through clearer ownership, more consistent routines, and small, low-risk experiments that build confidence and momentum. ";
-      text += "Revisiting your modernization goals and aligning teams around a shared set of priorities will help translate these insights into meaningful progress.";
-      return text;
-    }
-
-    // === Chart state ===
-    var radarChart = null;
-
-    function renderRadarChart(scores) {
-      var ctx = document.getElementById("radarChart").getContext("2d");
-      var data = {
-        labels: ["Modernization", "Collaboration", "Tech Adoption", "Innovation"],
-        datasets: [{
-          label: "Readiness (1–5)",
-          data: [
-            scores.modernizationScore,
-            scores.collaborationScore,
-            scores.techScore,
-            scores.innovationScore
-          ],
-          backgroundColor: "rgba(0, 188, 212, 0.15)",
-          borderColor: "rgba(0, 188, 212, 1)",
-          borderWidth: 2,
-          pointBackgroundColor: "rgba(0, 188, 212, 1)",
-          pointRadius: 4
-        }]
-      };
-      var options = {
-        responsive: true,
-        scales: {
-          r: {
-            suggestedMin: 0,
-            suggestedMax: 5,
-            ticks: { stepSize: 1, color: '#94a3b8', backdropColor: 'transparent' },
-            grid: { color: 'rgba(45, 49, 72, 0.6)' },
-            angleLines: { color: 'rgba(45, 49, 72, 0.6)' },
-            pointLabels: { color: '#cbd5e1' }
-          }
-        },
-        plugins: {
-          legend: { display: false }
-        }
-      };
-
-      if (radarChart) {
-        radarChart.data = data;
-        radarChart.options = options;
-        radarChart.update();
-      } else {
-        radarChart = new Chart(ctx, {
-          type: "radar",
-          data: data,
-          options: options
-        });
-      }
-    }
-
-    function submitEmailAndDownload() {
-      var email = document.getElementById('emailInput').value;
-      if (email) {
-        // Submit email as a standalone capture to Google Form
-        submitToGoogleForm({ emailAddress: email });
-      }
-      document.getElementById('emailModal').style.display = 'none';
-      triggerPdfDownload();
-    }
-
-    function skipAndDownload() {
-      document.getElementById('emailModal').style.display = 'none';
-      triggerPdfDownload();
-    }
-
-    function triggerPdfDownload() {
-      var jsPDF = window.jspdf.jsPDF;
-      var doc = new jsPDF({ unit: 'mm', format: 'letter' });
-      var pw = 215.9, ph = 279.4, margin = 16;
-      var cw = pw - 2 * margin; // content width
-
-      // Brand colors [R, G, B]
-      var bgDark = [10, 14, 26];
-      var bgCard = [20, 25, 37];
-      var bgTert = [26, 29, 46];
-      var accent = [0, 188, 212];
-      var txtBright = [248, 250, 252];
-      var txtMed = [203, 213, 225];
-      var txtDim = [148, 163, 184];
-      var border = [45, 49, 72];
-
-      // Full page dark background
-      doc.setFillColor.apply(doc, bgDark);
-      doc.rect(0, 0, pw, ph, 'F');
-
-      // Header band
-      doc.setFillColor.apply(doc, bgCard);
-      doc.rect(0, 0, pw, 26, 'F');
-      doc.setFillColor.apply(doc, accent);
-      doc.rect(0, 26, pw, 0.8, 'F');
-
-      // Brand name
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(17);
-      doc.setTextColor.apply(doc, txtBright);
-      doc.text('Preneurial', margin, 15);
-      var pW = doc.getTextWidth('Preneurial');
-      doc.setTextColor.apply(doc, accent);
-      doc.text('works', margin + pW, 15);
-
-      // Date
-      doc.setTextColor.apply(doc, txtDim);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      var today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-      doc.text(today, pw - margin, 15, { align: 'right' });
-
-      // URL
-      doc.setFontSize(7);
-      doc.text('preneurial.works', pw - margin, 20, { align: 'right' });
-
-      // Title
-      var y = 36;
-      doc.setTextColor.apply(doc, txtBright);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(16);
-      doc.text('Modernization Readiness Assessment', margin, y);
-
-      // Sector
-      y += 7;
-      var sector = document.getElementById("sectorSelect").value || "Not specified";
-      doc.setTextColor.apply(doc, txtDim);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(10);
-      doc.text('Sector: ' + sector, margin, y);
-
-      // Thin divider
-      y += 5;
-      doc.setDrawColor.apply(doc, border);
-      doc.setLineWidth(0.3);
-      doc.line(margin, y, pw - margin, y);
-
-      // ── Score Cards (4 across) ──
-      y += 5;
-      var scoreData = [
-        { label: 'INSTITUTIONAL MODERNIZATION', id: 'modScoreDisplay', tagId: 'modTagline', color: [0, 188, 212] },
-        { label: 'CROSS-SECTOR COLLABORATION', id: 'colScoreDisplay', tagId: 'colTagline', color: [37, 99, 235] },
-        { label: 'RESPONSIBLE TECH ADOPTION', id: 'techScoreDisplay', tagId: 'techTagline', color: [110, 231, 183] },
-        { label: 'PUBLIC-IMPACT INNOVATION', id: 'innScoreDisplay', tagId: 'innTagline', color: [196, 181, 253] }
-      ];
-      var cardW = (cw - 9) / 4;
-      var cardH = 36;
-
-      scoreData.forEach(function(s, i) {
-        var x = margin + i * (cardW + 3);
-        // Card bg
-        doc.setFillColor.apply(doc, bgTert);
-        doc.roundedRect(x, y, cardW, cardH, 2, 2, 'F');
-        // Top accent line
-        doc.setFillColor.apply(doc, s.color);
-        doc.rect(x, y, cardW, 1.2, 'F');
-        // Border
-        doc.setDrawColor.apply(doc, border);
-        doc.setLineWidth(0.2);
-        doc.roundedRect(x, y, cardW, cardH, 2, 2, 'S');
-        // Label
-        doc.setTextColor.apply(doc, txtDim);
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(6.5);
-        doc.text(s.label, x + 4, y + 7);
-        // Score value
-        doc.setTextColor.apply(doc, s.color);
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(16);
-        var scoreVal = document.getElementById(s.id).textContent;
-        doc.text(scoreVal, x + 4, y + 16);
-        // /5 suffix
-        var scoreWidth = doc.getTextWidth(scoreVal);
-        doc.setTextColor.apply(doc, txtDim);
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(8);
-        doc.text('/ 5', x + 4 + scoreWidth + 1.5, y + 16);
-        // Tagline
-        var tagline = document.getElementById(s.tagId).textContent;
-        doc.setTextColor.apply(doc, txtDim);
-        doc.setFontSize(5.5);
-        var tLines = doc.splitTextToSize(tagline, cardW - 8);
-        doc.text(tLines.slice(0, 3), x + 4, y + 22);
-      });
-
-      y += cardH + 6;
-
-      // ── Deepest Opportunity Callout ──
-      // Build clean text for PDF (no link context)
-      var allScores = scoreData.map(function(s) {
-        return { label: s.label, score: parseFloat(document.getElementById(s.id).textContent) };
-      });
-      var lowest = allScores.reduce(function(min, s) { return s.score < min.score ? s : min; }, allScores[0]);
-      var lowestName = lowest.label.charAt(0) + lowest.label.slice(1).toLowerCase();
-      var oppText = 'Your deepest opportunity is in ' + lowestName + ' (' + lowest.score.toFixed(1) + ' / 5). Focusing here will yield the highest return on modernization effort.';
-      doc.setFillColor.apply(doc, bgTert);
-      doc.roundedRect(margin, y, cw, 12, 2, 2, 'F');
-      doc.setFillColor.apply(doc, accent);
-      doc.rect(margin, y, 2, 12, 'F');
-      doc.setTextColor.apply(doc, txtMed);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8.5);
-      var oppLines = doc.splitTextToSize(oppText, cw - 12);
-      doc.text(oppLines, margin + 7, y + 5.5);
-
-      y += 18;
-
-      // ── Radar Chart + Pattern Assessment side by side ──
-      var chartCanvas = document.getElementById("radarChart");
-      var chartImg = chartCanvas.toDataURL("image/png");
-      var chartW = 82;
-      var chartH = 82;
-      doc.addImage(chartImg, 'PNG', margin, y, chartW, chartH);
-
-      // Pattern assessment column
-      var patX = margin + chartW + 8;
-      var patW = cw - chartW - 8;
-      var patY = y + 2;
-
-      doc.setTextColor.apply(doc, txtBright);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(11);
-      doc.text('Pattern Assessment', patX, patY);
-      patY += 3;
-      doc.setDrawColor.apply(doc, accent);
-      doc.setLineWidth(0.4);
-      doc.line(patX, patY, patX + 30, patY);
-      patY += 5;
-
-      scoreData.forEach(function(s) {
-        var scoreVal = document.getElementById(s.id).textContent;
-        var tagline = document.getElementById(s.tagId).textContent;
-
-        doc.setTextColor.apply(doc, s.color);
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(9);
-        var label = s.label.charAt(0) + s.label.slice(1).toLowerCase();
-        doc.text(label + ':  ' + scoreVal + ' / 5', patX, patY);
-        patY += 4;
-
-        doc.setTextColor.apply(doc, txtDim);
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(7.5);
-        var tLines = doc.splitTextToSize(tagline, patW);
-        doc.text(tLines, patX, patY);
-        patY += tLines.length * 3.5 + 5;
-      });
-
-      y += Math.max(chartH + 4, patY - y + 2);
-
-      // ── Executive Summary ──
-      doc.setDrawColor.apply(doc, border);
-      doc.setLineWidth(0.3);
-      doc.line(margin, y, pw - margin, y);
-      y += 6;
-
-      doc.setTextColor.apply(doc, txtBright);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(11);
-      doc.text('Executive Summary', margin, y);
-      y += 6;
-
-      var execText = document.getElementById("execSummary").textContent || "";
-      doc.setTextColor.apply(doc, txtMed);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      var execLines = doc.splitTextToSize(execText, cw);
-      doc.text(execLines, margin, y);
-      y += execLines.length * 4.5 + 6;
-
-      // ── Framework Recommendations (page 2 if needed) ──
-      var pillarKeys = ['modernization', 'collaboration', 'technology', 'innovation'];
-      var pillarScores = {
-        modernization: parseFloat(document.getElementById('modScoreDisplay').textContent),
-        collaboration: parseFloat(document.getElementById('colScoreDisplay').textContent),
-        technology: parseFloat(document.getElementById('techScoreDisplay').textContent),
-        innovation: parseFloat(document.getElementById('innScoreDisplay').textContent)
-      };
-      var lowestKey = pillarKeys.reduce(function(min, k) {
-        return pillarScores[k] < pillarScores[min] ? k : min;
-      }, pillarKeys[0]);
-
-      // Check if we need a new page (need ~120mm for the 4 pillar cards)
-      if (y > ph - 130) {
-        // Add footer to current page
-        doc.setFillColor.apply(doc, accent);
-        doc.rect(0, ph - 10, pw, 0.4, 'F');
-        doc.setTextColor.apply(doc, txtDim);
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(6.5);
-        doc.text('PreneurialWorks  |  Modernization Readiness Assessment', margin, ph - 5);
-        doc.text('preneurial.works  |  Page 1 of 2', pw - margin, ph - 5, { align: 'right' });
-
-        // New page with dark background
-        doc.addPage();
-        doc.setFillColor.apply(doc, bgDark);
-        doc.rect(0, 0, pw, ph, 'F');
-        y = 20;
-      }
-
-      // Section header
-      doc.setDrawColor.apply(doc, border);
-      doc.setLineWidth(0.3);
-      doc.line(margin, y, pw - margin, y);
-      y += 6;
-
-      doc.setTextColor.apply(doc, txtBright);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(11);
-      doc.text('Framework Recommendations', margin, y);
-      y += 4;
-      doc.setTextColor.apply(doc, txtDim);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8);
-      doc.text('Based on your scores, focus areas from the Innovation Impact Framework.', margin, y);
-      y += 7;
-
-      // Draw 4 pillar cards in 2x2 grid
-      var pCardW = (cw - 6) / 2;
-      var pCardH = 42;
-      var pillarColors = {
-        modernization: [0, 188, 212],
-        collaboration: [37, 99, 235],
-        technology: [110, 231, 183],
-        innovation: [196, 181, 253]
-      };
-
-      pillarKeys.forEach(function(key, i) {
-        var d = PILLAR_DATA[key];
-        var col = i % 2;
-        var row = Math.floor(i / 2);
-        var px = margin + col * (pCardW + 6);
-        var py = y + row * (pCardH + 5);
-        var pColor = pillarColors[key];
-        var isLowest = key === lowestKey;
-
-        // Card background
-        doc.setFillColor.apply(doc, bgTert);
-        doc.roundedRect(px, py, pCardW, pCardH, 2, 2, 'F');
-        // Top accent
-        doc.setFillColor.apply(doc, pColor);
-        doc.rect(px, py, pCardW, 1.2, 'F');
-        // Border - highlighted if focus area
-        if (isLowest) {
-          doc.setDrawColor.apply(doc, pColor);
-          doc.setLineWidth(0.5);
-        } else {
-          doc.setDrawColor.apply(doc, border);
-          doc.setLineWidth(0.2);
-        }
-        doc.roundedRect(px, py, pCardW, pCardH, 2, 2, 'S');
-
-        // Title + score
-        doc.setTextColor.apply(doc, txtBright);
-        doc.setFont('helvetica', 'bold');
-        doc.setFontSize(8.5);
-        doc.text(d.title, px + 4, py + 7);
-        doc.setTextColor.apply(doc, pColor);
-        doc.setFontSize(8.5);
-        var scoreStr = pillarScores[key].toFixed(1) + ' / 5';
-        doc.text(scoreStr, px + pCardW - 4, py + 7, { align: 'right' });
-
-        // Focus area badge
-        if (isLowest) {
-          doc.setFillColor.apply(doc, pColor);
-          doc.roundedRect(px + 4, py + 9.5, 18, 4, 1, 1, 'F');
-          doc.setTextColor.apply(doc, bgDark);
-          doc.setFont('helvetica', 'bold');
-          doc.setFontSize(5);
-          doc.text('FOCUS AREA', px + 5, py + 12.5);
-        }
-
-        // Action items
-        var actionY = isLowest ? py + 17 : py + 13;
-        doc.setFont('helvetica', 'normal');
-        doc.setFontSize(7);
-        d.actions.forEach(function(action) {
-          doc.setTextColor.apply(doc, pColor);
-          doc.text('\u2022', px + 5, actionY);
-          doc.setTextColor.apply(doc, txtDim);
-          var aLines = doc.splitTextToSize(action, pCardW - 14);
-          doc.text(aLines, px + 9, actionY);
-          actionY += aLines.length * 3.2 + 1.5;
-        });
-
-        // Case study reference
-        doc.setTextColor.apply(doc, txtDim);
-        doc.setFontSize(6);
-        doc.text('Case study: ' + d.caseStudy.label, px + 4, py + pCardH - 3);
-      });
-
-      y += 2 * (pCardH + 5) + 4;
-
-      // ── Footer ──
-      var footerPage = doc.internal.getNumberOfPages() > 1 ? '  |  Page ' + doc.internal.getNumberOfPages() + ' of ' + doc.internal.getNumberOfPages() : '';
-      doc.setFillColor.apply(doc, accent);
-      doc.rect(0, ph - 10, pw, 0.4, 'F');
-      doc.setTextColor.apply(doc, txtDim);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(6.5);
-      doc.text('PreneurialWorks  |  Modernization Readiness Assessment', margin, ph - 5);
-      doc.text('preneurial.works' + footerPage, pw - margin, ph - 5, { align: 'right' });
-
-      doc.save("modernization-readiness.pdf");
-    }
-
-    // === Event wiring ===
-    document.getElementById("scoreBtn").addEventListener("click", function() {
-      var validationMsg = document.getElementById("validationMsg");
-      validationMsg.style.display = "none";
-      validationMsg.textContent = "";
-
-      var data = computeScores();
-      if (data.missing.length) {
-        validationMsg.textContent = "Please complete: " + data.missing.join(", ");
-        validationMsg.style.display = "block";
-        return;
-      }
-
-      var modernizationScore = average([data.mod_q1, data.mod_q2]);
-      var collaborationScore = average([data.col_q1, data.col_q2]);
-      var techScore = average([data.tech_q1, data.tech_q2]);
-      var innovationScore = average([data.inn_q1, data.inn_q2]);
-
-      // ---------------------------------------------
-      // SUBMIT RESULTS TO GOOGLE FORM IMMEDIATELY
-      // ---------------------------------------------
-      submitToGoogleForm({
-        Sector: data.sector,
-        mod_q1: data.mod_q1,
-        mod_q2: data.mod_q2,
-        col_q1: data.col_q1,
-        col_q2: data.col_q2,
-        tech_q1: data.tech_q1,
-        tech_q2: data.tech_q2,
-        inn_q1: data.inn_q1,
-        inn_q2: data.inn_q2,
-        modernizationScore: modernizationScore,
-        collaborationScore: collaborationScore,
-        techScore: techScore,
-        innovationScore: innovationScore,
-        rawResponsesJson: JSON.stringify(data),
-        userAgent: navigator.userAgent
-      });
-      // ---------------------------------------------
-
-      document.getElementById("modScoreDisplay").textContent = modernizationScore.toFixed(1);
-      document.getElementById("colScoreDisplay").textContent = collaborationScore.toFixed(1);
-      document.getElementById("techScoreDisplay").textContent = techScore.toFixed(1);
-      document.getElementById("innScoreDisplay").textContent = innovationScore.toFixed(1);
-
-      document.getElementById("modTagline").textContent = scoreTagline(modernizationScore);
-      document.getElementById("colTagline").textContent = scoreTagline(collaborationScore);
-      document.getElementById("techTagline").textContent = scoreTagline(techScore);
-      document.getElementById("innTagline").textContent = scoreTagline(innovationScore);
-
-      var scores = {
-        modernizationScore: modernizationScore,
-        collaborationScore: collaborationScore,
-        techScore: techScore,
-        innovationScore: innovationScore
-      };
-      renderRadarChart(scores);
-
-      var execSummaryText = buildExecutiveSummary(scores);
-      document.getElementById("execSummary").textContent = execSummaryText;
-
-      // Populate framework opportunity link based on lowest score
-      var pillarMap = [
-        { score: modernizationScore, name: "Institutional Modernization", url: "project-defense.html", pillar: "Pillar 1" },
-        { score: collaborationScore, name: "Cross-Sector Collaboration", url: "project2.html", pillar: "Pillar 2" },
-        { score: techScore, name: "Responsible Tech Adoption", url: "project1.html", pillar: "Pillar 3" },
-        { score: innovationScore, name: "Public-Impact Innovation", url: "project3.html", pillar: "Pillar 4" }
-      ];
-      var lowest = pillarMap.reduce(function(min, p) { return p.score < min.score ? p : min; }, pillarMap[0]);
-      var oppEl = document.getElementById("opportunityLink");
-      oppEl.innerHTML = '<i class="fas fa-arrow-right"></i> Your deepest opportunity is in <a href="' + lowest.url + '">' + lowest.name + '</a> — see how others have tackled it.';
-
-      renderPillarRecommendations(scores);
-
-      document.getElementById("resultsSection").style.display = "block";
-    });
-
-    document.getElementById("resetBtn").addEventListener("click", function() {
-      document.getElementById("sectorSelect").value = "";
-      var radios = document.querySelectorAll('input[type="radio"]');
-      radios.forEach(function(r) { r.checked = false; });
-      document.getElementById("resultsSection").style.display = "none";
-      document.getElementById("validationMsg").style.display = "none";
-    });
-
-    document.getElementById("downloadPdfBtn").addEventListener("click", function() {
-      document.getElementById('emailModal').style.display = 'block';
-    });
-
-    document.getElementById("shareResultsBtn").addEventListener("click", function() {
-      var mod = parseFloat(document.getElementById("modScoreDisplay").textContent);
-      var col = parseFloat(document.getElementById("colScoreDisplay").textContent);
-      var tech = parseFloat(document.getElementById("techScoreDisplay").textContent);
-      var inn = parseFloat(document.getElementById("innScoreDisplay").textContent);
-      var pillars = [
-        { name: "Institutional Modernization", score: mod },
-        { name: "Cross-Sector Collaboration", score: col },
-        { name: "Responsible Tech Adoption", score: tech },
-        { name: "Public-Impact Innovation", score: inn }
-      ];
-      var strongest = pillars.reduce(function(a, b) { return a.score > b.score ? a : b; });
-      var shareText = "I just took the Modernization Readiness Assessment from PreneurialWorks — my strongest area is "
-        + strongest.name + " (" + strongest.score.toFixed(1) + "/5).\n\n"
-        + "It maps your organization across four innovation framework pillars. Worth a look if you're driving institutional change.\n\n"
-        + "https://preneurial.works/innovation-tool.html";
-      var linkedInUrl = "https://www.linkedin.com/feed/?shareActive=true&text=" + encodeURIComponent(shareText);
-      window.open(linkedInUrl, "_blank");
-    });
-
-  </script>
-
-  <!-- GoatCounter Analytics -->
-  <script data-goatcounter="https://preneurialworks.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  } else {
+    container.innerHTML = '<p style="color:var(--text-dim);">' +
+      'No direct matches yet &#8212; but your profile is now active. ' +
+      'We&#8217;ll notify you when opportunities align with your capabilities.</p>';
+    showLandscape();
+  }
+}
+
+function showLandscape() {
+  if (!landscapeData) return;
+  document.getElementById('landscapeSection').style.display = 'block';
+
+  var entContainer = document.getElementById('landscapeEntities');
+  if (landscapeData.top_entities && landscapeData.top_entities.length > 0) {
+    entContainer.innerHTML = '<div style="font-size:0.85rem; color:var(--text-medium); margin-bottom:0.3rem;">Trending entities</div>' +
+      '<div class="entity-chips">' +
+      landscapeData.top_entities.slice(0, 12).map(function(e) {
+        return '<span class="entity-chip">' + e.name + ' (' + e.mentions + ')</span>';
+      }).join('') + '</div>';
+  }
+
+  var threadContainer = document.getElementById('landscapeThreads');
+  if (landscapeData.active_threads && landscapeData.active_threads.length > 0) {
+    threadContainer.innerHTML = '<div style="font-size:0.85rem; color:var(--text-medium); margin-bottom:0.3rem;">Active intelligence threads</div>' +
+      landscapeData.active_threads.slice(0, 5).map(function(t) {
+        return '<div class="thread-item"><div class="thread-title">' + t.title + '</div>' +
+          '<div class="thread-keywords">' + t.keywords.join(', ') + '</div></div>';
+      }).join('');
+  }
+}
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', loadData);
+</script>
+
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://preneurial.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
