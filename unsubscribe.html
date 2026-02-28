@@ -12,55 +12,13 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #141925;
-            --bg-tertiary: #1a1d2e;
-            --color-accent: #00bcd4;
-            --color-accent-secondary: #2563eb;
-            --text-bright: #f8fafc;
-            --text-medium: #cbd5e1;
-            --text-dim: #94a3b8;
-            --text-dimmer: #64748b;
-            --border-dark: #1e293b;
-            --border-subtle: #2d3148;
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-medium);
-            line-height: 1.6;
-            font-size: 1rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
-
-        /* === Navigation === */
-        .site-nav {
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 0.9rem 2rem;
-        }
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-brand {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-bright);
-            text-decoration: none;
-        }
-        .nav-brand i { color: var(--color-accent); }
 
         /* === Main Content === */
         .content {
@@ -72,7 +30,7 @@
         }
         .unsub-card {
             background: var(--bg-secondary);
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             padding: 3rem;
             max-width: 500px;
             width: 100%;
@@ -99,12 +57,11 @@
         }
         .unsub-form input[type="email"] {
             padding: 0.7rem 1rem;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             border: 1px solid var(--border-subtle);
             background: var(--bg-tertiary);
             color: var(--text-bright);
             font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
             outline: none;
             text-align: center;
             transition: border-color 0.2s;
@@ -113,7 +70,7 @@
         .unsub-form input[type="email"]:focus { border-color: var(--color-accent); }
         .unsub-form button {
             padding: 0.7rem 1.5rem;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             border: 1px solid var(--border-subtle);
             background: transparent;
             color: var(--text-dim);
@@ -135,17 +92,6 @@
             color: var(--color-accent);
             text-decoration: none;
         }
-
-        /* === Footer === */
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-dim);
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .footer p { font-size: 0.9rem; }
-        .footer a { color: var(--color-accent); text-decoration: none; }
 
         @media (max-width: 768px) {
             .unsub-card { padding: 2rem 1.5rem; }

@@ -22,87 +22,11 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css">
 
     <style>
         :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #141925;
-            --bg-tertiary: #1a1d2e;
-            --color-accent: #00bcd4;
-            --color-accent-secondary: #2563eb;
             --color-pillar: #0891b2;
-            --text-bright: #f8fafc;
-            --text-medium: #cbd5e1;
-            --text-dim: #94a3b8;
-            --text-dimmer: #64748b;
-            --border-dark: #1e293b;
-            --border-subtle: #2d3148;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-medium);
-            line-height: 1.6;
-        }
-
-        /* Navigation Bar */
-        .site-nav {
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 0.9rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-brand {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-bright);
-            text-decoration: none;
-        }
-        .nav-brand i {
-            color: var(--color-accent);
-            font-style: italic;
-        }
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            align-items: center;
-        }
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: var(--color-accent);
-        }
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-bright);
-            font-size: 1.4rem;
-            cursor: pointer;
-            padding: 0;
         }
 
         header {
@@ -143,7 +67,7 @@
             margin: 40px auto;
             background: rgba(20, 25, 37, 0.95);
             padding: 40px;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             position: relative;
             border: 1px solid var(--border-subtle);
         }
@@ -223,7 +147,7 @@
         .col-box {
             background: var(--bg-tertiary);
             border: 1px solid var(--border-subtle);
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             padding: 16px;
         }
         .col-box h3 {
@@ -251,7 +175,7 @@
             background: var(--bg-tertiary);
             border: 1px solid var(--border-subtle);
             border-left: 3px solid var(--color-accent);
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             padding: 16px 20px;
             margin: 24px 0;
             font-size: 0.85rem;
@@ -302,7 +226,7 @@
             font-size: 1rem;
             transition: all 0.2s;
         }
-        .btn-primary:hover { background: #3b7cf5; }
+        .btn-primary:hover { background: var(--color-secondary-hover); }
         .cta-text-link { color: var(--color-accent); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
         .cta-text-link:hover { text-decoration: underline; }
 
@@ -315,22 +239,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--bg-primary);
-                border-bottom: 1px solid var(--border-subtle);
-                padding: 1rem 2rem;
-                gap: 1rem;
-            }
-            .nav-toggle { display: block; }
-            .site-nav { position: relative; }
-
             header {
                 padding: 30px 20px;
             }

@@ -19,89 +19,8 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="site.css">
 <style>
-:root {
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #141925;
-    --bg-tertiary: #1a1d2e;
-    --color-accent: #00bcd4;
-    --color-accent-secondary: #2563eb;
-    --text-bright: #f8fafc;
-    --text-medium: #cbd5e1;
-    --text-dim: #94a3b8;
-    --text-dimmer: #64748b;
-    --border-dark: #1e293b;
-    --border-subtle: #2d3148;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-medium);
-    line-height: 1.6;
-    font-size: 14px;
-}
-.site-nav {
-    background: var(--bg-primary);
-    border-bottom: 1px solid var(--border-subtle);
-    padding: 0.9rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-.nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.nav-brand {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--text-bright);
-    text-decoration: none;
-}
-.nav-brand i { color: var(--color-accent); }
-.nav-links {
-    display: flex;
-    gap: 1.8rem;
-    align-items: center;
-}
-.nav-links a {
-    color: var(--text-dim);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--color-accent); }
-.nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-bright);
-    font-size: 1.4rem;
-    cursor: pointer;
-}
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--bg-primary);
-        border-bottom: 1px solid var(--border-subtle);
-        padding: 1rem 2rem;
-        gap: 1rem;
-    }
-    .nav-toggle { display: block; }
-    .site-nav { position: relative; }
-}
-
 .archive-container {
     max-width: 780px;
     margin: 0 auto;
@@ -116,7 +35,7 @@ body {
     color: var(--text-bright);
     font-weight: 700;
     margin-top: 0;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.02em;
 }
 .archive-header p {
     color: var(--text-dim);
@@ -158,10 +77,10 @@ body {
     text-decoration: none;
     background: var(--bg-secondary);
     border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 1.25rem 1.5rem;
     margin-bottom: 1rem;
-    transition: border-color 0.2s, transform 0.15s;
+    transition: border-color 0.2s, transform 0.2s;
 }
 .archive-card:hover {
     border-color: var(--color-accent-secondary);
@@ -172,7 +91,7 @@ body {
     font-weight: 600;
     color: var(--color-accent);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.04em;
     margin-bottom: 0.5rem;
 }
 .card-summary {
@@ -197,7 +116,7 @@ body {
     margin-top: 2rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-subtle);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 1.25rem;
     text-align: center;
 }
@@ -211,13 +130,13 @@ body {
     text-decoration: none;
     background: var(--color-accent-secondary);
     color: #fff;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     padding: 0.5rem 1.2rem;
     font-weight: 600;
     font-size: 0.85rem;
     transition: all 0.2s;
 }
-.archive-cta a.btn:hover { background: #3b7cf5; }
+.archive-cta a.btn:hover { background: var(--color-secondary-hover); }
 
 @media (max-width: 768px) {
     .archive-container { padding: 1rem; }

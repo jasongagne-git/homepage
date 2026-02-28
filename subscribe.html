@@ -21,75 +21,9 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #141925;
-            --bg-tertiary: #1a1d2e;
-            --color-accent: #00bcd4;
-            --color-accent-secondary: #2563eb;
-            --text-bright: #f8fafc;
-            --text-medium: #cbd5e1;
-            --text-dim: #94a3b8;
-            --text-dimmer: #64748b;
-            --border-dark: #1e293b;
-            --border-subtle: #2d3148;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-medium);
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        /* === Navigation === */
-        .site-nav {
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 0.9rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-brand {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-bright);
-            text-decoration: none;
-        }
-        .nav-brand i { color: var(--color-accent); }
-        .nav-links { display: flex; gap: 1.8rem; align-items: center; }
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-            letter-spacing: 0.01em;
-        }
-        .nav-links a:hover { color: var(--color-accent); }
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-bright);
-            font-size: 1.4rem;
-            cursor: pointer;
-        }
-
-        .container { max-width: 700px; margin: 0 auto; padding: 0 2rem; }
+        .container { max-width: 700px; }
 
         /* === Hero === */
         .hero {
@@ -100,7 +34,7 @@
             display: inline-block;
             background: var(--bg-tertiary);
             border: 1px solid var(--border-subtle);
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             padding: 1.2rem 1.5rem;
             margin-bottom: 2rem;
         }
@@ -108,12 +42,12 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-bright);
-            letter-spacing: -0.3px;
+            letter-spacing: -0.02em;
         }
         .hero-badge .badge-sub {
             font-size: 0.75rem;
             color: var(--text-dimmer);
-            letter-spacing: 1.5px;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             margin-top: 2px;
         }
@@ -140,7 +74,7 @@
         /* === Signal Preview === */
         .signals {
             background: var(--bg-secondary);
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             padding: 2.5rem;
             margin: 2rem 0;
         }
@@ -159,7 +93,7 @@
         }
         .signal-card {
             padding: 1rem 1.2rem;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             border-left: 3px solid;
         }
         .signal-card.friction { border-color: #fca5a5; background: rgba(127, 29, 29, 0.15); }
@@ -184,7 +118,7 @@
         /* === Subscribe Form === */
         .subscribe-section {
             background: var(--bg-secondary);
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             padding: 2.5rem;
             margin: 2rem 0;
             text-align: center;
@@ -210,12 +144,11 @@
         .subscribe-form input[type="email"] {
             flex: 1;
             padding: 0.7rem 1rem;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             border: 1px solid var(--border-subtle);
             background: var(--bg-tertiary);
             color: var(--text-bright);
             font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
             outline: none;
             transition: border-color 0.2s;
         }
@@ -223,7 +156,7 @@
         .subscribe-form input[type="email"]:focus { border-color: var(--color-accent); }
         .subscribe-form button {
             padding: 0.55rem 1.2rem;
-            border-radius: 999px;
+            border-radius: var(--radius-pill);
             border: none;
             background: var(--color-accent);
             color: var(--bg-primary);
@@ -233,7 +166,7 @@
             transition: background 0.2s;
             white-space: nowrap;
         }
-        .subscribe-form button:hover { background: #00d4ef; }
+        .subscribe-form button:hover { background: var(--color-accent-hover); }
         .subscribe-note {
             font-size: 0.75rem;
             color: var(--text-dimmer);
@@ -272,36 +205,8 @@
             flex-shrink: 0;
         }
 
-        /* === Footer === */
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-dim);
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .footer p { font-size: 0.9rem; }
-        .footer a { color: var(--color-accent); text-decoration: none; }
-        .footer a:hover { color: var(--text-bright); }
-
         /* === Responsive === */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--bg-primary);
-                border-bottom: 1px solid var(--border-subtle);
-                padding: 1rem 2rem;
-                gap: 1rem;
-            }
-            .nav-toggle { display: block; }
-            .site-nav { position: relative; }
             .container { padding: 0 1rem; }
             .hero { padding: 2.5rem 0 1.5rem; }
             .hero h1 { font-size: 1.6rem; }

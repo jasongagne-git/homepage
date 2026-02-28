@@ -21,84 +21,12 @@
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="site.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #141925;
-            --bg-tertiary: #1a1d2e;
-            --color-accent: #00bcd4;
-            --color-accent-secondary: #2563eb;
-            --text-bright: #f8fafc;
-            --text-medium: #cbd5e1;
-            --text-dim: #94a3b8;
-            --text-dimmer: #64748b;
-            --border-dark: #1e293b;
-            --border-subtle: #2d3148;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-medium);
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        /* === Navigation === */
-        .site-nav {
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 0.9rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .nav-brand {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-bright);
-            text-decoration: none;
-        }
-        .nav-brand i { color: var(--color-accent); }
-        .nav-links {
-            display: flex;
-            gap: 1.8rem;
-            align-items: center;
-        }
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-            letter-spacing: 0.01em;
-        }
-        .nav-links a:hover { color: var(--color-accent); }
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-bright);
-            font-size: 1.4rem;
-            cursor: pointer;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-
         /* === Header === */
         .header {
             background: var(--bg-secondary);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-sm);
             padding: 2.5rem 0;
             margin-bottom: 3rem;
         }
@@ -143,7 +71,6 @@
             left: 0;
         }
         .profile-info h1 {
-            font-family: 'Inter', sans-serif;
             font-size: 2.6rem;
             font-weight: 700;
             color: var(--text-bright);
@@ -165,12 +92,11 @@
         .work-section, .bio-section, .defense-section {
             background: var(--bg-secondary);
             padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
             margin-bottom: 3rem;
         }
         .work-section h2, .bio-section h2, .defense-section h2 {
-            font-family: 'Inter', sans-serif;
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-bright);
@@ -195,7 +121,7 @@
         .work-card {
             background: var(--bg-tertiary);
             padding: 2rem;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             border-left: 4px solid var(--color-accent);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -204,7 +130,6 @@
             box-shadow: 0 8px 24px rgba(0, 188, 212, 0.08);
         }
         .work-card h3 {
-            font-family: 'Inter', sans-serif;
             font-size: 1.4rem;
             font-weight: 700;
             color: var(--text-bright);
@@ -233,12 +158,11 @@
         .signals-section {
             background: var(--bg-secondary);
             padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
             margin-bottom: 3rem;
         }
         .signals-section h2 {
-            font-family: 'Inter', sans-serif;
             font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-bright);
@@ -262,11 +186,11 @@
         .signal-card {
             background: var(--bg-tertiary);
             border: 1px solid var(--border-subtle);
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             padding: 1.25rem 1.5rem;
             text-decoration: none;
             display: block;
-            transition: border-color 0.2s, transform 0.15s;
+            transition: border-color 0.2s, transform 0.2s;
         }
         .signal-card:hover {
             border-color: var(--color-accent-secondary);
@@ -277,7 +201,7 @@
             font-weight: 600;
             color: var(--color-accent);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.04em;
             margin-bottom: 0.4rem;
         }
         .signal-card .card-headline {
@@ -309,56 +233,11 @@
             text-align: center;
         }
 
-        /* === Buttons === */
-        button {
-            border-radius: 999px;
-            border: none;
-            padding: 0.55rem 1.2rem;
-            cursor: pointer;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-        .btn-primary { background: var(--color-accent-secondary); color: #fff; }
-        .btn-primary:hover { background: #3b7cf5; transform: translateY(-1px); }
-        .btn-outline { background: transparent; color: var(--text-dim); border: 1px solid var(--border-subtle); }
-        .btn-outline:hover { color: var(--text-bright); border-color: var(--text-dim); }
         .btn-accent { background: var(--color-accent); color: var(--bg-primary); }
-        .btn-accent:hover { background: #00d4ef; }
-        .cta-text-link { color: var(--color-accent); text-decoration: none; font-weight: 500; font-size: 0.9rem; }
-        .cta-text-link:hover { text-decoration: underline; }
-
-        /* === Footer === */
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-subtle);
-            color: var(--text-dim);
-            padding: 2rem 0;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .footer p { font-size: 0.9rem; }
-        .footer a { color: var(--color-accent); text-decoration: none; }
-        .footer a:hover { color: var(--text-bright); }
+        .btn-accent:hover { background: var(--color-accent-hover); }
 
         /* === Responsive === */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--bg-primary);
-                border-bottom: 1px solid var(--border-subtle);
-                padding: 1rem 2rem;
-                gap: 1rem;
-            }
-            .nav-toggle { display: block; }
-            .site-nav { position: relative; }
             .header-content { flex-direction: column; text-align: center; }
             .profile-section { flex-direction: column; text-align: center; }
             .profile-image-container, .profile-photo, .profile-fallback { width: 100px; height: 100px; }
@@ -370,9 +249,7 @@
             .work-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
             .work-card { padding: 1.5rem; }
             .work-card h3 { font-size: 1.2rem; }
-            .container { padding: 0 1rem; }
             .header { padding: 1.5rem 0; }
-
         }
     </style>
 </head>
