@@ -622,11 +622,11 @@ function runClientMatching(profile) {
 
   var results = [];
 
-  // Match against signals
+  // Match against signals (require 2+ keyword overlap to avoid false positives)
   (matchIndex.signals || []).forEach(function(s) {
     var titleWords = new Set(s.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 2; }));
     var overlap = Array.from(profileKeywords).filter(function(w) { return titleWords.has(w); });
-    if (overlap.length > 0) {
+    if (overlap.length >= 2) {
       var score = Math.min(1, overlap.length / Math.max(profileKeywords.size, 1));
       var boost = s.status === 'brief_generated' ? 1.3 : 1.0;
       results.push({
@@ -639,7 +639,7 @@ function runClientMatching(profile) {
     }
   });
 
-  // Match against topic threads
+  // Match against topic threads (require 2+ keyword overlap)
   (matchIndex.topic_threads || []).forEach(function(t) {
     var threadWords = new Set(
       t.keywords.map(function(k) { return k.toLowerCase(); }).concat(
@@ -647,7 +647,7 @@ function runClientMatching(profile) {
       )
     );
     var overlap = Array.from(profileKeywords).filter(function(w) { return threadWords.has(w); });
-    if (overlap.length > 0) {
+    if (overlap.length >= 2) {
       var score = Math.min(1, (overlap.length / Math.max(profileKeywords.size, 1)) * t.importance);
       results.push({ type: 'topic_thread', id: t.id, title: t.title, score: score });
     }
