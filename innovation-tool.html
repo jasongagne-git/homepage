@@ -658,6 +658,47 @@ function runClientMatching(profile) {
     }
   });
 
+  // Build brief lookup: brief signal titles and IDs for dedup/linking
+  var briefByTitle = {};
+  results.forEach(function(r) {
+    if (r.type === 'brief' && r.brief_id) {
+      r.title.toLowerCase().split(/\W+/).forEach(function(w) {
+        if (w.length > 3) { if (!briefByTitle[w]) briefByTitle[w] = []; briefByTitle[w].push(r); }
+      });
+    }
+  });
+
+  // For topic threads: if a brief signal already covers it, drop the thread;
+  // otherwise, try to find a related brief to link
+  var briefIds = {};
+  results.forEach(function(r) { if (r.brief_id) briefIds[r.brief_id] = true; });
+
+  results = results.filter(function(r) {
+    if (r.type !== 'topic_thread') return true;
+    // Check keyword overlap with brief signal titles
+    var threadWords = r.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 3; });
+    var matchingBriefs = {};
+    threadWords.forEach(function(w) {
+      (briefByTitle[w] || []).forEach(function(b) { matchingBriefs[b.id] = (matchingBriefs[b.id] || 0) + 1; });
+    });
+    // If 2+ title words overlap with a brief signal, it's a duplicate — drop
+    var dominated = Object.keys(matchingBriefs).some(function(id) { return matchingBriefs[id] >= 2; });
+    if (dominated) return false;
+
+    // Try to find a related brief from match-index (even if the signal didn't match)
+    (matchIndex.signals || []).forEach(function(s) {
+      if (s.brief_id && !r.brief_id) {
+        var sigWords = s.title.toLowerCase().split(/\W+/).filter(function(w) { return w.length > 3; });
+        var overlap = threadWords.filter(function(w) { return sigWords.indexOf(w) >= 0; });
+        if (overlap.length >= 2) {
+          r.brief_id = s.brief_id;
+          r.type = 'brief';
+        }
+      }
+    });
+    return true;
+  });
+
   results.sort(function(a, b) { return b.score - a.score; });
   return results.slice(0, 10);
 }
