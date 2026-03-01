@@ -646,6 +646,8 @@ function runClientMatching(profile) {
         title: s.title,
         score: Math.min(1, score * boost),
         brief_id: s.brief_id,
+        matched_keywords: overlap,
+        date: s.last_updated ? s.last_updated.split('T')[0] : '',
       });
     }
   });
@@ -660,7 +662,8 @@ function runClientMatching(profile) {
     var overlap = Array.from(profileKeywords).filter(function(w) { return threadWords.has(w); });
     if (overlap.length >= 2) {
       var score = Math.min(1, (overlap.length / Math.max(profileKeywords.size, 1)) * t.importance);
-      results.push({ type: 'topic_thread', id: t.id, title: t.title, score: score, keywords: t.keywords });
+      results.push({ type: 'topic_thread', id: t.id, title: t.title, score: score, keywords: t.keywords,
+        matched_keywords: overlap, date: '' });
     }
   });
 
@@ -761,9 +764,28 @@ function showResults(matches, profile) {
         }
         var tier = m.score >= 0.15 ? 'strong' : m.score >= 0.08 ? 'moderate' : 'related';
         var tierLabel = tier === 'strong' ? 'Strong match' : tier === 'moderate' ? 'Moderate match' : 'Related';
+
+        // Extra context for cards without a brief link
+        var context = '';
+        if (!(m.type === 'brief' && m.brief_id)) {
+          var parts = [];
+          if (m.matched_keywords && m.matched_keywords.length > 0) {
+            parts.push('<span style="color:var(--text-dim); font-size:0.8rem;">Matched on: ' +
+              m.matched_keywords.slice(0, 5).join(', ') + '</span>');
+          }
+          if (m.date) {
+            parts.push('<span style="color:var(--text-dimmer); font-size:0.8rem;">Detected ' + m.date + '</span>');
+          }
+          if (parts.length > 0) {
+            context += '<div style="margin:0.4rem 0;">' + parts.join(' &nbsp;&middot;&nbsp; ') + '</div>';
+          }
+          context += '<div style="font-size:0.8rem; color:var(--text-dim); font-style:italic; margin-top:0.3rem;">' +
+            'We\'re tracking this signal and will notify you when a full analysis is published.</div>';
+        }
+
         return '<div class="match-card"><h4>' + m.title + '</h4>' +
           '<div class="match-meta"><span class="match-score ' + tier + '">' + tierLabel + '</span>' +
-          ' &nbsp; ' + typeLabel + '</div>' + link + '</div>';
+          ' &nbsp; ' + typeLabel + '</div>' + context + link + '</div>';
       }).join('');
     }
 
