@@ -16,31 +16,32 @@
       "description": "Technology companies and startups bringing new capabilities to emerging markets."
     }
   ],
-  "sectors": [
+  "market_focus": [
     {
-      "id": "defense",
-      "label": "Defense"
+      "id": "defense_warfighting",
+      "label": "Defense & Warfighting"
     },
     {
-      "id": "federal_civilian",
-      "label": "Federal Civilian"
+      "id": "defense_modernization",
+      "label": "Defense Modernization & Acquisition"
     },
     {
-      "id": "state_local",
-      "label": "State & Local"
+      "id": "federal_it",
+      "label": "Federal IT & Digital Services"
     },
     {
-      "id": "education",
-      "label": "Education"
+      "id": "national_security",
+      "label": "Intelligence & National Security"
     },
     {
-      "id": "healthcare",
-      "label": "Healthcare"
-    },
-    {
-      "id": "other",
-      "label": "Other / Cross-sector"
+      "id": "dual_use",
+      "label": "Dual-Use & Commercial Crossover"
     }
+  ],
+  "newsletter_name": "Defense Signal Brief",
+  "active_market_focus": [
+    "defense_warfighting",
+    "national_security"
   ],
   "technology_domains": [
     {
@@ -61,7 +62,7 @@
         "MLOps",
         "AI governance"
       ],
-      "sectors": [
+      "market_focus": [
         "*"
       ]
     },
@@ -83,7 +84,7 @@
         "incident response",
         "CMMC"
       ],
-      "sectors": [
+      "market_focus": [
         "*"
       ]
     },
@@ -104,7 +105,7 @@
         "data center",
         "cloud native"
       ],
-      "sectors": [
+      "market_focus": [
         "*"
       ]
     },
@@ -126,7 +127,7 @@
         "data engineering",
         "decision intelligence"
       ],
-      "sectors": [
+      "market_focus": [
         "*"
       ]
     },
@@ -145,9 +146,14 @@
         "platform engineering",
         "software factory",
         "low code",
-        "digital transformation"
+        "digital transformation",
+        "acquisition reform",
+        "defense acquisition",
+        "defense innovation",
+        "dual-use",
+        "acquisition"
       ],
-      "sectors": [
+      "market_focus": [
         "*"
       ]
     },
@@ -168,7 +174,7 @@
         "telecommunications",
         "wireless"
       ],
-      "sectors": [
+      "market_focus": [
         "*"
       ]
     },
@@ -189,7 +195,7 @@
         "identity verification",
         "ICAM"
       ],
-      "sectors": [
+      "market_focus": [
         "*"
       ]
     },
@@ -209,7 +215,7 @@
         "automation platform",
         "orchestration"
       ],
-      "sectors": [
+      "market_focus": [
         "*"
       ]
     },
@@ -230,9 +236,9 @@
         "human-machine teaming",
         "remote operation"
       ],
-      "sectors": [
-        "defense",
-        "federal_civilian"
+      "market_focus": [
+        "defense_warfighting",
+        "national_security"
       ]
     },
     {
@@ -252,8 +258,9 @@
         "LEO",
         "space resilience"
       ],
-      "sectors": [
-        "defense"
+      "market_focus": [
+        "defense_warfighting",
+        "national_security"
       ]
     },
     {
@@ -273,8 +280,9 @@
         "ELINT",
         "EWOS"
       ],
-      "sectors": [
-        "defense"
+      "market_focus": [
+        "defense_warfighting",
+        "national_security"
       ]
     },
     {
@@ -294,10 +302,9 @@
         "RFID",
         "supply chain resilience"
       ],
-      "sectors": [
-        "defense",
-        "federal_civilian",
-        "healthcare"
+      "market_focus": [
+        "defense_modernization",
+        "federal_it"
       ]
     },
     {
@@ -318,9 +325,8 @@
         "precision medicine",
         "biodefense"
       ],
-      "sectors": [
-        "healthcare",
-        "federal_civilian"
+      "market_focus": [
+        "federal_it"
       ]
     },
     {
@@ -340,13 +346,12 @@
         "constituent services",
         "GovTech"
       ],
-      "sectors": [
-        "federal_civilian",
-        "state_local",
-        "education"
+      "market_focus": [
+        "federal_it"
       ]
     }
   ],
+  "enriched_keywords_by_domain": {},
   "contracting_postures": [
     {
       "id": "prime",
@@ -404,10 +409,18 @@
     },
     {
       "name": "CCA",
-      "mentions": 11
+      "mentions": 12
     },
     {
       "name": "B-21",
+      "mentions": 12
+    },
+    {
+      "name": "High Mobility Artillery Rocket Systems",
+      "mentions": 10
+    },
+    {
+      "name": "Altius",
       "mentions": 10
     },
     {
@@ -419,50 +432,42 @@
       "mentions": 8
     },
     {
-      "name": "High Mobility Artillery Rocket Systems",
+      "name": "Switchblade",
       "mentions": 7
     },
     {
-      "name": "Altius",
+      "name": "Tech Viaduct",
       "mentions": 7
     },
     {
       "name": "MV-22",
-      "mentions": 6
-    },
-    {
-      "name": "USAi",
-      "mentions": 6
-    },
-    {
-      "name": "Blue UAS Select",
       "mentions": 6
     }
   ],
   "active_agencies": [
     {
       "name": "Department of Defense",
-      "mentions": 307
+      "mentions": 385
     },
     {
       "name": "Central Intelligence Agency",
       "mentions": 257
     },
     {
-      "name": "U.S. Army",
-      "mentions": 176
+      "name": "Department of Homeland Security",
+      "mentions": 190
     },
     {
-      "name": "Department of Homeland Security",
-      "mentions": 176
+      "name": "U.S. Army",
+      "mentions": 179
     },
     {
       "name": "U.S. Navy",
-      "mentions": 84
+      "mentions": 88
     },
     {
       "name": "U.S. Air Force",
-      "mentions": 76
+      "mentions": 79
     },
     {
       "name": "Office of Management and Budget",
@@ -470,7 +475,7 @@
     },
     {
       "name": "Government Accountability Office",
-      "mentions": 41
+      "mentions": 47
     },
     {
       "name": "U.S. Marine Corps",
@@ -478,7 +483,7 @@
     },
     {
       "name": "U.S. Space Force",
-      "mentions": 30
+      "mentions": 37
     }
   ],
   "emerging_technologies": [
@@ -494,6 +499,11 @@
     },
     {
       "name": "AutoDrive",
+      "mentions": 4,
+      "description": ""
+    },
+    {
+      "name": "IronCurtain",
       "mentions": 4,
       "description": ""
     },
