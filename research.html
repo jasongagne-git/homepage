@@ -104,6 +104,11 @@
     border: 1px solid;
     font-weight: 500;
 }
+.card-tag.if {
+    background: rgba(0, 188, 212, 0.1);
+    border-color: rgba(0, 188, 212, 0.3);
+    color: #00bcd4;
+}
 .card-tag.rta {
     background: rgba(245, 158, 11, 0.1);
     border-color: rgba(245, 158, 11, 0.3);
@@ -206,6 +211,7 @@
         <div class="research-card">
             <a href="research/behavioral-sufficiency.html" style="position: absolute; top: 2rem; right: 2rem; color: var(--text-dimmer); font-size: 1rem; text-decoration: none; transition: color 0.2s, transform 0.2s;" class="card-arrow"><i class="fas fa-arrow-right"></i></a>
             <div class="card-tags">
+                <span class="card-tag if">Institutional Friction</span>
                 <span class="card-tag rta">Responsible Adoption</span>
                 <span class="card-tag pii">Measurable Impact</span>
             </div>
@@ -227,11 +233,12 @@
 
 </div>
 
-<footer class="footer">
-    <div class="research-container">
-        <p>&copy; 2026 Jason Gagne. Focused on institutional transformation and public impact innovation. | <a href="mailto:jason@preneurial.works">Contact</a> | <a href="https://www.linkedin.com/in/jagagne/" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a></p>
-    </div>
-</footer>
+<div class="footer">
+    <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem;">
+        <a href="mailto:jason@preneurial.works" style="color: var(--text-dim); text-decoration: none;">Contact</a> | <a href="https://www.linkedin.com/in/jagagne/" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </p>
+    <a href="index.html" class="back-link">← Back to Home</a>
+</div>
 
 <script data-goatcounter="https://preneurialworks.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
