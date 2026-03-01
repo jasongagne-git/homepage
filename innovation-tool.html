@@ -750,8 +750,8 @@ function showResults(matches, profile) {
     // Opportunity brief & signal matches
     if (matches.length > 0) {
       html += '<p style="color:var(--text-dim); margin-bottom:1rem;">' +
-        'Found <strong>' + matches.length + '</strong> signal match' +
-        (matches.length === 1 ? '' : 'es') + ' based on your profile.</p>';
+        '<strong>Your opportunity matches</strong> &mdash; ' + matches.length +
+        ' result' + (matches.length === 1 ? '' : 's') + ' based on your profile.</p>';
       html += matches.map(function(m) {
         var link = '';
         var typeLabel = '<i class="fas fa-signal" style="margin-right:0.3rem;"></i>' + m.type.replace('_', ' ');
@@ -771,7 +771,7 @@ function showResults(matches, profile) {
     if (newsletterMatches.length > 0) {
       html += '<div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border-subtle);">' +
         '<p style="color:var(--text-dim); margin-bottom:1rem;">' +
-        '<strong>Past intelligence briefings</strong> matching your sector:</p>';
+        '<strong>Recent briefings in your sector</strong></p>';
       html += newsletterMatches.map(function(n) {
         var dateStr = n.date || '';
         return '<div class="match-card newsletter"><h4>' + (n.headline || 'Weekly Briefing') + '</h4>' +
