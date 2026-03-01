@@ -99,7 +99,7 @@
     .results-section { display: none; }
     .results-section.active { display: block; }
     .match-card { background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
-      padding: 1rem; margin-bottom: 0.75rem; }
+      padding: 1rem; margin-bottom: 0.75rem; border-left: 3px solid var(--color-accent); }
     .match-card h4 { color: var(--text-bright); margin: 0 0 0.3rem; font-size: 1rem; }
     .match-card .match-meta { font-size: 0.8rem; color: var(--text-dimmer); margin-bottom: 0.4rem; }
     .match-card .match-score { display: inline-block; color: var(--text-bright);
@@ -109,6 +109,9 @@
     .match-score.related { background: #64748b; }
     .match-card a { color: var(--color-accent); text-decoration: none; font-weight: 600; font-size: 0.85rem; }
     .match-card a:hover { text-decoration: underline; }
+    .match-card.newsletter { border-left-color: var(--text-dimmer); background: var(--bg-secondary); }
+    .match-card.newsletter h4 { font-size: 0.95rem; color: var(--text-medium); }
+    .match-card.newsletter a { font-weight: 500; }
 
     .landscape-section { background: var(--bg-tertiary); border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md); padding: 1.2rem; margin: 1rem 0; }
@@ -751,10 +754,10 @@ function showResults(matches, profile) {
         (matches.length === 1 ? '' : 'es') + ' based on your profile.</p>';
       html += matches.map(function(m) {
         var link = '';
-        var typeLabel = m.type.replace('_', ' ');
+        var typeLabel = '<i class="fas fa-signal" style="margin-right:0.3rem;"></i>' + m.type.replace('_', ' ');
         if (m.type === 'brief' && m.brief_id) {
           link = '<a href="briefings/' + m.brief_id + '.html">Read opportunity brief &rarr;</a>';
-          typeLabel = 'opportunity brief';
+          typeLabel = '<i class="fas fa-file-alt" style="margin-right:0.3rem;"></i>opportunity brief';
         }
         var tier = m.score >= 0.15 ? 'strong' : m.score >= 0.08 ? 'moderate' : 'related';
         var tierLabel = tier === 'strong' ? 'Strong match' : tier === 'moderate' ? 'Moderate match' : 'Related';
@@ -771,8 +774,8 @@ function showResults(matches, profile) {
         '<strong>Past intelligence briefings</strong> matching your sector:</p>';
       html += newsletterMatches.map(function(n) {
         var dateStr = n.date || '';
-        return '<div class="match-card"><h4>' + (n.headline || 'Weekly Briefing') + '</h4>' +
-          '<div class="match-meta">weekly briefing &nbsp; ' + dateStr + '</div>' +
+        return '<div class="match-card newsletter"><h4>' + (n.headline || 'Weekly Briefing') + '</h4>' +
+          '<div class="match-meta"><i class="fas fa-newspaper" style="margin-right:0.3rem;"></i>weekly briefing &nbsp; ' + dateStr + '</div>' +
           '<a href="' + n.url + '">Read past briefing &rarr;</a></div>';
       }).join('') + '</div>';
     }
