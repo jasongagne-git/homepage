@@ -114,6 +114,8 @@ button {
 .footer p { font-size: 0.9rem; }
 .footer a { color: var(--color-accent); text-decoration: none; }
 .footer a:hover { color: var(--text-bright); }
+.footer .back-link { display: inline-block; font-weight: 600; }
+.footer .back-link:hover { text-decoration: underline; }
 
 /* === Mobile Responsive Nav === */
 @media (max-width: 768px) {
