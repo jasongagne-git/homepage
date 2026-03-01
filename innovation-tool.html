@@ -158,7 +158,7 @@
         <a href="innovation-tool.html">Opportunities</a>
         <a href="projects.html">Case Studies</a>
         <a href="research.html">Research</a>
-        <a href="archive.html">Intelligence</a>
+        <a href="archive.html">Briefings</a>
       </div>
     </div>
   </nav>
@@ -345,7 +345,7 @@
             You'll receive our weekly intelligence updates and alerts when new opportunities match your profile.
             If the content doesn't align with your interests, <a href="mailto:jason@preneurial.works" style="color:var(--color-accent);">let us know</a> &#8212; your feedback helps us tailor what we cover next.</p>
           <a href="archive.html" class="btn-primary" style="display:inline-block; padding:0.6rem 1.5rem; text-decoration:none;">
-            Browse Intelligence Archive
+            Browse Briefing Archive
           </a>
         </div>
       </div>
@@ -802,8 +802,8 @@ function showResults(matches, profile) {
         var link = '';
         var typeLabel = '<i class="fas fa-signal" style="margin-right:0.3rem;"></i>' + m.type.replace('_', ' ');
         if (m.type === 'brief' && m.brief_id) {
-          link = '<a href="briefings/' + m.brief_id + '.html">Read opportunity brief &rarr;</a>';
-          typeLabel = '<i class="fas fa-file-alt" style="margin-right:0.3rem;"></i>opportunity brief';
+          link = '<a href="briefings/' + m.brief_id + '.html">Read weekly deep dive &rarr;</a>';
+          typeLabel = '<i class="fas fa-file-alt" style="margin-right:0.3rem;"></i>weekly deep dive';
         }
         var tier = m.score >= 0.15 ? 'strong' : m.score >= 0.08 ? 'moderate' : 'related';
         var tierLabel = tier === 'strong' ? 'Strong match' : tier === 'moderate' ? 'Moderate match' : 'Related';
