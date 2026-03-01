@@ -305,7 +305,7 @@
         <div class="consent-group">
           <label>
             <input type="checkbox" id="consentNewsletter" checked>
-            <span>Subscribe to the weekly Defense Signal Brief intelligence newsletter</span>
+            <span id="newsletterConsentLabel">Subscribe to the weekly Defense Signal Brief intelligence newsletter</span>
           </label>
           <label>
             <input type="checkbox" id="consentNotifications">
@@ -405,6 +405,11 @@ async function loadData() {
     console.warn('Could not load data files:', e);
   }
   populateForm();
+  // Update newsletter consent label from taxonomy if available
+  if (taxonomy && taxonomy.newsletter_name) {
+    var lbl = document.getElementById('newsletterConsentLabel');
+    if (lbl) lbl.textContent = 'Subscribe to the weekly ' + taxonomy.newsletter_name + ' intelligence newsletter';
+  }
 }
 
 function populateForm() {
@@ -758,8 +763,12 @@ function showResults(matches, profile) {
       }
       // Market focus matching for snippets with market_focus-based verticals
       if (profile.sector) {
-        var focusMap = { defense_warfighting: 'defense_warfighting', defense_modernization: 'defense_modernization',
-          federal_it: 'federal_it', national_security: 'national_security', dual_use: 'dual_use' };
+        // Build focus map dynamically from taxonomy, with hardcoded fallback
+        var focusMap = {};
+        var mfList = (taxonomy && taxonomy.market_focus) || [
+          {id:'defense_warfighting'},{id:'defense_modernization'},{id:'federal_it'},{id:'national_security'},{id:'dual_use'}
+        ];
+        mfList.forEach(function(mf) { focusMap[mf.id] = mf.id; });
         var focusKey = focusMap[profile.sector] || profile.sector;
         if (s.vertical && s.vertical.toLowerCase().indexOf(focusKey) >= 0) {
           newsletterMatches.push(s);
