@@ -2,148 +2,105 @@
   "top_entities": [
     {
       "name": "Department of Defense",
-      "mentions": 72
+      "mentions": 97
+    },
+    {
+      "name": "War on the Rocks",
+      "mentions": 60
+    },
+    {
+      "name": "C4ISRNET",
+      "mentions": 50
+    },
+    {
+      "name": "Anthropic",
+      "mentions": 48
     },
     {
       "name": "Central Intelligence Agency",
       "mentions": 45
     },
     {
-      "name": "War on the Rocks",
-      "mentions": 43
+      "name": "Hill",
+      "mentions": 41
     },
     {
       "name": "Department of Homeland Security",
-      "mentions": 32
+      "mentions": 36
     },
     {
-      "name": "C4ISRNET",
-      "mentions": 30
+      "name": "CNAS",
+      "mentions": 33
     },
     {
       "name": "U.S. Army",
-      "mentions": 30
+      "mentions": 31
     },
     {
-      "name": "Anthropic",
+      "name": "Defense One",
       "mentions": 27
     },
     {
-      "name": "Hill",
-      "mentions": 23
+      "name": "Politico Defense",
+      "mentions": 22
     },
     {
       "name": "Congress",
       "mentions": 19
     },
     {
-      "name": "CNAS",
-      "mentions": 18
+      "name": "Nextgov/FCW",
+      "mentions": 19
     },
     {
-      "name": "Defense One",
-      "mentions": 18
+      "name": "Reuters Aerospace & Defense",
+      "mentions": 19
     },
     {
       "name": "CSIS",
       "mentions": 17
     },
     {
-      "name": "Nextgov/FCW",
-      "mentions": 14
-    },
-    {
-      "name": "Politico Defense",
-      "mentions": 14
-    },
-    {
-      "name": "Reuters Aerospace & Defense",
-      "mentions": 14
+      "name": "GovExec",
+      "mentions": 15
     },
     {
       "name": "U.S. Navy",
+      "mentions": 15
+    },
+    {
+      "name": "Brookings Defense & Security",
+      "mentions": 14
+    },
+    {
+      "name": "Lawfare",
       "mentions": 13
     },
     {
-      "name": "Office of Management and Budget",
-      "mentions": 12
-    },
-    {
-      "name": "GovExec",
-      "mentions": 11
-    },
-    {
-      "name": "U.S. Air Force",
-      "mentions": 11
-    },
-    {
-      "name": "Breaking Defense",
-      "mentions": 10
+      "name": "Wired Security",
+      "mentions": 13
     }
   ],
   "active_threads": [
     {
-      "id": "6090d81db50da058",
-      "title": "U.S. Space Force / National Reconnaissance Office",
+      "id": "561aa910ca662e8f",
+      "title": "Office of Personnel Management / Internal Revenue Service",
       "keywords": [
-        "front",
-        "door",
-        "problem",
-        "national",
-        "security",
-        "space"
+        "irs",
+        "fiscal",
+        "service",
+        "defy",
+        "judges",
+        "terminate",
+        "union",
+        "contracts"
       ],
       "importance": 1.0,
-      "description": "The Front Door Problem in National Security Space"
+      "description": "IRS, Fiscal Service defy judges, terminate union contracts"
     },
     {
-      "id": "c6cd43a5aa41ba2e",
-      "title": "Washington Institute for Near East Policy / Middle East Institute",
-      "keywords": [
-        "arrived",
-        "iranian",
-        "moment",
-        "happens",
-        "next"
-      ],
-      "importance": 0.68,
-      "description": "How We Arrived at this Iranian Moment and What Happens Next"
-    },
-    {
-      "id": "b1fa1776c27ff1e0",
-      "title": "High Mobility Artillery Rocket Systems / Altius",
-      "keywords": [
-        "ensure",
-        "billion",
-        "potential",
-        "arms",
-        "sales",
-        "actually",
-        "help",
-        "taiwa"
-      ],
-      "importance": 0.6,
-      "description": "How to Ensure that $11 Billion in Potential Arms Sales Would Actually Help Taiwa"
-    },
-    {
-      "id": "d2c05cb927d3e8b9",
-      "title": "Trump / Pete Hegseth",
-      "keywords": [
-        "trump",
-        "hegseth",
-        "anthropic",
-        "warren",
-        "accuses",
-        "trying",
-        "extort",
-        "removing"
-      ],
-      "importance": 0.3,
-      "description": "Warren accuses Trump, Hegseth of trying \u2018extort\u2019 Anthropic into removing AI guar; Hegseth says Pentagon designating Anthropic as supply chain risk after Trump ban"
-    },
-    {
-      "id": "9101e9cb8fc9a8e1",
-      "title": "National Security Agency / Ron Wyden",
+      "id": "ff82bc1703f48a1b",
+      "title": "National Security Agency / Joshua Rudd",
       "keywords": [
         "wyden",
         "block",
@@ -154,41 +111,115 @@
         "lack",
         "experience"
       ],
-      "importance": 0.3,
+      "importance": 1.0,
       "description": "Wyden to block confirmation for NSA director, citing lack of experience; Senate Democrat: Trump pick \u2018not qualified\u2019 to lead National Security Agency"
     },
     {
-      "id": "ef2b6b6359e2ed34",
-      "title": "Microsoft / Arc Institute",
+      "id": "9920632e99d86c77",
+      "title": "Germany / German Navy",
       "keywords": [
-        "biodefense",
-        "blind",
-        "spot",
-        "washington",
-        "confuses",
-        "pandemics",
-        "bioweapons"
+        "germany",
+        "austria",
+        "complete",
+        "alpine",
+        "triangle",
+        "airspace",
+        "surveillance",
+        "israel"
       ],
-      "importance": 0.28,
-      "description": "Biodefense Blind Spot: Why Washington Confuses Pandemics with Bioweapons"
+      "importance": 1.0,
+      "description": "Germany, Austria complete \u2018Alpine triangle\u2019 for airspace surveillance; Israel delivers first autonomous submarine to Germany"
     },
     {
-      "id": "e9c61512b5b81a9f",
-      "title": "National Defense Authorization Act / SkyFoundry Act",
+      "id": "3f5f09411982dd00",
+      "title": "International Crisis Group / Washington Institute for Near East Policy",
       "keywords": [
-        "skyfoundry",
-        "future",
-        "american",
-        "drone",
-        "production",
-        "scale"
+        "arrived",
+        "iranian",
+        "moment",
+        "happens",
+        "next"
       ],
-      "importance": 0.27,
-      "description": "SkyFoundry and the Future of American Drone Production at Scale"
+      "importance": 0.97,
+      "description": "How We Arrived at this Iranian Moment and What Happens Next"
+    },
+    {
+      "id": "a2f5b8163356fb82",
+      "title": "National Reconnaissance Office / EarthTraq",
+      "keywords": [
+        "front",
+        "door",
+        "problem",
+        "national",
+        "security",
+        "space"
+      ],
+      "importance": 0.91,
+      "description": "The Front Door Problem in National Security Space"
+    },
+    {
+      "id": "b1fa1776c27ff1e0",
+      "title": "Altius / High Mobility Artillery Rocket Systems",
+      "keywords": [
+        "ensure",
+        "billion",
+        "potential",
+        "arms",
+        "sales",
+        "actually",
+        "help",
+        "taiwa"
+      ],
+      "importance": 0.89,
+      "description": "How to Ensure that $11 Billion in Potential Arms Sales Would Actually Help Taiwa"
+    },
+    {
+      "id": "192e97e47863f554",
+      "title": "Legion Intelligence / Latent AI",
+      "keywords": [
+        "agentic",
+        "pentagon",
+        "integration",
+        "challenge"
+      ],
+      "importance": 0.75,
+      "description": "Agentic AI and the Pentagon\u2019s Integration Challenge"
+    },
+    {
+      "id": "1f8ba286411d2038",
+      "title": "Cybersecurity and Infrastructure Security Agency / Nick Andersen",
+      "keywords": [
+        "cisa",
+        "leadership",
+        "shakeup",
+        "comes",
+        "pressure",
+        "moment",
+        "cyber",
+        "agency"
+      ],
+      "importance": 0.75,
+      "description": "CISA leadership shakeup comes amid \u2018pressure\u2019 moment for cyber agency"
+    },
+    {
+      "id": "d2c05cb927d3e8b9",
+      "title": "Pete Hegseth / Trump",
+      "keywords": [
+        "trump",
+        "hegseth",
+        "anthropic",
+        "warren",
+        "accuses",
+        "trying",
+        "extort",
+        "removing"
+      ],
+      "importance": 0.5,
+      "description": "Warren accuses Trump, Hegseth of trying \u2018extort\u2019 Anthropic into removing AI guar; Hegseth says Pentagon designating Anthropic as supply chain risk after Trump ban"
     },
     {
       "id": "0f762053618a6a6b",
-      "title": "National Guard / Supreme Court",
+      "title": "Supreme Court / National Guard",
       "keywords": [
         "command",
         "responsibility",
@@ -198,14 +229,14 @@
         "domestic",
         "readiness"
       ],
-      "importance": 0.27,
+      "importance": 0.47,
       "description": "Command Responsibility at Home: Governors, the Guard, and Domestic Readiness"
     }
   ],
   "signal_funnel": {
-    "detected": 12,
+    "detected": 11,
     "elevated": 0,
-    "brief_generated": 2,
+    "brief_generated": 3,
     "materialized": 0
   }
 }

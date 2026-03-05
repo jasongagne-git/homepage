@@ -408,14 +408,6 @@
       "mentions": 18
     },
     {
-      "name": "CCA",
-      "mentions": 12
-    },
-    {
-      "name": "B-21",
-      "mentions": 12
-    },
-    {
       "name": "High Mobility Artillery Rocket Systems",
       "mentions": 10
     },
@@ -442,32 +434,32 @@
     {
       "name": "MV-22",
       "mentions": 6
+    },
+    {
+      "name": "USAi",
+      "mentions": 6
+    },
+    {
+      "name": "Blue UAS Select",
+      "mentions": 6
     }
   ],
   "active_agencies": [
     {
-      "name": "Department of Defense",
-      "mentions": 385
-    },
-    {
       "name": "Central Intelligence Agency",
       "mentions": 257
-    },
-    {
-      "name": "Department of Homeland Security",
-      "mentions": 190
     },
     {
       "name": "U.S. Army",
       "mentions": 179
     },
     {
-      "name": "U.S. Navy",
-      "mentions": 88
+      "name": "Department of Defense",
+      "mentions": 97
     },
     {
-      "name": "U.S. Air Force",
-      "mentions": 79
+      "name": "U.S. Navy",
+      "mentions": 88
     },
     {
       "name": "Office of Management and Budget",
@@ -484,6 +476,14 @@
     {
       "name": "U.S. Space Force",
       "mentions": 37
+    },
+    {
+      "name": "Department of Homeland Security",
+      "mentions": 36
+    },
+    {
+      "name": "General Services Administration",
+      "mentions": 25
     }
   ],
   "emerging_technologies": [
