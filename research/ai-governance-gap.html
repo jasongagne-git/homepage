@@ -420,12 +420,20 @@
     font-size: 0.78rem;
     margin-bottom: 0.1rem;
   }
-  .bsp-key-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
+  .bsp-key-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     flex-shrink: 0;
-    margin-top: 0.3rem;
+    margin-top: 0.15rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--gray);
   }
 
   .feed-footer {
@@ -553,35 +561,35 @@
     </button>
     <div class="bsp-key-body">
       <div class="bsp-key-item">
-        <span class="bsp-key-dot" style="background:var(--blue)"></span>
+        <span class="bsp-key-num">1</span>
         <div>
           <strong>Governance Gap</strong>
           <span>Formal rules exist but are inadequate, poorly designed, or fail to cover the specific use case. The most universal dimension &mdash; present in nearly every country.</span>
         </div>
       </div>
       <div class="bsp-key-item">
-        <span class="bsp-key-dot" style="background:var(--red)"></span>
+        <span class="bsp-key-num">2</span>
         <div>
           <strong>Accountability Absence</strong>
           <span>No one is held responsible when AI systems cause harm. Responsibility is diffused across vendors, agencies, and algorithms until no one owns the outcome.</span>
         </div>
       </div>
       <div class="bsp-key-item">
-        <span class="bsp-key-dot" style="background:var(--purple)"></span>
+        <span class="bsp-key-num">3</span>
         <div>
           <strong>Culture Deficit</strong>
           <span>Organizational culture doesn't support responsible AI use. Pressure to ship fast, uncritical deference to AI outputs, or treating oversight as an obstacle.</span>
         </div>
       </div>
       <div class="bsp-key-item">
-        <span class="bsp-key-dot" style="background:var(--teal)"></span>
+        <span class="bsp-key-num">4</span>
         <div>
           <strong>Norm Erosion</strong>
           <span>Standards degrade through normalization of deviance. Known problems are tolerated as &ldquo;edge cases&rdquo; until the degraded standard becomes the standard.</span>
         </div>
       </div>
       <div class="bsp-key-item">
-        <span class="bsp-key-dot" style="background:var(--amber)"></span>
+        <span class="bsp-key-num">5</span>
         <div>
           <strong>Reporting Failure</strong>
           <span>Incidents go unreported, are underreported, or are only disclosed under external pressure. Without visibility, evidence-based governance is impossible.</span>
