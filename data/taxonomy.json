@@ -40,7 +40,9 @@
   ],
   "newsletter_name": "Defense Signal Brief",
   "active_market_focus": [
+    "defense_modernization",
     "defense_warfighting",
+    "federal_it",
     "national_security"
   ],
   "technology_domains": [
@@ -351,7 +353,11 @@
       ]
     }
   ],
-  "enriched_keywords_by_domain": {},
+  "enriched_keywords_by_domain": {
+    "autonomous_systems": [
+      "skyshot 1600"
+    ]
+  },
   "contracting_postures": [
     {
       "id": "prime",
@@ -405,7 +411,7 @@
   "active_programs": [
     {
       "name": "F-35",
-      "mentions": 18
+      "mentions": 19
     },
     {
       "name": "High Mobility Artillery Rocket Systems",
@@ -416,6 +422,18 @@
       "mentions": 10
     },
     {
+      "name": "Switchblade",
+      "mentions": 10
+    },
+    {
+      "name": "Best Drone Warfighter Competition",
+      "mentions": 9
+    },
+    {
+      "name": "Blue UAS Select",
+      "mentions": 9
+    },
+    {
       "name": "TSA PreCheck",
       "mentions": 8
     },
@@ -424,66 +442,54 @@
       "mentions": 8
     },
     {
-      "name": "Switchblade",
-      "mentions": 7
-    },
-    {
       "name": "Tech Viaduct",
       "mentions": 7
     },
     {
-      "name": "MV-22",
-      "mentions": 6
-    },
-    {
-      "name": "USAi",
-      "mentions": 6
-    },
-    {
-      "name": "Blue UAS Select",
-      "mentions": 6
+      "name": "Operation Epic Fury",
+      "mentions": 7
     }
   ],
   "active_agencies": [
     {
+      "name": "Department of Health and Human Services",
+      "mentions": 278
+    },
+    {
       "name": "Central Intelligence Agency",
-      "mentions": 257
+      "mentions": 258
+    },
+    {
+      "name": "Department of Homeland Security",
+      "mentions": 247
+    },
+    {
+      "name": "Department of Veterans Affairs",
+      "mentions": 243
     },
     {
       "name": "U.S. Army",
-      "mentions": 179
+      "mentions": 189
     },
     {
       "name": "Department of Defense",
-      "mentions": 97
+      "mentions": 153
     },
     {
       "name": "U.S. Navy",
-      "mentions": 88
+      "mentions": 93
+    },
+    {
+      "name": "Department of Energy",
+      "mentions": 86
     },
     {
       "name": "Office of Management and Budget",
       "mentions": 69
     },
     {
-      "name": "Government Accountability Office",
-      "mentions": 47
-    },
-    {
-      "name": "U.S. Marine Corps",
-      "mentions": 40
-    },
-    {
-      "name": "U.S. Space Force",
-      "mentions": 37
-    },
-    {
-      "name": "Department of Homeland Security",
-      "mentions": 36
-    },
-    {
-      "name": "General Services Administration",
-      "mentions": 25
+      "name": "Department of Labor",
+      "mentions": 69
     }
   ],
   "emerging_technologies": [
@@ -494,16 +500,21 @@
     },
     {
       "name": "Claude",
+      "mentions": 6,
+      "description": ""
+    },
+    {
+      "name": "IronCurtain",
+      "mentions": 6,
+      "description": ""
+    },
+    {
+      "name": "SkyShot 1600",
       "mentions": 5,
       "description": ""
     },
     {
       "name": "AutoDrive",
-      "mentions": 4,
-      "description": ""
-    },
-    {
-      "name": "IronCurtain",
       "mentions": 4,
       "description": ""
     },

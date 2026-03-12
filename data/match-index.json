@@ -1,6 +1,90 @@
 {
   "signals": [
     {
+      "signal_id": "eb014094c4b9157c",
+      "title": "State CIOs Elevate AI to Top Priority with Legislative Support",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-11T07:00:08.217997"
+    },
+    {
+      "signal_id": "3d671179799766ba",
+      "title": "Bipartisan Senators Demand Federal Surveys Capture AI Workforce Impacts",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-11T07:00:08.217640"
+    },
+    {
+      "signal_id": "958de9bb25d2c940",
+      "title": "Pentagon Chief Data Officer Tasked to Push AI Capabilities to Warfighters",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-11T07:00:08.217231"
+    },
+    {
+      "signal_id": "654ddefec63e7c3a",
+      "title": "Trump Announces Defense Production Quadrupling Without Clear Funding Details",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-11T07:00:08.216908"
+    },
+    {
+      "signal_id": "3dcaddf3b31cb268",
+      "title": "Pentagon Counter-Drone Task Force Conducts Laser Tests Amid Capability Gaps",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-11T07:00:08.214538"
+    },
+    {
+      "signal_id": "27ab81ba5de0ff5f",
+      "title": "National Guard Cyber Innovation Relies on Competition-Dependent Pathways",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-05T18:28:11.209864"
+    },
+    {
+      "signal_id": "f283c74fc72977d9",
+      "title": "Trump's CISA Nominee Left Coast Guard to Address GOP Hold",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-05T18:28:11.208905"
+    },
+    {
+      "signal_id": "71d8835120855f7f",
+      "title": "Pentagon Plans to Exhaust $152B Reconciliation Fund by Year-End",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-05T18:28:11.207648"
+    },
+    {
+      "signal_id": "0fb5b37398ecd335",
+      "title": "Pentagon-Anthropic Dispute Prompts Calls for AI Contract Guardrails",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-05T18:28:11.206549"
+    },
+    {
+      "signal_id": "14f13a2d1cb3212c",
+      "title": "GSA Designated as Federal Acquisition Quality Service Management Office",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-05T18:28:11.205635"
+    },
+    {
+      "signal_id": "c430d668a53d94b5",
+      "title": "Ukraine's Low-Cost Interceptor Drones Shift Air Defense Economics",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-05T18:28:11.204648"
+    },
+    {
+      "signal_id": "ff3953ce854380e6",
+      "title": "Pentagon Orders 30,000 One-Way Drones Through Gauntlet Exercise",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-05T18:28:11.203331"
+    },
+    {
       "signal_id": "6cb8659dc1f15816",
       "title": "Gap Widens Between Defense Innovation Theater and Acquisition Reality",
       "status": "detected",
@@ -78,6 +162,13 @@
       "last_updated": "2026-02-25T18:01:44.588221"
     },
     {
+      "signal_id": "e870f9adab156afc",
+      "title": "Anthropic Supply Chain Designation Fractures DOD AI Acquisition Strategy",
+      "status": "brief_generated",
+      "brief_id": "6d4a8ddb8d68c94f",
+      "last_updated": "2026-03-11T07:10:26.542474"
+    },
+    {
       "signal_id": "37cb70fc5a79c448",
       "title": "AFRL Expands Dual-Use Technology Pilot into National Innovation Framework",
       "status": "brief_generated",
@@ -101,63 +192,6 @@
   ],
   "topic_threads": [
     {
-      "id": "561aa910ca662e8f",
-      "title": "Office of Personnel Management / Internal Revenue Service",
-      "keywords": [
-        "irs",
-        "fiscal",
-        "service",
-        "defy",
-        "judges",
-        "terminate",
-        "union",
-        "contracts"
-      ],
-      "importance": 1.0
-    },
-    {
-      "id": "ff82bc1703f48a1b",
-      "title": "National Security Agency / Joshua Rudd",
-      "keywords": [
-        "wyden",
-        "block",
-        "confirmation",
-        "nsa",
-        "director",
-        "citing",
-        "lack",
-        "experience"
-      ],
-      "importance": 1.0
-    },
-    {
-      "id": "9920632e99d86c77",
-      "title": "Germany / German Navy",
-      "keywords": [
-        "germany",
-        "austria",
-        "complete",
-        "alpine",
-        "triangle",
-        "airspace",
-        "surveillance",
-        "israel"
-      ],
-      "importance": 1.0
-    },
-    {
-      "id": "3f5f09411982dd00",
-      "title": "International Crisis Group / Washington Institute for Near East Policy",
-      "keywords": [
-        "arrived",
-        "iranian",
-        "moment",
-        "happens",
-        "next"
-      ],
-      "importance": 0.97
-    },
-    {
       "id": "a2f5b8163356fb82",
       "title": "National Reconnaissance Office / EarthTraq",
       "keywords": [
@@ -168,11 +202,67 @@
         "security",
         "space"
       ],
-      "importance": 0.91
+      "importance": 1.0
+    },
+    {
+      "id": "c6cd43a5aa41ba2e",
+      "title": "Middle East Institute / Washington Institute for Near East Policy",
+      "keywords": [
+        "arrived",
+        "iranian",
+        "moment",
+        "happens",
+        "next"
+      ],
+      "importance": 1.0
+    },
+    {
+      "id": "ccc1d3403ebd38f1",
+      "title": "Honeywell / SkyShot 1600",
+      "keywords": [
+        "air",
+        "force",
+        "awards",
+        "contract",
+        "drone",
+        "wingman",
+        "engines"
+      ],
+      "importance": 1.0
+    },
+    {
+      "id": "32dfc2c6851a0a42",
+      "title": "Best Drone Warfighter Competition / 28th Infantry Division",
+      "keywords": [
+        "national",
+        "guard",
+        "team",
+        "clinches",
+        "award",
+        "clawed",
+        "drone",
+        "army"
+      ],
+      "importance": 0.99
+    },
+    {
+      "id": "9101e9cb8fc9a8e1",
+      "title": "National Security Agency / Ron Wyden",
+      "keywords": [
+        "wyden",
+        "block",
+        "confirmation",
+        "nsa",
+        "director",
+        "citing",
+        "lack",
+        "experience"
+      ],
+      "importance": 0.85
     },
     {
       "id": "b1fa1776c27ff1e0",
-      "title": "Altius / High Mobility Artillery Rocket Systems",
+      "title": "High Mobility Artillery Rocket Systems / Altius",
       "keywords": [
         "ensure",
         "billion",
@@ -183,22 +273,41 @@
         "help",
         "taiwa"
       ],
-      "importance": 0.89
+      "importance": 0.82
     },
     {
-      "id": "192e97e47863f554",
-      "title": "Legion Intelligence / Latent AI",
+      "id": "f3a26ce26d202562",
+      "title": "AUKUS / Genesis Mission",
       "keywords": [
-        "agentic",
-        "pentagon",
-        "integration",
-        "challenge"
+        "washington",
+        "built",
+        "infrastructure",
+        "aukus",
+        "needs",
+        "then",
+        "locked",
+        "allies"
       ],
-      "importance": 0.75
+      "importance": 0.74
     },
     {
-      "id": "1f8ba286411d2038",
-      "title": "Cybersecurity and Infrastructure Security Agency / Nick Andersen",
+      "id": "7d882c292f3ae31c",
+      "title": "LUCAS / Shahed-136",
+      "keywords": [
+        "confirms",
+        "first",
+        "combat",
+        "use",
+        "lucas",
+        "one-way",
+        "attack",
+        "drone"
+      ],
+      "importance": 0.72
+    },
+    {
+      "id": "869fa9f45944c38f",
+      "title": "Cybersecurity and Infrastructure Security Agency / Madhu Gottumukkala",
       "keywords": [
         "cisa",
         "leadership",
@@ -209,7 +318,63 @@
         "cyber",
         "agency"
       ],
-      "importance": 0.75
+      "importance": 0.7
+    },
+    {
+      "id": "7bdca069e1bceb61",
+      "title": "New START / New Strategic Arms Reduction Treaty",
+      "keywords": [
+        "running",
+        "stand",
+        "still",
+        "russian",
+        "nuclear",
+        "modernization",
+        "start"
+      ],
+      "importance": 0.66
+    },
+    {
+      "id": "0f762053618a6a6b",
+      "title": "National Guard / Supreme Court",
+      "keywords": [
+        "command",
+        "responsibility",
+        "home",
+        "governors",
+        "guard",
+        "domestic",
+        "readiness"
+      ],
+      "importance": 0.64
+    },
+    {
+      "id": "347a7ae7ecf59136",
+      "title": "Kristi Noem / Markwayne Mullin",
+      "keywords": [
+        "noem",
+        "fema",
+        "releasing",
+        "billions",
+        "disaster",
+        "assistance",
+        "while",
+        "further"
+      ],
+      "importance": 0.62
+    },
+    {
+      "id": "e9c61512b5b81a9f",
+      "title": "National Defense Authorization Act / SkyFoundry Act",
+      "keywords": [
+        "skyfoundry",
+        "future",
+        "american",
+        "drone",
+        "production",
+        "scale"
+      ],
+      "importance": 0.54
     },
     {
       "id": "d2c05cb927d3e8b9",
@@ -224,36 +389,48 @@
         "extort",
         "removing"
       ],
-      "importance": 0.5
-    },
-    {
-      "id": "0f762053618a6a6b",
-      "title": "Supreme Court / National Guard",
-      "keywords": [
-        "command",
-        "responsibility",
-        "home",
-        "governors",
-        "guard",
-        "domestic",
-        "readiness"
-      ],
       "importance": 0.47
     },
     {
-      "id": "b0dab75d4674a626",
-      "title": "Federal Emergency Management Agency / Kristi Noem",
+      "id": "6c4e2f26e8ff2f75",
+      "title": "War on the Rocks / Potomac Institute for Policy Studies",
       "keywords": [
-        "fema",
-        "releasing",
-        "billions",
-        "disaster",
-        "assistance",
-        "while",
-        "further",
-        "funds"
+        "economic",
+        "war",
+        "sun",
+        "tzu",
+        "supply",
+        "chain",
+        "face",
+        "china"
       ],
-      "importance": 0.4
+      "importance": 0.45
+    },
+    {
+      "id": "3f7b4947833f4bcd",
+      "title": "Operation Epic Fury / Operation Roaring Lion",
+      "keywords": [
+        "twice",
+        "bombed",
+        "still",
+        "nuclear",
+        "limits",
+        "force",
+        "against",
+        "iran"
+      ],
+      "importance": 0.39
+    },
+    {
+      "id": "2026bdf231b8e3d7",
+      "title": "RAND / William Marcellino",
+      "keywords": [
+        "expect",
+        "amp",
+        "william",
+        "marcellino"
+      ],
+      "importance": 0.38
     },
     {
       "id": "ef2b6b6359e2ed34",
@@ -267,35 +444,51 @@
         "pandemics",
         "bioweapons"
       ],
-      "importance": 0.38
+      "importance": 0.35
     },
     {
-      "id": "e9c61512b5b81a9f",
-      "title": "National Defense Authorization Act / SkyFoundry Act",
+      "id": "8da823d9924ce933",
+      "title": "CNN / Karoline Leavitt",
       "keywords": [
-        "skyfoundry",
-        "future",
-        "american",
+        "collins",
+        "leavitt",
+        "criticism",
+        "coverage",
+        "slain",
+        "service",
+        "members"
+      ],
+      "importance": 0.29
+    },
+    {
+      "id": "80e61f157416c443",
+      "title": "FAA / Fort Hancock",
+      "keywords": [
+        "military",
+        "uses",
+        "laser",
+        "take",
+        "cbp",
         "drone",
-        "production",
-        "scale"
+        "lawmakers",
+        "say"
       ],
-      "importance": 0.37
+      "importance": 0.29
     },
     {
-      "id": "94892612e81b204b",
-      "title": "Department of Health and Human Services / Administration for Children and Families",
+      "id": "d7b49afcd4a8b26c",
+      "title": "House Armed Services Committee / Elbridge Colby",
       "keywords": [
-        "critics",
-        "sound",
-        "alarm",
-        "hhs",
-        "plans",
-        "restructure",
-        "evaluation",
-        "office"
+        "gop",
+        "chair",
+        "hits",
+        "pentagon",
+        "policy",
+        "chief",
+        "keeping",
+        "congress"
       ],
-      "importance": 0.3
+      "importance": 0.29
     },
     {
       "id": "ac1f8d0138ae09ca",
@@ -310,22 +503,7 @@
         "procurement",
         "bottl"
       ],
-      "importance": 0.3
-    },
-    {
-      "id": "4b9159037ab1fd2c",
-      "title": "U.S. Digital Service / Tech Viaduct",
-      "keywords": [
-        "former",
-        "government",
-        "tech",
-        "leaders",
-        "prepping",
-        "day-one",
-        "plans",
-        "future"
-      ],
-      "importance": 0.3
+      "importance": 0.28
     },
     {
       "id": "4c57161900c0c625",
@@ -340,77 +518,7 @@
         "combined",
         "flu"
       ],
-      "importance": 0.3
-    },
-    {
-      "id": "6a875a31191014dd",
-      "title": "Northrop Grumman / B-21",
-      "keywords": [
-        "air",
-        "force",
-        "reaches",
-        "deal",
-        "northrop",
-        "expand",
-        "production"
-      ],
-      "importance": 0.3
-    },
-    {
-      "id": "8d5f01f3dc105f24",
-      "title": "Chuck Schumer / Hakeem Jeffries",
-      "keywords": [
-        "schumer",
-        "jeffries",
-        "review",
-        "white",
-        "house",
-        "proposal",
-        "end",
-        "dhs"
-      ],
-      "importance": 0.3
-    },
-    {
-      "id": "2026bdf231b8e3d7",
-      "title": "RAND / William Marcellino",
-      "keywords": [
-        "expect",
-        "amp",
-        "william",
-        "marcellino"
-      ],
-      "importance": 0.3
-    },
-    {
-      "id": "fb8cc962f95fc5f6",
-      "title": "CCA / OBBB",
-      "keywords": [
-        "defense",
-        "business",
-        "brief",
-        "obbb",
-        "funding",
-        "counterdrone",
-        "manufacturing",
-        "cca"
-      ],
-      "importance": 0.3
-    },
-    {
-      "id": "7cd454385ac72f8a",
-      "title": "CSIS / Andreessen Horowitz",
-      "keywords": [
-        "andreessen",
-        "horowitz's",
-        "jai",
-        "ramaswamy",
-        "matt",
-        "perault",
-        "regulation",
-        "innova"
-      ],
-      "importance": 0.3
+      "importance": 0.28
     },
     {
       "id": "447aa6969350b309",
@@ -425,58 +533,182 @@
         "drone",
         "near"
       ],
-      "importance": 0.3
+      "importance": 0.28
     },
     {
-      "id": "7bdca069e1bceb61",
-      "title": "New START / New Strategic Arms Reduction Treaty",
+      "id": "4b9159037ab1fd2c",
+      "title": "Tech Viaduct / U.S. Digital Service",
       "keywords": [
-        "running",
-        "stand",
-        "still",
-        "russian",
-        "nuclear",
-        "modernization",
-        "start"
+        "former",
+        "government",
+        "tech",
+        "leaders",
+        "prepping",
+        "day-one",
+        "plans",
+        "future"
       ],
       "importance": 0.28
     },
     {
-      "id": "6c4e2f26e8ff2f75",
-      "title": "War on the Rocks / Potomac Institute for Policy Studies",
+      "id": "4dc27b3927492399",
+      "title": "Office of Personnel Management / National Treasury Employees Union",
       "keywords": [
-        "sun",
-        "tzu",
-        "supply",
-        "chain",
-        "face",
-        "economic",
-        "war",
-        "china"
+        "irs",
+        "fiscal",
+        "service",
+        "defy",
+        "judges",
+        "terminate",
+        "union",
+        "contracts"
       ],
-      "importance": 0.27
+      "importance": 0.28
+    },
+    {
+      "id": "8d5f01f3dc105f24",
+      "title": "Chuck Schumer / Hakeem Jeffries",
+      "keywords": [
+        "schumer",
+        "jeffries",
+        "review",
+        "white",
+        "house",
+        "proposal",
+        "end",
+        "dhs"
+      ],
+      "importance": 0.28
+    },
+    {
+      "id": "0cd00648e46d060c",
+      "title": "German Navy / Israel",
+      "keywords": [
+        "israel",
+        "delivers",
+        "first",
+        "autonomous",
+        "submarine",
+        "germany"
+      ],
+      "importance": 0.28
+    },
+    {
+      "id": "7cd454385ac72f8a",
+      "title": "CSIS / Andreessen Horowitz",
+      "keywords": [
+        "andreessen",
+        "horowitz's",
+        "jai",
+        "ramaswamy",
+        "matt",
+        "perault",
+        "regulation",
+        "innova"
+      ],
+      "importance": 0.28
+    },
+    {
+      "id": "43b9bd5a3db310ce",
+      "title": "SpaceX / Blue Origin",
+      "keywords": [
+        "spacex",
+        "blue",
+        "origin",
+        "abruptly",
+        "shift",
+        "priorities",
+        "golden",
+        "dome"
+      ],
+      "importance": 0.28
     }
   ],
   "entities_by_type": {
     "company": [
       {
-        "name": "C4ISRNET",
-        "mentions": 94,
+        "name": "unknown-deepfake-technology-developers",
+        "mentions": 294,
         "description": ""
       },
       {
-        "name": "Congress",
-        "mentions": 91,
+        "name": "Department of the Interior",
+        "mentions": 169,
+        "description": ""
+      },
+      {
+        "name": "OECD",
+        "mentions": 167,
+        "description": ""
+      },
+      {
+        "name": "unknown-scammers",
+        "mentions": 160,
+        "description": ""
+      },
+      {
+        "name": "unknown-voice-cloning-technology-developers",
+        "mentions": 149,
+        "description": ""
+      },
+      {
+        "name": "United States Agency for International Development",
+        "mentions": 136,
+        "description": ""
+      },
+      {
+        "name": "openai",
+        "mentions": 131,
+        "description": ""
+      },
+      {
+        "name": "C4ISRNET",
+        "mentions": 108,
         "description": ""
       },
       {
         "name": "War on the Rocks",
-        "mentions": 60,
+        "mentions": 108,
         "description": ""
       },
       {
         "name": "CNAS",
-        "mentions": 57,
+        "mentions": 103,
+        "description": ""
+      },
+      {
+        "name": "unknown",
+        "mentions": 95,
+        "description": ""
+      },
+      {
+        "name": "Congress",
+        "mentions": 94,
+        "description": ""
+      },
+      {
+        "name": "Department of Agriculture",
+        "mentions": 88,
+        "description": ""
+      },
+      {
+        "name": "google",
+        "mentions": 77,
+        "description": ""
+      },
+      {
+        "name": "Anthropic",
+        "mentions": 71,
+        "description": ""
+      },
+      {
+        "name": "Hill",
+        "mentions": 63,
+        "description": ""
+      },
+      {
+        "name": "Department of Commerce",
+        "mentions": 56,
         "description": ""
       },
       {
@@ -485,100 +717,55 @@
         "description": ""
       },
       {
-        "name": "White House",
-        "mentions": 50,
+        "name": "facebook",
+        "mentions": 54,
         "description": ""
       },
       {
-        "name": "Anthropic",
-        "mentions": 48,
-        "description": ""
-      },
-      {
-        "name": "Politico Defense",
-        "mentions": 43,
-        "description": ""
-      },
-      {
-        "name": "Hill",
-        "mentions": 41,
-        "description": ""
-      },
-      {
-        "name": "Defense One",
-        "mentions": 27,
-        "description": ""
-      },
-      {
-        "name": "Brookings Defense & Security",
-        "mentions": 25,
-        "description": ""
-      },
-      {
-        "name": "Lawfare",
-        "mentions": 23,
-        "description": ""
-      },
-      {
-        "name": "Microsoft",
-        "mentions": 22,
-        "description": ""
-      },
-      {
-        "name": "Potomac Institute for Policy Studies",
-        "mentions": 20,
-        "description": ""
-      },
-      {
-        "name": "Boeing",
-        "mentions": 19,
-        "description": ""
-      },
-      {
-        "name": "Shield AI",
-        "mentions": 19,
-        "description": ""
-      },
-      {
-        "name": "Nextgov/FCW",
-        "mentions": 19,
-        "description": ""
-      },
-      {
-        "name": "Reuters Aerospace & Defense",
-        "mentions": 19,
-        "description": ""
-      },
-      {
-        "name": "ST Engineering",
-        "mentions": 18,
-        "description": ""
-      },
-      {
-        "name": "Lockheed Martin",
-        "mentions": 18,
+        "name": "Federal Deposit Insurance Corporation",
+        "mentions": 54,
         "description": ""
       }
     ],
     "agency": [
       {
+        "name": "Department of Health and Human Services",
+        "mentions": 278,
+        "description": ""
+      },
+      {
         "name": "Central Intelligence Agency",
-        "mentions": 257,
+        "mentions": 258,
+        "description": ""
+      },
+      {
+        "name": "Department of Homeland Security",
+        "mentions": 247,
+        "description": ""
+      },
+      {
+        "name": "Department of Veterans Affairs",
+        "mentions": 243,
         "description": ""
       },
       {
         "name": "U.S. Army",
-        "mentions": 179,
+        "mentions": 189,
         "description": ""
       },
       {
         "name": "Department of Defense",
-        "mentions": 97,
+        "mentions": 153,
         "description": ""
       },
       {
         "name": "U.S. Navy",
-        "mentions": 88,
+        "mentions": 93,
+        "description": ""
+      },
+      {
+        "name": "Department of Energy",
+        "mentions": 86,
         "description": ""
       },
       {
@@ -587,33 +774,48 @@
         "description": ""
       },
       {
+        "name": "Department of Labor",
+        "mentions": 69,
+        "description": ""
+      },
+      {
         "name": "Government Accountability Office",
-        "mentions": 47,
-        "description": ""
-      },
-      {
-        "name": "U.S. Marine Corps",
-        "mentions": 40,
-        "description": ""
-      },
-      {
-        "name": "U.S. Space Force",
-        "mentions": 37,
-        "description": ""
-      },
-      {
-        "name": "Department of Homeland Security",
-        "mentions": 36,
+        "mentions": 67,
         "description": ""
       },
       {
         "name": "General Services Administration",
-        "mentions": 25,
+        "mentions": 50,
+        "description": ""
+      },
+      {
+        "name": "U.S. Space Force",
+        "mentions": 42,
+        "description": ""
+      },
+      {
+        "name": "U.S. Marine Corps",
+        "mentions": 42,
+        "description": ""
+      },
+      {
+        "name": "Social Security Administration",
+        "mentions": 29,
+        "description": ""
+      },
+      {
+        "name": "NATO",
+        "mentions": 22,
+        "description": ""
+      },
+      {
+        "name": "U.S. Air Force",
+        "mentions": 22,
         "description": ""
       },
       {
         "name": "Defense Department",
-        "mentions": 21,
+        "mentions": 22,
         "description": ""
       },
       {
@@ -622,50 +824,15 @@
         "description": ""
       },
       {
-        "name": "NATO",
-        "mentions": 19,
-        "description": ""
-      },
-      {
         "name": "Cybersecurity and Infrastructure Security Agency",
-        "mentions": 17,
-        "description": ""
-      },
-      {
-        "name": "CSIS",
-        "mentions": 17,
-        "description": ""
-      },
-      {
-        "name": "Department of Veterans Affairs",
-        "mentions": 15,
-        "description": ""
-      },
-      {
-        "name": "National Reconnaissance Office",
-        "mentions": 15,
-        "description": ""
-      },
-      {
-        "name": "Transportation Security Administration",
-        "mentions": 13,
-        "description": ""
-      },
-      {
-        "name": "CBP",
-        "mentions": 13,
-        "description": ""
-      },
-      {
-        "name": "China",
-        "mentions": 12,
+        "mentions": 18,
         "description": ""
       }
     ],
     "program": [
       {
         "name": "F-35",
-        "mentions": 18,
+        "mentions": 19,
         "description": ""
       },
       {
@@ -679,6 +846,21 @@
         "description": ""
       },
       {
+        "name": "Switchblade",
+        "mentions": 10,
+        "description": ""
+      },
+      {
+        "name": "Best Drone Warfighter Competition",
+        "mentions": 9,
+        "description": ""
+      },
+      {
+        "name": "Blue UAS Select",
+        "mentions": 9,
+        "description": ""
+      },
+      {
         "name": "TSA PreCheck",
         "mentions": 8,
         "description": ""
@@ -689,12 +871,12 @@
         "description": ""
       },
       {
-        "name": "Switchblade",
+        "name": "Tech Viaduct",
         "mentions": 7,
         "description": ""
       },
       {
-        "name": "Tech Viaduct",
+        "name": "Operation Epic Fury",
         "mentions": 7,
         "description": ""
       },
@@ -709,17 +891,17 @@
         "description": ""
       },
       {
-        "name": "Blue UAS Select",
-        "mentions": 6,
-        "description": ""
-      },
-      {
-        "name": "Best Drone Warfighter Competition",
-        "mentions": 6,
-        "description": ""
-      },
-      {
         "name": "Global Entry",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "LUCAS",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "Operation Roaring Lion",
         "mentions": 6,
         "description": ""
       },
@@ -747,48 +929,43 @@
         "name": "Autonomous Decontamination System",
         "mentions": 5,
         "description": ""
-      },
-      {
-        "name": "Flight School Next",
-        "mentions": 5,
-        "description": ""
-      },
-      {
-        "name": "Ivy Sting 4",
-        "mentions": 5,
-        "description": ""
-      },
-      {
-        "name": "F-47",
-        "mentions": 5,
-        "description": ""
       }
     ],
     "budget_line": [],
     "policy": [
       {
         "name": "Munich Security Conference",
-        "mentions": 21,
+        "mentions": 23,
         "description": ""
       },
       {
         "name": "National Defense Authorization Act",
-        "mentions": 15,
+        "mentions": 18,
+        "description": ""
+      },
+      {
+        "name": "Kristi Noem",
+        "mentions": 17,
         "description": ""
       },
       {
         "name": "Federal Acquisition Regulation",
-        "mentions": 14,
-        "description": ""
-      },
-      {
-        "name": "Trump",
-        "mentions": 10,
+        "mentions": 16,
         "description": ""
       },
       {
         "name": "SkyFoundry Act",
-        "mentions": 10,
+        "mentions": 13,
+        "description": ""
+      },
+      {
+        "name": "Trump",
+        "mentions": 11,
+        "description": ""
+      },
+      {
+        "name": "NDAA",
+        "mentions": 11,
         "description": ""
       },
       {
@@ -797,23 +974,18 @@
         "description": ""
       },
       {
-        "name": "NDAA",
+        "name": "New START",
         "mentions": 9,
         "description": ""
       },
       {
-        "name": "New START",
+        "name": "National Defense Strategy",
         "mentions": 8,
         "description": ""
       },
       {
         "name": "New Strategic Arms Reduction Treaty",
-        "mentions": 7,
-        "description": ""
-      },
-      {
-        "name": "National Defense Strategy",
-        "mentions": 6,
+        "mentions": 8,
         "description": ""
       },
       {
@@ -837,6 +1009,11 @@
         "description": ""
       },
       {
+        "name": "Hakeem Jeffries",
+        "mentions": 5,
+        "description": ""
+      },
+      {
         "name": "Friedrich Merz",
         "mentions": 4,
         "description": ""
@@ -855,16 +1032,6 @@
         "name": "USMCA",
         "mentions": 4,
         "description": ""
-      },
-      {
-        "name": "FISA",
-        "mentions": 3,
-        "description": ""
-      },
-      {
-        "name": "Kristi Noem",
-        "mentions": 3,
-        "description": ""
       }
     ],
     "technology": [
@@ -879,12 +1046,17 @@
         "description": ""
       },
       {
-        "name": "GPS",
-        "mentions": 5,
+        "name": "Claude",
+        "mentions": 6,
         "description": ""
       },
       {
-        "name": "Claude",
+        "name": "IronCurtain",
+        "mentions": 6,
+        "description": ""
+      },
+      {
+        "name": "GPS",
         "mentions": 5,
         "description": ""
       },
@@ -894,12 +1066,12 @@
         "description": ""
       },
       {
-        "name": "AutoDrive",
-        "mentions": 4,
+        "name": "SkyShot 1600",
+        "mentions": 5,
         "description": ""
       },
       {
-        "name": "IronCurtain",
+        "name": "AutoDrive",
         "mentions": 4,
         "description": ""
       },
@@ -919,7 +1091,7 @@
         "description": ""
       },
       {
-        "name": "SkyShot 1600",
+        "name": "Shahed",
         "mentions": 2,
         "description": ""
       }
