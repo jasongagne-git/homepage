@@ -1,12 +1,38 @@
 [
   {
-    "date": "2026-02-07",
-    "vertical": "defense_modernization",
+    "date": "2026-02-15",
+    "vertical": "defense_warfighting",
     "domains": [
-      "logistics_supply_chain"
+      "software_modernization",
+      "autonomous_systems",
+      "electronic_warfare"
     ],
-    "headline": "House Armed Services Committee Chair Mike Rogers is charting a path to a $1.",
-    "snippet": "House Armed Services Committee Chair Mike Rogers is charting a path to a $1.5 trillion defense budget, with analysts at AEI advocating for a $600 billion inc...",
-    "url": "briefings/2026-02-07.html"
+    "headline": "The Defense Innovation Unit&#x27;s spring 2026 counter-drone sensor demonstration represents an immediate contracting pathway for rapid technology adoption.",
+    "snippet": "The Defense Innovation Unit&#x27;s spring 2026 counter-drone sensor demonstration represents an immediate contracting pathway for rapid technology adoption. ...",
+    "url": "briefings/2026-02-15.html"
+  },
+  {
+    "date": "2026-02-14",
+    "vertical": "defense_warfighting",
+    "domains": [
+      "software_modernization",
+      "autonomous_systems",
+      "electronic_warfare"
+    ],
+    "headline": "The Defense Innovation Unit is running a spring 2026 counter-drone sensor demonstration with explicit urgency language — &quot;the urgency of the threat&quot.",
+    "snippet": "The Defense Innovation Unit is running a spring 2026 counter-drone sensor demonstration with explicit urgency language — &quot;the urgency of the threat&quot...",
+    "url": "briefings/2026-02-14.html"
+  },
+  {
+    "date": "2026-02-13",
+    "vertical": "defense_warfighting",
+    "domains": [
+      "software_modernization",
+      "robotic_process",
+      "electronic_warfare"
+    ],
+    "headline": "The CIA just announced a new acquisition framework led by DARPA alum Efstathia Fragogiannis to accelerate technology adoption.",
+    "snippet": "The CIA just announced a new acquisition framework led by DARPA alum Efstathia Fragogiannis to accelerate technology adoption. This creates a replicable mode...",
+    "url": "briefings/2026-02-13.html"
   }
 ]
