@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behavioral Drift in Multi-Agent LLM Systems — preneurial.works</title>
+<link rel="canonical" href="https://preneurial.works/research/sentinel.html">
+<meta name="description" content="Emergent failure modes, cascade dynamics, and measurement challenges in multi-agent LLM systems. 40+ experiments, 20,000+ agent messages, 21 structured findings reveal that agent collapse is triggered — not spontaneous.">
+<meta property="og:title" content="Behavioral Drift in Multi-Agent LLM Systems — PreneurialWorks">
+<meta property="og:description" content="Emergent failure modes, cascade dynamics, and measurement challenges. Standard evaluation probes fail to detect behavioral degradation. Empirical evidence from 40+ controlled experiments.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://preneurial.works/research/sentinel.html">
+<meta property="og:image" content="https://preneurial.works/images/og-card.png?v=2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Behavioral Drift in Multi-Agent LLM Systems — PreneurialWorks">
+<meta name="twitter:description" content="Emergent failure modes, cascade dynamics, and measurement challenges. Empirical evidence from 40+ controlled experiments.">
+<meta name="twitter:image" content="https://preneurial.works/images/og-card.png?v=2">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../images/favicon-192.png">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="../site.css">
+<style>
+  :root {
+    --bg: #06080f;
+    --surface: #0d1117;
+    --surface2: #161b26;
+    --border: #1e2736;
+    --blue: #2563EB;
+    --cyan: #06B6D4;
+    --gold: #F59E0B;
+    --red: #EF4444;
+    --green: #10B981;
+    --purple: #8B5CF6;
+    --white: #F0F4FF;
+    --gray: #8892a4;
+    --dimgray: #4a5568;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Instrument Sans', sans-serif;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── NAV BAR ── */
+  .site-nav {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-brand i { color: var(--cyan); }
+  .nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  /* ── EYEBROW LABEL ── */
+  .eyebrow-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--dimgray);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── PILLAR TAGS ── */
+  .pillar-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+  }
+  .pillar-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+  .pillar-tag.inactive {
+    background: transparent;
+    border-color: rgba(255,255,255,0.08);
+    color: var(--dimgray);
+    opacity: 0.45;
+  }
+  .pillar-tag.if {
+    background: rgba(0,188,212,0.12);
+    border-color: rgba(0,188,212,0.35);
+    color: var(--cyan);
+  }
+  .pillar-tag.rta {
+    background: rgba(245,158,11,0.12);
+    border-color: rgba(245,158,11,0.35);
+    color: var(--gold);
+  }
+  .pillar-tag.pii {
+    background: rgba(16,185,129,0.12);
+    border-color: rgba(16,185,129,0.35);
+    color: var(--green);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse at center, rgba(139,92,246,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--white) 0%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    font-size: 1.15rem;
+    color: var(--gray);
+    max-width: 640px;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+  .meta-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--dimgray);
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+  .meta-row span { color: var(--gray); }
+
+  /* ── STAT STRIP ── */
+  .stat-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    padding: 1.8rem 1.5rem;
+    border-right: 1px solid var(--border);
+    text-align: center;
+    position: relative;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--purple);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--gray);
+    line-height: 1.4;
+  }
+  .stat-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--dimgray);
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--purple);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  h3 {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+    margin-top: 1.5rem;
+  }
+  p {
+    color: var(--gray);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+  strong { color: var(--white); font-weight: 600; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: rgba(139,92,246,0.07);
+    border-left: 3px solid var(--purple);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout p { color: var(--white); margin: 0; font-style: italic; }
+
+  /* ── FINDING CARDS ── */
+  .finding-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .finding-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .finding-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .finding-card.collapse::before { background: var(--red); }
+  .finding-card.probe::before { background: var(--gold); }
+  .finding-card.hollow::before { background: var(--cyan); }
+  .finding-card.observer::before { background: var(--green); }
+  .finding-id {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .finding-card.collapse .finding-id { color: var(--red); }
+  .finding-card.probe .finding-id { color: var(--gold); }
+  .finding-card.hollow .finding-id { color: var(--cyan); }
+  .finding-card.observer .finding-id { color: var(--green); }
+  .finding-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .finding-card p { font-size: 0.9rem; margin-bottom: 0.7rem; }
+  .finding-detail {
+    background: var(--surface2);
+    border-radius: 4px;
+    padding: 0.7rem 0.9rem;
+    margin-top: 0.8rem;
+    font-size: 0.82rem;
+  }
+  .finding-detail .detail-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .finding-card.collapse .detail-label { color: var(--red); }
+  .finding-card.probe .detail-label { color: var(--gold); }
+  .finding-card.hollow .detail-label { color: var(--cyan); }
+  .finding-card.observer .detail-label { color: var(--green); }
+  .finding-detail p { color: var(--gray); margin: 0; font-size: 0.82rem; }
+
+  /* ── CONVERGENCE BOX ── */
+  .convergence {
+    background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(37,99,235,0.08) 100%);
+    border: 1px solid rgba(139,92,246,0.25);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  .convergence .conv-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--purple);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .convergence p {
+    color: var(--white);
+    font-size: 1.05rem;
+    margin: 0;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+  }
+
+  /* ── MODE CARDS (three-column) ── */
+  .mode-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .mode-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .mode-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .mode-card:nth-child(1) .mode-pct { color: var(--red); }
+  .mode-card:nth-child(2) .mode-pct { color: var(--green); }
+  .mode-card:nth-child(3) .mode-pct { color: var(--cyan); }
+  .mode-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+  .mode-desc {
+    font-size: 0.82rem;
+    color: var(--dimgray);
+    line-height: 1.5;
+  }
+
+  /* ── FINDINGS TABLE ── */
+  .findings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+  }
+  .findings-table th {
+    background: var(--surface2);
+    color: var(--gray);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.7rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .findings-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--gray);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .findings-table tr:last-child td { border-bottom: none; }
+  .findings-table .highlight { color: var(--purple); font-weight: 600; }
+
+  /* ── RESPONSIBLE INNOVATION SECTION ── */
+  .ri-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .ri-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .ri-list { list-style: none; padding: 0; }
+  .ri-list li {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .ri-bullet {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: rgba(245,158,11,0.15);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .section {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── BSP LINK ── */
+  .bsp-link {
+    background: linear-gradient(135deg, rgba(6,182,212,0.06) 0%, rgba(139,92,246,0.06) 100%);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .bsp-link:hover { border-color: var(--purple); }
+  .bsp-link i { color: var(--cyan); font-size: 1.2rem; flex-shrink: 0; }
+  .bsp-link .bsp-text { font-size: 0.88rem; color: var(--gray); }
+  .bsp-link .bsp-text strong { color: var(--white); }
+
+  /* ── WHY SECTION ── */
+  .why-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 0;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .why-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--border);
+  }
+  .why-card:nth-child(1)::before { background: var(--cyan); }
+  .why-card:nth-child(2)::before { background: var(--gold); }
+  .why-card:nth-child(3)::before { background: var(--red); }
+  .why-assumption {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .why-card:nth-child(1) .why-assumption { color: var(--cyan); }
+  .why-card:nth-child(2) .why-assumption { color: var(--gold); }
+  .why-card:nth-child(3) .why-assumption { color: var(--red); }
+  .why-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .why-card p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin: 0;
+    line-height: 1.6;
+  }
+  @media (max-width: 640px) {
+    .why-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    color: var(--dimgray);
+    padding: 2rem 2.5rem;
+    text-align: center;
+  }
+  .footer p { font-size: 0.85rem; }
+  .footer a { color: var(--cyan); text-decoration: none; }
+  .footer a:hover { color: var(--white); }
+
+  @media (max-width: 640px) {
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .finding-grid { grid-template-columns: 1fr; }
+    .mode-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      gap: 1rem;
+    }
+    .nav-toggle { display: block; }
+    .site-nav { position: relative; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-brand">Preneurial<i>works</i></a>
+        <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="../framework.html">Framework</a>
+            <a href="../innovation-tool.html">Opportunities</a>
+            <a href="../projects.html">Case Studies</a>
+            <a href="../research.html">Research</a>
+            <a href="../archive.html">Briefings</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow-label">Original Research · March 2026 · SSRN Preprint</div>
+  <div class="pillar-row">
+    <span class="pillar-tag if">Institutional Friction</span>
+    <span class="pillar-tag inactive">Innovation Pathways</span>
+    <span class="pillar-tag rta">Responsible Adoption</span>
+    <span class="pillar-tag pii">Measurable Impact</span>
+  </div>
+  <h1>Behavioral Drift in<br>Multi-Agent LLM Systems</h1>
+  <p class="subtitle" style="font-size: 0.92rem; color: var(--dimgray); margin-bottom: 0.8rem; font-style: italic;">
+    Emergent Failure Modes, Cascade Dynamics, and Measurement Challenges
+  </p>
+  <p class="subtitle">
+    Standard evaluation probes tell us an AI agent knows who it is.
+    They don't tell us whether it's still behaving like itself.
+    When agents interact at scale, the gap becomes measurable — and dangerous.
+  </p>
+  <div class="meta-row">
+    <span><strong>40+</strong> controlled experiments</span>
+    <span><strong>20,000+</strong> agent messages</span>
+    <span><strong>5,760</strong> probe measurements</span>
+    <span><strong>21</strong> structured findings</span>
+  </div>
+  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.2rem; font-size: 0.8rem;">
+    <a href="Behavioral_Drift_in_Multi_Agent_LLM_Systems.pdf" style="color: var(--gray); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;"><i class="fas fa-file-pdf"></i> PDF</a>
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6420858" target="_blank" rel="noopener" style="color: var(--purple); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;"><i class="fas fa-external-link-alt"></i> SSRN</a>
+    <a href="https://github.com/jasongagne-git/sentinel" target="_blank" rel="noopener" style="color: var(--gray); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;"><i class="fab fa-github"></i> Code</a>
+    <a href="https://zenodo.org/records/19032840" target="_blank" rel="noopener" style="color: var(--gray); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;"><i class="fas fa-database"></i> Data (Zenodo)</a>
+  </div>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-item">
+    <span class="stat-num">0 / 12</span>
+    <div class="stat-label">Baseline Runs with Collapse</div>
+    <span class="stat-sub">Collapse requires perturbation</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">5 / 6</span>
+    <div class="stat-label">Fork Runs Collapsed</div>
+    <span class="stat-sub">All at exactly turn 53</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">78%</span>
+    <div class="stat-label">Hollow Verbosity Rate</div>
+    <span class="stat-sub">Stressed agents repeating same phrase</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">11</span>
+    <div class="stat-label">Detection Patterns</div>
+    <span class="stat-sub">Automated behavioral drift detectors</span>
+  </div>
+</div>
+
+<!-- WHY THIS RESEARCH -->
+<div class="why-section">
+  <div class="section-label">Why This Research</div>
+  <h2 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; line-height: 1.3;">Three Gaps That Demanded Empirical Evidence</h2>
+  <p style="color: var(--gray); font-size: 0.95rem;">We build AI agent systems on assumptions we haven't tested. This research was designed to test them.</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-assumption">The Governance Assumption</div>
+      <h4>Governance Says It's Fine</h4>
+      <p>The <a href="behavioral-sufficiency.html" style="color: var(--cyan);">Behavioral Sufficiency Problem</a> showed that governance alone has never been sufficient to determine behavior. But sufficient for <em>what</em>, exactly? Nobody had tested whether the tools we use to <em>verify</em> AI behavior actually detect when it fails.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-assumption">The Trust Assumption</div>
+      <h4>Everyone Trusts Agents Now</h4>
+      <p>Millions of AI agents on OpenClaw exhibited emergent governance structures, religious frameworks, and collective behaviors — with no controlled measurement of what was actually happening. Enthusiasm outpaced evidence. We needed controlled experiments, not viral demos.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-assumption">The Evidence Gap</div>
+      <h4>The Data Didn't Exist</h4>
+      <p>Prior to this work, no study had empirically measured multi-agent behavioral drift with calibrated baselines, controlled conditions, and statistical replication. Simulations projected drift. Frameworks proposed monitoring. Nobody had run the experiments.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+
+  <!-- THE CORE FINDING -->
+  <div class="section" style="border-top: none; padding-top: 2rem;">
+    <div class="section-label">The Core Finding</div>
+    <h2>Identity Probes Pass. Behavior Degrades. Nobody Notices.</h2>
+    <p>
+      Multi-agent LLM systems — where multiple AI agents converse, collaborate, and negotiate — are increasingly
+      deployed in production. A critical assumption underlying these deployments is that agents will maintain
+      their assigned behavioral characteristics over time. <strong>This assumption has not been rigorously tested.</strong>
+    </p>
+    <p>
+      SENTINEL provides the test. Across 40+ controlled experiments generating over 20,000 agent messages, we found that
+      <strong>collapsed agents continue passing identity probes</strong>. Probe drift scores remain flat even as
+      conversational behavior degrades catastrophically. Probes measure identity recall — not behavioral drift.
+    </p>
+    <div class="callout">
+      <p>"An agent that can tell you its name, its role, and its constraints is not necessarily an agent that is still behaving within them."</p>
+    </div>
+  </div>
+
+  <!-- METHODOLOGY -->
+  <div class="section">
+    <div class="section-label">Methodology</div>
+    <h2>Four Experimental Paradigms, One Detection Pipeline</h2>
+    <p>
+      SENTINEL — <strong>Systematic Evaluation Network for Testing Intelligent Agent Limits</strong> — orchestrates
+      sustained multi-agent conversations via Ollama, then measures behavioral degradation through 11 automated
+      pattern detectors. The framework implements four experimental paradigms designed to isolate, reproduce,
+      and attribute behavioral drift.
+    </p>
+
+    <table class="findings-table">
+      <thead>
+        <tr>
+          <th>Paradigm</th>
+          <th>Design</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">Baseline</td>
+          <td>Multi-agent conversation with periodic probing</td>
+          <td>Establish natural behavioral variance</td>
+        </tr>
+        <tr>
+          <td class="highlight">Paired</td>
+          <td>Experimental (multi-agent) + control (isolated agents)</td>
+          <td>Isolate interaction effects from solo drift</td>
+        </tr>
+        <tr>
+          <td class="highlight">Fork</td>
+          <td>Clone experiment state, mutate one variable, continue</td>
+          <td>Enable causal attribution of collapse triggers</td>
+        </tr>
+        <tr>
+          <td class="highlight">Cross-model</td>
+          <td>Identical configurations on different model families</td>
+          <td>Assess model-dependent effects</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      The detection pipeline uses dual-probe methodology — <strong>shadow probes</strong> (invisible to the conversation)
+      and <strong>injected probes</strong> (visible to other agents) — to distinguish genuine behavioral change from
+      measurement artifacts. Detectors cover collapse, convergence, vocabulary drift (Jensen-Shannon divergence),
+      sentiment shift, hollow verbosity, probe contamination, content repetition, and cascade propagation.
+    </p>
+    <p>
+      Experiments ran primarily on <strong>Gemma2:2b</strong> and <strong>Llama3.2:3b</strong> models on an NVIDIA Jetson Orin Nano,
+      demonstrating that meaningful behavioral research is possible on consumer-grade hardware.
+    </p>
+  </div>
+
+  <!-- KEY FINDINGS -->
+  <div class="section">
+    <div class="section-label">Key Findings</div>
+    <h2>What 21 Structured Findings Reveal</h2>
+
+    <div class="finding-grid">
+
+      <div class="finding-card collapse">
+        <div class="finding-id">Findings 1–3</div>
+        <h4>Collapse Is Triggered, Not Spontaneous</h4>
+        <p>
+          Zero of twelve baseline runs produced collapse. Five of six mutation-fork runs
+          collapsed — all at exactly turn 53. A pre-collapse early warning exists:
+          agents destined to collapse show measurable output shrinkage of -2 to -5 characters/turn
+          before the event.
+        </p>
+        <div class="finding-detail">
+          <div class="detail-label">Implication</div>
+          <p>The governance question shifts from "how do we prevent inevitable decay?" to "how do we detect and contain triggered failures?"</p>
+        </div>
+      </div>
+
+      <div class="finding-card probe">
+        <div class="finding-id">Findings 7–9</div>
+        <h4>Probes Cannot Detect What They Don't Measure</h4>
+        <p>
+          Collapsed agents continue passing identity probes. Across 5,760 probe measurements
+          in 12 replicated baselines, drift scores show no temporal trend. Probes measure
+          identity recall capacity — not behavioral drift. The dissociation is confirmed
+          with statistical power.
+        </p>
+        <div class="finding-detail">
+          <div class="detail-label">Implication</div>
+          <p>Behavioral sufficiency cannot be verified through identity-based evaluation alone.</p>
+        </div>
+      </div>
+
+      <div class="finding-card hollow">
+        <div class="finding-id">Findings 20–21</div>
+        <h4>Hollow Verbosity: The Appearance of Function</h4>
+        <p>
+          Collapse and hollow verbosity are two expressions of the same failure — loss of generative
+          diversity. The model either goes silent or enters a repetitive loop (78% of messages recycling
+          the same phrase). Hollow verbosity evades output-volume monitoring entirely.
+        </p>
+        <div class="finding-detail">
+          <div class="detail-label">Implication</div>
+          <p>Monitoring systems that catch collapse will miss hollow verbosity. Content-quality metrics (vocabulary entropy, n-gram diversity) are required.</p>
+        </div>
+      </div>
+
+      <div class="finding-card observer">
+        <div class="finding-id">Findings 10–11</div>
+        <h4>Measurement Itself Changes Behavior</h4>
+        <p>
+          The same probing protocol is approximately neutral on Gemma2:2b but actively suppresses
+          drift on Llama3.2:3b. Injected probes contaminate agent behavior at model-dependent rates.
+          There may be no measurement approach that is simultaneously unobtrusive, uncontaminating,
+          and behaviorally equivalent to the natural system state.
+        </p>
+        <div class="finding-detail">
+          <div class="detail-label">Implication</div>
+          <p>Cross-model governance cannot assume a universal measurement protocol. Calibration must be per-model.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- POST-COLLAPSE BEHAVIOR -->
+  <div class="section">
+    <div class="section-label">Post-Collapse Dynamics</div>
+    <h2>Three Modes of Survivor Response</h2>
+    <p>
+      When one agent in a multi-agent system collapses, the surviving agents don't simply continue.
+      Their responses bifurcate into three distinct behavioral modes — none of which are captured by
+      standard evaluation frameworks.
+    </p>
+
+    <div class="mode-grid">
+      <div class="mode-card">
+        <span class="mode-pct">40%</span>
+        <span class="mode-name">Cascade Degradation</span>
+        <p class="mode-desc">Surviving agents degrade in sympathy, echoing the collapsed agent's patterns</p>
+      </div>
+      <div class="mode-card">
+        <span class="mode-pct">20%</span>
+        <span class="mode-name">Isolated Stability</span>
+        <p class="mode-desc">Some agents maintain behavioral integrity despite peer collapse</p>
+      </div>
+      <div class="mode-card">
+        <span class="mode-pct">40%</span>
+        <span class="mode-name">Compensatory Expansion</span>
+        <p class="mode-desc">Agents expand their output to fill the gap, introducing novel drift patterns</p>
+      </div>
+    </div>
+
+    <p>
+      A pre-collapse early warning signal exists: agents destined to collapse show measurable
+      output shrinkage of <strong>-2 to -5 characters per turn</strong> before collapse onset.
+      This signal is detectable but not captured by identity probes.
+    </p>
+  </div>
+
+  <!-- CONNECTION TO BSP -->
+  <div class="section">
+    <div class="section-label">Connecting the Research</div>
+    <h2>From Governance Gaps to Behavioral Evidence</h2>
+    <p>
+      The <a href="behavioral-sufficiency.html" style="color: var(--cyan);">Behavioral Sufficiency Problem</a>
+      (Gagne, 2026) asked the question: governance has never been sufficient to determine human behavior — why do we assume it will be sufficient for AI? But the BSP's evidence came from the policy domain — incident databases, governance readiness scores, national frameworks.
+    </p>
+    <p>
+      SENTINEL takes the question into the lab. If governance frameworks aren't sufficient, are the
+      <strong>evaluation tools</strong> we rely on to verify AI behavior sufficient? The answer, across 21 findings:
+      <strong>no</strong>. Identity probes miss behavioral drift. Volume metrics miss hollow verbosity. Single-run
+      evaluations miss path-dependent failures. The sufficiency gap is not just a governance problem — it's
+      a measurement problem.
+    </p>
+
+    <div class="convergence">
+      <div class="conv-label">The Connection</div>
+      <p>The BSP identifies the governance gap. SENTINEL quantifies the measurement gap. Together, they reveal that AI systems can satisfy every compliance check while drifting beyond every behavioral threshold.</p>
+    </div>
+
+    <a href="behavioral-sufficiency.html" class="bsp-link">
+      <i class="fas fa-arrow-left"></i>
+      <div class="bsp-text"><strong>The Behavioral Sufficiency Problem</strong> — the companion research analyzing 1,362 AI incidents across 40 countries, establishing that governance alone is not behaviorally sufficient for AI safety.</div>
+    </a>
+  </div>
+
+  <!-- RESPONSIBLE INNOVATION ACTIONS -->
+  <div class="section">
+    <div class="section-label">Responsible Innovation Actions</div>
+    <h2>What This Research Suggests</h2>
+    <div class="ri-box">
+      <div class="ri-label">For builders and deployers of multi-agent systems</div>
+      <ul class="ri-list">
+        <li><span class="ri-bullet">1</span>
+          <span><strong>Don't trust probes alone.</strong> Identity-based evaluation creates false assurance. Supplement probes with continuous behavioral metrics — vocabulary diversity, output trajectory, and content repetition scoring.</span>
+        </li>
+        <li><span class="ri-bullet">2</span>
+          <span><strong>Monitor for perturbation, not just degradation.</strong> Collapse is triggered, not inevitable. Build detection for the perturbation events that cause collapse rather than waiting for collapse itself.</span>
+        </li>
+        <li><span class="ri-bullet">3</span>
+          <span><strong>Watch for hollow verbosity.</strong> An agent producing text at expected volume and latency may be producing nothing of substance. Volume is not validity.</span>
+        </li>
+        <li><span class="ri-bullet">4</span>
+          <span><strong>Calibrate evaluation per-model.</strong> The same testing protocol can be neutral on one model and actively distort behavior on another. Universal benchmarks need model-specific baselines.</span>
+        </li>
+        <li><span class="ri-bullet">5</span>
+          <span><strong>Design for cascade awareness.</strong> When one agent fails, 40% of the time the others follow. Multi-agent architectures need isolation boundaries and independent health checks — not shared evaluation.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- METHODOLOGY & DATA -->
+  <div class="section">
+    <h3>Experimental Infrastructure</h3>
+    <p style="font-size: 0.88rem; color: var(--gray);">
+      SENTINEL uses three default agent personas — <strong>Aria</strong> (facilitator), <strong>Beck</strong> (analyst),
+      and <strong>Cass</strong> (mediator) — defined across six trait dimensions. Conversations run locally via Ollama
+      with no external API dependencies. All experiment data is stored in SQLite for reproducibility.
+      The full codebase, configuration, and raw experimental data are available at
+      <a href="https://github.com/jasongagne-git/sentinel" target="_blank" rel="noopener" style="color: var(--purple);">github.com/jasongagne-git/sentinel</a>
+      and archived at
+      <a href="https://zenodo.org/records/19032840" target="_blank" rel="noopener" style="color: var(--purple);">Zenodo</a>
+      (DOI: 10.5281/zenodo.19032840).
+    </p>
+
+    <h3>Related Work</h3>
+    <p style="font-size: 0.88rem; color: var(--gray);">
+      This research builds on and extends the
+      <a href="behavioral-sufficiency.html" style="color: var(--cyan);">Behavioral Sufficiency Problem</a>
+      (Gagne, 2026;
+      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6281098" target="_blank" rel="noopener" style="color: var(--cyan);">SSRN</a>),
+      which established that governance frameworks alone are not behaviorally sufficient for AI safety.
+      SENTINEL extends this from the policy domain to the technical domain — demonstrating that
+      <strong>evaluation frameworks</strong>, not just governance frameworks, exhibit the same sufficiency gap.
+      The work also engages with a growing body of research on multi-agent LLM dynamics,
+      persona stability, and AI governance.
+    </p>
+
+    <h3 style="color: var(--gray); font-size: 0.82rem;">Multi-Agent Dynamics</h3>
+    <p style="font-size: 0.82rem; color: var(--dimgray); margin-bottom: 0.5rem;">
+      <a href="https://arxiv.org/abs/2502.19559" target="_blank" rel="noopener" style="color: var(--cyan);">Becker et al. (2025)</a> documented problem drift in multi-agent debate.
+      <a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener" style="color: var(--cyan);">Wu et al. (2023)</a> introduced AutoGen for multi-agent conversation.
+      <a href="https://arxiv.org/abs/2304.03442" target="_blank" rel="noopener" style="color: var(--cyan);">Li et al. (2023)</a> explored agent society dynamics in CAMEL.
+      <a href="https://arxiv.org/abs/2304.03442" target="_blank" rel="noopener" style="color: var(--cyan);">Park et al. (2023)</a> demonstrated generative agent simulations of human behavior.
+    </p>
+
+    <h3 style="color: var(--gray); font-size: 0.82rem;">Identity &amp; Persona Drift</h3>
+    <p style="font-size: 0.82rem; color: var(--dimgray); margin-bottom: 0.5rem;">
+      <a href="https://arxiv.org/abs/2402.10962" target="_blank" rel="noopener" style="color: var(--cyan);">Li et al. (2024)</a> measured and controlled persona drift in dialogs.
+      <a href="https://arxiv.org/abs/2412.00804" target="_blank" rel="noopener" style="color: var(--cyan);">Choi et al. (2024)</a> examined identity drift in LLM agent conversations.
+      <a href="https://arxiv.org/abs/2507.21509" target="_blank" rel="noopener" style="color: var(--cyan);">Chen et al. (2025)</a> proposed persona vectors for monitoring character traits — a white-box approach whose limitations for multi-agent systems this paper documents.
+      <a href="https://arxiv.org/abs/2601.04170" target="_blank" rel="noopener" style="color: var(--cyan);">Rath (2026)</a> independently quantified behavioral degradation in multi-agent LLM systems.
+    </p>
+
+    <h3 style="color: var(--gray); font-size: 0.82rem;">AI Governance &amp; Evaluation</h3>
+    <p style="font-size: 0.82rem; color: var(--dimgray); margin-bottom: 0.5rem;">
+      <a href="https://arxiv.org/abs/2202.03286" target="_blank" rel="noopener" style="color: var(--cyan);">Chan et al. (2023)</a> catalogued harms from increasingly agentic systems.
+      <a href="https://arxiv.org/abs/2602.22302" target="_blank" rel="noopener" style="color: var(--cyan);">Kim et al. (2026)</a> proposed agent behavioral contracts for runtime enforcement.
+      <a href="https://arxiv.org/abs/2602.11619" target="_blank" rel="noopener" style="color: var(--cyan);">Mehta (2026)</a> measured behavioral consistency in LLM-based agents.
+      The <a href="https://cloudsecurityalliance.org/blog/2025/06/09/aagate-a-nist-ai-rmf-aligned-governance-platform-for-agentic-ai" target="_blank" rel="noopener" style="color: var(--cyan);">AAGATE framework</a> (CSA, 2025) aligned agentic AI governance with NIST AI RMF.
+    </p>
+
+    <p style="font-size: 0.85rem; color: var(--dimgray); margin-top: 1.5rem;">
+      All code and data are open source under Apache 2.0.
+      Developed on NVIDIA Jetson Orin Nano (consumer-grade hardware).
+      Python stdlib only — no pip dependencies required.
+    </p>
+  </div>
+
+</div><!-- /content -->
+
+<div class="footer">
+    <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.5rem;">
+        <a href="mailto:jason@preneurial.works" style="color: var(--text-dim); text-decoration: none;">Contact</a> | <a href="https://www.linkedin.com/in/jagagne/" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </p>
+    <a href="../research.html" class="back-link">&larr; Back to Research</a>
+</div>
+
+<script data-goatcounter="https://preneurialworks.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
