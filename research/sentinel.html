@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Behavioral Drift in Multi-Agent LLM Systems — preneurial.works</title>
 <link rel="canonical" href="https://preneurial.works/research/sentinel.html">
-<meta name="description" content="Emergent failure modes, cascade dynamics, and measurement challenges in multi-agent LLM systems. 40+ experiments, 20,000+ agent messages, 21 structured findings reveal that agent collapse is triggered — not spontaneous.">
+<meta name="description" content="Emergent failure modes, cascade dynamics, and measurement challenges in multi-agent LLM systems. 56 experiments, 20,000+ agent messages, 89 structured findings reveal that agent collapse is triggered — not spontaneous.">
 <meta property="og:title" content="Behavioral Drift in Multi-Agent LLM Systems — PreneurialWorks">
-<meta property="og:description" content="Emergent failure modes, cascade dynamics, and measurement challenges. Standard evaluation probes fail to detect behavioral degradation. Empirical evidence from 40+ controlled experiments.">
+<meta property="og:description" content="Emergent failure modes, cascade dynamics, and measurement challenges. Standard evaluation probes fail to detect behavioral degradation. Empirical evidence from 56 controlled experiments.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://preneurial.works/research/sentinel.html">
 <meta property="og:image" content="https://preneurial.works/images/og-card.png?v=2">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Behavioral Drift in Multi-Agent LLM Systems — PreneurialWorks">
-<meta name="twitter:description" content="Emergent failure modes, cascade dynamics, and measurement challenges. Empirical evidence from 40+ controlled experiments.">
+<meta name="twitter:description" content="Emergent failure modes, cascade dynamics, and measurement challenges. Empirical evidence from 56 controlled experiments.">
 <meta name="twitter:image" content="https://preneurial.works/images/og-card.png?v=2">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
@@ -634,10 +634,10 @@
     When agents interact at scale, the gap becomes measurable — and dangerous.
   </p>
   <div class="meta-row">
-    <span><strong>40+</strong> controlled experiments</span>
+    <span><strong>56</strong> controlled experiments</span>
     <span><strong>20,000+</strong> agent messages</span>
-    <span><strong>5,760</strong> probe measurements</span>
-    <span><strong>21</strong> structured findings</span>
+    <span><strong>18,891</strong> probe measurements</span>
+    <span><strong>89</strong> structured findings</span>
   </div>
   <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.2rem; font-size: 0.8rem;">
     <a href="Behavioral_Drift_in_Multi_Agent_LLM_Systems.pdf" style="color: var(--gray); text-decoration: none; display: flex; align-items: center; gap: 0.4rem;"><i class="fas fa-file-pdf"></i> PDF</a>
@@ -686,7 +686,7 @@
     <div class="why-card">
       <div class="why-assumption">The Trust Assumption</div>
       <h4>Everyone Trusts Agents Now</h4>
-      <p>Millions of AI agents on OpenClaw exhibited emergent governance structures, religious frameworks, and collective behaviors — with no controlled measurement of what was actually happening. Enthusiasm outpaced evidence. We needed controlled experiments, not viral demos.</p>
+      <p>Millions of AI agents exhibited emergent governance structures, religious frameworks, and collective behaviors during the Moltbook phenomenon — with no controlled measurement of what was actually happening. Enthusiasm outpaced evidence. We needed controlled experiments, not viral demos.</p>
     </div>
     <div class="why-card">
       <div class="why-assumption">The Evidence Gap</div>
@@ -709,7 +709,7 @@
       their assigned behavioral characteristics over time. <strong>This assumption has not been rigorously tested.</strong>
     </p>
     <p>
-      SENTINEL provides the test. Across 40+ controlled experiments generating over 20,000 agent messages, we found that
+      SENTINEL provides the test. Across 56 controlled experiments generating over 20,000 agent messages, we found that
       <strong>collapsed agents continue passing identity probes</strong>. Probe drift scores remain flat even as
       conversational behavior degrades catastrophically. Probes measure identity recall — not behavioral drift.
     </p>
@@ -786,8 +786,9 @@
         <p>
           Zero of twelve baseline runs produced collapse. Five of six mutation-fork runs
           collapsed — all at exactly turn 53. A pre-collapse early warning exists:
-          agents destined to collapse show measurable output shrinkage of -2 to -5 characters/turn
-          before the event.
+          agents destined to collapse show measurable output shrinkage of -2.3 to -4.5 characters/turn
+          before the event — though in some cases, a dramatic output <em>inflation</em> spike
+          precedes collapse instead.
         </p>
         <div class="finding-detail">
           <div class="detail-label">Implication</div>
@@ -872,8 +873,10 @@
 
     <p>
       A pre-collapse early warning signal exists: agents destined to collapse show measurable
-      output shrinkage of <strong>-2 to -5 characters per turn</strong> before collapse onset.
-      This signal is detectable but not captured by identity probes.
+      output shrinkage of <strong>-2.3 to -4.5 characters per turn</strong> before collapse onset.
+      In some cases, the opposite pattern appears — a dramatic output <em>inflation</em> spike
+      preceding collapse. Whether thinning or inflation, output trajectory <em>change</em> is the
+      robust early warning indicator, and it is not captured by identity probes.
     </p>
   </div>
 
@@ -961,7 +964,7 @@
     <p style="font-size: 0.82rem; color: var(--dimgray); margin-bottom: 0.5rem;">
       <a href="https://arxiv.org/abs/2502.19559" target="_blank" rel="noopener" style="color: var(--cyan);">Becker et al. (2025)</a> documented problem drift in multi-agent debate.
       <a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener" style="color: var(--cyan);">Wu et al. (2023)</a> introduced AutoGen for multi-agent conversation.
-      <a href="https://arxiv.org/abs/2304.03442" target="_blank" rel="noopener" style="color: var(--cyan);">Li et al. (2023)</a> explored agent society dynamics in CAMEL.
+      <a href="https://arxiv.org/abs/2303.17760" target="_blank" rel="noopener" style="color: var(--cyan);">Li et al. (2023)</a> explored agent society dynamics in CAMEL.
       <a href="https://arxiv.org/abs/2304.03442" target="_blank" rel="noopener" style="color: var(--cyan);">Park et al. (2023)</a> demonstrated generative agent simulations of human behavior.
     </p>
 
@@ -976,7 +979,7 @@
     <h3 style="color: var(--gray); font-size: 0.82rem;">AI Governance &amp; Evaluation</h3>
     <p style="font-size: 0.82rem; color: var(--dimgray); margin-bottom: 0.5rem;">
       <a href="https://arxiv.org/abs/2202.03286" target="_blank" rel="noopener" style="color: var(--cyan);">Chan et al. (2023)</a> catalogued harms from increasingly agentic systems.
-      <a href="https://arxiv.org/abs/2602.22302" target="_blank" rel="noopener" style="color: var(--cyan);">Kim et al. (2026)</a> proposed agent behavioral contracts for runtime enforcement.
+      <a href="https://arxiv.org/abs/2602.22302" target="_blank" rel="noopener" style="color: var(--cyan);">Bhardwaj (2026)</a> proposed agent behavioral contracts for runtime enforcement.
       <a href="https://arxiv.org/abs/2602.11619" target="_blank" rel="noopener" style="color: var(--cyan);">Mehta (2026)</a> measured behavioral consistency in LLM-based agents.
       The <a href="https://cloudsecurityalliance.org/blog/2025/06/09/aagate-a-nist-ai-rmf-aligned-governance-platform-for-agentic-ai" target="_blank" rel="noopener" style="color: var(--cyan);">AAGATE framework</a> (CSA, 2025) aligned agentic AI governance with NIST AI RMF.
     </p>
