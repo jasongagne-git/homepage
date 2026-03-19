@@ -442,11 +442,11 @@
       "mentions": 8
     },
     {
-      "name": "Tech Viaduct",
-      "mentions": 7
+      "name": "Operation Epic Fury",
+      "mentions": 8
     },
     {
-      "name": "Operation Epic Fury",
+      "name": "Tech Viaduct",
       "mentions": 7
     }
   ],
@@ -461,11 +461,11 @@
     },
     {
       "name": "Department of Homeland Security",
-      "mentions": 247
+      "mentions": 252
     },
     {
       "name": "Department of Veterans Affairs",
-      "mentions": 243
+      "mentions": 244
     },
     {
       "name": "U.S. Army",
@@ -473,11 +473,11 @@
     },
     {
       "name": "Department of Defense",
-      "mentions": 153
+      "mentions": 173
     },
     {
       "name": "U.S. Navy",
-      "mentions": 93
+      "mentions": 94
     },
     {
       "name": "Department of Energy",
@@ -500,7 +500,7 @@
     },
     {
       "name": "Claude",
-      "mentions": 6,
+      "mentions": 7,
       "description": ""
     },
     {

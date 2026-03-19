@@ -6,11 +6,11 @@
     },
     {
       "name": "Department of Homeland Security",
-      "mentions": 237
+      "mentions": 242
     },
     {
       "name": "Department of Veterans Affairs",
-      "mentions": 232
+      "mentions": 233
     },
     {
       "name": "Department of the Interior",
@@ -18,7 +18,7 @@
     },
     {
       "name": "Department of Defense",
-      "mentions": 141
+      "mentions": 161
     },
     {
       "name": "United States Agency for International Development",
@@ -26,7 +26,7 @@
     },
     {
       "name": "War on the Rocks",
-      "mentions": 97
+      "mentions": 112
     },
     {
       "name": "Department of Agriculture",
@@ -37,24 +37,28 @@
       "mentions": 81
     },
     {
-      "name": "Department of Labor",
-      "mentions": 69
+      "name": "C4ISRNET",
+      "mentions": 77
     },
     {
       "name": "Anthropic",
-      "mentions": 66
+      "mentions": 70
+    },
+    {
+      "name": "Hill",
+      "mentions": 70
+    },
+    {
+      "name": "Department of Labor",
+      "mentions": 69
     },
     {
       "name": "CNAS",
       "mentions": 64
     },
     {
-      "name": "C4ISRNET",
-      "mentions": 62
-    },
-    {
-      "name": "Hill",
-      "mentions": 62
+      "name": "Nextgov/FCW",
+      "mentions": 57
     },
     {
       "name": "Department of Commerce",
@@ -75,13 +79,22 @@
     {
       "name": "Board of Governors of the Federal Reserve System",
       "mentions": 48
-    },
-    {
-      "name": "Central Intelligence Agency",
-      "mentions": 46
     }
   ],
   "active_threads": [
+    {
+      "id": "1d2f838891c8b46c",
+      "title": "International Crisis Group / Middle East Institute",
+      "keywords": [
+        "arrived",
+        "iranian",
+        "moment",
+        "happens",
+        "next"
+      ],
+      "importance": 1.0,
+      "description": "How We Arrived at this Iranian Moment and What Happens Next"
+    },
     {
       "id": "a2f5b8163356fb82",
       "title": "National Reconnaissance Office / EarthTraq",
@@ -97,82 +110,6 @@
       "description": "The Front Door Problem in National Security Space"
     },
     {
-      "id": "c6cd43a5aa41ba2e",
-      "title": "Middle East Institute / Washington Institute for Near East Policy",
-      "keywords": [
-        "arrived",
-        "iranian",
-        "moment",
-        "happens",
-        "next"
-      ],
-      "importance": 1.0,
-      "description": "How We Arrived at this Iranian Moment and What Happens Next"
-    },
-    {
-      "id": "ccc1d3403ebd38f1",
-      "title": "Honeywell / SkyShot 1600",
-      "keywords": [
-        "air",
-        "force",
-        "awards",
-        "contract",
-        "drone",
-        "wingman",
-        "engines"
-      ],
-      "importance": 1.0,
-      "description": "US Air Force awards contract for drone wingman engines"
-    },
-    {
-      "id": "32dfc2c6851a0a42",
-      "title": "Best Drone Warfighter Competition / 28th Infantry Division",
-      "keywords": [
-        "national",
-        "guard",
-        "team",
-        "clinches",
-        "award",
-        "clawed",
-        "drone",
-        "army"
-      ],
-      "importance": 0.99,
-      "description": "National Guard team clinches award for clawed drone at Army competition"
-    },
-    {
-      "id": "9101e9cb8fc9a8e1",
-      "title": "National Security Agency / Ron Wyden",
-      "keywords": [
-        "wyden",
-        "block",
-        "confirmation",
-        "nsa",
-        "director",
-        "citing",
-        "lack",
-        "experience"
-      ],
-      "importance": 0.85,
-      "description": "Wyden to block confirmation for NSA director, citing lack of experience; Senate Democrat: Trump pick \u2018not qualified\u2019 to lead National Security Agency; How Vulnerable Are Computers to an 80-Year-Old Sp"
-    },
-    {
-      "id": "b1fa1776c27ff1e0",
-      "title": "High Mobility Artillery Rocket Systems / Altius",
-      "keywords": [
-        "ensure",
-        "billion",
-        "potential",
-        "arms",
-        "sales",
-        "actually",
-        "help",
-        "taiwa"
-      ],
-      "importance": 0.82,
-      "description": "How to Ensure that $11 Billion in Potential Arms Sales Would Actually Help Taiwa"
-    },
-    {
       "id": "f3a26ce26d202562",
       "title": "AUKUS / Genesis Mission",
       "keywords": [
@@ -185,8 +122,86 @@
         "locked",
         "allies"
       ],
-      "importance": 0.74,
+      "importance": 0.99,
       "description": "Washington Built the AI Infrastructure AUKUS Needs \u2014 Then Locked Allies Out"
+    },
+    {
+      "id": "03204a8cdeb62be1",
+      "title": "China / Guam",
+      "keywords": [
+        "america",
+        "first",
+        "weapons-sales",
+        "policy",
+        "favors",
+        "arming",
+        "taiwan",
+        "quickly"
+      ],
+      "importance": 0.97,
+      "description": "\u2018America First\u2019 weapons-sales policy favors arming Taiwan quickly \u2014 in theory; In Brief: Increasing Tensions Between China and Japan Create Risks for the Regio; The Deluge, the Paper Cup, and Washingt"
+    },
+    {
+      "id": "3144d6e9ad8e56cf",
+      "title": "Collaborate Combat Aircraft / SkyShot 1600",
+      "keywords": [
+        "air",
+        "force",
+        "awards",
+        "contract",
+        "drone",
+        "wingman",
+        "engines"
+      ],
+      "importance": 0.94,
+      "description": "US Air Force awards contract for drone wingman engines"
+    },
+    {
+      "id": "3ba150c3a2691b09",
+      "title": "Army National Guard / Best Drone Warfighter Competition",
+      "keywords": [
+        "national",
+        "guard",
+        "team",
+        "clinches",
+        "award",
+        "clawed",
+        "drone",
+        "army"
+      ],
+      "importance": 0.92,
+      "description": "National Guard team clinches award for clawed drone at Army competition"
+    },
+    {
+      "id": "66500ea11ee64e86",
+      "title": "National Security Agency / TEMPEST",
+      "keywords": [
+        "wyden",
+        "block",
+        "confirmation",
+        "nsa",
+        "director",
+        "citing",
+        "lack",
+        "experience"
+      ],
+      "importance": 0.8,
+      "description": "Wyden to block confirmation for NSA director, citing lack of experience; Senate Democrat: Trump pick \u2018not qualified\u2019 to lead National Security Agency; How Vulnerable Are Computers to an 80-Year-Old Sp"
+    },
+    {
+      "id": "0f762053618a6a6b",
+      "title": "National Guard / Supreme Court",
+      "keywords": [
+        "command",
+        "responsibility",
+        "home",
+        "governors",
+        "guard",
+        "domestic",
+        "readiness"
+      ],
+      "importance": 0.69,
+      "description": "Command Responsibility at Home: Governors, the Guard, and Domestic Readiness"
     },
     {
       "id": "7d882c292f3ae31c",
@@ -201,24 +216,8 @@
         "attack",
         "drone"
       ],
-      "importance": 0.72,
+      "importance": 0.68,
       "description": "US confirms first combat use of LUCAS one-way attack drone in Iran strikes"
-    },
-    {
-      "id": "869fa9f45944c38f",
-      "title": "Cybersecurity and Infrastructure Security Agency / Madhu Gottumukkala",
-      "keywords": [
-        "cisa",
-        "leadership",
-        "shakeup",
-        "comes",
-        "pressure",
-        "moment",
-        "cyber",
-        "agency"
-      ],
-      "importance": 0.7,
-      "description": "CISA leadership shakeup comes amid \u2018pressure\u2019 moment for cyber agency"
     },
     {
       "id": "7bdca069e1bceb61",
@@ -232,14 +231,14 @@
         "modernization",
         "start"
       ],
-      "importance": 0.66,
+      "importance": 0.62,
       "description": "Running to Stand Still: Russian Nuclear Modernization after New START"
     }
   ],
   "signal_funnel": {
-    "detected": 23,
+    "detected": 31,
     "elevated": 0,
-    "brief_generated": 4,
+    "brief_generated": 5,
     "materialized": 0
   }
 }
