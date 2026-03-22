@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-02-22",
+    "vertical": "defense_warfighting",
+    "domains": [
+      "software_modernization",
+      "autonomous_systems",
+      "electronic_warfare"
+    ],
+    "headline": "The Army is standing up a new Pathway for Innovation and Technology office to rapidly develop and scale soldier ideas, connecting rapid-acquisition hubs dire.",
+    "snippet": "The Army is standing up a new Pathway for Innovation and Technology office to rapidly develop and scale soldier ideas, connecting rapid-acquisition hubs dire...",
+    "url": "briefings/2026-02-22.html"
+  },
+  {
     "date": "2026-02-15",
     "vertical": "defense_warfighting",
     "domains": [
@@ -22,17 +34,5 @@
     "headline": "The Defense Innovation Unit is running a spring 2026 counter-drone sensor demonstration with explicit urgency language — &quot;the urgency of the threat&quot.",
     "snippet": "The Defense Innovation Unit is running a spring 2026 counter-drone sensor demonstration with explicit urgency language — &quot;the urgency of the threat&quot...",
     "url": "briefings/2026-02-14.html"
-  },
-  {
-    "date": "2026-02-13",
-    "vertical": "defense_warfighting",
-    "domains": [
-      "software_modernization",
-      "robotic_process",
-      "electronic_warfare"
-    ],
-    "headline": "The CIA just announced a new acquisition framework led by DARPA alum Efstathia Fragogiannis to accelerate technology adoption.",
-    "snippet": "The CIA just announced a new acquisition framework led by DARPA alum Efstathia Fragogiannis to accelerate technology adoption. This creates a replicable mode...",
-    "url": "briefings/2026-02-13.html"
   }
 ]
