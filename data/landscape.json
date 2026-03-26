@@ -6,19 +6,19 @@
     },
     {
       "name": "Department of Homeland Security",
-      "mentions": 242
+      "mentions": 251
     },
     {
       "name": "Department of Veterans Affairs",
       "mentions": 233
     },
     {
-      "name": "Department of the Interior",
-      "mentions": 169
+      "name": "Department of Defense",
+      "mentions": 193
     },
     {
-      "name": "Department of Defense",
-      "mentions": 161
+      "name": "Department of the Interior",
+      "mentions": 169
     },
     {
       "name": "United States Agency for International Development",
@@ -26,27 +26,27 @@
     },
     {
       "name": "War on the Rocks",
-      "mentions": 112
+      "mentions": 124
+    },
+    {
+      "name": "C4ISRNET",
+      "mentions": 88
     },
     {
       "name": "Department of Agriculture",
       "mentions": 88
     },
     {
+      "name": "Hill",
+      "mentions": 85
+    },
+    {
       "name": "Department of Energy",
       "mentions": 81
     },
     {
-      "name": "C4ISRNET",
-      "mentions": 77
-    },
-    {
       "name": "Anthropic",
-      "mentions": 70
-    },
-    {
-      "name": "Hill",
-      "mentions": 70
+      "mentions": 79
     },
     {
       "name": "Department of Labor",
@@ -54,11 +54,11 @@
     },
     {
       "name": "CNAS",
-      "mentions": 64
+      "mentions": 67
     },
     {
       "name": "Nextgov/FCW",
-      "mentions": 57
+      "mentions": 67
     },
     {
       "name": "Department of Commerce",
@@ -69,19 +69,35 @@
       "mentions": 54
     },
     {
+      "name": "Defense One",
+      "mentions": 53
+    },
+    {
       "name": "Department of the Treasury",
       "mentions": 53
     },
     {
       "name": "Department of State",
       "mentions": 51
-    },
-    {
-      "name": "Board of Governors of the Federal Reserve System",
-      "mentions": 48
     }
   ],
   "active_threads": [
+    {
+      "id": "019260d77200b8be",
+      "title": "AUKUS / Manhattan Project",
+      "keywords": [
+        "washington",
+        "built",
+        "infrastructure",
+        "aukus",
+        "needs",
+        "then",
+        "locked",
+        "allies"
+      ],
+      "importance": 1.0,
+      "description": "Washington Built the AI Infrastructure AUKUS Needs \u2014 Then Locked Allies Out"
+    },
     {
       "id": "1d2f838891c8b46c",
       "title": "International Crisis Group / Middle East Institute",
@@ -96,97 +112,19 @@
       "description": "How We Arrived at this Iranian Moment and What Happens Next"
     },
     {
-      "id": "a2f5b8163356fb82",
-      "title": "National Reconnaissance Office / EarthTraq",
+      "id": "7bdca069e1bceb61",
+      "title": "New START / New Strategic Arms Reduction Treaty",
       "keywords": [
-        "front",
-        "door",
-        "problem",
-        "national",
-        "security",
-        "space"
+        "running",
+        "stand",
+        "still",
+        "russian",
+        "nuclear",
+        "modernization",
+        "start"
       ],
-      "importance": 1.0,
-      "description": "The Front Door Problem in National Security Space"
-    },
-    {
-      "id": "f3a26ce26d202562",
-      "title": "AUKUS / Genesis Mission",
-      "keywords": [
-        "washington",
-        "built",
-        "infrastructure",
-        "aukus",
-        "needs",
-        "then",
-        "locked",
-        "allies"
-      ],
-      "importance": 0.99,
-      "description": "Washington Built the AI Infrastructure AUKUS Needs \u2014 Then Locked Allies Out"
-    },
-    {
-      "id": "03204a8cdeb62be1",
-      "title": "China / Guam",
-      "keywords": [
-        "america",
-        "first",
-        "weapons-sales",
-        "policy",
-        "favors",
-        "arming",
-        "taiwan",
-        "quickly"
-      ],
-      "importance": 0.97,
-      "description": "\u2018America First\u2019 weapons-sales policy favors arming Taiwan quickly \u2014 in theory; In Brief: Increasing Tensions Between China and Japan Create Risks for the Regio; The Deluge, the Paper Cup, and Washingt"
-    },
-    {
-      "id": "3144d6e9ad8e56cf",
-      "title": "Collaborate Combat Aircraft / SkyShot 1600",
-      "keywords": [
-        "air",
-        "force",
-        "awards",
-        "contract",
-        "drone",
-        "wingman",
-        "engines"
-      ],
-      "importance": 0.94,
-      "description": "US Air Force awards contract for drone wingman engines"
-    },
-    {
-      "id": "3ba150c3a2691b09",
-      "title": "Army National Guard / Best Drone Warfighter Competition",
-      "keywords": [
-        "national",
-        "guard",
-        "team",
-        "clinches",
-        "award",
-        "clawed",
-        "drone",
-        "army"
-      ],
-      "importance": 0.92,
-      "description": "National Guard team clinches award for clawed drone at Army competition"
-    },
-    {
-      "id": "66500ea11ee64e86",
-      "title": "National Security Agency / TEMPEST",
-      "keywords": [
-        "wyden",
-        "block",
-        "confirmation",
-        "nsa",
-        "director",
-        "citing",
-        "lack",
-        "experience"
-      ],
-      "importance": 0.8,
-      "description": "Wyden to block confirmation for NSA director, citing lack of experience; Senate Democrat: Trump pick \u2018not qualified\u2019 to lead National Security Agency; How Vulnerable Are Computers to an 80-Year-Old Sp"
+      "importance": 0.67,
+      "description": "Running to Stand Still: Russian Nuclear Modernization after New START"
     },
     {
       "id": "0f762053618a6a6b",
@@ -200,45 +138,106 @@
         "domestic",
         "readiness"
       ],
-      "importance": 0.69,
+      "importance": 0.64,
       "description": "Command Responsibility at Home: Governors, the Guard, and Domestic Readiness"
     },
     {
-      "id": "7d882c292f3ae31c",
-      "title": "LUCAS / Shahed-136",
+      "id": "e9c61512b5b81a9f",
+      "title": "National Defense Authorization Act / SkyFoundry Act",
       "keywords": [
-        "confirms",
-        "first",
-        "combat",
-        "use",
-        "lucas",
-        "one-way",
-        "attack",
-        "drone"
+        "skyfoundry",
+        "future",
+        "american",
+        "drone",
+        "production",
+        "scale"
       ],
-      "importance": 0.68,
-      "description": "US confirms first combat use of LUCAS one-way attack drone in Iran strikes"
+      "importance": 0.56,
+      "description": "SkyFoundry and the Future of American Drone Production at Scale"
     },
     {
-      "id": "7bdca069e1bceb61",
-      "title": "New START / New Strategic Arms Reduction Treaty",
+      "id": "fb8fbf691bc1922a",
+      "title": "CNN / National Security Council",
       "keywords": [
-        "running",
-        "stand",
-        "still",
-        "russian",
-        "nuclear",
-        "modernization",
-        "start"
+        "collins",
+        "leavitt",
+        "criticism",
+        "coverage",
+        "slain",
+        "service",
+        "members",
+        "trump"
       ],
-      "importance": 0.62,
-      "description": "Running to Stand Still: Russian Nuclear Modernization after New START"
+      "importance": 0.5,
+      "description": "Collins on Leavitt criticism: Coverage of slain US service members \u2018not about th; Trump officials erupt at CNN over report on surprise over Strait of Hormuz closi; Senate\u00a0Democrat links budget cuts to"
+    },
+    {
+      "id": "6c4e2f26e8ff2f75",
+      "title": "War on the Rocks / Potomac Institute for Policy Studies",
+      "keywords": [
+        "economic",
+        "war",
+        "sun",
+        "tzu",
+        "supply",
+        "chain",
+        "face",
+        "china"
+      ],
+      "importance": 0.48,
+      "description": "Sun Tzu in the Supply Chain: The New Face of Economic War With China; Fighting an Economic War Without Fused Intelligence"
+    },
+    {
+      "id": "ff18bb752281b93a",
+      "title": "Kuwait / United Arab Emirates",
+      "keywords": [
+        "sales",
+        "middle",
+        "east",
+        "moves",
+        "approve",
+        "billion",
+        "air",
+        "defense"
+      ],
+      "importance": 0.3,
+      "description": "US moves to approve more than $16 billion in air defense sales to Middle East; US greenlights over $16B in \u2019emergency\u2019 radar and missile sales to Middle East"
+    },
+    {
+      "id": "79c2a79103654905",
+      "title": "Center for a New American Security / Project Maven",
+      "keywords": [
+        "project",
+        "maven",
+        "artificial",
+        "intelligence",
+        "warfare",
+        "center",
+        "american"
+      ],
+      "importance": 0.29,
+      "description": "Project Maven: Artificial Intelligence in Warfare - Center for a New American Se"
+    },
+    {
+      "id": "611ec02429ded6bd",
+      "title": "Guam / North Korea",
+      "keywords": [
+        "deluge",
+        "paper",
+        "cup",
+        "washington",
+        "lack",
+        "urgency",
+        "guam"
+      ],
+      "importance": 0.28,
+      "description": "The Deluge, the Paper Cup, and Washington\u2019s Lack of Urgency on Guam"
     }
   ],
   "signal_funnel": {
-    "detected": 31,
+    "detected": 37,
     "elevated": 0,
-    "brief_generated": 5,
+    "brief_generated": 6,
     "materialized": 0
   }
 }

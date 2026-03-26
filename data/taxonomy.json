@@ -426,6 +426,10 @@
       "mentions": 10
     },
     {
+      "name": "Operation Epic Fury",
+      "mentions": 10
+    },
+    {
       "name": "Best Drone Warfighter Competition",
       "mentions": 9
     },
@@ -442,12 +446,8 @@
       "mentions": 8
     },
     {
-      "name": "Operation Epic Fury",
+      "name": "Operation Roaring Lion",
       "mentions": 8
-    },
-    {
-      "name": "Tech Viaduct",
-      "mentions": 7
     }
   ],
   "active_agencies": [
@@ -456,28 +456,28 @@
       "mentions": 278
     },
     {
-      "name": "Central Intelligence Agency",
-      "mentions": 258
+      "name": "Department of Homeland Security",
+      "mentions": 261
     },
     {
-      "name": "Department of Homeland Security",
-      "mentions": 252
+      "name": "Central Intelligence Agency",
+      "mentions": 258
     },
     {
       "name": "Department of Veterans Affairs",
       "mentions": 244
     },
     {
-      "name": "U.S. Army",
-      "mentions": 189
+      "name": "Department of Defense",
+      "mentions": 211
     },
     {
-      "name": "Department of Defense",
-      "mentions": 173
+      "name": "U.S. Army",
+      "mentions": 190
     },
     {
       "name": "U.S. Navy",
-      "mentions": 94
+      "mentions": 97
     },
     {
       "name": "Department of Energy",
@@ -494,13 +494,13 @@
   ],
   "emerging_technologies": [
     {
-      "name": "Bumblebee V2",
-      "mentions": 8,
+      "name": "Claude",
+      "mentions": 9,
       "description": ""
     },
     {
-      "name": "Claude",
-      "mentions": 7,
+      "name": "Bumblebee V2",
+      "mentions": 8,
       "description": ""
     },
     {
@@ -520,6 +520,11 @@
     },
     {
       "name": "mRNA",
+      "mentions": 3,
+      "description": ""
+    },
+    {
+      "name": "AI",
       "mentions": 3,
       "description": ""
     }

@@ -1,6 +1,48 @@
 {
   "signals": [
     {
+      "signal_id": "608a4be8b2487f2f",
+      "title": "Junior Service Members Delivering Low-Cost Solutions While Leadership Debates Billion-Dollar Platforms",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-25T07:00:03.188220"
+    },
+    {
+      "signal_id": "df671be162a1279a",
+      "title": "DoD Bans Anthropic's Claude AI Despite Tests Showing Political Neutrality",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-25T07:00:03.187855"
+    },
+    {
+      "signal_id": "400be7610c512c2b",
+      "title": "Navy Awards $971M for AI Ship Inspections and Automated Submarine Factories",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-25T07:00:03.187494"
+    },
+    {
+      "signal_id": "23f51342e4ee211b",
+      "title": "Congress Reauthorizes Technology Modernization Fund Through FY26",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-25T07:00:03.187127"
+    },
+    {
+      "signal_id": "8fffe82c85886c41",
+      "title": "GSA and NIST Launch Center for AI Standards and Innovation",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-25T07:00:03.186749"
+    },
+    {
+      "signal_id": "e25c1d1170e88271",
+      "title": "Marine Corps $10 Antenna Fix Saves $600K, Eliminates Supply Delays",
+      "status": "detected",
+      "brief_id": "",
+      "last_updated": "2026-03-25T07:00:03.183686"
+    },
+    {
       "signal_id": "9d2cc15f85e5f1ed",
       "title": "Combat-Proven Solutions Bypass Traditional Acquisition Timelines",
       "status": "detected",
@@ -218,6 +260,13 @@
       "last_updated": "2026-02-25T18:01:44.588221"
     },
     {
+      "signal_id": "33900b2d5a8645bb",
+      "title": "Pentagon Seeks $200B for Iran Operations While DHS Remains Unfunded",
+      "status": "brief_generated",
+      "brief_id": "f474d368f49ac11e",
+      "last_updated": "2026-03-25T07:10:39.556980"
+    },
+    {
       "signal_id": "f6bd09265d28db22",
       "title": "Ukraine Opens Combat AI and Drone Data to Western Defense Partners",
       "status": "brief_generated",
@@ -255,33 +304,8 @@
   ],
   "topic_threads": [
     {
-      "id": "1d2f838891c8b46c",
-      "title": "International Crisis Group / Middle East Institute",
-      "keywords": [
-        "arrived",
-        "iranian",
-        "moment",
-        "happens",
-        "next"
-      ],
-      "importance": 1.0
-    },
-    {
-      "id": "a2f5b8163356fb82",
-      "title": "National Reconnaissance Office / EarthTraq",
-      "keywords": [
-        "front",
-        "door",
-        "problem",
-        "national",
-        "security",
-        "space"
-      ],
-      "importance": 1.0
-    },
-    {
-      "id": "f3a26ce26d202562",
-      "title": "AUKUS / Genesis Mission",
+      "id": "019260d77200b8be",
+      "title": "AUKUS / Manhattan Project",
       "keywords": [
         "washington",
         "built",
@@ -292,95 +316,19 @@
         "locked",
         "allies"
       ],
-      "importance": 0.99
+      "importance": 1.0
     },
     {
-      "id": "03204a8cdeb62be1",
-      "title": "China / Guam",
+      "id": "1d2f838891c8b46c",
+      "title": "International Crisis Group / Middle East Institute",
       "keywords": [
-        "america",
-        "first",
-        "weapons-sales",
-        "policy",
-        "favors",
-        "arming",
-        "taiwan",
-        "quickly"
+        "arrived",
+        "iranian",
+        "moment",
+        "happens",
+        "next"
       ],
-      "importance": 0.97
-    },
-    {
-      "id": "3144d6e9ad8e56cf",
-      "title": "Collaborate Combat Aircraft / SkyShot 1600",
-      "keywords": [
-        "air",
-        "force",
-        "awards",
-        "contract",
-        "drone",
-        "wingman",
-        "engines"
-      ],
-      "importance": 0.94
-    },
-    {
-      "id": "3ba150c3a2691b09",
-      "title": "Army National Guard / Best Drone Warfighter Competition",
-      "keywords": [
-        "national",
-        "guard",
-        "team",
-        "clinches",
-        "award",
-        "clawed",
-        "drone",
-        "army"
-      ],
-      "importance": 0.92
-    },
-    {
-      "id": "66500ea11ee64e86",
-      "title": "National Security Agency / TEMPEST",
-      "keywords": [
-        "wyden",
-        "block",
-        "confirmation",
-        "nsa",
-        "director",
-        "citing",
-        "lack",
-        "experience"
-      ],
-      "importance": 0.8
-    },
-    {
-      "id": "0f762053618a6a6b",
-      "title": "National Guard / Supreme Court",
-      "keywords": [
-        "command",
-        "responsibility",
-        "home",
-        "governors",
-        "guard",
-        "domestic",
-        "readiness"
-      ],
-      "importance": 0.69
-    },
-    {
-      "id": "7d882c292f3ae31c",
-      "title": "LUCAS / Shahed-136",
-      "keywords": [
-        "confirms",
-        "first",
-        "combat",
-        "use",
-        "lucas",
-        "one-way",
-        "attack",
-        "drone"
-      ],
-      "importance": 0.68
+      "importance": 1.0
     },
     {
       "id": "7bdca069e1bceb61",
@@ -394,7 +342,21 @@
         "modernization",
         "start"
       ],
-      "importance": 0.62
+      "importance": 0.67
+    },
+    {
+      "id": "0f762053618a6a6b",
+      "title": "National Guard / Supreme Court",
+      "keywords": [
+        "command",
+        "responsibility",
+        "home",
+        "governors",
+        "guard",
+        "domestic",
+        "readiness"
+      ],
+      "importance": 0.64
     },
     {
       "id": "e9c61512b5b81a9f",
@@ -407,22 +369,7 @@
         "production",
         "scale"
       ],
-      "importance": 0.61
-    },
-    {
-      "id": "347a7ae7ecf59136",
-      "title": "Kristi Noem / Markwayne Mullin",
-      "keywords": [
-        "noem",
-        "fema",
-        "releasing",
-        "billions",
-        "disaster",
-        "assistance",
-        "while",
-        "further"
-      ],
-      "importance": 0.58
+      "importance": 0.56
     },
     {
       "id": "fb8fbf691bc1922a",
@@ -437,7 +384,7 @@
         "members",
         "trump"
       ],
-      "importance": 0.53
+      "importance": 0.5
     },
     {
       "id": "6c4e2f26e8ff2f75",
@@ -452,70 +399,57 @@
         "face",
         "china"
       ],
-      "importance": 0.52
+      "importance": 0.48
     },
     {
-      "id": "2026bdf231b8e3d7",
-      "title": "RAND / William Marcellino",
+      "id": "ff18bb752281b93a",
+      "title": "Kuwait / United Arab Emirates",
       "keywords": [
-        "expect",
-        "amp",
-        "william",
-        "marcellino"
+        "sales",
+        "middle",
+        "east",
+        "moves",
+        "approve",
+        "billion",
+        "air",
+        "defense"
       ],
-      "importance": 0.36
+      "importance": 0.3
     },
     {
-      "id": "d7b49afcd4a8b26c",
-      "title": "House Armed Services Committee / Elbridge Colby",
+      "id": "79c2a79103654905",
+      "title": "Center for a New American Security / Project Maven",
       "keywords": [
-        "gop",
-        "chair",
-        "hits",
-        "pentagon",
-        "policy",
-        "chief",
-        "keeping",
-        "congress"
+        "project",
+        "maven",
+        "artificial",
+        "intelligence",
+        "warfare",
+        "center",
+        "american"
+      ],
+      "importance": 0.29
+    },
+    {
+      "id": "611ec02429ded6bd",
+      "title": "Guam / North Korea",
+      "keywords": [
+        "deluge",
+        "paper",
+        "cup",
+        "washington",
+        "lack",
+        "urgency",
+        "guam"
       ],
       "importance": 0.28
-    },
-    {
-      "id": "80e61f157416c443",
-      "title": "FAA / Fort Hancock",
-      "keywords": [
-        "military",
-        "uses",
-        "laser",
-        "take",
-        "cbp",
-        "drone",
-        "lawmakers",
-        "say"
-      ],
-      "importance": 0.28
-    },
-    {
-      "id": "43b9bd5a3db310ce",
-      "title": "SpaceX / Blue Origin",
-      "keywords": [
-        "spacex",
-        "blue",
-        "origin",
-        "abruptly",
-        "shift",
-        "priorities",
-        "golden",
-        "dome"
-      ],
-      "importance": 0.26
     }
   ],
   "entities_by_type": {
     "company": [
       {
         "name": "unknown-deepfake-technology-developers",
-        "mentions": 294,
+        "mentions": 295,
         "description": ""
       },
       {
@@ -530,7 +464,7 @@
       },
       {
         "name": "unknown-scammers",
-        "mentions": 160,
+        "mentions": 166,
         "description": ""
       },
       {
@@ -544,32 +478,32 @@
         "description": ""
       },
       {
+        "name": "War on the Rocks",
+        "mentions": 136,
+        "description": ""
+      },
+      {
+        "name": "C4ISRNET",
+        "mentions": 134,
+        "description": ""
+      },
+      {
         "name": "openai",
         "mentions": 131,
         "description": ""
       },
       {
-        "name": "War on the Rocks",
-        "mentions": 124,
-        "description": ""
-      },
-      {
-        "name": "C4ISRNET",
-        "mentions": 123,
-        "description": ""
-      },
-      {
         "name": "CNAS",
-        "mentions": 103,
-        "description": ""
-      },
-      {
-        "name": "unknown",
-        "mentions": 95,
+        "mentions": 106,
         "description": ""
       },
       {
         "name": "Congress",
+        "mentions": 99,
+        "description": ""
+      },
+      {
+        "name": "unknown",
         "mentions": 95,
         "description": ""
       },
@@ -579,38 +513,38 @@
         "description": ""
       },
       {
+        "name": "Hill",
+        "mentions": 86,
+        "description": ""
+      },
+      {
+        "name": "Anthropic",
+        "mentions": 84,
+        "description": ""
+      },
+      {
         "name": "google",
         "mentions": 77,
         "description": ""
       },
       {
-        "name": "Anthropic",
-        "mentions": 75,
-        "description": ""
-      },
-      {
-        "name": "Hill",
-        "mentions": 71,
-        "description": ""
-      },
-      {
         "name": "Nextgov/FCW",
+        "mentions": 69,
+        "description": ""
+      },
+      {
+        "name": "White House",
         "mentions": 59,
+        "description": ""
+      },
+      {
+        "name": "Politico Defense",
+        "mentions": 57,
         "description": ""
       },
       {
         "name": "Department of Commerce",
         "mentions": 56,
-        "description": ""
-      },
-      {
-        "name": "White House",
-        "mentions": 56,
-        "description": ""
-      },
-      {
-        "name": "Politico Defense",
-        "mentions": 55,
         "description": ""
       }
     ],
@@ -621,13 +555,13 @@
         "description": ""
       },
       {
-        "name": "Central Intelligence Agency",
-        "mentions": 258,
+        "name": "Department of Homeland Security",
+        "mentions": 261,
         "description": ""
       },
       {
-        "name": "Department of Homeland Security",
-        "mentions": 252,
+        "name": "Central Intelligence Agency",
+        "mentions": 258,
         "description": ""
       },
       {
@@ -636,18 +570,18 @@
         "description": ""
       },
       {
-        "name": "U.S. Army",
-        "mentions": 189,
+        "name": "Department of Defense",
+        "mentions": 211,
         "description": ""
       },
       {
-        "name": "Department of Defense",
-        "mentions": 173,
+        "name": "U.S. Army",
+        "mentions": 190,
         "description": ""
       },
       {
         "name": "U.S. Navy",
-        "mentions": 94,
+        "mentions": 97,
         "description": ""
       },
       {
@@ -667,7 +601,7 @@
       },
       {
         "name": "Government Accountability Office",
-        "mentions": 67,
+        "mentions": 68,
         "description": ""
       },
       {
@@ -676,13 +610,13 @@
         "description": ""
       },
       {
-        "name": "U.S. Space Force",
-        "mentions": 42,
+        "name": "U.S. Marine Corps",
+        "mentions": 44,
         "description": ""
       },
       {
-        "name": "U.S. Marine Corps",
-        "mentions": 42,
+        "name": "U.S. Space Force",
+        "mentions": 43,
         "description": ""
       },
       {
@@ -692,12 +626,12 @@
       },
       {
         "name": "U.S. Air Force",
-        "mentions": 24,
+        "mentions": 27,
         "description": ""
       },
       {
         "name": "Defense Department",
-        "mentions": 24,
+        "mentions": 26,
         "description": ""
       },
       {
@@ -706,12 +640,12 @@
         "description": ""
       },
       {
-        "name": "Defense Information Systems Agency",
-        "mentions": 20,
+        "name": "China",
+        "mentions": 23,
         "description": ""
       },
       {
-        "name": "China",
+        "name": "Defense Information Systems Agency",
         "mentions": 20,
         "description": ""
       }
@@ -738,6 +672,11 @@
         "description": ""
       },
       {
+        "name": "Operation Epic Fury",
+        "mentions": 10,
+        "description": ""
+      },
+      {
         "name": "Best Drone Warfighter Competition",
         "mentions": 9,
         "description": ""
@@ -758,17 +697,12 @@
         "description": ""
       },
       {
-        "name": "Operation Epic Fury",
+        "name": "Operation Roaring Lion",
         "mentions": 8,
         "description": ""
       },
       {
         "name": "Tech Viaduct",
-        "mentions": 7,
-        "description": ""
-      },
-      {
-        "name": "Operation Roaring Lion",
         "mentions": 7,
         "description": ""
       },
@@ -822,7 +756,7 @@
     "policy": [
       {
         "name": "Munich Security Conference",
-        "mentions": 24,
+        "mentions": 25,
         "description": ""
       },
       {
@@ -832,12 +766,12 @@
       },
       {
         "name": "Kristi Noem",
-        "mentions": 17,
+        "mentions": 18,
         "description": ""
       },
       {
         "name": "Federal Acquisition Regulation",
-        "mentions": 17,
+        "mentions": 18,
         "description": ""
       },
       {
@@ -847,11 +781,16 @@
       },
       {
         "name": "Trump",
-        "mentions": 11,
+        "mentions": 12,
         "description": ""
       },
       {
         "name": "NDAA",
+        "mentions": 11,
+        "description": ""
+      },
+      {
+        "name": "New START",
         "mentions": 11,
         "description": ""
       },
@@ -861,17 +800,12 @@
         "description": ""
       },
       {
-        "name": "New START",
-        "mentions": 10,
+        "name": "New Strategic Arms Reduction Treaty",
+        "mentions": 9,
         "description": ""
       },
       {
         "name": "National Defense Strategy",
-        "mentions": 8,
-        "description": ""
-      },
-      {
-        "name": "New Strategic Arms Reduction Treaty",
         "mentions": 8,
         "description": ""
       },
@@ -906,17 +840,17 @@
         "description": ""
       },
       {
+        "name": "AUKUS",
+        "mentions": 5,
+        "description": ""
+      },
+      {
         "name": "Friedrich Merz",
         "mentions": 4,
         "description": ""
       },
       {
         "name": "2025 National Security Strategy",
-        "mentions": 4,
-        "description": ""
-      },
-      {
-        "name": "15th Five-Year Plan",
         "mentions": 4,
         "description": ""
       }
@@ -928,13 +862,13 @@
         "description": ""
       },
       {
-        "name": "Bumblebee V2",
-        "mentions": 8,
+        "name": "Claude",
+        "mentions": 9,
         "description": ""
       },
       {
-        "name": "Claude",
-        "mentions": 7,
+        "name": "Bumblebee V2",
+        "mentions": 8,
         "description": ""
       },
       {
@@ -964,6 +898,11 @@
       },
       {
         "name": "mRNA",
+        "mentions": 3,
+        "description": ""
+      },
+      {
+        "name": "AI",
         "mentions": 3,
         "description": ""
       },
