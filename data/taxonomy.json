@@ -410,117 +410,92 @@
   ],
   "active_programs": [
     {
-      "name": "F-35",
-      "mentions": 19
-    },
-    {
-      "name": "High Mobility Artillery Rocket Systems",
-      "mentions": 10
-    },
-    {
-      "name": "Altius",
-      "mentions": 10
-    },
-    {
-      "name": "Switchblade",
-      "mentions": 10
-    },
-    {
       "name": "Operation Epic Fury",
-      "mentions": 10
+      "mentions": 5
     },
     {
-      "name": "Best Drone Warfighter Competition",
-      "mentions": 9
-    },
-    {
-      "name": "Blue UAS Select",
-      "mentions": 9
+      "name": "F-35",
+      "mentions": 4
     },
     {
       "name": "TSA PreCheck",
-      "mentions": 8
+      "mentions": 3
     },
     {
-      "name": "Pathway for Innovation and Technology",
-      "mentions": 8
+      "name": "CCA",
+      "mentions": 3
     },
     {
-      "name": "Operation Roaring Lion",
-      "mentions": 8
+      "name": "Golden Dome",
+      "mentions": 3
+    },
+    {
+      "name": "Vulcan",
+      "mentions": 3
+    },
+    {
+      "name": "Direct File",
+      "mentions": 2
+    },
+    {
+      "name": "Free File",
+      "mentions": 2
+    },
+    {
+      "name": "B-21",
+      "mentions": 2
+    },
+    {
+      "name": "Patriot",
+      "mentions": 2
     }
   ],
   "active_agencies": [
     {
       "name": "Department of Health and Human Services",
-      "mentions": 278
+      "mentions": 270
     },
     {
       "name": "Department of Homeland Security",
-      "mentions": 261
-    },
-    {
-      "name": "Central Intelligence Agency",
-      "mentions": 258
+      "mentions": 252
     },
     {
       "name": "Department of Veterans Affairs",
-      "mentions": 244
+      "mentions": 234
     },
     {
       "name": "Department of Defense",
-      "mentions": 211
-    },
-    {
-      "name": "U.S. Army",
-      "mentions": 190
-    },
-    {
-      "name": "U.S. Navy",
-      "mentions": 97
+      "mentions": 150
     },
     {
       "name": "Department of Energy",
-      "mentions": 86
-    },
-    {
-      "name": "Office of Management and Budget",
-      "mentions": 69
+      "mentions": 80
     },
     {
       "name": "Department of Labor",
       "mentions": 69
+    },
+    {
+      "name": "Central Intelligence Agency",
+      "mentions": 47
+    },
+    {
+      "name": "Government Accountability Office",
+      "mentions": 31
+    },
+    {
+      "name": "U.S. Army",
+      "mentions": 30
+    },
+    {
+      "name": "General Services Administration",
+      "mentions": 28
     }
   ],
   "emerging_technologies": [
     {
       "name": "Claude",
-      "mentions": 9,
-      "description": ""
-    },
-    {
-      "name": "Bumblebee V2",
-      "mentions": 8,
-      "description": ""
-    },
-    {
-      "name": "IronCurtain",
-      "mentions": 6,
-      "description": ""
-    },
-    {
-      "name": "SkyShot 1600",
-      "mentions": 5,
-      "description": ""
-    },
-    {
-      "name": "AutoDrive",
-      "mentions": 4,
-      "description": ""
-    },
-    {
-      "name": "mRNA",
-      "mentions": 3,
+      "mentions": 7,
       "description": ""
     },
     {
