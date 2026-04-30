@@ -1,0 +1,3 @@
+# macOS metadata cruft (creeps in when the repo is browsed from Mac/iCloud)
+.DS_Store
+._*
